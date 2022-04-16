@@ -1,4 +1,4 @@
-﻿using SF.Common.Logger;
+﻿using SF.Common.Data;
 using SF.Game;
 using SF.Game.States;
 
@@ -6,18 +6,18 @@ namespace SF.Sea.States
 {
     public class SeaBattleState : GameState
     {
-        public SeaBattleState(IWorld world, IDebugLogger logger) : base(world, logger)
+        public SeaBattleState(IServiceLocator serviceLocator) : base(serviceLocator)
         {
         }
 
-        protected override void OnEnter()
+        public override void Enter(IDataProvider data)
         {
-            Logger.Log("Entered sea battle state");
+            ServiceLocator.Logger.Log("Entered sea battle state");
         }
 
-        protected override void OnExit()
+        public override void Exit()
         {
-            Logger.Log("Exited sea battle state");
+            ServiceLocator.Logger.Log("Exited sea battle state");
         }
     }
 }

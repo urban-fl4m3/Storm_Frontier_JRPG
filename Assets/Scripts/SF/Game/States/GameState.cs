@@ -1,30 +1,19 @@
-﻿using SF.Common.Logger;
+﻿using SF.Common.Data;
 using SF.Common.States;
 
 namespace SF.Game.States
 {
     public abstract class GameState : IState
     {
-        protected IWorld World { get; }
-        protected IDebugLogger Logger { get; }
+        protected IServiceLocator ServiceLocator { get; }
 
-        protected GameState(IWorld world, IDebugLogger logger)
+        protected GameState(IServiceLocator serviceLocator)
         {
-            World = world;
-            Logger = logger;
-        }
-        
-        public void Enter()
-        {
-            
+            ServiceLocator = serviceLocator;
         }
 
-        public void Exit()
-        {
-            
-        }
+        public abstract void Enter(IDataProvider data);
 
-        protected abstract void OnEnter();
-        protected abstract void OnExit();
+        public abstract void Exit();
     }
 }

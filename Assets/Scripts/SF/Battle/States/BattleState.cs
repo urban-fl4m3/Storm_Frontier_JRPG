@@ -1,23 +1,23 @@
-﻿using SF.Common.Logger;
+﻿using SF.Common.Data;
 using SF.Game;
 using SF.Game.States;
 
 namespace SF.Battle.States
 {
-    public class BattleState : GameState
+    public class BattleState : WorldState<BattleWorld>
     {
-        public BattleState(IWorld world, IDebugLogger logger) : base(world, logger)
+        public BattleState(IServiceLocator serviceLocator) : base(serviceLocator)
         {
         }
 
-        protected override void OnEnter()
+        protected override void OnEnter(IDataProvider data)
         {
-            Logger.Log("Entered battle state");
+            ServiceLocator.Logger.Log("Entered battle state");
         }
 
         protected override void OnExit()
         {
-            Logger.Log("Exited battle state");
+            ServiceLocator.Logger.Log("Exited battle state");
         }
     }
 }

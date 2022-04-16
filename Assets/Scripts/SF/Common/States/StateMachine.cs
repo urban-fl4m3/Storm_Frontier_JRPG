@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using SF.Common.Data;
 using UniRx;
 
 namespace SF.Common.States
 {
-    public abstract class StateMachine<TStateType> : IStateMachine where TStateType : Enum
+    public abstract class StateMachine<TStateType, TState>
+        where TStateType : Enum
+        where TState : class, IState
     {
-        public IReadOnlyReactiveProperty<IState> CurrentState => _currentState;
+        protected readonly Dictionary<TStateType, TState> _states = new Dictionary<TStateType, TState>();
 
-        protected readonly Dictionary<TStateType, IState> _states = new Dictionary<TStateType, IState>();
-
-        private readonly ReactiveProperty<IState> _currentState = new ReactiveProperty<IState>();
-
-        protected StateMachine()
-        {
-            UpdateStates();
-        }
+        private readonly ReactiveProperty<TState> _currentState = new ReactiveProperty<TState>();
         
-        protected void ChangeState(TStateType stateType)
+        public void SetState(TStateType stateType)
         {
             if (!HasState(stateType))
             {
@@ -33,12 +29,13 @@ namespace SF.Common.States
 
             _currentState.Value?.Exit();
             _currentState.Value = state;
-            _currentState.Value.Enter();
+            _currentState.Value.Enter(GetStateEnterData());
         }
 
-        protected abstract IEnumerable<KeyValuePair<TStateType, IState>> GetStatesInfo();
+        protected abstract IEnumerable<KeyValuePair<TStateType, TState>> GetStatesInfo();
+        protected abstract IDataProvider GetStateEnterData();
 
-        private void UpdateStates()
+        protected void UpdateStates()
         {
             foreach (var stateInfo in GetStatesInfo())
             {

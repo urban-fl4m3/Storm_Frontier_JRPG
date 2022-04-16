@@ -1,23 +1,30 @@
 ﻿using System.Collections.Generic;
 using SF.Battle.States;
-using SF.Common.Logger;
+using SF.Common.Data;
 using SF.Common.States;
 using SF.Sea.States;
 
 namespace SF.Game.States
 {
-    public class GameStateMachine : StateMachine<GameStateType>
+    public class GameStateMachine : StateMachine<GameStateType, GameState>
     {
-        private readonly IWorld _world;
-        private readonly IDebugLogger _logger;
+        private readonly IServiceLocator _serviceLocator;
 
-        public GameStateMachine(IWorld world, IDebugLogger logger)
+        private IWorld _world;
+        
+        public GameStateMachine(IServiceLocator serviceLocator)
         {
-            _world = world;
-            _logger = logger;
+            _serviceLocator = serviceLocator;
+            
+            UpdateStates();
         }
 
-        protected override IEnumerable<KeyValuePair<GameStateType, IState>> GetStatesInfo()
+        public void ChangeWorld(IWorld world)
+        {
+            _world = world;
+        }
+
+        protected override IEnumerable<KeyValuePair<GameStateType, GameState>> GetStatesInfo()
         {
             yield return GetWorldExplarationStateInfo();
             yield return GetWorldBattleStateInfo();
@@ -25,29 +32,34 @@ namespace SF.Game.States
             yield return GetSeaBattleStateInfo();
         }
 
-        private KeyValuePair<GameStateType, IState> GetWorldExplarationStateInfo()
+        protected override IDataProvider GetStateEnterData()
         {
-            return GetGameStateInfo(GameStateType.WorldExploration, new WorldExplorationState(_world, _logger));
+            return new DataProvider(_world);
         }
 
-        private KeyValuePair<GameStateType, IState> GetWorldBattleStateInfo()
+        private KeyValuePair<GameStateType, GameState> GetWorldExplarationStateInfo()
         {
-            return GetGameStateInfo(GameStateType.WorldBattle, new BattleState(_world, _logger));
+            return GetGameStateInfo(GameStateType.WorldExploration, new WorldExplorationState(_serviceLocator));
+        }
+
+        private KeyValuePair<GameStateType, GameState> GetWorldBattleStateInfo()
+        {
+            return GetGameStateInfo(GameStateType.WorldBattle, new BattleState(_serviceLocator));
         }
         
-        private KeyValuePair<GameStateType, IState> GetSeaExplarationStateInfo()
+        private KeyValuePair<GameStateType, GameState> GetSeaExplarationStateInfo()
         {
-            return GetGameStateInfo(GameStateType.SeaExploration, new SeaExplorationState(_world, _logger));
+            return GetGameStateInfo(GameStateType.SeaExploration, new SeaExplorationState(_serviceLocator));
         }
 
-        private KeyValuePair<GameStateType, IState> GetSeaBattleStateInfo()
+        private KeyValuePair<GameStateType, GameState> GetSeaBattleStateInfo()
         {
-            return GetGameStateInfo(GameStateType.SeaBattle, new SeaBattleState(_world, _logger));
+            return GetGameStateInfo(GameStateType.SeaBattle, new SeaBattleState(_serviceLocator));
         }
 
-        private static KeyValuePair<GameStateType, IState> GetGameStateInfo(GameStateType type, IState state)
+        private static KeyValuePair<GameStateType, GameState> GetGameStateInfo(GameStateType type, GameState state)
         {
-            return new KeyValuePair<GameStateType, IState>(type, state);
+            return new KeyValuePair<GameStateType, GameState>(type, state);
         }
     }
 }

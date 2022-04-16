@@ -2,9 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Battle Content/Ground/Prefabs/Placeholder.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Battle Content/Ground/Prefabs/Placeholder.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattlePlaceholder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattlePlaceholder.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data/DataProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data/DataProvider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data/IDataProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data/IDataProvider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Initializers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Initializers/IWorldInitializer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Initializers/IWorldInitializer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player/IPlayerState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player/IPlayerState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player/PlayerState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player/PlayerState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Team.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Team.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/States.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/States/WorldState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/States/WorldState.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Commands/CommandQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Commands/CommandQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/IState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/IState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/IStateMachine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/IStateMachine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/StateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameStateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/WorldExplorationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/WorldExplorationState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Sea/States/SeaBattleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Sea/States/SeaBattleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Sea/States/SeaExplorationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Sea/States/SeaExplorationState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/BaseWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BaseWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/DefaultWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/DefaultWorld.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/IWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/IWorld.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,10 +107,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="32656">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="32656" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -87,6 +129,7 @@
       <workItem from="1650062561442" duration="645000" />
       <workItem from="1650096239201" duration="5620000" />
       <workItem from="1650115327112" duration="3514000" />
+      <workItem from="1650131279930" duration="3954000" />
     </task>
     <servers />
   </component>

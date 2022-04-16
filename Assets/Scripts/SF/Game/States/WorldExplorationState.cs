@@ -1,21 +1,21 @@
-﻿using SF.Common.Logger;
+﻿using SF.Common.Data;
 
 namespace SF.Game.States
 {
     public class WorldExplorationState : GameState
     {
-        public WorldExplorationState(IWorld world, IDebugLogger logger) : base(world, logger)
+        public WorldExplorationState(IServiceLocator serviceLocator) : base(serviceLocator)
         {
         }
 
-        protected override void OnEnter()
+        public override void Enter(IDataProvider data)
         {
-            Logger.Log("Entered world exploration state");
+            ServiceLocator.Logger.Log("Entered world exploration state");
         }
 
-        protected override void OnExit()
+        public override void Exit()
         {
-            Logger.Log("Exited world exploration state");
+            ServiceLocator.Logger.Log("Exited world exploration state");
         }
     }
 }
