@@ -1,7 +1,12 @@
-﻿namespace SF.Game
+﻿using SF.Common.Logger;
+
+namespace SF.Game
 {
-    public class DefaultWorld : IWorld
+    public class DefaultWorld : BaseWorld
     {
-        
+        public DefaultWorld(IServiceLocator serviceLocator) : base(serviceLocator)
+        {
+            
+        }
     }
 }

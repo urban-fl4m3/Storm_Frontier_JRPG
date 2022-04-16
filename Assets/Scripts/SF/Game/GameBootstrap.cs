@@ -4,9 +4,13 @@ namespace SF.Game
 {
     public class GameBootstrap : MonoBehaviour
     {
+        private IServiceLocator _serviceLocator;
+        private IWorld _world;
+        
         private void Start()
         {
-            var world = new DefaultWorld();
+            _serviceLocator = new ServiceLocator();
+            _world = new DefaultWorld(_serviceLocator);
         }
     }
 }
