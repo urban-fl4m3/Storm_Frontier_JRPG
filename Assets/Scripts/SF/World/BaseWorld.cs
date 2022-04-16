@@ -2,7 +2,7 @@
 {
     public abstract class BaseWorld : IWorld
     {
-        protected IServiceLocator ServiceLocator { get; }
+        public IServiceLocator ServiceLocator { get; }
 
         protected BaseWorld(IServiceLocator serviceLocator)
         {

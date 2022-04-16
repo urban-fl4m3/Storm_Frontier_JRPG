@@ -43,14 +43,16 @@ namespace SF.Common.Commands
 
         private void OnCommandFailed(object sender, EventArgs e)
         {
+            ClearCommandSubscription((ICommand) sender);
             Clear();
+            
             _logger.LogError($"[CommandQueue] Failed after {_completedCount} completed tasks!");
             OnFail?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnCommandComplete(object sender, EventArgs e)
         {
-            ((ICommand) sender).OnComplete -= OnCommandComplete;
+            ClearCommandSubscription((ICommand) sender);
             
             if (++_completedCount >= _totalCount)
             {
@@ -70,6 +72,12 @@ namespace SF.Common.Commands
             _completedCount = 0;
             _totalCount = 0;
             _executing = false;
+        }
+
+        private void ClearCommandSubscription(ICommand command)
+        {
+            command.OnComplete -= OnCommandComplete;
+            command.OnFail -= OnCommandFailed;
         }
     }
 }
