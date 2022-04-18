@@ -12,5 +12,7 @@ namespace SF.Game
             ServiceLocator = serviceLocator;
             PlayerState = playerState;
         }
+        
+        public abstract void Run();
     }
 }

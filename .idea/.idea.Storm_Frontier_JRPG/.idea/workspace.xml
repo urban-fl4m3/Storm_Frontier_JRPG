@@ -2,50 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Battle Content/Ground/Prefabs/Placeholder.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Battle Content/Ground/Prefabs/Placeholder.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattlePlaceholder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattlePlaceholder.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data/DataProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data/DataProvider.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data/IDataProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Data/IDataProvider.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Initializers.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Initializers/IWorldInitializer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Initializers/IWorldInitializer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player/IPlayerState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player/IPlayerState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player/PlayerState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Player/PlayerState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Team.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Team.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/States.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/States/WorldState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/States/WorldState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Data/BattleCharacterInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Data/BattleCharacterInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/ActorRegisterer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/ActorRegisterer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Factories.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Factories/ActorFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Factories/ActorFactory.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/IActorRegisterer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/IActorRegisterer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Registerers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Registerers/IRegisterer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Registerers/IRegisterer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Actors.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Data/CharacterConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Data/CharacterConfig.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/IState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/IState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/IStateMachine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/IStateMachine.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/States/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameStateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/WorldExplorationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/WorldExplorationState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Sea/States/SeaBattleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Sea/States/SeaBattleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Sea/States/SeaExplorationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Sea/States/SeaExplorationState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta/Data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta/Configurations.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta/Data/StatUpgradeMetaData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta/Configurations/StatUpgradeMetaConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta/Data/StatUpgradeMetaData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta/Configurations/StatUpgradeMetaConfig.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/IServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/IServiceLocator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/ServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/ServiceLocator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/BaseWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BaseWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/DefaultWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/DefaultWorld.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/IWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/IWorld.cs" afterDir="false" />
     </list>
@@ -69,8 +51,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc1d04d811fc4873ab7d8d9d4daddcc9568788/c6/4147823f/IComparable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc1d04d811fc4873ab7d8d9d4daddcc9568788/b5/b237451d/Enum.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f98083cbc97e4fa0a4ef2f523feff5e113bc00/33/bcbc93a5/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad0a7939819048a0a161f66558c9886726800/0c/dfb36c8f/AnimatorControllerParameterType.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.1/Editor/Collaborate/UserInterface/Bootstrap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.1/Editor/Collaborate/UserInterface/Bootstrap.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -107,10 +91,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="32656">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="32656" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -129,7 +113,9 @@
       <workItem from="1650062561442" duration="645000" />
       <workItem from="1650096239201" duration="5620000" />
       <workItem from="1650115327112" duration="3514000" />
-      <workItem from="1650131279930" duration="3954000" />
+      <workItem from="1650131279930" duration="4036000" />
+      <workItem from="1650239154020" duration="596000" />
+      <workItem from="1650239771135" duration="1525000" />
     </task>
     <servers />
   </component>

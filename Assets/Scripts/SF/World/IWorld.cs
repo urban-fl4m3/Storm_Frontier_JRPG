@@ -6,5 +6,7 @@ namespace SF.Game
     {
         IServiceLocator ServiceLocator { get; }
         IPlayerState PlayerState { get; }
+
+        void Run();
     }
 }

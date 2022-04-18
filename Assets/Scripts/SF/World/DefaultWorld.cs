@@ -8,5 +8,10 @@ namespace SF.Game
         {
             
         }
+
+        public override void Run()
+        {
+            
+        }
     }
 }
