@@ -1,21 +1,12 @@
-﻿using SF.Game;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SF.Common.Actors.Factories
 {
-    public class ActorFactory
+    public class ActorFactory : IActorFactory
     {
-        private readonly IServiceLocator _serviceLocator;
-
-        public ActorFactory(IServiceLocator serviceLocator)
+        public TActor Create<TActor>(TActor prefab, ActorSpawnData spawnData) where TActor : Actor
         {
-            _serviceLocator = serviceLocator;
-        }
-
-        public TActor Create<TActor>(TActor prefab) where TActor : Actor
-        {
-            var instance = Object.Instantiate(prefab);
-
+            var instance = Object.Instantiate(prefab, spawnData.Position, spawnData.Rotation, spawnData.Parent);
             return instance;
         }
     }

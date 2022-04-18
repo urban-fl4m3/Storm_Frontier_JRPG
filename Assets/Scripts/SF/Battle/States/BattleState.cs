@@ -13,6 +13,8 @@ namespace SF.Battle.States
         protected override void OnEnter(IDataProvider data)
         {
             ServiceLocator.Logger.Log("Entered battle state");
+            
+            World.Run();
         }
 
         protected override void OnExit()

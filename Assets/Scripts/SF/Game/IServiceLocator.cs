@@ -1,4 +1,4 @@
-﻿using SF.Common.Actors;
+﻿using SF.Common.Actors.Factories;
 using SF.Common.Logger;
 using SF.Common.Ticks;
 
@@ -8,6 +8,6 @@ namespace SF.Game
     {
         IDebugLogger Logger { get; }
         ITickProcessor TickProcessor { get; }
-        IActorRegisterer ActorRegisterer { get; }
+        IActorFactory ActorFactory { get; }
     }
 }

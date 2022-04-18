@@ -590,7 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3139214844407591568}
   - component: {fileID: 9038891098204924138}
-  - component: {fileID: 1170605667199520048}
+  - component: {fileID: 5148811520888535606}
   - component: {fileID: 7072307282035504390}
   m_Layer: 0
   m_Name: MainCharacterModel
@@ -634,7 +634,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1170605667199520048
+--- !u!114 &5148811520888535606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2367604674636048426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 833ce26ca95c4f0dbc5c496ce43c06d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f257e0700224e8a938a9f4b6a1cde0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:

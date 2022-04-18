@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using SF.Game;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace SF.Common.Actors
@@ -8,16 +9,13 @@ namespace SF.Common.Actors
     {
         public ActorComponentContainer Components { get; private set; }
         
-        public void Init()
+        protected IServiceLocator ServiceLocator { get; private set; }
+        
+        public void Init(IServiceLocator serviceLocator)
         {
+            ServiceLocator = serviceLocator;
             Components = GetComponent<ActorComponentContainer>();
-
-            var actorComponents = GetComponentsInChildren<ActorComponent>();
-
-            foreach (var actorComponent in actorComponents)
-            {
-                actorComponent.Init(this);
-            }
+            InitComponents();
         }
 
         public virtual void Enable()
@@ -28,6 +26,16 @@ namespace SF.Common.Actors
         public virtual void Disable()
         {
             
+        }
+
+        private void InitComponents()
+        {
+            var actorComponents = GetComponentsInChildren<ActorComponent>();
+
+            foreach (var actorComponent in actorComponents)
+            {
+                actorComponent.Init(this);
+            }            
         }
     }
 }

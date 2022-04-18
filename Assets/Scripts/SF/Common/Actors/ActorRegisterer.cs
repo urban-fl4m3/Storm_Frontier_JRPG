@@ -1,25 +1,55 @@
 ﻿using System;
+using System.Collections.Generic;
+using SF.Common.Logger;
+using SF.Common.Registerers;
 
 namespace SF.Common.Actors
 {
-    public class ActorRegisterer : IActorRegisterer
+    public abstract class ActorRegisterer<TActor> : IRegisterer<TActor> where TActor : class, IActor
     {
-        public event EventHandler<IActor> ObjectRegistered;
-        public event EventHandler<IActor> ObjectUnregistered;
+        public event EventHandler<TActor> ObjectRegistered;
+        public event EventHandler<TActor> ObjectUnregistered;
 
-        public ActorRegisterer()
+        protected IDebugLogger Logger { get; }
+        protected HashSet<TActor> RegisteredActors { get; }
+
+        protected ActorRegisterer(IDebugLogger logger)
         {
-            
-        }
-        
-        public void Add(IActor obj)
-        {
-            
+            Logger = logger;
+            RegisteredActors = new HashSet<TActor>();
         }
 
-        public void Remove(IActor obj)
+        public bool Add(TActor obj)
         {
-            throw new NotImplementedException();
+            if (RegisteredActors.Contains(obj))
+            {
+                Logger.LogWarning($"Actor {obj} is already registered");
+                return false;
+            }
+
+            RegisteredActors.Add(obj);
+            ObjectRegistered?.Invoke(this, obj);
+
+            return true;
+        }
+
+        public bool Remove(TActor obj)
+        {
+            if (!RegisteredActors.Contains(obj))
+            {
+                Logger.LogWarning($"Actor {obj} wasn't registered");
+                return false;
+            }
+
+            RegisteredActors.Remove(obj);
+            ObjectUnregistered?.Invoke(this, obj);
+
+            return true;
+        }
+
+        public IEnumerable<TActor> GetAll()
+        {
+            return RegisteredActors;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SF.Common.Registerers
 {
@@ -6,7 +7,9 @@ namespace SF.Common.Registerers
     {
         event EventHandler<T> ObjectRegistered;
         event EventHandler<T> ObjectUnregistered; 
-        void Add(T obj);
-        void Remove(T obj);
+        
+        bool Add(T obj);
+        bool Remove(T obj);
+        IEnumerable<T> GetAll();
     }
 }
