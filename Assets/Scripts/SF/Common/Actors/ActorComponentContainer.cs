@@ -22,6 +22,16 @@ namespace SF.Common.Actors
             return CreateComponent<T>();
         }
 
+        public void InitActorComponents()
+        {
+            var actorComponents = GetComponentsInChildren<ActorComponent>();
+
+            foreach (var actorComponent in actorComponents)
+            {
+                actorComponent.Init(Get<IActor>());
+            }
+        }
+
         private T CreateComponent<T>() where T : class
         {
             var component = GetComponentInChildren<T>();

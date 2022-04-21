@@ -592,6 +592,8 @@ GameObject:
   - component: {fileID: 9038891098204924138}
   - component: {fileID: 5148811520888535606}
   - component: {fileID: 7072307282035504390}
+  - component: {fileID: 8519325368023012936}
+  - component: {fileID: 7703819888178351517}
   m_Layer: 0
   m_Name: MainCharacterModel
   m_TagString: Untagged
@@ -667,6 +669,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68f9d9b8a6d4d9cb58a72f4a4ac8b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8519325368023012936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367604674636048426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b484eab94b45ffa127d2131e126a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+--- !u!114 &7703819888178351517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367604674636048426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eeafe20afb6473c861168805f3fe49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!1 &2439953382087734139
 GameObject:
   m_ObjectHideFlags: 0

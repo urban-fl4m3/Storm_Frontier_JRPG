@@ -15,7 +15,7 @@ namespace SF.Common.Actors
         {
             ServiceLocator = serviceLocator;
             Components = GetComponent<ActorComponentContainer>();
-            InitComponents();
+            Components.InitActorComponents();
         }
 
         public virtual void Enable()
@@ -26,16 +26,6 @@ namespace SF.Common.Actors
         public virtual void Disable()
         {
             
-        }
-
-        private void InitComponents()
-        {
-            var actorComponents = GetComponentsInChildren<ActorComponent>();
-
-            foreach (var actorComponent in actorComponents)
-            {
-                actorComponent.Init(this);
-            }            
         }
     }
 }
