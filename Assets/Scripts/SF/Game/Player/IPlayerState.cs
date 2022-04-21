@@ -2,6 +2,6 @@
 {
     public interface IPlayerState
     {
-        
+        BattleLoadout Loadout { get; }
     }
 }

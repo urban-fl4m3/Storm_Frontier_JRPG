@@ -1108,6 +1108,11 @@ MonoBehaviour:
     - Name: _worldInitializer
       Entry: 10
       Data: 0
+  _playerCharacters:
+  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
+  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
+  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
+  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
 --- !u!4 &2081974290
 Transform:
   m_ObjectHideFlags: 0
@@ -1145,7 +1150,6 @@ MonoBehaviour:
     SerializationNodes: []
   _field: {fileID: 1728986648}
   _enemies:
-  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
   - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
   - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
   - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}

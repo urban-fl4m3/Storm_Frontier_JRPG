@@ -9,9 +9,9 @@ namespace SF.Game
     public class BattleWorld : BaseWorld
     {
         public BattleField Field { get; }
-        public BattlleActorRegisterer Registerer { get; }
-        public BattleActorFactory BattleActorFactory { get; }
         
+        private readonly BattlleActorRegisterer _registerer;
+        private readonly BattleActorFactory _battleActorFactory;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
         
         public BattleWorld(
@@ -23,12 +23,13 @@ namespace SF.Game
             Field = field;
             
             _enemiesData = enemiesData;
-            Registerer = new BattlleActorRegisterer(serviceLocator.Logger);
-            BattleActorFactory = new BattleActorFactory(Registerer, serviceLocator);
+            _registerer = new BattlleActorRegisterer(serviceLocator.Logger);
+            _battleActorFactory = new BattleActorFactory(_registerer, serviceLocator);
         }
 
         public override void Run()
         {
+            CreateActors(Team.Player, PlayerState.Loadout.GetBattleCharactersData());
             CreateActors(Team.Enemy, _enemiesData);
         }
 
@@ -38,7 +39,7 @@ namespace SF.Game
             {
                 if (!Field.HasEmptyPlaceholder(team)) continue;
                
-                var actor = BattleActorFactory.Create(enemyInfo.Config.Actor, new BattleMetaData(team, enemyInfo.Level));
+                var actor = _battleActorFactory.Create(enemyInfo.Config.Actor, new BattleMetaData(team, enemyInfo.Level));
 
                 if (actor == null) continue;
 

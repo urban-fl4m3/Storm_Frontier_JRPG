@@ -2,6 +2,11 @@
 {
     public class PlayerState : IPlayerState
     {
-        
+        public BattleLoadout Loadout { get; }
+
+        public PlayerState()
+        {
+            Loadout = new BattleLoadout();
+        }
     }
 }

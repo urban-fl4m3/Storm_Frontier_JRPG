@@ -4,8 +4,8 @@ namespace SF.Game
 {
     public abstract class BaseWorld : IWorld
     {
-        public IServiceLocator ServiceLocator { get; }
-        public IPlayerState PlayerState { get; }
+        protected IServiceLocator ServiceLocator { get; }
+        protected IPlayerState PlayerState { get; }
 
         protected BaseWorld(IServiceLocator serviceLocator, IPlayerState playerState)
         {
