@@ -33,7 +33,7 @@ namespace SF.Game
         {
             foreach (var playerCharacter in _playerCharacters)
             {
-                _playerState.Loadout.AddCharacter(new BattleCharacterInfo(playerCharacter, 1));
+                _playerState.Loadout.AddCharacter(new BattleCharacterInfo(playerCharacter, 98));
             }
         }
     }

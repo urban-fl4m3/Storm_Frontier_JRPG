@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Woman
   _actor: {fileID: 5148811520888535606, guid: 442f23785e88d0b4f9fa745c6c7fcdb2, type: 3}
+  _professionData: {fileID: 11400000, guid: 521b105e91d170645bdc1f48137f781b, type: 2}

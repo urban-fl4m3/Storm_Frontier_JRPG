@@ -1,4 +1,4 @@
-﻿namespace SF.Battle.Stats
+﻿namespace SF.Game.Stats
 {
     public enum PrimaryStat
     {

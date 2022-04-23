@@ -1,4 +1,5 @@
 ﻿using SF.Battle.Actors;
+using SF.Game.Characters.Professions;
 using UnityEngine;
 
 namespace SF.Battle.Data
@@ -8,8 +9,10 @@ namespace SF.Battle.Data
     {
         [SerializeField] private string _name;
         [SerializeField] private BattleActor _actor;
+        [SerializeField] private ProfessionData _professionData;
 
         public string Name => _name;
         public BattleActor Actor => _actor;
+        public ProfessionData ProfessionData => _professionData;
     }
 }

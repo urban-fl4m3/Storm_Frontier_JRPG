@@ -22,7 +22,8 @@ namespace SF.Battle.Initializers
 
         private IEnumerable<BattleCharacterInfo> GetEnemiesInfo()
         {
-            return _enemies.Select(enemyData => new BattleCharacterInfo(enemyData, 1));
+            return _enemies.Select(enemyData 
+                => new BattleCharacterInfo(enemyData, 1));
         }
     }
 }

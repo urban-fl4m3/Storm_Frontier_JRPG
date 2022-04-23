@@ -38,8 +38,9 @@ namespace SF.Game
             foreach (var enemyInfo in enemiesData)
             {
                 if (!Field.HasEmptyPlaceholder(team)) continue;
-               
-                var actor = _battleActorFactory.Create(enemyInfo.Config.Actor, new BattleMetaData(team, enemyInfo.Level));
+
+                var meta = new BattleMetaData(team, enemyInfo);
+                var actor = _battleActorFactory.Create(enemyInfo.Config.Actor, meta);
 
                 if (actor == null) continue;
 

@@ -1,16 +1,17 @@
-﻿using SF.Game;
+﻿using SF.Battle.Data;
+using SF.Game;
 
 namespace SF.Battle.Common
 {
     public struct BattleMetaData
     {
         public Team Team { get; }
-        public int Level { get; }
+        public BattleCharacterInfo Info { get; }
 
-        public BattleMetaData(Team team, int level)
+        public BattleMetaData(Team team, BattleCharacterInfo info)
         {
             Team = team;
-            Level = level;
+            Info = info;
         }
     }
 }
