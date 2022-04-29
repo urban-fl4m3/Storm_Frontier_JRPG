@@ -898,7 +898,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
   m_Antialiasing: 1
   m_AntialiasingQuality: 2
@@ -1109,10 +1108,10 @@ MonoBehaviour:
       Entry: 10
       Data: 0
   _playerCharacters:
-  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
-  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
-  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
-  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
+  - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
+  - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
+  - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
+  - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
 --- !u!4 &2081974290
 Transform:
   m_ObjectHideFlags: 0
@@ -1149,11 +1148,12 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _field: {fileID: 1728986648}
+  _statScaleConfig: {fileID: 11400000, guid: be4f5b98444bbfe42929e4b567769163, type: 2}
   _enemies:
-  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
-  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
-  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
-  - {fileID: 11400000, guid: 42a8ebbb190b89d49b5b50bc4206b026, type: 2}
+  - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
+  - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
+  - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
+  - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0

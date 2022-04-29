@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using SF.Game.Stats;
+﻿using SF.Game.Stats;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -10,9 +9,9 @@ namespace SF.Game.Characters.Professions
     public class ProfessionData : SerializedScriptableObject
     {
         [SerializeField] private string _name;
-        [OdinSerialize] private Dictionary<PrimaryStat, StatData> _stats;
+        [OdinSerialize] private StatContainerData<MainStat> _tiers;
 
         public string Name => _name;
-        public IReadOnlyDictionary<PrimaryStat, StatData> Stats => _stats;
+        public StatContainerData<MainStat> Tiers => _tiers;
     }
 }

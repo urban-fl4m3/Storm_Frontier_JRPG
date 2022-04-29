@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SF.Battle.Data;
+using SF.Game.Data.Characters;
 using SF.Game.Initializers;
 using SF.Game.Player;
 using SF.Game.States;
@@ -15,7 +16,7 @@ namespace SF.Game
         private IPlayerState _playerState;
 
         [OdinSerialize] private IWorldInitializer _worldInitializer;
-        [SerializeField] private List<BattleCharacterConfig> _playerCharacters;
+        [SerializeField] private List<GameCharacterConfig> _playerCharacters;
 
         private void Start()
         {

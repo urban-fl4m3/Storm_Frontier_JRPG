@@ -1,6 +1,7 @@
 ﻿using SF.Battle.Actors;
 using SF.Common.Actors.Factories;
 using SF.Game;
+using SF.Game.Data;
 
 namespace SF.Battle.Common
 {
@@ -8,11 +9,16 @@ namespace SF.Battle.Common
     {
         private readonly BattlleActorRegisterer _registerer;
         private readonly IServiceLocator _serviceLocator;
-        
-        public BattleActorFactory(BattlleActorRegisterer registerer, IServiceLocator serviceLocator)
+        private readonly StatScaleConfig _statScaleConfig;
+
+        public BattleActorFactory(
+            BattlleActorRegisterer registerer,
+            IServiceLocator serviceLocator,
+            StatScaleConfig statScaleConfig)
         {
             _registerer = registerer;
             _serviceLocator = serviceLocator;
+            _statScaleConfig = statScaleConfig;
         }
 
         public BattleActor Create(BattleActor prefab, BattleMetaData metaData)
@@ -34,7 +40,7 @@ namespace SF.Battle.Common
 
             if (isAdded)
             {
-                actor.Init(_serviceLocator, metaData);
+                actor.Init(_serviceLocator, metaData, _statScaleConfig);
             }
 
             return actor;

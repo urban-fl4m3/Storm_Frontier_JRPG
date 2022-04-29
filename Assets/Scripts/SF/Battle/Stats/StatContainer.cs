@@ -1,37 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using SF.Common.Logger;
+using SF.Game.Data;
 using SF.Game.Stats;
-using UnityEngine;
 
 namespace SF.Battle.Stats
 {
-    public class StatContainer<TStat> : IReadOnlyStatContainer<TStat> where TStat : Enum
+    public class StatContainer: IReadOnlyStatContainer<MainStat>, IReadOnlyStatContainer<PrimaryStat>
     {
+        private readonly int _level;
+        private readonly StatContainerData<MainStat> _baseMainStats;
+        private readonly StatContainerData<MainStat> _professionTiers;
+        private readonly StatContainerData<PrimaryStat> _primaryAdditionalStats;
+        
+        private readonly StatScaleConfig _statScaleConfig;
+        private readonly IDebugLogger _debugLogger;
         private readonly IStatUpgradeFormula _statUpgradeFormula = new DefaultStatUpgradeFormula();
-        private readonly Dictionary<TStat, int> _statValues = new Dictionary<TStat, int>();
+        
+        private readonly Dictionary<MainStat, int> _mainStats = new Dictionary<MainStat, int>();
+        private readonly Dictionary<PrimaryStat, int> _primaryStats = new Dictionary<PrimaryStat, int>();
 
-        public StatContainer(IReadOnlyDictionary<TStat, StatData> baseValues, int level)
+        public StatContainer(int level, 
+            StatContainerData<MainStat> baseMainStats, 
+            StatContainerData<MainStat> professionTiers, 
+            StatContainerData<PrimaryStat> primaryAdditionalStats,
+            StatScaleConfig statScaleConfig,
+            IDebugLogger debugLogger)
         {
-            ReadBaseStats(baseValues, level);
+            _level = level;
+            _baseMainStats = baseMainStats;
+            _professionTiers = professionTiers;
+            _primaryAdditionalStats = primaryAdditionalStats;
+            _statScaleConfig = statScaleConfig;
+            _debugLogger = debugLogger;
+
+            Recalculate();
         }
 
-        private void ReadBaseStats(IReadOnlyDictionary<TStat, StatData> baseValues, int level)
+        private void Recalculate()
         {
-            foreach (var statInfo in baseValues)
+            var professionTierStasts = _professionTiers.Stats;
+            
+            foreach (var statInfo in _baseMainStats.Stats)
             {
-                var statType = statInfo.Key;
-                var statData = statInfo.Value;
+                var stat = statInfo.Key;
+                var value = statInfo.Value;
 
-                var upgradedValue =
-                    Mathf.FloorToInt(_statUpgradeFormula.GetStatValue(statData.BaseValue, statData.Tier, level));
+                if (!professionTierStasts.ContainsKey(stat))
+                {
+                    _debugLogger.LogError($"Stat {stat} doesn't have a tier!");
+                    continue;
+                }
 
-                _statValues.Add(statType, upgradedValue);
-            }
+                var tier = professionTierStasts[stat];
+                
+                _mainStats.Add(stat, _statUpgradeFormula.GetStatValue(value, tier, _level));
+            }   
         }
 
-        public int GetStat(TStat stat)
+        public int GetStat(MainStat stat)
         {
-            return _statValues.ContainsKey(stat) ? _statValues[stat] : default;
+            return _mainStats.ContainsKey(stat) ? _mainStats[stat] : default;
+        }
+
+        public int GetStat(PrimaryStat stat)
+        {
+            return 0;
         }
     }
 }

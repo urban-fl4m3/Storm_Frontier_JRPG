@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30cc4660dc7846cb94d72dfc1f7ee2ab, type: 3}
-  m_Name: RogueProfession
+  m_Name: DuelistProfession
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,13 +21,17 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: _tiers
+      Entry: 7
+      Data: 0|SF.Game.Stats.StatContainerData`1[[SF.Game.Stats.MainStat, Assembly-CSharp]],
+        Assembly-CSharp
     - Name: _stats
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[SF.Game.Stats.PrimaryStat,
-        Assembly-CSharp],[SF.Game.Stats.StatData, Assembly-CSharp]], mscorlib
+      Data: 1|System.Collections.Generic.Dictionary`2[[SF.Game.Stats.MainStat, Assembly-CSharp],[System.Single,
+        mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[SF.Game.Stats.PrimaryStat,
+      Data: 2|System.Collections.Generic.EnumEqualityComparer`1[[SF.Game.Stats.MainStat,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -40,7 +44,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
@@ -48,17 +52,8 @@ MonoBehaviour:
       Entry: 3
       Data: 0
     - Name: $v
-      Entry: 7
-      Data: SF.Game.Stats.StatData, Assembly-CSharp
-    - Name: _baseValue
-      Entry: 3
-      Data: 0
-    - Name: _tier
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 4
+      Data: 48
     - Name: 
       Entry: 8
       Data: 
@@ -69,17 +64,8 @@ MonoBehaviour:
       Entry: 3
       Data: 1
     - Name: $v
-      Entry: 7
-      Data: SF.Game.Stats.StatData, Assembly-CSharp
-    - Name: _baseValue
-      Entry: 3
-      Data: 0
-    - Name: _tier
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 4
+      Data: 55
     - Name: 
       Entry: 8
       Data: 
@@ -90,17 +76,8 @@ MonoBehaviour:
       Entry: 3
       Data: 2
     - Name: $v
-      Entry: 7
-      Data: SF.Game.Stats.StatData, Assembly-CSharp
-    - Name: _baseValue
-      Entry: 3
-      Data: 0
-    - Name: _tier
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 4
+      Data: 70
     - Name: 
       Entry: 8
       Data: 
@@ -111,17 +88,8 @@ MonoBehaviour:
       Entry: 3
       Data: 3
     - Name: $v
-      Entry: 7
-      Data: SF.Game.Stats.StatData, Assembly-CSharp
-    - Name: _baseValue
-      Entry: 3
-      Data: 0
-    - Name: _tier
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 4
+      Data: 35
     - Name: 
       Entry: 8
       Data: 
@@ -132,17 +100,8 @@ MonoBehaviour:
       Entry: 3
       Data: 4
     - Name: $v
-      Entry: 7
-      Data: SF.Game.Stats.StatData, Assembly-CSharp
-    - Name: _baseValue
-      Entry: 3
-      Data: 0
-    - Name: _tier
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 4
+      Data: 47
     - Name: 
       Entry: 8
       Data: 
@@ -153,17 +112,20 @@ MonoBehaviour:
       Entry: 3
       Data: 5
     - Name: $v
-      Entry: 7
-      Data: SF.Game.Stats.StatData, Assembly-CSharp
-    - Name: _baseValue
-      Entry: 3
-      Data: 0
-    - Name: _tier
-      Entry: 3
-      Data: 0
+      Entry: 4
+      Data: 35
     - Name: 
       Entry: 8
       Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 4
+      Data: 40
     - Name: 
       Entry: 8
       Data: 
@@ -173,4 +135,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _name: Rogue
+    - Name: 
+      Entry: 8
+      Data: 
+  _name: Duelist

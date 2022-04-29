@@ -2,6 +2,6 @@
 {
     public interface IStatUpgradeFormula
     {
-        float GetStatValue(int baseValue, int tier, int level);
+        int GetStatValue(float baseValue, float tier, int level);
     }
 }

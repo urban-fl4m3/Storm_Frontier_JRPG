@@ -3,6 +3,8 @@ using System.Linq;
 using SF.Battle.Data;
 using SF.Battle.Field;
 using SF.Game;
+using SF.Game.Data;
+using SF.Game.Data.Characters;
 using SF.Game.Initializers;
 using SF.Game.Player;
 using Sirenix.OdinInspector;
@@ -13,11 +15,12 @@ namespace SF.Battle.Initializers
     public class BattleInitializer : SerializedMonoBehaviour, IWorldInitializer
     {
         [SerializeField] private BattleField _field;
-        [SerializeField] private List<BattleCharacterConfig> _enemies;
+        [SerializeField] private StatScaleConfig _statScaleConfig;
+        [SerializeField] private List<GameCharacterConfig> _enemies;
 
         public IWorld GetWorld(IServiceLocator serviceLocator, IPlayerState playerState)
         {
-            return new BattleWorld(serviceLocator, playerState, _field, GetEnemiesInfo());
+            return new BattleWorld(serviceLocator, playerState, _field, _statScaleConfig, GetEnemiesInfo());
         }
 
         private IEnumerable<BattleCharacterInfo> GetEnemiesInfo()

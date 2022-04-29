@@ -2,6 +2,7 @@
 using SF.Battle.Common;
 using SF.Battle.Data;
 using SF.Battle.Field;
+using SF.Game.Data;
 using SF.Game.Player;
 
 namespace SF.Game
@@ -18,13 +19,14 @@ namespace SF.Game
             IServiceLocator serviceLocator, 
             IPlayerState playerState,
             BattleField field,
+            StatScaleConfig statScaleConfig,
             IEnumerable<BattleCharacterInfo> enemiesData) : base(serviceLocator, playerState)
         {
             Field = field;
             
             _enemiesData = enemiesData;
             _registerer = new BattlleActorRegisterer(serviceLocator.Logger);
-            _battleActorFactory = new BattleActorFactory(_registerer, serviceLocator);
+            _battleActorFactory = new BattleActorFactory(_registerer, serviceLocator, statScaleConfig);
         }
 
         public override void Run()
@@ -40,7 +42,7 @@ namespace SF.Game
                 if (!Field.HasEmptyPlaceholder(team)) continue;
 
                 var meta = new BattleMetaData(team, enemyInfo);
-                var actor = _battleActorFactory.Create(enemyInfo.Config.Actor, meta);
+                var actor = _battleActorFactory.Create(enemyInfo.Config.BattleActor, meta);
 
                 if (actor == null) continue;
 

@@ -6,6 +6,7 @@
         {
             public const int MIN_LEVEL = 1;
             public const float STAT_TIER_CORRECTOR = 0.001f;
+            public const float STAT_GROWTH_AMPLITUDE = 0.5f;
         }
     }
 }
