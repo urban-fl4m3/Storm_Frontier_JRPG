@@ -2,51 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Configs/Professions.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Configs/Professions/RogueProfession.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Configs/Professions/RogueProfession.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Configs/Professions/WarriorProfession.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Configs/Professions/WarriorProfession.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/IReadOnlyStatContainer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/IReadOnlyStatContainer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/StatContainer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/StatContainer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Characters.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Characters/Professions.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Characters/Professions/ProfessionData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Characters/Professions/ProfessionData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Common.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Common/Constants.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Common/Constants.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/DefaultStatUpgradeFormula.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/DefaultStatUpgradeFormula.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/IStatUpgradeFormula.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/IStatUpgradeFormula.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/StatData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/StatData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/MainStat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/MainStat.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/MemorySettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/boot.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Battle Content/Characters/Main/Animations/MainCharacterAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Battle Content/Characters/Main/Animations/MainCharacterAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Battle Content/Characters/Main/Prefabs/MainCharacterModel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Battle Content/Characters/Main/Prefabs/MainCharacterModel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Battle/Characters/WomanBattleCharacter.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Battle/Characters/WomanBattleCharacter.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Meta.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Meta/StatUpgradeMetaData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Meta/StatUpgradeMetaData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattleMetaData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattleMetaData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Data/BattleCharacterConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Data/BattleCharacterConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta/Configurations.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta/Configurations/StatUpgradeMetaConfig.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Meta/Configurations/StatUpgradeMetaConfig.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/PrimaryStat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/PrimaryStat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/PrimaryStat.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/PrimaryStat.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Constants.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Constants.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Battle Content/Characters/Main/Materials/SpacePirate_M.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Battle Content/Characters/Main/Materials/SpacePirate_M.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Battle Content/Ground/Materials/BattleGroundMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Battle Content/Ground/Materials/BattleGroundMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Swords/Materials/swords_material1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Swords/Materials/swords_material1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Swords/Materials/swords_material2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Swords/Materials/swords_material2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/ForwardRenderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/ForwardRenderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/UniversalRP-HighQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/UniversalRP-HighQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/UniversalRP-LowQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/UniversalRP-LowQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/UniversalRP-MediumQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/UniversalRP-MediumQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Ticks/TickProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Ticks/TickProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/PrimaryStat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/PrimaryStat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,11 +47,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc1d04d811fc4873ab7d8d9d4daddcc9568788/c6/4147823f/IComparable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc1d04d811fc4873ab7d8d9d4daddcc9568788/b5/b237451d/Enum.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/43c1d9d077584e5784f825639e556e0f5400/73/8d522429/ObservableExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f98083cbc97e4fa0a4ef2f523feff5e113bc00/33/bcbc93a5/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ad0a7939819048a0a161f66558c9886726800/0c/dfb36c8f/AnimatorControllerParameterType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.1/Editor/Collaborate/UserInterface/Bootstrap.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -136,7 +116,8 @@
       <workItem from="1650263631022" duration="3439000" />
       <workItem from="1650268783406" duration="2345000" />
       <workItem from="1650577437365" duration="3898000" />
-      <workItem from="1650746246835" duration="4858000" />
+      <workItem from="1650746246835" duration="4982000" />
+      <workItem from="1651254044925" duration="1755000" />
     </task>
     <servers />
   </component>

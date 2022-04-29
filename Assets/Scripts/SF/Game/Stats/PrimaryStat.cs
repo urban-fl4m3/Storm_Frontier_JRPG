@@ -2,11 +2,28 @@
 {
     public enum PrimaryStat
     {
-        HP = 0,         //Health points of character. If health reaches zero, hero will die eventually;
-        MP = 1,         //Magic points of character. Allows characters to perform special abilities;
-        STR = 2,        //Strength. Rises overall physical power, such as damage from weapons.
-        MAG = 3,
-        CHA = 4,
-        LCK = 5
+        HP = 0,
+        MP = 1,
+        PDef = 2,
+        MDef = 3,
+        PPower = 4,
+        MPower = 5,
+        HitChance = 6,
+        DodgeChance = 7,
+        CritChance = 8,
+        GlobalChanceInc = 9,
+        ResPhys = 10,
+        ResMagic = 11,
+        ResFire = 12,
+        ResWind = 13,
+        ResEarth = 14,
+        ResLightning = 15,
+        ResWater = 16,
+        CritDamage = 17,
+        Aggression = 18,
+        Lifesteal = 19,
+        Manasteal = 20,
+        ResRadiance = 21,
+        ResVoid = 22
     }
 }

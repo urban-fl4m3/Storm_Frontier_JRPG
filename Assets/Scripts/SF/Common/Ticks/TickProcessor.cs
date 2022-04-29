@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using UniRx;
+using UniRxExt = UniRx.ObservableExtensions;
 
 namespace SF.Common.Ticks
 {
     public class TickProcessor : ITickProcessor
     {
-        private readonly List<Action> _ticks = new List<Action>();
-        private readonly Queue<Action> _ticksToAdd = new Queue<Action>();
-        private readonly Queue<Action> _ticksToRemove = new Queue<Action>();
+        private readonly List<Action> _ticks = new();
+        private readonly Queue<Action> _ticksToAdd = new();
+        private readonly Queue<Action> _ticksToRemove = new();
 
         private IDisposable _tickSub;
         
@@ -19,10 +20,8 @@ namespace SF.Common.Ticks
             {
                 return;
             }
-
-            _tickSub = Observable
-                .EveryUpdate()
-                .Subscribe(_ => OnTick());
+            
+            _tickSub = UniRxExt.Subscribe(Observable.EveryUpdate(), OnTick);
         }
 
         public void Stop()
@@ -50,7 +49,7 @@ namespace SF.Common.Ticks
             _ticksToRemove.Enqueue(tick);
         }
 
-        private void OnTick()
+        private void OnTick(long l)
         {
             while (_ticksToRemove.Any())
             {
