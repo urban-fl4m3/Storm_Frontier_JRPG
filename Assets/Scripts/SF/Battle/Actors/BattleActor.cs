@@ -31,20 +31,11 @@ namespace SF.Battle.Actors
             var characterData = metaData.Info.Config;
             
             _stats = new StatContainer(Level,
-                characterData.BaseMainStats, 
+                characterData.BaseData,
+                characterData.AdditionalMainStats, 
                 characterData.ProfessionData.Tiers, 
-                characterData.AdditionalPrimaryStats, 
-                statScaleConfig,
-                ServiceLocator.Logger);
-
-
-            // ServiceLocator.Logger.Log($"{MainStat.Vitality}: {MainStats.GetStat(MainStat.Vitality)}");
-            // ServiceLocator.Logger.Log($"{MainStat.Intelligence}: {MainStats.GetStat(MainStat.Intelligence)}");
-            // ServiceLocator.Logger.Log($"{MainStat.Mastery}: {MainStats.GetStat(MainStat.Mastery)}");
-            // ServiceLocator.Logger.Log($"{MainStat.Wisdom}: {MainStats.GetStat(MainStat.Wisdom)}");
-            // ServiceLocator.Logger.Log($"{MainStat.Focus}: {MainStats.GetStat(MainStat.Focus)}");
-            // ServiceLocator.Logger.Log($"{MainStat.Resistance}: {MainStats.GetStat(MainStat.Resistance)}");
-            // ServiceLocator.Logger.Log($"{MainStat.Luck}: {MainStats.GetStat(MainStat.Luck)}");
+                characterData.ProfessionData.AdditionalPrimaryStats, 
+                statScaleConfig);
         }
     }
 }

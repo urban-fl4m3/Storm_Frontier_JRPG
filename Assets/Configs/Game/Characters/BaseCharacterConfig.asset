@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44a7454dc0ee4e449715daf218ec7129, type: 3}
-  m_Name: Woman
+  m_Script: {fileID: 11500000, guid: 85559f051248483884324515bde12eb7, type: 3}
+  m_Name: BaseCharacterConfig
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,7 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _additionalMainStats
+    - Name: _baseMainStats
       Entry: 7
       Data: 0|SF.Game.Stats.StatContainerData`1[[SF.Game.Stats.MainStat, Assembly-CSharp]],
         Assembly-CSharp
@@ -50,10 +50,22 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 4
+      Data: 7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -65,7 +77,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 3
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -77,7 +89,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -89,7 +101,7 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 4
-      Data: 2
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -101,7 +113,7 @@ MonoBehaviour:
       Data: 5
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -113,16 +125,49 @@ MonoBehaviour:
       Data: 6
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _basePrimaryStats
+      Entry: 7
+      Data: 3|SF.Game.Stats.StatContainerData`1[[SF.Game.Stats.PrimaryStat, Assembly-CSharp]],
+        Assembly-CSharp
+    - Name: _stats
+      Entry: 7
+      Data: 4|System.Collections.Generic.Dictionary`2[[SF.Game.Stats.PrimaryStat,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 5|System.Collections.Generic.EnumEqualityComparer`1[[SF.Game.Stats.PrimaryStat,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 0
+      Data: 17
     - Name: $v
       Entry: 4
       Data: 2
@@ -138,7 +183,3 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _name: Woman
-  _baseData: {fileID: 11400000, guid: 2816ed8f3fbc4194fa2b6f36ed577c1c, type: 2}
-  _battleActor: {fileID: 5148811520888535606, guid: 442f23785e88d0b4f9fa745c6c7fcdb2, type: 3}
-  _professionData: {fileID: 11400000, guid: c037d1a95ea7cfd41bfc714f9bef225c, type: 2}

@@ -11,15 +11,15 @@ namespace SF.Game.Data.Characters
     public class GameCharacterConfig : SerializedScriptableObject
     {
         [SerializeField] private string _name;
+        [SerializeField] private DefaultCharactersConfig _baseData;
         [SerializeField] private BattleActor _battleActor;
         [SerializeField] private ProfessionData _professionData;
-        [OdinSerialize] private StatContainerData<MainStat> _baseMainStats;
-        [OdinSerialize] private StatContainerData<PrimaryStat> _additionalPrimaryStats;
+        [OdinSerialize] private StatContainerData<MainStat> _additionalMainStats;
 
         public string Name => _name;
         public BattleActor BattleActor => _battleActor;
+        public DefaultCharactersConfig BaseData => _baseData;
         public ProfessionData ProfessionData => _professionData;
-        public StatContainerData<MainStat> BaseMainStats => _baseMainStats;
-        public StatContainerData<PrimaryStat> AdditionalPrimaryStats => _additionalPrimaryStats;
+        public StatContainerData<MainStat> AdditionalMainStats => _additionalMainStats;
     }
 }

@@ -10,8 +10,10 @@ namespace SF.Game.Characters.Professions
     {
         [SerializeField] private string _name;
         [OdinSerialize] private StatContainerData<MainStat> _tiers;
+        [OdinSerialize] private StatContainerData<PrimaryStat> _additionalPrimaryStats;
 
         public string Name => _name;
         public StatContainerData<MainStat> Tiers => _tiers;
+        public StatContainerData<PrimaryStat> AdditionalPrimaryStats => _additionalPrimaryStats;
     }
 }
