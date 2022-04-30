@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.Data;
 using SF.Battle.Field;
@@ -10,10 +11,13 @@ namespace SF.Game
     public class BattleWorld : BaseWorld
     {
         public BattleField Field { get; }
-        
+        public IEnumerable<BattleActor> ActingActors { get; }
+
         private readonly BattlleActorRegisterer _registerer;
         private readonly BattleActorFactory _battleActorFactory;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
+
+        private readonly List<BattleActor> _actors = new List<BattleActor>();
         
         public BattleWorld(
             IServiceLocator serviceLocator, 
@@ -23,6 +27,7 @@ namespace SF.Game
             IEnumerable<BattleCharacterInfo> enemiesData) : base(serviceLocator, playerState)
         {
             Field = field;
+            ActingActors = _actors;
             
             _enemiesData = enemiesData;
             _registerer = new BattlleActorRegisterer(serviceLocator.Logger);
@@ -48,6 +53,8 @@ namespace SF.Game
 
                 var placeholder = Field.GetEmptyPlaceholder(team);
                 placeholder.PlaceActor(actor);
+                
+                _actors.Add(actor);
             }
         }
     }

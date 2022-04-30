@@ -24,6 +24,8 @@ namespace SF.Game
             _playerState = new PlayerState();
             AddDebugCharacterToPlayer();
             
+            _serviceLocator.TickProcessor.Start();
+            
             var stateMachine = new GameStateMachine(_serviceLocator);
             var world = _worldInitializer.GetWorld(_serviceLocator, _playerState);
             stateMachine.ChangeWorld(world);
