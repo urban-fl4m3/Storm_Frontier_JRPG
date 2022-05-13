@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-
 using SF.UI.Data;
 using SF.UI.Windows;
 
 namespace SF.UI.Controller
 {
-    public class WindowsController: MonoBehaviour, IWindowController
+    public class WindowsController : MonoBehaviour, IWindowController
     {
         [SerializeField] private WindowData _data;
 
@@ -16,7 +15,7 @@ namespace SF.UI.Controller
                 var createdWindow = _data.WindowDictionary[type];
                 return createdWindow;
             }
-            
+
             Debug.LogError($"{type.ToString()} window type don't added to dictionary");
             return null;
         }
