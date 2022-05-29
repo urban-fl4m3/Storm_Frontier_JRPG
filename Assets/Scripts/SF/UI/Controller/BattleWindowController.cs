@@ -14,9 +14,9 @@ namespace SF.UI.Controller
 
         public void Init()
         {
-            _window.AttackButton.onClick.AddListener(OnAttackClick);
+            _window.SkillButton.onClick.AddListener(OnSkillClick);
             _window.UseItemButton.onClick.AddListener(OnItemClick);
-            _window.UseItemButton.onClick.AddListener(OnSkillClick);
+            _window.AttackButton.onClick.AddListener(OnAttackClick);
         }
 
         private void OnAttackClick()

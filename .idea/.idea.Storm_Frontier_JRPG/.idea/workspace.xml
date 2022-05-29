@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/ActorSelectComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/ActorSelectComponent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Battle Content/Characters/Main/Prefabs/MainCharacterModel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Battle Content/Characters/Main/Prefabs/MainCharacterModel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/UI/WindowData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/UI/WindowData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleWindowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleWindowController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/WindowsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/WindowsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +103,9 @@
       <workItem from="1651350484647" duration="5790000" />
       <workItem from="1652087499950" duration="1008000" />
       <workItem from="1652289775500" duration="705000" />
-      <workItem from="1652418951058" duration="2400000" />
+      <workItem from="1652418951058" duration="6142000" />
+      <workItem from="1652455773535" duration="2061000" />
+      <workItem from="1652461597551" duration="2371000" />
     </task>
     <servers />
   </component>
