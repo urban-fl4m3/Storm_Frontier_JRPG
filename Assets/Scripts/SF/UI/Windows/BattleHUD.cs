@@ -3,30 +3,31 @@ using UnityEngine.UI;
 
 namespace SF.UI.Windows
 {
-    public class BattleWindow : MonoBehaviour, IWindow
+    public class BattleHUD : MonoBehaviour, IWindow
     {
-        [SerializeField] private Image _buttonPanel;
         [SerializeField] private Button _attackButton;
         [SerializeField] private Button _skillButton;
         [SerializeField] private Button _useItemButton;
-
-        public Image ButtonPanel => _buttonPanel;
+        [SerializeField] private Button _guardButton;
+        
         public Button AttackButton => _attackButton;
         public Button SkillButton => _skillButton;
         public Button UseItemButton => _useItemButton;
-        public void Close()
+        public Button GuardButton => _guardButton;
+        
+        public void Show()
         {
-            Destroy(gameObject);
+            gameObject.SetActive(true);
         }
 
         public void Hide()
         {
             gameObject.SetActive(false);
         }
-
-        public void Show()
+        
+        public void Close()
         {
-            gameObject.SetActive(true);
+            Destroy(gameObject);
         }
     }
 }

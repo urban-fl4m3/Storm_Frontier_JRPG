@@ -2,8 +2,8 @@
 {
     public interface IWindow
     {
-        void Close();
-        void Hide();
         void Show();
+        void Hide();
+        void Close();
     }
 }

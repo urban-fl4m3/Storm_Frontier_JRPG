@@ -1,10 +1,11 @@
 ﻿using SF.UI.Data;
 using SF.UI.Windows;
+using UnityEngine;
 
 namespace SF.UI.Controller
 {
     public interface IWindowController
     {
-        IWindow Create(WindowType type);
+        TWindow Create<TWindow>(WindowType type) where TWindow : Component, IWindow;
     }
 }

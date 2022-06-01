@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SF.UI.Data
 {
-    [CreateAssetMenu(fileName = nameof(WindowData), order = 1, menuName = "Data/" + nameof(WindowData))]
+    [CreateAssetMenu(fileName = nameof(WindowData), menuName = "Data/" + nameof(WindowData))]
     public class WindowData: SerializedScriptableObject
     {
         [OdinSerialize] private Dictionary<WindowType, IWindow> _windowDictionary;

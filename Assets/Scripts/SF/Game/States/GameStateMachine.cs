@@ -19,7 +19,7 @@ namespace SF.Game.States
             UpdateStates();
         }
 
-        public void ChangeWorld(IWorld world)
+        public void SetWorld(IWorld world)
         {
             _world = world;
         }

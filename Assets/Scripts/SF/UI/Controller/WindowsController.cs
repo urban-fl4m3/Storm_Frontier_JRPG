@@ -6,18 +6,20 @@ namespace SF.UI.Controller
 {
     public class WindowsController : MonoBehaviour, IWindowController
     {
+        [SerializeField] private Canvas _canvas;
         [SerializeField] private WindowData _data;
 
-        public IWindow Create(WindowType type)
+        public TWindow Create<TWindow>(WindowType type) where TWindow : Component, IWindow
         {
             if (_data.WindowDictionary.ContainsKey(type))
             {
                 var createdWindow = _data.WindowDictionary[type];
-                return createdWindow;
+
+                return Instantiate((TWindow) createdWindow, _canvas.transform);
             }
 
             Debug.LogError($"{type.ToString()} window type don't added to dictionary");
-            return null;
+            return default;
         }
     }
 }

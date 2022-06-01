@@ -18,7 +18,7 @@ namespace SF.Battle.Initializers
         [SerializeField] private StatScaleConfig _statScaleConfig;
         [SerializeField] private List<GameCharacterConfig> _enemies;
 
-        public IWorld GetWorld(IServiceLocator serviceLocator, IPlayerState playerState)
+        public IWorld CreateWorld(IServiceLocator serviceLocator, IPlayerState playerState)
         {
             return new BattleWorld(serviceLocator, playerState, _field, _statScaleConfig, GetEnemiesInfo());
         }

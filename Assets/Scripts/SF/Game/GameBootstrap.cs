@@ -15,36 +15,41 @@ namespace SF.Game
 {
     public class GameBootstrap : SerializedMonoBehaviour
     {
-        private BattleWindowController _battleWindowController;
-        private IServiceLocator _serviceLocator;
-        private IPlayerState _playerState;
-
         [OdinSerialize] private IWorldInitializer _worldInitializer;
         [OdinSerialize] private IWindowController _windowController;
         [SerializeField] private List<GameCharacterConfig> _playerCharacters;
-
+        
+        private BattleHUDController _battleHUDController;
+        private GameStateMachine _gameStateMachine;
+        private IServiceLocator _serviceLocator;
+        private IPlayerState _playerState;
+        private IWorld _currentWorld;
+        
         private void Start()
         {
             _serviceLocator = new ServiceLocator();
             _playerState = new PlayerState();
-            
-            AddDebugCharacterToPlayer();
-            CreateBattleWindow();
 
             _serviceLocator.TickProcessor.Start();
 
-            var stateMachine = new GameStateMachine(_serviceLocator);
-            var world = _worldInitializer.GetWorld(_serviceLocator, _playerState);
-            stateMachine.ChangeWorld(world);
-            stateMachine.SetState(GameStateType.WorldBattle);
+            _gameStateMachine = new GameStateMachine(_serviceLocator);
+            _currentWorld = _worldInitializer.CreateWorld(_serviceLocator, _playerState);
+            
+            AddDebugCharacterToPlayer();
+            
+            _gameStateMachine.SetWorld(_currentWorld);
+            _gameStateMachine.SetState(GameStateType.WorldBattle);
+            
+            CreateBattleWindow();
         }
 
         private void CreateBattleWindow()
         {
-            var window = Instantiate((BattleWindow) _windowController.Create(WindowType.Battle));
+            var window = _windowController.Create<BattleHUD>(WindowType.Battle);
+            var currentState = _gameStateMachine.GetCurrentState();
 
-            _battleWindowController = new BattleWindowController(window);
-            _battleWindowController.Init();
+            _battleHUDController = new BattleHUDController(window, _currentWorld, currentState, _serviceLocator);
+            _battleHUDController.Init();
         }
 
         private void AddDebugCharacterToPlayer()

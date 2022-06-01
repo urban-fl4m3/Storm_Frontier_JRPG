@@ -32,6 +32,11 @@ namespace SF.Common.States
             _currentState.Value.Enter(GetStateEnterData());
         }
 
+        public TState GetCurrentState()
+        {
+            return _currentState.Value;
+        }
+
         protected abstract IEnumerable<KeyValuePair<TStateType, TState>> GetStatesInfo();
         protected abstract IDataProvider GetStateEnterData();
 

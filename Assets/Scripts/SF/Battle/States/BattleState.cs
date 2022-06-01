@@ -7,7 +7,7 @@ namespace SF.Battle.States
 {
     public class BattleState : WorldState<BattleWorld>
     {
-        private TurnManager _turnManager;
+        public TurnManager TurnManager { get; private set; }
             
         public BattleState(IServiceLocator serviceLocator) : base(serviceLocator)
         {
@@ -20,8 +20,8 @@ namespace SF.Battle.States
             
             World.Run();
 
-            _turnManager = new TurnManager(ServiceLocator, World);
-            _turnManager.PlayNextTurn();
+            TurnManager = new TurnManager(ServiceLocator, World);
+            TurnManager.PlayNextTurn();
         }
 
         protected override void OnExit()
