@@ -1,6 +1,7 @@
 ﻿using SF.Common.Actors.Factories;
 using SF.Common.Logger;
 using SF.Common.Ticks;
+using SF.UI.Controller;
 
 namespace SF.Game
 {
@@ -9,5 +10,6 @@ namespace SF.Game
         IDebugLogger Logger { get; }
         ITickProcessor TickProcessor { get; }
         IActorFactory ActorFactory { get; }
+        IWindowController WindowController { get; }
     }
 }

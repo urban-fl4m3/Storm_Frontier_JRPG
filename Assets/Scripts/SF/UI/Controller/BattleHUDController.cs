@@ -1,21 +1,20 @@
 ﻿using System;
-using SF.Battle.Actors;
 using SF.Game;
-using SF.Game.States;
 using SF.UI.Windows;
 using UnityEngine;
-using UniRx;
 
 namespace SF.UI.Controller
 {
     public class BattleHUDController : BattleWorldUiController
     {
+        public event Action SomeAction;
+        
         private readonly BattleHUD _hud;
 
         private IDisposable _activeActorObserver;
         
-        public BattleHUDController(BattleHUD hud, IWorld world, GameState state, IServiceLocator serviceLocator) 
-            : base(world, state, serviceLocator)
+        public BattleHUDController(BattleHUD hud, IWorld world,IServiceLocator serviceLocator) 
+            : base(world, serviceLocator)
         {
             _hud = hud;
         }
@@ -26,10 +25,12 @@ namespace SF.UI.Controller
             _hud.SkillButton.onClick.AddListener(OnSkillClick);
             _hud.UseItemButton.onClick.AddListener(OnItemClick);
             _hud.GuardButton.onClick.AddListener(OnGuardClick);
-
-            _activeActorObserver = State.TurnManager.ActiveActor.Subscribe(OnActiveActorChanged);
         }
 
+        public void ShowHUD() => _hud.Show();
+
+        public void HideHUD() => _hud.Hide();
+        
         private void OnAttackClick()
         {
             Debug.Log("Attack click");
@@ -49,19 +50,7 @@ namespace SF.UI.Controller
         {
             Debug.Log("Guard click!");
             
-            
-        }
-
-        private void OnActiveActorChanged(BattleActor actor)
-        {
-            if (actor.Team == Team.Player)
-            {
-                _hud.Show();
-            }
-            else
-            {
-                _hud.Hide();
-            }
+            SomeAction?.Invoke();
         }
     }
 }

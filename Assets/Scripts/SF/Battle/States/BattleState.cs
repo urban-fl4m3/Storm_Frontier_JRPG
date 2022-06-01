@@ -2,13 +2,17 @@
 using SF.Common.Data;
 using SF.Game;
 using SF.Game.States;
+using SF.UI.Controller;
+using SF.UI.Data;
+using SF.UI.Windows;
 
 namespace SF.Battle.States
 {
     public class BattleState : WorldState<BattleWorld>
     {
-        public TurnManager TurnManager { get; private set; }
-            
+        private TurnManager _turnManager;
+        private BattleHUDController _battleHUDController;
+        
         public BattleState(IServiceLocator serviceLocator) : base(serviceLocator)
         {
             
@@ -19,14 +23,28 @@ namespace SF.Battle.States
             ServiceLocator.Logger.Log("Entered battle state");
             
             World.Run();
-
-            TurnManager = new TurnManager(ServiceLocator, World);
-            TurnManager.PlayNextTurn();
+            
+            CreateBattleWindow();
+            CreateTurnManager();
         }
 
         protected override void OnExit()
         {
             ServiceLocator.Logger.Log("Exited battle state");
+        }
+        
+        private void CreateBattleWindow()
+        {
+            var window = ServiceLocator.WindowController.Create<BattleHUD>(WindowType.Battle);
+
+            _battleHUDController = new BattleHUDController(window, World, ServiceLocator);
+            _battleHUDController.Init();
+        }
+
+        private void CreateTurnManager()
+        {
+            _turnManager = new TurnManager(ServiceLocator, World, _battleHUDController);
+            _turnManager.PlayNextTurn();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using SF.Battle.Actors;
 using SF.Game;
+using SF.UI.Controller;
 using UniRx;
 
 namespace SF.Battle.Turns
@@ -17,14 +18,16 @@ namespace SF.Battle.Turns
         private readonly Queue<BattleActor> _waitingActors = new Queue<BattleActor>();
         private readonly ReactiveProperty<BattleActor> _activeActor = new ReactiveProperty<BattleActor>();
 
-        public TurnManager(IServiceLocator serviceLocator, BattleWorld world)
+        private ITurnAction _currentTurn;
+        
+        public TurnManager(IServiceLocator serviceLocator, BattleWorld world, BattleHUDController battleHUDController)
         {
             _serviceLocator = serviceLocator;
             _world = world;
 
             _turnActions = new Dictionary<Team, ITurnAction>
             {
-                {Team.Player, new PlayerTurnAction(serviceLocator, world)},
+                {Team.Player, new PlayerTurnAction(serviceLocator, world, battleHUDController)},
                 {Team.Enemy, new AiTurnAction(serviceLocator, world)}
             };
         }
@@ -40,22 +43,24 @@ namespace SF.Battle.Turns
 
             if (_turnActions.TryGetValue(actingTeam, out var turnAction))
             {
-                turnAction.TurnCompleted += OnTurnCompleted;
-                turnAction.MakeTurn(actor);
+                _currentTurn = turnAction;
+                
+                _currentTurn.TurnCompleted += OnTurnCompleted;
+                _currentTurn.MakeTurn(actor);
             }
             else
             {
                 _serviceLocator.Logger.LogWarning($"Team {actingTeam} for {ActiveActor} cant make turn...");
                 OnTurnCompleted();
             }
-
-            void OnTurnCompleted()
-            {
-                turnAction.TurnCompleted -= OnTurnCompleted;
-                PlayNextTurn();
-            }
         }
 
+        private void OnTurnCompleted()
+        {
+            _currentTurn.TurnCompleted -= OnTurnCompleted;
+            PlayNextTurn();
+        }
+        
         private void ValidateQueue()
         {
             if (_waitingActors.Count != 0) return;

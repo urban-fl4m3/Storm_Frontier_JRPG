@@ -1,35 +1,34 @@
 ﻿using SF.Battle.Actors;
 using SF.Game;
-using UnityEngine;
+using SF.UI.Controller;
 
 namespace SF.Battle.Turns
 {
     public class PlayerTurnAction : BaseTurnAction
     {
-        private BattleActor _actor;
+        private readonly BattleHUDController _battleHUDController;
         
-        public PlayerTurnAction(IServiceLocator services, BattleWorld world) : base(services, world)
+        public PlayerTurnAction(IServiceLocator services, BattleWorld world, BattleHUDController battleHUDController) 
+            : base(services, world)
         {
+            _battleHUDController = battleHUDController;
         }
         
         public override void MakeTurn(BattleActor actor)
         {
-            _actor = actor;
-            Services.TickProcessor.AddTick(WaitForPlayerInput);
+            _battleHUDController.ShowHUD();
+            _battleHUDController.SomeAction += HandleSomeAction;
+        }
+
+        private void HandleSomeAction()
+        {
+            CompleteTurn();
         }
 
         protected override void Dispose()
         {
-            _actor = null;
-            Services.TickProcessor.RemoveTick(WaitForPlayerInput);
-        }
-
-        private void WaitForPlayerInput()
-        {
-            if (!Input.GetMouseButtonDown(0)) return;
-            
-            Services.Logger.Log($"Actor {_actor} turn completed");
-            CompleteTurn();
+            _battleHUDController.SomeAction -= HandleSomeAction;
+            _battleHUDController.HideHUD();
         }
     }
 }

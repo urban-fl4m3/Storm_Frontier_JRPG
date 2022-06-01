@@ -5,8 +5,6 @@ using SF.Game.Initializers;
 using SF.Game.Player;
 using SF.Game.States;
 using SF.UI.Controller;
-using SF.UI.Data;
-using SF.UI.Windows;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -19,7 +17,6 @@ namespace SF.Game
         [OdinSerialize] private IWindowController _windowController;
         [SerializeField] private List<GameCharacterConfig> _playerCharacters;
         
-        private BattleHUDController _battleHUDController;
         private GameStateMachine _gameStateMachine;
         private IServiceLocator _serviceLocator;
         private IPlayerState _playerState;
@@ -27,7 +24,7 @@ namespace SF.Game
         
         private void Start()
         {
-            _serviceLocator = new ServiceLocator();
+            _serviceLocator = new ServiceLocator(_windowController);
             _playerState = new PlayerState();
 
             _serviceLocator.TickProcessor.Start();
@@ -39,17 +36,6 @@ namespace SF.Game
             
             _gameStateMachine.SetWorld(_currentWorld);
             _gameStateMachine.SetState(GameStateType.WorldBattle);
-            
-            CreateBattleWindow();
-        }
-
-        private void CreateBattleWindow()
-        {
-            var window = _windowController.Create<BattleHUD>(WindowType.Battle);
-            var currentState = _gameStateMachine.GetCurrentState();
-
-            _battleHUDController = new BattleHUDController(window, _currentWorld, currentState, _serviceLocator);
-            _battleHUDController.Init();
         }
 
         private void AddDebugCharacterToPlayer()
