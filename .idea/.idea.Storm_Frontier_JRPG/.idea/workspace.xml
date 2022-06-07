@@ -2,16 +2,243 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor/PackageChecker.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor/PackageChecker/PackageCheckerSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor/PackageChecker/PackageCheckerSettings.json.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor/PackageChecker/StarterAssetsPackageChecker.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor/PackageChecker/StarterAssetsPackageChecker.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor/StarterAssetsDeployMenu.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor/StarterAssetsDeployMenu.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor/ThirdPersonStarterAssetsDeployMenu.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Editor/ThirdPersonStarterAssetsDeployMenu.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/Blue_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/Blue_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/Built-in_RP.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/Built-in_RP/BuiltInTriplanar_01_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/Built-in_RP/BuiltInTriplanar_01_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/GreyBlue_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/GreyBlue_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/GridBlue_01_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/GridBlue_01_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/GridOrange_01_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/GridOrange_01_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/GridWhite_01_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/GridWhite_01_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/URP_HDRP_ShaderGraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/URP_HDRP_ShaderGraph/ShaderGraphGrid_01_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Materials/URP_HDRP_ShaderGraph/ShaderGraphGrid_01_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Box_350x250x200_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Box_350x250x200_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Box_350x250x300_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Box_350x250x300_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Ground_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Ground_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Ramp_100x100x200_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Ramp_100x100x200_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Ramp_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Ramp_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Stairs_200x100x200_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Stairs_200x100x200_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Stairs_650_400_300_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Stairs_650_400_300_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Structure_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Structure_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Tunnel_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Tunnel_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Wall_Mesh.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Models/Wall_Mesh.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Skybox.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Skybox/SkyboxLite.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Skybox/SkyboxLite.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Skybox/SkyboxLiteWarm.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Skybox/SkyboxLiteWarm.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Textures/Grid_01_BaseMap.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Textures/Grid_01_BaseMap.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Textures/Grid_01_Emissive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Textures/Grid_01_Emissive.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Textures/Grid_01_Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Textures/Grid_01_Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Textures/Grid_02_BaseMap.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Art/Textures/Grid_02_BaseMap.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Box_100x100x100_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Box_100x100x100_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Box_350x250x200_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Box_350x250x200_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Box_350x250x300_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Box_350x250x300_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Environment_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Environment_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Ramp_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Ramp_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Stairs_200x100x200_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Stairs_200x100x200_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Stairs_650_400_300_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Stairs_650_400_300_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Structure_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Structure_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Tunnel_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Tunnel_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Wall_Prefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Prefabs/Wall_Prefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/RenderPipelineProfiles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/RenderPipelineProfiles/StarterAssetsHDRPVolumeProfile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/RenderPipelineProfiles/StarterAssetsHDRPVolumeProfile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Shaders/Built-in_RP.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Shaders/Built-in_RP/ArmatureShader.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Shaders/Built-in_RP/ArmatureShader.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Shaders/Built-in_RP/Triplanar.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Shaders/Built-in_RP/Triplanar.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Shaders/URP_HDRP_ShaderGraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Shaders/URP_HDRP_ShaderGraph/UrpTriplanar.shadergraph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/Environment/Shaders/URP_HDRP_ShaderGraph/UrpTriplanar.shadergraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/InputSystem.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/InputSystem/StarterAssets.inputactions" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/InputSystem/StarterAssets.inputactions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/InputSystem/StarterAssets.inputsettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/InputSystem/StarterAssets.inputsettings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/InputSystem/StarterAssetsInputs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/InputSystem/StarterAssetsInputs.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/StarterAssets_Documentation_v1.1.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/StarterAssets_Documentation_v1.1.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Jump--InAir.anim.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Jump--InAir.anim.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Jump--Jump.anim.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Jump--Jump.anim.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Run_N.anim.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Run_N.anim.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Run_N_Land.anim.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Run_N_Land.anim.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Run_S.anim.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Run_S.anim.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Walk_N.anim.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Walk_N.anim.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Walk_N_Land.anim.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Locomotion--Walk_N_Land.anim.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Stand--Idle.anim.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/Stand--Idle.anim.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/StarterAssetsThirdPerson.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Animations/StarterAssetsThirdPerson.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/Built-in_RP.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/Built-in_RP/M_ArmatureColor_Arms.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/Built-in_RP/M_ArmatureColor_Arms.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/Built-in_RP/M_ArmatureColor_Body.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/Built-in_RP/M_ArmatureColor_Body.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/Built-in_RP/M_ArmatureColor_Legs.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/Built-in_RP/M_ArmatureColor_Legs.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/M_Armature_Arms.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/M_Armature_Arms.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/M_Armature_Body.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/M_Armature_Body.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/M_Armature_Legs.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Materials/M_Armature_Legs.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Models/Armature.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Models/Armature.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_01.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_01.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_02.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_02.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_03.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_03.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_04.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_04.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_05.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_05.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_06.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_06.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_07.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_07.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_08.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_08.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_09.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_09.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_10.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_10.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Land.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Land.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Arms_AlbedoTransparency.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Arms_AlbedoTransparency.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Arms_MetallicSmoothness.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Arms_MetallicSmoothness.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Arms_Normal.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Arms_Normal.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Arms_RGB.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Arms_RGB.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Body_AlbedoTransparency.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Body_AlbedoTransparency.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Body_MetallicSmoothness.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Body_MetallicSmoothness.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Body_Normal.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Body_Normal.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Body_RGB.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Body_RGB.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Legs_AlbedoTransparency.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Legs_AlbedoTransparency.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Legs_MetallicSmoothness.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Legs_MetallicSmoothness.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Legs_Normal.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Legs_Normal.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Legs_RGB.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Character/Textures/Armature_Legs_RGB.tif.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/MainCamera.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/MainCamera.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/NestedParentArmature_Unpack.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/NestedParentArmature_Unpack.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/NestedParentCapsule_Unpack.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/NestedParentCapsule_Unpack.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/PlayerArmature.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/PlayerArmature.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/PlayerCapsule.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/PlayerCapsule.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/PlayerFollowCamera.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Prefabs/PlayerFollowCamera.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground/LightingData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground/LightingData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground/ReflectionProbe-0.exr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground/ReflectionProbe-1.exr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground/ReflectionProbe-1.exr.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground/ReflectionProbe-2.exr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/Playground/ReflectionProbe-2.exr.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/PlaygroundSettings.lighting" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scenes/PlaygroundSettings.lighting.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scripts/BasicRigidBodyPush.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scripts/BasicRigidBodyPush.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scripts/ThirdPersonController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/External Assets/StarterAssets/ThirdPersonController/Scripts/ThirdPersonController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/SandboxScene.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/SandboxScene.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/IServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/IServiceLocator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/ServiceLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/ServiceLocator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/States/GameStateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleHUDController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleHUDController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleWorldUiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleWorldUiController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Stone Texture/Material/Stone_normal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Stone Texture/Material/Stone_normal.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Swords/Models/Materials/03 - Default.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Swords/Models/Materials/03 - Default.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Swords/Models/Materials/texture2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Hand Painted Swords/Models/Materials/texture2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +335,8 @@
       <workItem from="1652418951058" duration="6142000" />
       <workItem from="1652455773535" duration="2061000" />
       <workItem from="1652461597551" duration="2371000" />
-      <workItem from="1654105904280" duration="9892000" />
+      <workItem from="1654105904280" duration="10708000" />
+      <workItem from="1654618105905" duration="1100000" />
     </task>
     <servers />
   </component>
