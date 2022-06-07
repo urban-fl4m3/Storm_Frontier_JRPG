@@ -1,5 +1,5 @@
 ﻿using SF.Battle.Actors;
-using SF.Common.Actors.Components;
+using SF.Common.Actors.Components.Transform;
 using UnityEngine;
 
 namespace SF.Battle.Field
@@ -20,6 +20,7 @@ namespace SF.Battle.Field
             }
             
             _actor = actor;
+            
             actor.Components.Get<TransformComponent>().SetPosition(transform.position);
             actor.Components.Get<RotationComponent>().LookAt(_directionTransform.position - transform.position);
         }

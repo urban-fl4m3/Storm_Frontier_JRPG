@@ -1,9 +1,9 @@
-﻿using Sirenix.OdinInspector;
+﻿using SF.Common.Actors;
 using UnityEngine;
 
 namespace SF.Common.Animations
 {
-    public class BaseAnimatorController : SerializedMonoBehaviour
+    public class BaseAnimatorController : ActorComponent
     {
         [SerializeField] protected Animator _animator;
 

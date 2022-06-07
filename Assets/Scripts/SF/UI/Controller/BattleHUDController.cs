@@ -1,13 +1,15 @@
 ﻿using System;
 using SF.Game;
 using SF.UI.Windows;
-using UnityEngine;
 
 namespace SF.UI.Controller
 {
     public class BattleHUDController : BattleWorldUiController
     {
-        public event Action SomeAction;
+        public event Action AttackSelected;
+        public event Action<int> SkillSelected;
+        public event Action<int> ItemSelected;
+        public event Action GuardSelected;
         
         private readonly BattleHUD _hud;
 
@@ -33,24 +35,22 @@ namespace SF.UI.Controller
         
         private void OnAttackClick()
         {
-            Debug.Log("Attack click");
+            AttackSelected?.Invoke();
         }
 
         private void OnSkillClick()
         {
-            Debug.Log("Skill click");
+            SkillSelected?.Invoke(0);
         }
 
         private void OnItemClick()
         {
-            Debug.Log("Use Item click");
+            ItemSelected?.Invoke(0);
         }
 
         private void OnGuardClick()
         {
-            Debug.Log("Guard click!");
-            
-            SomeAction?.Invoke();
+            GuardSelected?.Invoke();
         }
     }
 }

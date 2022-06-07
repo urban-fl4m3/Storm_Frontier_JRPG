@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SF.Common.Actors.Components
+namespace SF.Common.Actors.Components.Transform
 {
     public class TransformComponent : ActorComponent
     {
