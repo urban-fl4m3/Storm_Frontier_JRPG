@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SF.Battle.Actors;
+using SF.Common.Actors;
 using SF.Game;
 using SF.UI.Controller;
+using Sirenix.Utilities;
 using UniRx;
 
 namespace SF.Battle.Turns
@@ -17,6 +19,7 @@ namespace SF.Battle.Turns
 
         private readonly Queue<BattleActor> _waitingActors = new Queue<BattleActor>();
         private readonly ReactiveProperty<BattleActor> _activeActor = new ReactiveProperty<BattleActor>();
+        private readonly PlayerTurnModel _model = new PlayerTurnModel();
 
         private ITurnAction _currentTurn;
         
@@ -27,7 +30,7 @@ namespace SF.Battle.Turns
 
             _turnActions = new Dictionary<Team, ITurnAction>
             {
-                {Team.Player, new PlayerTurnAction(serviceLocator, world, battleHUDController)},
+                {Team.Player, new PlayerTurnAction(serviceLocator, world, battleHUDController, _model)},
                 {Team.Enemy, new AiTurnAction(serviceLocator, world)}
             };
         }
@@ -72,5 +75,7 @@ namespace SF.Battle.Turns
                 _waitingActors.Enqueue(actor);
             }
         }
+        
+        
     }
 }

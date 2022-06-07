@@ -4,7 +4,7 @@ namespace SF.Common.Actors
 {
     public abstract class ActorComponent : SerializedMonoBehaviour, IActorComponent
     {
-        public IActor Owner { get; private set; }
+        protected IActor Owner { get; private set; }
         
         public void Init(IActor owner)
         {

@@ -33,11 +33,11 @@ namespace SF.Common.Animations
             _eventsDictionary[key] += handler;
         }
 
-        public void Unsubscribe(string key)
+        public void Unsubscribe(string key, EventHandler handler)
         {
             if (_eventsDictionary.ContainsKey(key))
             {
-                _eventsDictionary.Remove(key);
+                _eventsDictionary[key] -= handler;
             }
         }
     }
