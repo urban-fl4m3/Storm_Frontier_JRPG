@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3884956761502375124}
   - component: {fileID: 3083812323129735644}
   m_Layer: 5
-  m_Name: HP_Panel
+  m_Name: HP_BarView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,13 +9,13 @@ namespace SF.Battle.Turns
 {
     public class PlayerTurnAction : BaseTurnAction
     {
-        private readonly BattleHUDController _battleHUDController;
+        private readonly PlayerActionsController _playerActionsController;
         private readonly PlayerTurnModel _model;
         
-        public PlayerTurnAction(IServiceLocator services, BattleWorld world, BattleHUDController battleHUDController) 
+        public PlayerTurnAction(IServiceLocator services, BattleWorld world, PlayerActionsController playerActionsController) 
             : base(services, world)
         {
-            _battleHUDController = battleHUDController;
+            _playerActionsController = playerActionsController;
             _model = new PlayerTurnModel(world);
         }
         
@@ -23,21 +23,21 @@ namespace SF.Battle.Turns
         {
             _model.CurrentActor = actor;
             
-            _battleHUDController.ShowHUD();
+            _playerActionsController.ShowView();
             
-            _battleHUDController.AttackSelected += HandleAttackSelected;
-            _battleHUDController.SkillSelected += HandleSkillSelected;
-            _battleHUDController.ItemSelected += HandleItemSelected;
-            _battleHUDController.GuardSelected += HandleGuardSelected;
+            _playerActionsController.AttackSelected += HandleAttackSelected;
+            _playerActionsController.SkillSelected += HandleSkillSelected;
+            _playerActionsController.ItemSelected += HandleItemSelected;
+            _playerActionsController.GuardSelected += HandleGuardSelected;
         }
         
         protected override void Dispose()
         {
-            _battleHUDController.AttackSelected -= HandleAttackSelected;
-            _battleHUDController.SkillSelected -= HandleSkillSelected;
-            _battleHUDController.ItemSelected -= HandleItemSelected;
-            _battleHUDController.GuardSelected -= HandleGuardSelected;
-            _battleHUDController.HideHUD();
+            _playerActionsController.AttackSelected -= HandleAttackSelected;
+            _playerActionsController.SkillSelected -= HandleSkillSelected;
+            _playerActionsController.ItemSelected -= HandleItemSelected;
+            _playerActionsController.GuardSelected -= HandleGuardSelected;
+            _playerActionsController.HideView();
         }
 
         private void HandleAttackSelected()

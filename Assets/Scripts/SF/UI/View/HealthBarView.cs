@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace SF.UI.View
 {
-    public class HPView : MonoBehaviour
+    public class HealthBarView : MonoBehaviour
     {
         [SerializeField] private Text _hpText;
         [SerializeField] private Image _fillImage;
@@ -13,8 +13,6 @@ namespace SF.UI.View
 
         public void SetHP(int hp)
         {
-            Debug.Log("Change");
-            
             _hpText.text = hp.ToString();
             
             _maxHP = hp;

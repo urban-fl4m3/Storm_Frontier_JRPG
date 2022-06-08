@@ -2,8 +2,7 @@
 {
     public enum WindowType
     {
-        Battle,
-        HpBar,
-        World
+        World = 0,
+        Battle = 1,
     }
 }

@@ -1,28 +1,26 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using SF.UI.View;
+using UnityEngine;
 
 namespace SF.UI.Windows
 {
     public class BattleHUD : MonoBehaviour, IWindow
     {
-        [SerializeField] private Button _attackButton;
-        [SerializeField] private Button _skillButton;
-        [SerializeField] private Button _useItemButton;
-        [SerializeField] private Button _guardButton;
-        
-        public Button AttackButton => _attackButton;
-        public Button SkillButton => _skillButton;
-        public Button UseItemButton => _useItemButton;
-        public Button GuardButton => _guardButton;
+        [SerializeField] private PlayerActionButtonsView _playerActionButtonsView;
+        [SerializeField] private TeamHealthPanelView teamHealthPanelView;
+
+        public PlayerActionButtonsView PlayerActionButtonsView => _playerActionButtonsView;
+        public TeamHealthPanelView TeamHealthPanelView => teamHealthPanelView;
         
         public void Show()
         {
-            gameObject.SetActive(true);
+            _playerActionButtonsView.Show();
+            teamHealthPanelView.Show();
         }
 
         public void Hide()
         {
-            gameObject.SetActive(false);
+            _playerActionButtonsView.Hide();
+            teamHealthPanelView.Hide();
         }
         
         public void Close()
