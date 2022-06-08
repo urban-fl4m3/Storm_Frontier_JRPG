@@ -47,9 +47,12 @@ namespace SF.Battle.Actors
             var activeActorTransform = Components.Get<TransformComponent>();
             var animationComponent = Components.Get<BattleAnimationComponent>();
             var place = target.Components.Get<PlaceholderComponent>().Point;
+            var hpComponent = target.Components.Get<ActorHPComponent>();
             var startPlace = activeActorTransform.GetPosition();
 
             activeActorTransform.SetPosition(place.transform.position);
+            
+            hpComponent.GetDamage(10000);
             
             animationComponent.ActionEnds += CompleteAttack;
             animationComponent.SetAttackTrigger();

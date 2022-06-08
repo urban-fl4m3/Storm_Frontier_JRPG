@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 4641819930028308324}
   - component: {fileID: 4719041484255279244}
   - component: {fileID: 2960298834361000552}
+  - component: {fileID: 711289811304985951}
   - component: {fileID: 1611676134913415437}
   m_Layer: 0
   m_Name: MainCharacterModel
@@ -773,7 +774,6 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _animator: {fileID: 9038891098204924138}
-  _animatorController: {fileID: 4719041484255279244}
   _attackTrigger: Action1
 --- !u!114 &2960298834361000552
 MonoBehaviour:
@@ -787,6 +787,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fc00e5d3394b0bacdd4c79c0651eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &711289811304985951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367604674636048426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7755b2bab839437396d32a0f1185352d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  CurrentHP:
+    value: 0
 --- !u!65 &1611676134913415437
 BoxCollider:
   m_ObjectHideFlags: 0

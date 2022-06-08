@@ -12,6 +12,7 @@ namespace SF.Battle.States
     {
         private TurnManager _turnManager;
         private BattleHUDController _battleHUDController;
+        private HPBarController _barController;
         
         public BattleState(IServiceLocator serviceLocator) : base(serviceLocator)
         {
@@ -36,9 +37,13 @@ namespace SF.Battle.States
         private void CreateBattleWindow()
         {
             var window = ServiceLocator.WindowController.Create<BattleHUD>(WindowType.Battle);
+            var hpBar = ServiceLocator.WindowController.Create<HPBarHUD>(WindowType.HpBar);
 
             _battleHUDController = new BattleHUDController(window, World, ServiceLocator);
             _battleHUDController.Init();
+
+            _barController = new HPBarController(hpBar, World, ServiceLocator);
+            _barController.Init();
         }
 
         private void CreateTurnManager()
