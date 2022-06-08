@@ -596,9 +596,9 @@ GameObject:
   - component: {fileID: 7703819888178351517}
   - component: {fileID: 6912760913304747140}
   - component: {fileID: 4641819930028308324}
+  - component: {fileID: 4719041484255279244}
   - component: {fileID: 2960298834361000552}
   - component: {fileID: 1611676134913415437}
-  - component: {fileID: 4719041484255279244}
   m_Layer: 0
   m_Name: MainCharacterModel
   m_TagString: Untagged
@@ -751,6 +751,30 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+--- !u!114 &4719041484255279244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367604674636048426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcc378394f049158c687ed1c3e1dabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _animator: {fileID: 9038891098204924138}
+  _animatorController: {fileID: 4719041484255279244}
+  _attackTrigger: Action1
 --- !u!114 &2960298834361000552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,30 +800,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.43, y: 1.33, z: 0.58}
   m_Center: {x: 0.09, y: 0.65, z: 0}
---- !u!114 &4719041484255279244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2367604674636048426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffcc378394f049158c687ed1c3e1dabb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  _animator: {fileID: 9038891098204924138}
-  _animatorController: {fileID: 0}
-  _attackTrigger: Action1
 --- !u!1 &2439953382087734139
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,6 @@
 {
     public interface IActorComponent
     {
-        void Enable();
-        void Disable();
+        
     }
 }

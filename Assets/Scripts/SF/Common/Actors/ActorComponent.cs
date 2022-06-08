@@ -10,15 +10,5 @@ namespace SF.Common.Actors
         {
             Owner = owner;
         }
-        
-        public virtual void Enable()
-        {
-            
-        }
-
-        public virtual void Disable()
-        {
-            
-        }
     }
 }

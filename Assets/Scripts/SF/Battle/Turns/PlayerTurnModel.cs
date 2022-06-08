@@ -1,37 +1,44 @@
 ﻿using System.Threading;
 using SF.Battle.Actors;
-using SF.Common.Actors;
+using SF.Battle.TargetSelection;
+using SF.Game;
 
 namespace SF.Battle.Turns
 {
     public class PlayerTurnModel
     {
-        private IActor _selectedActor;
-        private BattleActor _currentActor;
-        public IActor SelectedActor => _selectedActor;
-        public BattleActor CurrentActor => _currentActor;
-
-        public CancellationTokenSource CancelationToken = new CancellationTokenSource();
-
-        public void SelectActor(IActor actor)
+        public BattleActor CurrentActor { get; set; }
+        public BattleActor SelectedActor { get; private set; }
+        public CancellationTokenSource CancelationToken { get; private set; }
+        
+        private readonly BattleWorld _world;
+        private ITargetSelectionRule _currentRule;
+        
+        public PlayerTurnModel(BattleWorld world)
         {
-            _selectedActor = actor;
+            _world = world;
         }
-
-        public void SetCurrentActor(BattleActor actor)
+        
+        public void SetSelectionRules(ITargetSelectionRule targetSelectionRule)
         {
-            _currentActor = actor;
+            targetSelectionRule.TargetSelected += HandleTargetSelected;
+            targetSelectionRule.TrackSelection(_world.ActingActors);
+
+            void HandleTargetSelected(BattleActor target)
+            {
+                targetSelectionRule.TargetSelected -= HandleTargetSelected;
+                SelectedActor = target;
+            }
         }
 
         public void Cancel()
         {
-            _selectedActor = null;
+            SelectedActor = null;
             
             CancelationToken?.Cancel();
             CancelationToken?.Dispose();
 
             CancelationToken = new CancellationTokenSource();
         }
-        
     }
 }
