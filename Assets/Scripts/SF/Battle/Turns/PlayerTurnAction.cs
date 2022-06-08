@@ -72,7 +72,7 @@ namespace SF.Battle.Turns
 
         private async UniTask AttackAsync()
         {
-            await UniTask.WaitWhile(() => _model.SelectedActor is null, cancellationToken: _model.CancelationToken.Token);
+            await _model.taskCompletionSource.Task;
 
             Dispose();
             
@@ -82,7 +82,7 @@ namespace SF.Battle.Turns
 
         private async UniTask GuardAsync()
         {
-            await UniTask.WaitWhile(() => _model.SelectedActor is null, cancellationToken: _model.CancelationToken.Token);
+            await _model.taskCompletionSource.Task;
             
             var activeActor = _model.CurrentActor;
             activeActor.PerformGuard(CompleteTurn);

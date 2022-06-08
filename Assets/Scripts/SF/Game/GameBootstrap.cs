@@ -16,7 +16,7 @@ namespace SF.Game
         [OdinSerialize] private IWorldInitializer _worldInitializer;
         [OdinSerialize] private IWindowController _windowController;
         [SerializeField] private List<GameCharacterConfig> _playerCharacters;
-        
+
         private GameStateMachine _gameStateMachine;
         private IServiceLocator _serviceLocator;
         private IPlayerState _playerState;
