@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SF.Game;
 using UnityEngine;
 
 namespace SF.Common.Actors
@@ -22,13 +23,13 @@ namespace SF.Common.Actors
             return CreateComponent<T>();
         }
 
-        public void InitActorComponents()
+        public void InitActorComponents(IServiceLocator serviceLocator)
         {
             var actorComponents = GetComponentsInChildren<ActorComponent>();
 
             foreach (var actorComponent in actorComponents)
             {
-                actorComponent.Init(Get<IActor>());
+                actorComponent.Init(Get<IActor>(), serviceLocator);
             }
         }
 

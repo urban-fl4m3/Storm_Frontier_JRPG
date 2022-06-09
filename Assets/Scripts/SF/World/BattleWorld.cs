@@ -3,7 +3,6 @@ using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.Data;
 using SF.Battle.Field;
-using SF.Game.Data;
 using SF.Game.Player;
 
 namespace SF.Game
@@ -13,7 +12,6 @@ namespace SF.Game
         public BattleField Field { get; }
         public IEnumerable<BattleActor> ActingActors { get; }
 
-        private readonly BattlleActorRegisterer _registerer;
         private readonly BattleActorFactory _battleActorFactory;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
 
@@ -23,15 +21,14 @@ namespace SF.Game
             IServiceLocator serviceLocator, 
             IPlayerState playerState,
             BattleField field,
-            StatScaleConfig statScaleConfig,
             IEnumerable<BattleCharacterInfo> enemiesData) : base(serviceLocator, playerState)
         {
             Field = field;
             ActingActors = _actors;
             
             _enemiesData = enemiesData;
-            _registerer = new BattlleActorRegisterer(serviceLocator.Logger);
-            _battleActorFactory = new BattleActorFactory(_registerer, serviceLocator, statScaleConfig);
+            var registerer = new BattlleActorRegisterer(serviceLocator.Logger);
+            _battleActorFactory = new BattleActorFactory(registerer, serviceLocator);
         }
 
         public override void Run()

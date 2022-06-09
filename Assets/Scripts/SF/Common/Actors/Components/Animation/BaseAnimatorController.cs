@@ -1,7 +1,6 @@
-﻿using SF.Common.Actors;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace SF.Common.Animations
+namespace SF.Common.Actors.Components.Animations
 {
     public class BaseAnimatorController : ActorComponent
     {

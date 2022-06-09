@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SF.Common.Logger;
 using SF.Game.Data;
 using SF.Game.Data.Characters;
 using SF.Game.Stats;
@@ -9,7 +8,8 @@ using UnityEngine;
 
 namespace SF.Battle.Stats
 {
-    public class StatContainer: IReadOnlyStatContainer<MainStat>, IReadOnlyStatContainer<PrimaryStat>
+    public class StatContainer: IReadOnlyStatContainer<MainStat>, IReadOnlyStatContainer<PrimaryStat>,
+        IStatContainerConsumer<MainStat>, IStatContainerConsumer<PrimaryStat>
     {
         private readonly int _level;
         
@@ -41,6 +41,28 @@ namespace SF.Battle.Stats
         public int GetStat(PrimaryStat stat)
         {
             return  _primaryStats.ContainsKey(stat) ? _primaryStats[stat] : default;
+        }
+
+        public void SetStatValue(MainStat stat, int value)
+        {
+            _mainStats[stat] = value;
+        }
+
+        public void AddStatValue(MainStat stat, int value)
+        {
+            var currentStatValue = _mainStats[stat];
+            _mainStats[stat] = currentStatValue + value;
+        }
+
+        public void SetStatValue(PrimaryStat stat, int value)
+        {
+            _primaryStats[stat] = value;
+        }
+
+        public void AddStatValue(PrimaryStat stat, int value)
+        {
+            var currentStatValue = _primaryStats[stat];
+            _primaryStats[stat] = currentStatValue + value;
         }
         
         private void CalculateMainStats(
@@ -105,11 +127,6 @@ namespace SF.Battle.Stats
         private float GetScaledPrimaryStat(IEnumerable<ScaleStatData> scales)
         {
             return scales.Sum(scale => GetStat(scale.Stat) * scale.Value);
-        }
-        
-        private void SetStat(MainStat stat, int value)
-        {
-            _mainStats[stat] = value;
         }
     }
 }

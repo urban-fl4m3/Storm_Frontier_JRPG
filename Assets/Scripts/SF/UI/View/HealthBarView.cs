@@ -1,33 +1,58 @@
-﻿using UnityEngine;
+﻿using System;
+using SF.Common.Actors;
+using SF.Common.Actors.Components.Stats;
+using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
 
 namespace SF.UI.View
 {
     public class HealthBarView : MonoBehaviour
     {
-        [SerializeField] private Text _hpText;
+        [SerializeField] private Text _healthText;
         [SerializeField] private Image _fillImage;
-        [SerializeField] private int _maxHP;
 
-        private int _currentHp;
+        private HealthComponent _observableHealthComponent;
 
-        public void SetHP(int hp)
+        private IDisposable _healthChangeSub;
+        
+        public void ObserveActorHealth(IActor actor)
         {
-            _hpText.text = hp.ToString();
+            _observableHealthComponent = actor.Components.Get<HealthComponent>();
             
-            _maxHP = hp;
-            _currentHp = _maxHP;
-            
-            _fillImage.fillAmount = 1;
+            StartObservingHealth();
         }
 
-        public void ChangeHP(int damage)
-        {            
-            _currentHp -= damage;
+        private void OnHealthChanged(int amount)
+        {
+            var maxHealth = _observableHealthComponent.MaxHealth.Value;
             
-            _hpText.text = _currentHp.ToString();
-            
-            _fillImage.fillAmount = _currentHp / _maxHP * 1f;
+            _healthText.text = $"{amount}/{maxHealth}";
+            _fillImage.fillAmount = amount / (maxHealth * 1f);
+        }
+
+        private void StartObservingHealth()
+        {
+            if (_observableHealthComponent != null)
+            {
+                if (_healthChangeSub == null)
+                {
+                    _healthChangeSub = _observableHealthComponent.CurrentHealth.Subscribe(OnHealthChanged);
+                }
+                
+                // OnHealthChanged(_observableHealthComponent.CurrentHealth.Value);
+            }
+        }
+        
+        private void OnEnable()
+        {
+            StartObservingHealth();
+        }
+
+        private void OnDisable()
+        {
+            _healthChangeSub?.Dispose();
+            _healthChangeSub = null;
         }
     }
 }

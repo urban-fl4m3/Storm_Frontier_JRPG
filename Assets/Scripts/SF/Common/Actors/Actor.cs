@@ -10,13 +10,6 @@ namespace SF.Common.Actors
         public ActorComponentContainer Components { get; private set; }
         
         protected IServiceLocator ServiceLocator { get; private set; }
-        
-        public void Init(IServiceLocator serviceLocator)
-        {
-            ServiceLocator = serviceLocator;
-            Components = GetComponent<ActorComponentContainer>();
-            Components.InitActorComponents();
-        }
 
         public virtual void Enable()
         {
@@ -26,6 +19,13 @@ namespace SF.Common.Actors
         public virtual void Disable()
         {
             
+        }
+        
+        protected void Init(IServiceLocator serviceLocator)
+        {
+            ServiceLocator = serviceLocator;
+            Components = GetComponent<ActorComponentContainer>();
+            Components.InitActorComponents(serviceLocator);
         }
     }
 }

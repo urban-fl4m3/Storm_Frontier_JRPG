@@ -9,16 +9,13 @@ namespace SF.Battle.Common
     {
         private readonly BattlleActorRegisterer _registerer;
         private readonly IServiceLocator _serviceLocator;
-        private readonly StatScaleConfig _statScaleConfig;
 
         public BattleActorFactory(
             BattlleActorRegisterer registerer,
-            IServiceLocator serviceLocator,
-            StatScaleConfig statScaleConfig)
+            IServiceLocator serviceLocator)
         {
             _registerer = registerer;
             _serviceLocator = serviceLocator;
-            _statScaleConfig = statScaleConfig;
         }
 
         public BattleActor Create(BattleActor prefab, BattleMetaData metaData)
@@ -40,7 +37,7 @@ namespace SF.Battle.Common
 
             if (isAdded)
             {
-                actor.Init(_serviceLocator, metaData, _statScaleConfig);
+                actor.Init(_serviceLocator, metaData);
             }
 
             return actor;

@@ -2,41 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Battle HUD.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Battle HUD/BattleWindow.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Battle HUD/BattleWindow.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health/EnemyHealthBarPanel.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health/EnemyHealthBarPanel.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health/HP_BarView.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health/HP_BarView.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/HealthBarView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/IView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/IView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/PlayerActionButtonsView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/PlayerActionButtonsView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorAttack.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorAttack.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorDeath.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorDeath.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorIdle.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorIdle.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/_WomanWarriorAnimator.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/_WomanWarriorAnimator.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/WomanWarriorAttack.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/WomanWarriorAttack.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/WomanWarriorDeath.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/WomanWarriorDeath.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/WomanWarriorIdle.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/WomanWarriorIdle.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/WomanWarrior.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/WomanWarrior.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/IStatContainerConsumer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/IStatContainerConsumer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Stats.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Stats/HealthComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Stats/StatsContainerComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Stats/StatsContainerComponent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/UI/WindowData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/UI/WindowData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Art.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/BattleWindow.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/BattleWindow.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/HP_Bar.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/HP_Bar.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/HP_Panel.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/HP_Panel.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle Data/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle Data/BattleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleHUDController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/PlayerActionsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleHUDController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/PlayerActionsController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/HPBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/EnemyHealthBarPanelController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/HPBarController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/EnemyHealthBarPanelController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/HPVIew.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/HPView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/HealthBarView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Windows/BattleHUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Windows/BattleHUD.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Windows/HPBarHUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/TeamHealthPanelView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Windows/HPBarHUD.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/TeamHealthPanelView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/Attack.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/Attack.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/MainCharacterAnimator.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/MainCharacterAnimator.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/MainCharacterIdle.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/MainCharacterIdle.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/MainCharacterModel.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/MainCharacterModel.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/MainCharacterSwordAttack.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/MainCharacterSwordAttack.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/MainCharacterModel.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/MainCharacterModel.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattleActorFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattleActorFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/StatContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/StatContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Actor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Actor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/ActorComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/ActorComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/ActorComponentContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/ActorComponentContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/ActorHPComponent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/ActorHPComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Stats/HealthComponent.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Animation/BaseAnimatorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Animation/BaseAnimatorController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Animation/BattleAnimationComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Animation/BattleAnimationComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/HealthBarView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/HealthBarView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/TeamHealthPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/TeamHealthPanelView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,6 +162,7 @@
       <workItem from="1654716659389" duration="3455000" />
       <workItem from="1654720140395" duration="309000" />
       <workItem from="1654724174287" duration="2182000" />
+      <workItem from="1654756697507" duration="7092000" />
     </task>
     <servers />
   </component>

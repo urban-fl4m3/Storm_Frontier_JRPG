@@ -3,7 +3,7 @@ using SF.Common.Animations;
 using SF.Common.Animations.Behaviours;
 using UnityEngine;
 
-namespace SF.Common.Actors.Components
+namespace SF.Common.Actors.Components.Animations
 {
     public class BattleAnimationComponent : BaseAnimatorController
     {
