@@ -1,9 +1,11 @@
 ﻿using System;
 using SF.Battle.Common;
+using SF.Battle.Damage;
 using SF.Common.Actors;
 using SF.Common.Actors.Components.Animations;
 using SF.Common.Actors.Components.Stats;
 using SF.Common.Actors.Components.Transform;
+using SF.Common.Animations;
 using SF.Game;
 
 namespace SF.Battle.Actors
@@ -25,13 +27,13 @@ namespace SF.Battle.Actors
         {
             var activeActorTransform = Components.Get<TransformComponent>();
             var animationComponent = Components.Get<BattleAnimationComponent>();
+            var animationEventHandler = Components.Get<AnimationEventHandler>();
             var place = target.Components.Get<PlaceholderComponent>().Point;
-            var hpComponent = target.Components.Get<HealthComponent>();
             var startPlace = activeActorTransform.GetPosition();
 
             activeActorTransform.SetPosition(place.transform.position);
             
-            hpComponent.RemoveHealth(10000);
+            animationEventHandler.Subscribe("ActionEvent", GetDamage);
             
             animationComponent.ActionEnds += CompleteAttack;
             animationComponent.SetAttackTrigger();
@@ -44,7 +46,15 @@ namespace SF.Battle.Actors
                 
                 onActionEnds?.Invoke();
             }
+
+            void GetDamage(object sender, EventArgs e)
+            {
+                target.GetDamage(100);
+                animationEventHandler.Unsubscribe("ActionEvent", GetDamage);
+            }
         }
+
+        
 
         public void PerformSkill(int skillIndex, BattleActor target, Action onActionEnds = null)
         {

@@ -11,6 +11,8 @@ namespace SF.UI.View
     {
         [SerializeField] private Text _healthText;
         [SerializeField] private Image _fillImage;
+        [SerializeField] private Image _actorIcon;
+        [SerializeField] private Text _actorName;
 
         private HealthComponent _observableHealthComponent;
 
@@ -19,6 +21,11 @@ namespace SF.UI.View
         public void ObserveActorHealth(IActor actor)
         {
             _observableHealthComponent = actor.Components.Get<HealthComponent>();
+
+            var visualParameter = actor.Components.Get<ActorVisualParameterComponent>();
+
+            _actorIcon.sprite = visualParameter.Icon;
+            _actorName.text = visualParameter.Name;
             
             StartObservingHealth();
         }

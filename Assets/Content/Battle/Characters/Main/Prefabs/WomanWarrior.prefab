@@ -595,6 +595,8 @@ GameObject:
   - component: {fileID: 7703819888178351517}
   - component: {fileID: 711289811304985951}
   - component: {fileID: 7733298982912203905}
+  - component: {fileID: 1230701589573888733}
+  - component: {fileID: 3960831477861095224}
   m_Layer: 0
   m_Name: WomanWarrior
   m_TagString: Untagged
@@ -737,6 +739,43 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _statScaleConfig: {fileID: 11400000, guid: be4f5b98444bbfe42929e4b567769163, type: 2}
+--- !u!114 &1230701589573888733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367604674636048426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0099017a4e2642b2a6ff538875029580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: a4a8ed713e2066a4688cbe9939cb8954, type: 3}
+  _name: Woman
+--- !u!114 &3960831477861095224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367604674636048426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2228238a4bd4363a03767672db7223a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _healthComponent: {fileID: 711289811304985951}
+  _animatorController: {fileID: 6370536405432409219}
 --- !u!1 &2439953382087734139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1742,7 @@ MonoBehaviour:
     SerializationNodes: []
   _animator: {fileID: 1569410637261355665}
   _attackTrigger: Action1
+  _deadTrigger: Death
 --- !u!114 &6288495160429570132
 MonoBehaviour:
   m_ObjectHideFlags: 0
