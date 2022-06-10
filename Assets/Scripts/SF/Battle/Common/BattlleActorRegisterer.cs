@@ -9,13 +9,16 @@ namespace SF.Battle.Common
 {
     public class BattlleActorRegisterer : ActorRegisterer<BattleActor>
     {
+        public IEnumerable<BattleActor> ActingActors => _actingActors;
+        
         private readonly Dictionary<Team, HashSet<BattleActor>> _teams = new Dictionary<Team, HashSet<BattleActor>>();
+        private readonly List<BattleActor> _actingActors = new List<BattleActor>();
         
         public BattlleActorRegisterer(IDebugLogger logger) : base(logger)
         {
         }
 
-        public bool AddToTeam(BattleActor actor, Team team)
+        public bool Register(BattleActor actor, Team team)
         {
             var isAdded = Add(actor);
 
@@ -27,16 +30,19 @@ namespace SF.Battle.Common
             }
 
             _teams[team].Add(actor);
+            _actingActors.Add(actor);
             
             return true;
         }
 
-        public bool RemoveFromTeam(BattleActor actor, Team team)
+        public bool Unregister(BattleActor actor)
         {
             var isRemoved = Remove(actor);
 
             if (!isRemoved) return false;
 
+            var team = actor.Team;
+            
             if (!_teams.ContainsKey(team))
             {
                 Logger.LogWarning($"Cannot remove {actor} from {team} team.");
@@ -44,6 +50,7 @@ namespace SF.Battle.Common
             }
 
             _teams[team].Remove(actor);
+            _actingActors.Remove(actor);
 
             return true;
         }

@@ -22,7 +22,7 @@ namespace SF.UI.Controller
 
             foreach (var actor in actors)
             {
-                _view.CreateHPPanel(actor);
+                _view.CreateHealthPanel(actor);
             }
         }
     }

@@ -9,8 +9,6 @@ namespace SF.Battle.Turns
 {
     public class TurnManager
     {
-        public IReadOnlyReactiveProperty<BattleActor> ActiveActor => _activeActor;
-
         private readonly BattleWorld _world;
         private readonly IServiceLocator _serviceLocator;
         private readonly Dictionary<Team, ITurnAction> _turnActions;
@@ -37,6 +35,7 @@ namespace SF.Battle.Turns
             ValidateQueue();
 
             var actor = _waitingActors.Dequeue();
+            
             _activeActor.Value = actor;
 
             var actingTeam = actor.Team;
@@ -50,7 +49,7 @@ namespace SF.Battle.Turns
             }
             else
             {
-                _serviceLocator.Logger.LogWarning($"Team {actingTeam} for {ActiveActor} cant make turn...");
+                _serviceLocator.Logger.LogWarning($"Team {actingTeam} for {_activeActor} cant make turn...");
                 OnTurnCompleted();
             }
         }
@@ -72,7 +71,5 @@ namespace SF.Battle.Turns
                 _waitingActors.Enqueue(actor);
             }
         }
-        
-        
     }
 }

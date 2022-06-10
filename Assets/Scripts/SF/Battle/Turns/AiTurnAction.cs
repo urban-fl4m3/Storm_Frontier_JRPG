@@ -15,8 +15,8 @@ namespace SF.Battle.Turns
         {
             
         }
-        
-        public override void MakeTurn(BattleActor actor)
+
+        protected override void OnStartTurn(BattleActor actor)
         {
             Services.Logger.Log($"Actor {actor} turn completed");
 

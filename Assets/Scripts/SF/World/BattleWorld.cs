@@ -10,13 +10,12 @@ namespace SF.Game
     public class BattleWorld : BaseWorld
     {
         public BattleField Field { get; }
-        public IEnumerable<BattleActor> ActingActors { get; }
-
+        public IEnumerable<BattleActor> ActingActors => _battlleActorRegisterer.ActingActors;
+        
         private readonly BattleActorFactory _battleActorFactory;
+        private readonly BattlleActorRegisterer _battlleActorRegisterer;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
 
-        private readonly List<BattleActor> _actors = new List<BattleActor>();
-        
         public BattleWorld(
             IServiceLocator serviceLocator, 
             IPlayerState playerState,
@@ -24,11 +23,10 @@ namespace SF.Game
             IEnumerable<BattleCharacterInfo> enemiesData) : base(serviceLocator, playerState)
         {
             Field = field;
-            ActingActors = _actors;
             
             _enemiesData = enemiesData;
-            var registerer = new BattlleActorRegisterer(serviceLocator.Logger);
-            _battleActorFactory = new BattleActorFactory(registerer, serviceLocator);
+            _battlleActorRegisterer = new BattlleActorRegisterer(serviceLocator.Logger);
+            _battleActorFactory = new BattleActorFactory(_battlleActorRegisterer, serviceLocator);
         }
 
         public override void Run()
@@ -50,8 +48,6 @@ namespace SF.Game
 
                 var placeholder = Field.GetEmptyPlaceholder(team);
                 placeholder.PlaceActor(actor);
-                
-                _actors.Add(actor);
             }
         }
     }

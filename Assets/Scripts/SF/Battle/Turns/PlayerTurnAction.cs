@@ -18,8 +18,8 @@ namespace SF.Battle.Turns
             _playerActionsController = playerActionsController;
             _model = new PlayerTurnModel(world);
         }
-        
-        public override void MakeTurn(BattleActor actor)
+
+        protected override void OnStartTurn(BattleActor actor)
         {
             _model.CurrentActor = actor;
             

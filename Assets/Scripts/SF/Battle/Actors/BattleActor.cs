@@ -2,60 +2,50 @@
 using SF.Battle.Common;
 using SF.Battle.Damage;
 using SF.Common.Actors;
-using SF.Common.Actors.Components.Animations;
 using SF.Common.Actors.Components.Stats;
 using SF.Common.Actors.Components.Transform;
-using SF.Common.Animations;
+using SF.Common.Actors.Weapon;
 using SF.Game;
 
 namespace SF.Battle.Actors
 {
-    public class BattleActor : Actor
+    public class BattleActor : Actor, IDamageTaker
     {
         public BattleMetaData MetaData { get; private set; }
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
 
+        private HealthComponent _health;
+        private TransformComponent _transform;
+        private WeaponComponent _weaponComponent;
+
+        private readonly DamageBuilder _damageBuilder = new DamageBuilder();
+        
         public void Init(IServiceLocator serviceLocator, BattleMetaData metaData)
         {
             MetaData = metaData;
             
             Init(serviceLocator);
+
+            _health = Components.Get<HealthComponent>();
+            _transform = Components.Get<TransformComponent>();
+            _weaponComponent = Components.Get<WeaponComponent>();
         }
 
-        public void PerformAttack(BattleActor target, Action onActionEnds = null)
+        public void PerformAttack(IActor target, Action onActionEnds = null)
         {
-            var activeActorTransform = Components.Get<TransformComponent>();
-            var animationComponent = Components.Get<BattleAnimationComponent>();
-            var animationEventHandler = Components.Get<AnimationEventHandler>();
             var place = target.Components.Get<PlaceholderComponent>().Point;
-            var startPlace = activeActorTransform.GetPosition();
+            var startPlace = _transform.GetPosition();
 
-            activeActorTransform.SetPosition(place.transform.position);
+            _transform.SetPosition(place.transform.position);
             
-            animationEventHandler.Subscribe("ActionEvent", GetDamage);
-            
-            animationComponent.ActionEnds += CompleteAttack;
-            animationComponent.SetAttackTrigger();
-            
-            void CompleteAttack()
+            _weaponComponent.MakeAction(target, () =>
             {
-                activeActorTransform.SetPosition(startPlace);
-                
-                animationComponent.ActionEnds -= CompleteAttack;
-                
                 onActionEnds?.Invoke();
-            }
-
-            void GetDamage(object sender, EventArgs e)
-            {
-                target.GetDamage(100);
-                animationEventHandler.Unsubscribe("ActionEvent", GetDamage);
-            }
+                _transform.SetPosition(startPlace);
+            });
         }
-
         
-
         public void PerformSkill(int skillIndex, BattleActor target, Action onActionEnds = null)
         {
             onActionEnds?.Invoke();
@@ -70,6 +60,12 @@ namespace SF.Battle.Actors
         {
             ServiceLocator.Logger.Log("Perform guard");
             onActionEnds?.Invoke();
+        }
+
+        public void TakeDamage(IActor dealer, IDamageProvider provider, DamageMeta meta)
+        {
+            var calculatedDamage = _damageBuilder.CalculateDamage(dealer, provider, meta);
+            _health.RemoveHealth(calculatedDamage);
         }
     }
 }

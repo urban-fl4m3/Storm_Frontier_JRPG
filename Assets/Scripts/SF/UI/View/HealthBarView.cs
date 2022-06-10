@@ -1,5 +1,5 @@
 ﻿using System;
-using SF.Common.Actors;
+using SF.Battle.Actors;
 using SF.Common.Actors.Components.Stats;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,14 +18,14 @@ namespace SF.UI.View
 
         private IDisposable _healthChangeSub;
         
-        public void ObserveActorHealth(IActor actor)
+        public void ObserveActorHealth(BattleActor actor)
         {
             _observableHealthComponent = actor.Components.Get<HealthComponent>();
 
-            var visualParameter = actor.Components.Get<ActorVisualParameterComponent>();
+            var visualParameter = actor.MetaData.Info.Config;
 
-            _actorIcon.sprite = visualParameter.Icon;
             _actorName.text = visualParameter.Name;
+            _actorIcon.sprite = visualParameter.Icon;
             
             StartObservingHealth();
         }
@@ -46,8 +46,6 @@ namespace SF.UI.View
                 {
                     _healthChangeSub = _observableHealthComponent.CurrentHealth.Subscribe(OnHealthChanged);
                 }
-                
-                // OnHealthChanged(_observableHealthComponent.CurrentHealth.Value);
             }
         }
         

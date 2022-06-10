@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using SF.Battle.Actors;
 using SF.Common.Actors;
-using SF.Common.Actors.Components.Stats;
-using Sirenix.Utilities;
-using UnityEngine;
+using SF.Common.Actors.Components.Status;
 
 namespace SF.Battle.TargetSelection
 {
     public class AttackTargetSelectionRule : ITargetSelectionRule
     {
-        public event Action<BattleActor> TargetSelected;
+        public event Action<IActor> TargetSelected;
 
         private readonly BattleActor _actingActor;
 
@@ -27,14 +25,19 @@ namespace SF.Battle.TargetSelection
 
             foreach (var enemy in battleActors)
             {
-                enemy.Components.Get<ActorSelectComponent>().ActorSelected += (x) =>
+                enemy.Components.Get<ActorSelectComponent>().ActorSelected += OnActorSelected;
+            }
+
+            void OnActorSelected(IActor actor)
+            {
+                if (actor.Components.Get<ActorStateComponent>().State.Value == ActorState.Dead) return;
+
+                foreach (var battleActor in battleActors)
                 {
-                    if (!(x is BattleActor battleActor)) return;
-                    if (x.Components.Get<HealthComponent>().CurrentHealth.Value == 0) return; 
-                    
-                    battleActors.ForEach(y => y.Components.Get<ActorSelectComponent>().Clear());
-                    TargetSelected?.Invoke(battleActor);
-                };
+                    battleActor.Components.Get<ActorSelectComponent>().ActorSelected -= OnActorSelected;
+                }
+                
+                TargetSelected?.Invoke(actor);
             }
         }
     }

@@ -32,7 +32,7 @@ namespace SF.Battle.Common
                 return null;
             }
 
-            var isAdded = _registerer.AddToTeam(actor, metaData.Team);
+            var isAdded = _registerer.Register(actor, metaData.Team);
 
             if (isAdded)
             {

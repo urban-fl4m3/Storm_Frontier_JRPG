@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SF.Common.Actors;
+using SF.Battle.Actors;
 using SF.UI.View;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -12,7 +12,7 @@ namespace SF.UI.Windows
 
         private readonly List<HealthBarView> _healthBars = new List<HealthBarView>();
         
-        public void CreateHPPanel(IActor actor)
+        public void CreateHealthPanel(BattleActor actor)
         {
             var healthBarView = Instantiate(_healthBarViewPrefab, transform);
             
