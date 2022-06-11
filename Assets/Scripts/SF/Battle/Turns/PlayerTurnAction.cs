@@ -43,7 +43,10 @@ namespace SF.Battle.Turns
         private void HandleAttackSelected()
         {
             _model.Cancel();
-            _model.SetSelectionRules(new AttackTargetSelectionRule(_model.CurrentActor));
+
+            var attackSelectionData = new TargetSelectionData(TargetPick.OppositeTeam);
+            var attackSelectionRule = new TargetSelectionRule(_model.CurrentActor, attackSelectionData);
+            _model.SetSelectionRules(attackSelectionRule);
             
             AttackAsync().Forget();
         }
@@ -65,7 +68,10 @@ namespace SF.Battle.Turns
         private void HandleGuardSelected()
         {
             _model.Cancel();
-            _model.SetSelectionRules(new NoTargetSelectionRule());
+            
+            var guardSelectionData = new TargetSelectionData(TargetPick.Instant);
+            var guardSelectionRule = new TargetSelectionRule(_model.CurrentActor, guardSelectionData);
+            _model.SetSelectionRules(guardSelectionRule);
             
             GuardAsync().Forget();
         }
