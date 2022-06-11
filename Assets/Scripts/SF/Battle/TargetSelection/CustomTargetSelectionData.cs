@@ -14,7 +14,7 @@ namespace SF.Battle.TargetSelection
         [SerializeField] private bool _selectAll;
 
         public bool IsInstant => _isInstantCast;
-        public bool OnlyAllTeam => _onlyAllyTeam;
+        public bool OnlyAllyTeam => _onlyAllyTeam;
         public bool OnlyOppositeTeam => _onlyOppositeTeam;
         public bool SelfSelect => _selfSelect;
         public bool TargetSelect => _targetSelect;
