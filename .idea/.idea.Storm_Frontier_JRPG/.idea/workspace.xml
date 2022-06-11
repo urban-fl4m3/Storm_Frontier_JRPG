@@ -2,49 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/DamageBuilder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/DamageBuilder.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/DamageMeta.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/DamageMeta.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/IDamageProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/IDamageProvider.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/IDamageTaker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/IDamageTaker.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Status.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Weapon.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Weapon/WeaponComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Weapon/WeaponComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/AttackAbilityData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/AttackAbilityData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/BuffAbilityData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/BuffAbilityData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/DefenseAbilityData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/DefenseAbilityData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/HealAbilityData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/HealAbilityData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/MassAttackAbilityData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/MassAttackAbilityData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Passives.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Passives/CritAbilityData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Passives/CritAbilityData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Passives/RegenerationAbilityData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Passives/RegenerationAbilityData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/ActiveBattleAbilityData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/ActiveBattleAbilityData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/BattleAbility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/BattleAbility.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/BattleAbilityData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/BattleAbilityData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/BuffMechanicData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/BuffMechanicData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/DamageMechanicData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/DamageMechanicData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/HealMechanicData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/HealMechanicData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/IMechanicData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/IMechanicData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/StatBuffMechanicData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/StatBuffMechanicData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/PassiveBattleAbilityData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/PassiveBattleAbilityData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/CustomTargetSelectionData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/CustomTargetSelectionData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/CustomTargetSelectionRule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/CustomTargetSelectionRule.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Characters/Woman.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Characters/Woman.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorDeath.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorDeath.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorDeath.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/WomanWarriorDeath.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/_WomanWarriorAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Animations/_WomanWarriorAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/WomanWarriorDeath.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Models/WomanWarriorDeath.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/WomanWarrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/WomanWarrior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/Professions/DuelistProfession.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Professions/DuelistProfession.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattleActorFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattleActorFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattlleActorRegisterer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattlleActorRegisterer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/DamageSystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/DamageSystem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/AttackTargetSelectionRule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/AttackTargetSelectionRule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/ITargetSelectionRule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/ITargetSelectionRule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/NoTargetSelectionRule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/NoTargetSelectionRule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/AiTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/AiTurnAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/BaseTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/BaseTurnAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/ActorStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Status/ActorState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/ActorStatus.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Status/ActorState.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/ActorVisualParameterComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/ActorVisualParameterComponent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/StatusComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Status/ActorStateComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/StatusComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Status/ActorStateComponent.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Data/Characters/GameCharacterConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Data/Characters/GameCharacterConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/TeamHealthBarPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/TeamHealthBarPanelController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/HealthBarView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/HealthBarView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/TeamHealthPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/TeamHealthPanelView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/IDamageTaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/IDamageable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/IDamageTaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Damage/IDamageable.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Weapon/WeaponComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Weapon/WeaponComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Characters/Professions/ProfessionData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Characters/Professions/ProfessionData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/PrimaryStat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Stats/PrimaryStat.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,6 +167,7 @@
       <workItem from="1654889726539" duration="74000" />
       <workItem from="1654889846586" duration="2831000" />
       <workItem from="1654895346302" duration="8168000" />
+      <workItem from="1654961668319" duration="4571000" />
     </task>
     <servers />
   </component>

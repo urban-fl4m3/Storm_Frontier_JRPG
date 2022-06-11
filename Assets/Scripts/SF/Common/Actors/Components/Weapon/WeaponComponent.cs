@@ -17,7 +17,7 @@ namespace SF.Common.Actors.Weapon
         //but IAction.DoAction
         public void MakeAction(IActor target, Action onActionComplete = null)
         {
-            var damageTaker = target.Components.Get<IDamageTaker>();
+            var damageTaker = target.Components.Get<IDamageable>();
             
             _animationEventHandler.Subscribe("ActionEvent", DoStuff);
             

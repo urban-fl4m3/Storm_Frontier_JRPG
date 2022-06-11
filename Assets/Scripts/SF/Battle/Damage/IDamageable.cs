@@ -2,7 +2,7 @@
 
 namespace SF.Battle.Damage
 {
-    public interface IDamageTaker
+    public interface IDamageable
     {
         void TakeDamage(IActor dealer, IDamageProvider provider, DamageMeta meta);
     }

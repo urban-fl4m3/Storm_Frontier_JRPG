@@ -9,7 +9,7 @@ using SF.Game;
 
 namespace SF.Battle.Actors
 {
-    public class BattleActor : Actor, IDamageTaker
+    public class BattleActor : Actor, IDamageable
     {
         public BattleMetaData MetaData { get; private set; }
         public int Level => MetaData.Info.Level;

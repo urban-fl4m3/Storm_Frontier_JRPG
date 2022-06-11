@@ -24,6 +24,7 @@
         Lifesteal = 19,
         Manasteal = 20,
         ResRadiance = 21,
-        ResVoid = 22
+        ResVoid = 22,
+        HPRegen = 23
     }
 }
