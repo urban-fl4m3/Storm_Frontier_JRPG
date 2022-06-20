@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 756357251563f394184c4ab6cd0aa711
+guid: b37ad06ae9e3bc54497f54bb149eb821
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Kran
-    second: {fileID: 2100000, guid: eda364e53a7b41344a92b2aa016376bb, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
