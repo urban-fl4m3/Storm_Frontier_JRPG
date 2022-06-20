@@ -47,10 +47,5 @@ MonoBehaviour:
       Data: 
   _name: Mass attack
   _selectionData:
-    _isInstantCast: 1
-    _onlyAllyTeam: 0
-    _onlyOppositeTeam: 1
-    _selfSelect: 0
-    _targetSelect: 0
-    _selectAll: 1
+    _pick: 1
   _manaCost: 4

@@ -56,10 +56,5 @@ MonoBehaviour:
       Data: 
   _name: Defense
   _selectionData:
-    _isInstantCast: 1
-    _onlyAllyTeam: 1
-    _onlyOppositeTeam: 0
-    _selfSelect: 1
-    _targetSelect: 0
-    _selectAll: 0
+    _pick: 1
   _manaCost: 2

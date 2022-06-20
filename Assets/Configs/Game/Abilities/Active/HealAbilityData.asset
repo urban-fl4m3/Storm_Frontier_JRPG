@@ -47,10 +47,5 @@ MonoBehaviour:
       Data: 
   _name: Heal
   _selectionData:
-    _isInstantCast: 0
-    _onlyAllyTeam: 1
-    _onlyOppositeTeam: 0
-    _selfSelect: 0
-    _targetSelect: 1
-    _selectAll: 0
+    _pick: 2
   _manaCost: 1

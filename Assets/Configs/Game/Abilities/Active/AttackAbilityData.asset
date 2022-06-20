@@ -47,10 +47,5 @@ MonoBehaviour:
       Data: 
   _name: Attack
   _selectionData:
-    _isInstantCast: 0
-    _onlyAllyTeam: 0
-    _onlyOppositeTeam: 1
-    _selfSelect: 0
-    _targetSelect: 1
-    _selectAll: 0
+    _pick: 3
   _manaCost: 3
