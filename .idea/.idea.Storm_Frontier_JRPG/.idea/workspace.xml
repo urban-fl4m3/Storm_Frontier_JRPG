@@ -1,7 +1,229 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="" />
+    <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Battle HUD.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Battle HUD/BattleWindow.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Battle HUD/BattleWindow.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Canvas.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Canvas.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Health.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Health/EnemyHealthBarPanel.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Health/EnemyHealthBarPanel.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Health/HP_BarView.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Health/HP_BarView.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Materials/Barrel_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Materials/Barrel_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Models/Barrel_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Models/Barrel_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Prefabs/Barrel.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Prefabs/Barrel.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Textures/Barrel_AlbedoTransparency.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Textures/Barrel_AlbedoTransparency.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Textures/Barrel_MetallicSmoothness.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Textures/Barrel_MetallicSmoothness.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Textures/Barrel_Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Barrel/Textures/Barrel_Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Materials/Box_1x2x2_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Materials/Box_1x2x2_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Materials/Box_Large_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Materials/Box_Large_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Materials/Box_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Materials/Box_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Models/Box_1x2x2_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Models/Box_1x2x2_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Models/Box_Large_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Models/Box_Large_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Models/Box_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Models/Box_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Prefabs/Box.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Prefabs/Box.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Prefabs/Box_1x2x2.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Prefabs/Box_1x2x2.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Prefabs/Box_Large.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Prefabs/Box_Large.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box 1x1paint_Box_AlbedoTransparency.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box 1x1paint_Box_AlbedoTransparency.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box 1x1paint_Box_MetallicSmoothness.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box 1x1paint_Box_MetallicSmoothness.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box 1x1paint_Box_Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box 1x1paint_Box_Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box1x2x2paint_Box1x2x2_BaseMap.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box1x2x2paint_Box1x2x2_BaseMap.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box1x2x2paint_Box1x2x2_MetallicSmoothness.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box1x2x2paint_Box1x2x2_MetallicSmoothness.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box1x2x2paint_Box1x2x2_Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Box1x2x2paint_Box1x2x2_Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Bpx1x2x1paint_Box_AlbedoTransparency.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Bpx1x2x1paint_Box_AlbedoTransparency.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Bpx1x2x1paint_Box_MetallicSmoothness.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Bpx1x2x1paint_Box_MetallicSmoothness.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Bpx1x2x1paint_Box_Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Box/Textures/Bpx1x2x1paint_Box_Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Materials/Crane_Lit_Surface_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Materials/Crane_Lit_Surface_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Models/Crane_A_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Models/Crane_A_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Models/Crane_B_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Models/Crane_B_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Models/Crane_C_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Models/Crane_C_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Models/Crane_D_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Models/Crane_D_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Prefabs/Crane_A.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Prefabs/Crane_A.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Prefabs/Crane_C.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Prefabs/Crane_C.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Prefabs/Crane_D.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Prefabs/Crane_D.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Textures/Crane_AlbedoTransparency.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Textures/Crane_AlbedoTransparency.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Textures/Crane_MetallicSmoothness.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Textures/Crane_MetallicSmoothness.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Textures/Crane_Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Crane/Textures/Crane_Normal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Materials/Water_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Materials/Water_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Prefabs/Water.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Prefabs/Water.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Shaders/WaterShader.shadergraph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Shaders/WaterShader.shadergraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Textures/MainWaterNormal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Textures/MainWaterNormal.jpg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Textures/SubWaterNormal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/Water/Textures/SubWaterNormal.jpg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Models/Wood_Plane_A_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Models/Wood_Plane_A_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Models/Wood_Plane_B_Model.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Models/Wood_Plane_B_Model.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Prefabs/Wood_Plane_A.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Prefabs/Wood_Plane_A.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Prefabs/Wood_Plane_B.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Playground/Objects/WoodPlane/Prefabs/Wood_Plane_B.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Battle HUD.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Battle HUD/BattleWindow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Battle HUD/BattleWindow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Canvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Canvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health/EnemyHealthBarPanel.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health/EnemyHealthBarPanel.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health/HP_BarView.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/UI/Health/HP_BarView.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/UniversalRP-HighQuality.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/URP/Settings/UniversalRP-HighQuality.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Barrel.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Barrel.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Crane (2) Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Crane (2) Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Crane (2).fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Crane (2).fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Kran.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Kran.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Barrell.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Barrell.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Barrellpaint_Barrell_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Barrellpaint_Barrell_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Barrellpaint_Barrell_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Barrellpaint_Barrell_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Barrellpaint_Barrell_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Barrellpaint_Barrell_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box 1x1paint_Box_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box 1x1paint_Box_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box 1x1paint_Box_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box 1x1paint_Box_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box 1x1paint_Box_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box 1x1paint_Box_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box1x2x2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box1x2x2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box1x2x2paint_Box1x2x2_BaseMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box1x2x2paint_Box1x2x2_BaseMap.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box1x2x2paint_Box1x2x2_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box1x2x2paint_Box1x2x2_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box1x2x2paint_Box1x2x2_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Box1x2x2paint_Box1x2x2_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Bpx1x2x1paint_Box_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Bpx1x2x1paint_Box_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Bpx1x2x1paint_Box_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Bpx1x2x1paint_Box_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Bpx1x2x1paint_Box_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Bpx1x2x1paint_Box_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Materials/Box 1x1paint_Box_AlbedoTransparency.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/Materials/Box 1x1paint_Box_AlbedoTransparency.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/paint_Kran_AlbedoTransparency.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Materials/paint_Kran_AlbedoTransparency.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/2b47c967c5d209cd.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/2b47c967c5d209cd.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/2c024f7a8e501c61.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/2c024f7a8e501c61.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/6f83f64acede17b8.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/6f83f64acede17b8.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/Box 1x1un.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/Box 1x1un.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/Box1x2x1.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/Box1x2x1.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/Box1x2x2.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/Box1x2x2.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/Palet.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/Palet.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/PaletD.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Objects/PaletD.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/LightingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-0.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-0.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-1.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-1.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-1.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-1.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-2.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-2.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-2.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Playground/ReflectionProbe-2.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/PlaygroundSettings.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playground Data/PlaygroundSettings.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/paint_Kran_AlbedoTransparency.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/paint_Kran_AlbedoTransparency.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/paint_Kran_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/paint_Kran_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/paint_Kran_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playground Data/paint_Kran_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/CustomTargetSelectionRule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/TargetSelection/CustomTargetSelectionRule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,6 +340,7 @@
       <workItem from="1654895346302" duration="8168000" />
       <workItem from="1654961668319" duration="7243000" />
       <workItem from="1654984659692" duration="4161000" />
+      <workItem from="1655821196155" duration="673000" />
     </task>
     <servers />
   </component>

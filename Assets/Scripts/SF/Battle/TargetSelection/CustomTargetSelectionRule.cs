@@ -10,9 +10,9 @@ namespace SF.Battle.TargetSelection
         public event Action<IActor> TargetSelected;
 
         private readonly BattleActor _actingeActor;
-        private readonly CustomTargetSelectionData _data;
+        private readonly TargetSelectionData _data;
         
-        public CustomTargetSelectionRule(BattleActor actingeActor, CustomTargetSelectionData data)
+        public CustomTargetSelectionRule(BattleActor actingeActor, TargetSelectionData data)
         {
             _actingeActor = actingeActor;
             _data = data;
@@ -20,19 +20,7 @@ namespace SF.Battle.TargetSelection
         
         public void TrackSelection(IEnumerable<BattleActor> actors)
         {
-            if (_data.IsInstant)
-            {
-                if (_data.SelfSelect)
-                {
-                    TargetSelected?.Invoke(_actingeActor);
-                    return;
-                }
-
-                if (_data.SelectAll)
-                {
-                    
-                }
-            }
+            
         }
     }
 }
