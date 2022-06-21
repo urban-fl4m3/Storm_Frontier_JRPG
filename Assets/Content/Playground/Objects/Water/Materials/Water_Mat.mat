@@ -48,7 +48,7 @@ Material:
     - _Strength: 0.83
     m_Colors:
     - _DeepColor: {r: 0.09531862, g: 0.6955117, b: 0.9622642, a: 0.77254903}
-    - _MainNormalTiling: {r: 10, g: 10, b: 0, a: 0}
+    - _MainNormalTiling: {r: 20, g: 20, b: 0, a: 0}
     - _ShallowColor: {r: 0.495283, g: 0.9479, b: 1, a: 0.5254902}
-    - _SubNormalTiling: {r: 10, g: 10, b: 0, a: 0}
+    - _SubNormalTiling: {r: 20, g: 20, b: 0, a: 0}
   m_BuildTextureStacks: []
