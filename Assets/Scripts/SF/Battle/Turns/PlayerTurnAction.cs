@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Battle.TargetSelection;
 using SF.Game;
@@ -22,8 +23,9 @@ namespace SF.Battle.Turns
         protected override void OnStartTurn(BattleActor actor)
         {
             _model.CurrentActor = actor;
-            
+
             _playerActionsController.ShowView();
+            _playerActionsController.SetCurrentActor(actor);
             
             _playerActionsController.AttackSelected += HandleAttackSelected;
             _playerActionsController.SkillSelected += HandleSkillSelected;
@@ -51,12 +53,11 @@ namespace SF.Battle.Turns
             AttackAsync().Forget();
         }
 
-        private void HandleSkillSelected(int skillIndex)
+        private void HandleSkillSelected(BattleAbilityData abilityData)
         {
             _model.Cancel();
-            
-            Debug.Log($"Skill {skillIndex}!");
-            CompleteTurn();
+
+            //CompleteTurn();
         }
 
         private void HandleItemSelected(int itemIndex)

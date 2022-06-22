@@ -143,3 +143,9 @@ MonoBehaviour:
   _baseData: {fileID: 11400000, guid: 2816ed8f3fbc4194fa2b6f36ed577c1c, type: 2}
   _battleActor: {fileID: 5148811520888535606, guid: 442f23785e88d0b4f9fa745c6c7fcdb2, type: 3}
   _professionData: {fileID: 11400000, guid: c037d1a95ea7cfd41bfc714f9bef225c, type: 2}
+  _abilities:
+  - {fileID: 11400000, guid: 901c8ef0bcb9f264599bedf33df1fd9d, type: 2}
+  - {fileID: 11400000, guid: e2c5bb7e083e88044910f8092def8e02, type: 2}
+  - {fileID: 11400000, guid: 4b4b5c99f9a5d5c41a90100b2a048214, type: 2}
+  - {fileID: 11400000, guid: 7269525938c5a874f8c47ec4b3e6e648, type: 2}
+  - {fileID: 11400000, guid: 4d053773d9377a148b10593dba7220af, type: 2}

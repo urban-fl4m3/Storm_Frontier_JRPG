@@ -1,21 +1,27 @@
 ﻿using System;
+using System.Linq;
+using SF.Battle.Abilities;
+using SF.Battle.Actors;
 using SF.Game;
 using SF.UI.View;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace SF.UI.Controller
 {
     public class PlayerActionsController : BattleWorldUiController
     {
-        public event Action AttackSelected;
-        public event Action<int> SkillSelected;
-        public event Action<int> ItemSelected;
-        public event Action GuardSelected;
-        
+        public event Action GuardSelected = delegate {  };
+        public event Action AttackSelected = delegate {  };
+        public event Action<int> ItemSelected = delegate {  };
+        public event Action<BattleAbilityData> SkillSelected = delegate {  };
+
         private readonly PlayerActionButtonsView _view;
 
         private IDisposable _activeActorObserver;
-        
-        public PlayerActionsController(PlayerActionButtonsView view, IWorld world,IServiceLocator serviceLocator) 
+        private BattleActor _currentActor;
+
+        public PlayerActionsController(PlayerActionButtonsView view, IWorld world, IServiceLocator serviceLocator)
             : base(world, serviceLocator)
         {
             _view = view;
@@ -32,25 +38,59 @@ namespace SF.UI.Controller
         public void ShowView() => _view.Show();
 
         public void HideView() => _view.Hide();
-        
+        public void SetCurrentActor(BattleActor actor) => _currentActor = actor;
+
         private void OnAttackClick()
         {
+            _view.HideAbility();
             AttackSelected?.Invoke();
         }
 
         private void OnSkillClick()
         {
-            SkillSelected?.Invoke(0);
+            _view.ShowAbility();
+            CreateAbilityList();
         }
 
         private void OnItemClick()
         {
+            _view.HideAbility();
             ItemSelected?.Invoke(0);
         }
 
         private void OnGuardClick()
         {
+            _view.HideAbility();
             GuardSelected?.Invoke();
+        }
+
+        private void CreateAbilityList()
+        {
+            var content = _view.PanelView.Content;
+            var prefab = _view.PanelView.ButtonView;
+            var abilities = _currentActor.MetaData.Info.Config.Abilities.Where(a => !a.IsPassive).ToList();
+            var childCount = content.transform.childCount;
+            var lastIndex = 0;
+
+            for (var i = 0; i < abilities.Count(); i++)
+            {
+                var ability = abilities[i];
+                var button = childCount <= i
+                    ? Object.Instantiate(prefab, content)
+                    : content.GetChild(i).GetComponent<AbilityButtonView>();
+
+                button.Clear();
+                button.gameObject.SetActive(true);
+                button.SetAbilityName(ability.Name);
+                button.AddActionOnClick(() => SkillSelected.Invoke(ability));
+                
+                lastIndex = i;
+            }
+
+            for (var i = lastIndex; i < childCount; i++)
+            {
+                content.transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
     }
 }

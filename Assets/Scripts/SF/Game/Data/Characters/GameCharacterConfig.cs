@@ -1,4 +1,6 @@
-﻿using SF.Battle.Actors;
+﻿using System.Collections.Generic;
+using SF.Battle.Abilities;
+using SF.Battle.Actors;
 using SF.Game.Characters.Professions;
 using SF.Game.Stats;
 using Sirenix.OdinInspector;
@@ -16,6 +18,7 @@ namespace SF.Game.Data.Characters
         [SerializeField] private BattleActor _battleActor;
         [SerializeField] private ProfessionData _professionData;
         [OdinSerialize] private StatContainerData<MainStat> _additionalMainStats;
+        [SerializeField] private List<BattleAbilityData> _abilities;
 
         public string Name => _name;
         public Sprite Icon => _icon;
@@ -23,5 +26,6 @@ namespace SF.Game.Data.Characters
         public DefaultCharactersConfig BaseData => _baseData;
         public ProfessionData ProfessionData => _professionData;
         public StatContainerData<MainStat> AdditionalMainStats => _additionalMainStats;
+        public List<BattleAbilityData> Abilities => _abilities;
     }
 }

@@ -10,15 +10,27 @@ namespace SF.UI.View
         [SerializeField] private Button _skillButton;
         [SerializeField] private Button _useItemButton;
         [SerializeField] private Button _guardButton;
+        [SerializeField] private AbilityPanelView _abilityPanelView;
         
         public Button AttackButton => _attackButton;
         public Button SkillButton => _skillButton;
         public Button UseItemButton => _useItemButton;
         public Button GuardButton => _guardButton;
-        
+        public AbilityPanelView PanelView => _abilityPanelView;
+
         public void Show()
         {
             gameObject.SetActive(true);
+        }
+
+        public void ShowAbility()
+        {
+            _abilityPanelView.Root.gameObject.SetActive(true);
+        }
+        
+        public void HideAbility()
+        {
+            _abilityPanelView.Root.gameObject.SetActive(false);
         }
 
         public void Hide()
