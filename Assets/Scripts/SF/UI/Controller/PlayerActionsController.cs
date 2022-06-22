@@ -4,7 +4,6 @@ using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Game;
 using SF.UI.View;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace SF.UI.Controller
@@ -63,7 +62,7 @@ namespace SF.UI.Controller
             _view.HideAbility();
             GuardSelected?.Invoke();
         }
-
+        
         private void CreateAbilityList()
         {
             var content = _view.PanelView.Content;
