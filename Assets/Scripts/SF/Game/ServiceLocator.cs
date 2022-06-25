@@ -1,4 +1,4 @@
-﻿using SF.Common.Actors.Factories;
+﻿using SF.Common.Factories;
 using SF.Common.Logger;
 using SF.Common.Ticks;
 using SF.UI.Controller;
@@ -9,14 +9,14 @@ namespace SF.Game
     {
         public IDebugLogger Logger { get; }
         public ITickProcessor TickProcessor { get; }
-        public IActorFactory ActorFactory { get; }
+        public IFactoryHolder FactoryHolder { get; }
         public IWindowController WindowController { get; }
         
         public ServiceLocator(IWindowController windowController)
         {
             Logger = new UnityDebugLogger();
             TickProcessor = new TickProcessor();
-            ActorFactory = new ActorFactory();
+            FactoryHolder = new FactoryHolder();
 
             WindowController = windowController;
         }
