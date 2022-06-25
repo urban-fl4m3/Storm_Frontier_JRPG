@@ -1,24 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using SF.Battle.Abilities;
+using SF.Battle.Abilities.Factories;
+using SF.Battle.Abilities.Mechanics.Data;
 using SF.Battle.Actors;
 using SF.Game;
+using SF.UI.Creator;
 using SF.UI.View;
+using SF.UI.Pool;
+using Sirenix.Utilities;
 using Object = UnityEngine.Object;
 
 namespace SF.UI.Controller
 {
     public class PlayerActionsController : BattleWorldUiController
     {
-        public event Action GuardSelected = delegate {  };
-        public event Action AttackSelected = delegate {  };
-        public event Action<int> ItemSelected = delegate {  };
-        public event Action<BattleAbilityData> SkillSelected = delegate {  };
+        public event Action GuardSelected = delegate { };
+        public event Action AttackSelected = delegate { };
+        public event Action<int> ItemSelected = delegate { };
+        public event Action<BattleAbilityData> SkillSelected = delegate { };
 
         private readonly PlayerActionButtonsView _view;
 
-        private IDisposable _activeActorObserver;
+        private ButtonCreator _buttonCreator;
         private BattleActor _currentActor;
+        private IDisposable _activeActorObserver;
 
         public PlayerActionsController(PlayerActionButtonsView view, IWorld world, IServiceLocator serviceLocator)
             : base(world, serviceLocator)
@@ -32,6 +40,8 @@ namespace SF.UI.Controller
             _view.SkillButton.onClick.AddListener(OnSkillClick);
             _view.UseItemButton.onClick.AddListener(OnItemClick);
             _view.GuardButton.onClick.AddListener(OnGuardClick);
+
+            _buttonCreator = new ButtonCreator(_view.PanelView.Content, _view.PanelView.ButtonView);
         }
 
         public void ShowView() => _view.Show();
@@ -62,34 +72,30 @@ namespace SF.UI.Controller
             _view.HideAbility();
             GuardSelected?.Invoke();
         }
-        
+
         private void CreateAbilityList()
         {
-            var content = _view.PanelView.Content;
-            var prefab = _view.PanelView.ButtonView;
+            _buttonCreator.Clear();
+
             var abilities = _currentActor.MetaData.Info.Config.Abilities.Where(a => !a.IsPassive).ToList();
-            var childCount = content.transform.childCount;
-            var lastIndex = 0;
 
             for (var i = 0; i < abilities.Count(); i++)
             {
                 var ability = abilities[i];
-                var button = childCount <= i
-                    ? Object.Instantiate(prefab, content)
-                    : content.GetChild(i).GetComponent<AbilityButtonView>();
+                var button = _buttonCreator.Get();
 
-                button.Clear();
-                button.gameObject.SetActive(true);
                 button.SetAbilityName(ability.Name);
-                button.AddActionOnClick(() => SkillSelected.Invoke(ability));
-                
-                lastIndex = i;
+                button.AddActionOnClick(() => PlayAbility(ability));
             }
+        }
 
-            for (var i = lastIndex; i < childCount; i++)
-            {
-                content.transform.GetChild(i).gameObject.SetActive(false);
-            }
+        private void PlayAbility(BattleAbilityData ability)
+        {
+            var mechanicLogic = ServiceLocator.FactoryHolder.Get<MechanicsFactory>();
+
+            ability.MechanicsData.ForEach(a => mechanicLogic.Create(a));
+
+            SkillSelected.Invoke(ability);
         }
     }
 }
