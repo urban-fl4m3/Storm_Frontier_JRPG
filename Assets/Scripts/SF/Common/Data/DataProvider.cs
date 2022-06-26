@@ -1,4 +1,6 @@
-﻿namespace SF.Common.Data
+﻿using System.Collections.Generic;
+
+namespace SF.Common.Data
 {
     public class DataProvider : IDataProvider
     {
@@ -17,6 +19,11 @@
             }
             
             return default(T);
+        }
+
+        public IEnumerable<object> GetAllData()
+        {
+            return _data;
         }
     }
 }
