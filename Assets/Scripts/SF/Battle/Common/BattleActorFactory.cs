@@ -17,12 +17,12 @@ namespace SF.Battle.Common
             _serviceLocator = serviceLocator;
         }
 
-        public BattleActor Create(BattleActor prefab, BattleMetaData metaData)
+        public BattleActor Create(BattleActor prefab, BattleMetaData metaData , IWorld world)
         {
-            return Create(prefab, ActorSpawnData.Default(), metaData);
+            return Create(prefab, ActorSpawnData.Default(), metaData, world);
         }
         
-        public BattleActor Create(BattleActor prefab, ActorSpawnData spawnData, BattleMetaData metaData)
+        public BattleActor Create(BattleActor prefab, ActorSpawnData spawnData, BattleMetaData metaData, IWorld world)
         {
             var actor = Create(prefab, spawnData);
 
@@ -36,7 +36,7 @@ namespace SF.Battle.Common
 
             if (isAdded)
             {
-                actor.Init(_serviceLocator, metaData);
+                actor.Init(_serviceLocator, metaData, world);
             }
 
             return actor;

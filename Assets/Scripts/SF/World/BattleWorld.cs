@@ -10,10 +10,10 @@ namespace SF.Game
     public class BattleWorld : BaseWorld
     {
         public BattleField Field { get; }
-        public IEnumerable<BattleActor> ActingActors => _battlleActorRegisterer.ActingActors;
+        public IEnumerable<BattleActor> ActingActors => _battleActorRegisterer.ActingActors;
         
         private readonly BattleActorFactory _battleActorFactory;
-        private readonly BattlleActorRegisterer _battlleActorRegisterer;
+        private readonly BattlleActorRegisterer _battleActorRegisterer;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
 
         public BattleWorld(
@@ -25,8 +25,8 @@ namespace SF.Game
             Field = field;
             
             _enemiesData = enemiesData;
-            _battlleActorRegisterer = new BattlleActorRegisterer(serviceLocator.Logger);
-            _battleActorFactory = new BattleActorFactory(_battlleActorRegisterer, serviceLocator);
+            _battleActorRegisterer = new BattlleActorRegisterer(serviceLocator.Logger);
+            _battleActorFactory = new BattleActorFactory(_battleActorRegisterer, serviceLocator);
         }
 
         public override void Run()
@@ -42,7 +42,7 @@ namespace SF.Game
                 if (!Field.HasEmptyPlaceholder(team)) continue;
 
                 var meta = new BattleMetaData(team, enemyInfo);
-                var actor = _battleActorFactory.Create(enemyInfo.Config.BattleActor, meta);
+                var actor = _battleActorFactory.Create(enemyInfo.Config.BattleActor, meta, this);
 
                 if (actor == null) continue;
 

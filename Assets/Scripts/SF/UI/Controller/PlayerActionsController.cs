@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Cysharp.Threading.Tasks;
 using SF.Battle.Abilities;
-using SF.Battle.Abilities.Factories;
-using SF.Battle.Abilities.Mechanics.Data;
 using SF.Battle.Actors;
+using SF.Common.Actors.Abilities;
 using SF.Game;
 using SF.UI.Creator;
 using SF.UI.View;
-using SF.UI.Pool;
-using Sirenix.Utilities;
-using Object = UnityEngine.Object;
 
 namespace SF.UI.Controller
 {
@@ -20,7 +14,7 @@ namespace SF.UI.Controller
         public event Action GuardSelected = delegate { };
         public event Action AttackSelected = delegate { };
         public event Action<int> ItemSelected = delegate { };
-        public event Action<BattleAbilityData> SkillSelected = delegate { };
+        public event Action<string> SkillSelected = delegate { };
 
         private readonly PlayerActionButtonsView _view;
 
@@ -85,17 +79,8 @@ namespace SF.UI.Controller
                 var button = _buttonCreator.Get();
 
                 button.SetAbilityName(ability.Name);
-                button.AddActionOnClick(() => PlayAbility(ability));
+                button.AddActionOnClick(() => SkillSelected.Invoke(ability.Name));
             }
-        }
-
-        private void PlayAbility(BattleAbilityData ability)
-        {
-            var mechanicLogic = ServiceLocator.FactoryHolder.Get<MechanicsFactory>();
-
-            ability.MechanicsData.ForEach(a => mechanicLogic.Create(a));
-
-            SkillSelected.Invoke(ability);
         }
     }
 }

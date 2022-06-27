@@ -2,6 +2,7 @@
 using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Battle.TargetSelection;
+using SF.Common.Actors.Abilities;
 using SF.Game;
 using SF.UI.Controller;
 using UnityEngine;
@@ -53,11 +54,16 @@ namespace SF.Battle.Turns
             AttackAsync().Forget();
         }
 
-        private void HandleSkillSelected(BattleAbilityData abilityData)
+        private void HandleSkillSelected(string abilityName)
         {
             _model.Cancel();
 
-            //CompleteTurn();
+            var ability = _model.CurrentActor.Components.Get<AbilityComponent>().GetBattleAbility(abilityName);
+            var skillSelectionData = new TargetSelectionData(ability.Pick);
+            var skillSelectionRule = new TargetSelectionRule(_model.CurrentActor, skillSelectionData);
+            _model.SetSelectionRules(skillSelectionRule);
+
+            UseAbilityAsync(abilityName).Forget();
         }
 
         private void HandleItemSelected(int itemIndex)
@@ -77,7 +83,7 @@ namespace SF.Battle.Turns
             GuardAsync().Forget();
         }
 
-        private async UniTask AttackAsync()
+        private async UniTaskVoid AttackAsync()
         {
             await _model.taskCompletionSource.Task;
 
@@ -85,6 +91,16 @@ namespace SF.Battle.Turns
             
             var activeActor = _model.CurrentActor;
             activeActor.PerformAttack(_model.SelectedActor, CompleteTurn);
+        }
+
+        private async UniTaskVoid UseAbilityAsync(string abilityName)
+        {
+            await _model.taskCompletionSource.Task;
+            
+            Dispose();
+
+            var activeActor = _model.CurrentActor;
+            activeActor.PerformSkill(abilityName, _model.SelectedActor, CompleteTurn);
         }
 
         private async UniTask GuardAsync()

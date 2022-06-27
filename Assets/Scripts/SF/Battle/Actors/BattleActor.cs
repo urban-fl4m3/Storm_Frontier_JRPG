@@ -2,6 +2,7 @@
 using SF.Battle.Common;
 using SF.Battle.Damage;
 using SF.Common.Actors;
+using SF.Common.Actors.Abilities;
 using SF.Common.Actors.Components.Stats;
 using SF.Common.Actors.Components.Transform;
 using SF.Common.Actors.Weapon;
@@ -21,11 +22,11 @@ namespace SF.Battle.Actors
 
         private readonly DamageBuilder _damageBuilder = new DamageBuilder();
         
-        public void Init(IServiceLocator serviceLocator, BattleMetaData metaData)
+        public void Init(IServiceLocator serviceLocator, BattleMetaData metaData, IWorld world)
         {
             MetaData = metaData;
             
-            Init(serviceLocator);
+            Init(serviceLocator, world);
 
             _health = Components.Get<HealthComponent>();
             _transform = Components.Get<TransformComponent>();
@@ -46,8 +47,10 @@ namespace SF.Battle.Actors
             });
         }
         
-        public void PerformSkill(int skillIndex, BattleActor target, Action onActionEnds = null)
+        public void PerformSkill(string skillName, IActor target, Action onActionEnds = null)
         {
+            Components.Get<AbilityComponent>().InvokeSkill(skillName, target);
+            
             onActionEnds?.Invoke();
         }
 
