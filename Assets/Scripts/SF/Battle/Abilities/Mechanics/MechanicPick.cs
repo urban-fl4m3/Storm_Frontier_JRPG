@@ -1,4 +1,4 @@
-﻿namespace SF.Battle.Abilities.Common
+﻿namespace SF.Battle.Abilities.Mechanics
 {
     public enum MechanicPick
     {

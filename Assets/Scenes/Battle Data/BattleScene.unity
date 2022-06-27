@@ -1583,7 +1583,6 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _field: {fileID: 1728986648}
-  _statScaleConfig: {fileID: 11400000, guid: be4f5b98444bbfe42929e4b567769163, type: 2}
   _enemies:
   - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
   - {fileID: 11400000, guid: d1cad0004b46e654bb8e1dbc74e87814, type: 2}
@@ -1663,7 +1662,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 1.83672e-40, w: -3.11e-43}
+  m_BoundingSphereOverride: {x: 0, y: NaN, z: NaN, w: 3.5772736e+12}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

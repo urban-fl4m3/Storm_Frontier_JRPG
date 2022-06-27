@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using SF.Common.Actors;
 using SF.Battle.Abilities.Mechanics.Logic;
+using SF.Battle.Actors;
 using SF.Battle.TargetSelection;
 using Sirenix.Utilities;
 
@@ -10,10 +11,10 @@ namespace SF.Battle.Abilities
     {
         public TargetPick Pick { get; }
 
-        private readonly IActor _caster;
+        private readonly BattleActor _caster;
         private readonly IEnumerable<IMechanicLogic> _mechanicLogics;
         
-        public BattleAbility(IActor caster, IEnumerable<IMechanicLogic> mechanics, TargetPick pick)
+        public BattleAbility(BattleActor caster, IEnumerable<IMechanicLogic> mechanics, TargetPick pick)
         {
             Pick = pick;
             
@@ -23,7 +24,7 @@ namespace SF.Battle.Abilities
 
         public void InvokeAbility(IActor targetSelected)
         {
-            _mechanicLogics.ForEach(mechanicLogic => mechanicLogic.Invoke(targetSelected));
+            _mechanicLogics.ForEach(mechanicLogic => mechanicLogic.Invoke(_caster, targetSelected));
         }
     }
 }

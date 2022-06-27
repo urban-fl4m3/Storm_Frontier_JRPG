@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SF.Battle.Abilities.Mechanics.Data
 {
     [Serializable]
-    public class HealMechanicData : IMechanicData
+    public class HealMechanicData : BaseMechanicData
     {
         [SerializeField] private bool _isFlat;
         [SerializeField] private int _healAmount;

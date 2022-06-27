@@ -2,6 +2,6 @@
 {
     public interface IMechanicData
     {
-        
+        public MechanicPick Pick { get; }
     }
 }

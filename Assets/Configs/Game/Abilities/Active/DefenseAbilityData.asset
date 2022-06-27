@@ -30,6 +30,9 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|SF.Battle.Abilities.Mechanics.Data.StatBuffMechanicData, Assembly-CSharp
+    - Name: _pick
+      Entry: 3
+      Data: 2
     - Name: _hasDuration
       Entry: 5
       Data: true
@@ -41,10 +44,10 @@ MonoBehaviour:
       Data: 2
     - Name: _isFlatBoost
       Entry: 5
-      Data: false
+      Data: true
     - Name: _statBoostValue
       Entry: 4
-      Data: 2
+      Data: 30
     - Name: 
       Entry: 8
       Data: 
@@ -55,7 +58,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Defense
-  _targetPick: 2
   _selectionData:
     _pick: 1
   _manaCost: 2

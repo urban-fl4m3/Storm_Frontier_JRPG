@@ -3,6 +3,7 @@ using System.Linq;
 using SF.Battle.Abilities;
 using SF.Battle.Abilities.Factories;
 using SF.Battle.Actors;
+using SF.Common.Data;
 
 namespace SF.Common.Actors.Abilities
 {
@@ -27,10 +28,10 @@ namespace SF.Common.Actors.Abilities
                 if (abilityData.IsPassive) continue;
                 
                 var mechanicLogics = abilityData.MechanicsData
-                    .Select(mechanicData => mechanicsFactory.Create(mechanicData, Owner.World))
+                    .Select(mechanicData => mechanicsFactory.Create(mechanicData, Owner.World, new DataProvider(ServiceLocator)))
                     .ToList();
 
-                _abilities.Add(abilityData, new BattleAbility(Owner, mechanicLogics, abilityData.Pick));
+                _abilities.Add(abilityData, new BattleAbility(battleActor, mechanicLogics, abilityData.Pick));
             }
         }
 

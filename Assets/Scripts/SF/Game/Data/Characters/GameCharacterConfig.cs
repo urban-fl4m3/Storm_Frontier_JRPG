@@ -17,15 +17,15 @@ namespace SF.Game.Data.Characters
         [SerializeField] private DefaultCharactersConfig _baseData;
         [SerializeField] private BattleActor _battleActor;
         [SerializeField] private ProfessionData _professionData;
-        [OdinSerialize] private StatContainerData<MainStat> _additionalMainStats;
         [SerializeField] private List<BattleAbilityData> _abilities;
+        [OdinSerialize] private StatContainerData<MainStat> _additionalMainStats;
 
         public string Name => _name;
         public Sprite Icon => _icon;
         public BattleActor BattleActor => _battleActor;
         public DefaultCharactersConfig BaseData => _baseData;
         public ProfessionData ProfessionData => _professionData;
-        public StatContainerData<MainStat> AdditionalMainStats => _additionalMainStats;
         public IEnumerable<BattleAbilityData> Abilities => _abilities;
+        public StatContainerData<MainStat> AdditionalMainStats => _additionalMainStats;
     }
 }

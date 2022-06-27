@@ -4,12 +4,12 @@ using UnityEngine;
 namespace SF.Battle.Abilities.Mechanics.Data
 {
     [Serializable]
-    public class DamageMechanicData : IMechanicData
+    public class DamageMechanicData : BaseMechanicData
     {
         [SerializeField] private bool _isFlat;
-        [SerializeField] private float _damageBoostPercentage;
+        [SerializeField] private float _amount;
 
         public bool IsFlat => _isFlat;
-        public float DamageBoostPercentage => _damageBoostPercentage;
+        public float Amount => _amount;
     }
 }

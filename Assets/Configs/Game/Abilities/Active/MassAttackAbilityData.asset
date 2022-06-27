@@ -30,12 +30,15 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|SF.Battle.Abilities.Mechanics.Data.DamageMechanicData, Assembly-CSharp
+    - Name: _pick
+      Entry: 3
+      Data: 3
     - Name: _isFlat
       Entry: 5
-      Data: false
-    - Name: _damageBoostPercentage
+      Data: true
+    - Name: _amount
       Entry: 4
-      Data: 50
+      Data: 60
     - Name: 
       Entry: 8
       Data: 
@@ -46,7 +49,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Mass attack
-  _targetPick: 1
   _selectionData:
     _pick: 1
   _manaCost: 4

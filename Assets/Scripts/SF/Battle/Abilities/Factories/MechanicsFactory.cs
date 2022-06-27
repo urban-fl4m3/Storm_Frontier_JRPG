@@ -16,9 +16,8 @@ namespace SF.Battle.Abilities.Factories
 
         protected override void OnInstantiate(IMechanicData @from, IMechanicLogic instance, IDataProvider dataProvider)
         {
-            //You must create rule here, you have data (from).
             base.OnInstantiate(from, instance, dataProvider);
-            // instance.SetData(from, rule);
+            instance.SetData(from);
         }
     }
 }
