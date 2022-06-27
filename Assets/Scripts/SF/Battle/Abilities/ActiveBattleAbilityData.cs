@@ -12,6 +12,7 @@ namespace SF.Battle.Abilities
         public TargetSelectionData SelectionData => _selectionData;
         public float ManaCost => _manaCost;
 
+        public override TargetPick Pick => _selectionData.Pick;
         public override bool IsPassive => false;
     }
 }

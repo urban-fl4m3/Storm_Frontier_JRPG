@@ -10,30 +10,32 @@ namespace SF.Battle.Abilities.Mechanics.Logic
     {
         protected TMechanicData Data { get; private set; }
         protected MechanicPick Pick { get; private set; }
+        protected IServiceLocator ServiceLocator { get; private set; }
         
         public void SetFactoryMeta(IDataProvider dataProvider)
         {
             if (dataProvider != null)
             {
-                dataProvider.GetData<IWorld>().ServiceLocator.Logger.Log("HELLO??");
+                ServiceLocator = dataProvider.GetData<IWorld>().ServiceLocator;
             }
         }
         
         public void SetData(IMechanicData data, MechanicPick pick)
         {
             Pick = pick;
-            
-            if (data is TMechanicData mechanicData)
+
+            if (!(data is TMechanicData mechanicData))
             {
-                Data = mechanicData;
-                OnDataSet(mechanicData);
+                ServiceLocator.Logger.LogError($"Wrong data {data} for skill {GetType()}");
+                return;
             }
+            
+            Data = mechanicData;
+            OnDataSet(mechanicData);
         }
-
-
-        //Invoke mechanic to some targets
-
+        
         public abstract void Invoke(IActor actor);
+        
         protected abstract void OnDataSet(TMechanicData data);
     }
 }

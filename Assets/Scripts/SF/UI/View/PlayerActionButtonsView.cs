@@ -1,4 +1,8 @@
-﻿using Sirenix.OdinInspector;
+﻿using System;
+using System.Collections.Generic;
+using SF.Battle.Abilities;
+using SF.UI.Creator;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +20,9 @@ namespace SF.UI.View
         public Button SkillButton => _skillButton;
         public Button UseItemButton => _useItemButton;
         public Button GuardButton => _guardButton;
-        public AbilityPanelView PanelView => _abilityPanelView;
-
+        
+        private ButtonsHolder<TextButtonView> _buttonsHolder;
+        
         public void Show()
         {
             gameObject.SetActive(true);
@@ -30,12 +35,29 @@ namespace SF.UI.View
         
         public void HideAbility()
         {
+            _buttonsHolder.Clear();
             _abilityPanelView.Root.gameObject.SetActive(false);
         }
 
         public void Hide()
         {
             gameObject.SetActive(false);
+        }
+        
+        public void SubscribeOnAbilities(IEnumerable<BattleAbilityData> abilities, Action<BattleAbilityData> skillSelected)
+        {
+            foreach (var abilityData in abilities)
+            {
+                var button = _buttonsHolder.Get();
+
+                button.SetText(abilityData.Name);
+                button.AddActionOnClick(() => skillSelected.Invoke(abilityData));
+            }
+        }
+        
+        private void Start()
+        {
+            _buttonsHolder = new ButtonsHolder<TextButtonView>(_abilityPanelView.Content, _abilityPanelView.ButtonView);   
         }
     }
 }

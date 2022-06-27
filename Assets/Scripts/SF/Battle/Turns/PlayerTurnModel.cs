@@ -11,11 +11,11 @@ namespace SF.Battle.Turns
     {
         public BattleActor CurrentActor { get; set; }
         public IActor SelectedActor { get; private set; }
-        public CancellationTokenSource CancelationToken { get; private set; }
-        public UniTaskCompletionSource taskCompletionSource;
+        public UniTaskCompletionSource TargetSelectedCompletionSource { get; private set; }
 
         private readonly BattleWorld _world;
         private ITargetSelectionRule _currentRule;
+        private CancellationTokenSource _cancelationToken;
 
         public PlayerTurnModel(BattleWorld world)
         {
@@ -32,7 +32,7 @@ namespace SF.Battle.Turns
                 targetSelectionRule.TargetSelected -= HandleTargetSelected;
                 SelectedActor = target;
 
-                taskCompletionSource.TrySetResult();
+                TargetSelectedCompletionSource.TrySetResult();
             }
         }
 
@@ -40,11 +40,11 @@ namespace SF.Battle.Turns
         {
             SelectedActor = null;
 
-            CancelationToken?.Cancel();
-            CancelationToken?.Dispose();
+            _cancelationToken?.Cancel();
+            _cancelationToken?.Dispose();
 
-            CancelationToken = new CancellationTokenSource();
-            taskCompletionSource = new UniTaskCompletionSource();
+            _cancelationToken = new CancellationTokenSource();
+            TargetSelectedCompletionSource = new UniTaskCompletionSource();
         }
     }
 }

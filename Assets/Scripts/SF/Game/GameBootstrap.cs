@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using SF.Battle.Abilities.Factories;
-using SF.Battle.Abilities.Mechanics.Data;
 using SF.Battle.Data;
 using SF.Game.Data.Characters;
 using SF.Game.Initializers;

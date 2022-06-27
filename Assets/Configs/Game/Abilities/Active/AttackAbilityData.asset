@@ -46,6 +46,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Attack
+  _targetPick: 3
   _selectionData:
     _pick: 3
   _manaCost: 3

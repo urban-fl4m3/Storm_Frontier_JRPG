@@ -46,6 +46,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Heal
+  _targetPick: 2
   _selectionData:
     _pick: 2
   _manaCost: 1

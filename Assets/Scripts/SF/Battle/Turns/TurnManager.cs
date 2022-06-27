@@ -18,14 +18,14 @@ namespace SF.Battle.Turns
 
         private ITurnAction _currentTurn;
         
-        public TurnManager(IServiceLocator serviceLocator, BattleWorld world, PlayerActionsController playerActionsController)
+        public TurnManager(IServiceLocator serviceLocator, BattleWorld world, PlayerActionsViewController playerActionsViewController)
         {
             _serviceLocator = serviceLocator;
             _world = world;
 
             _turnActions = new Dictionary<Team, ITurnAction>
             {
-                {Team.Player, new PlayerTurnAction(serviceLocator, world, playerActionsController)},
+                {Team.Player, new PlayerTurnAction(serviceLocator, world, playerActionsViewController)},
                 {Team.Enemy, new AiTurnAction(serviceLocator, world)}
             };
         }

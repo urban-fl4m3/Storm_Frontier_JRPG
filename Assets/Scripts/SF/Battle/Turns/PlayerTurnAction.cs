@@ -11,13 +11,13 @@ namespace SF.Battle.Turns
 {
     public class PlayerTurnAction : BaseTurnAction
     {
-        private readonly PlayerActionsController _playerActionsController;
+        private readonly PlayerActionsViewController _playerActionsViewController;
         private readonly PlayerTurnModel _model;
         
-        public PlayerTurnAction(IServiceLocator services, BattleWorld world, PlayerActionsController playerActionsController) 
+        public PlayerTurnAction(IServiceLocator services, BattleWorld world, PlayerActionsViewController playerActionsViewController) 
             : base(services, world)
         {
-            _playerActionsController = playerActionsController;
+            _playerActionsViewController = playerActionsViewController;
             _model = new PlayerTurnModel(world);
         }
 
@@ -25,22 +25,22 @@ namespace SF.Battle.Turns
         {
             _model.CurrentActor = actor;
 
-            _playerActionsController.ShowView();
-            _playerActionsController.SetCurrentActor(actor);
+            _playerActionsViewController.ShowView();
+            _playerActionsViewController.SetCurrentActor(actor);
             
-            _playerActionsController.AttackSelected += HandleAttackSelected;
-            _playerActionsController.SkillSelected += HandleSkillSelected;
-            _playerActionsController.ItemSelected += HandleItemSelected;
-            _playerActionsController.GuardSelected += HandleGuardSelected;
+            _playerActionsViewController.AttackSelected += HandleAttackSelected;
+            _playerActionsViewController.SkillSelected += HandleSkillSelected;
+            _playerActionsViewController.ItemSelected += HandleItemSelected;
+            _playerActionsViewController.GuardSelected += HandleGuardSelected;
         }
         
         protected override void Dispose()
         {
-            _playerActionsController.AttackSelected -= HandleAttackSelected;
-            _playerActionsController.SkillSelected -= HandleSkillSelected;
-            _playerActionsController.ItemSelected -= HandleItemSelected;
-            _playerActionsController.GuardSelected -= HandleGuardSelected;
-            _playerActionsController.HideView();
+            _playerActionsViewController.AttackSelected -= HandleAttackSelected;
+            _playerActionsViewController.SkillSelected -= HandleSkillSelected;
+            _playerActionsViewController.ItemSelected -= HandleItemSelected;
+            _playerActionsViewController.GuardSelected -= HandleGuardSelected;
+            _playerActionsViewController.HideView();
         }
 
         private void HandleAttackSelected()
@@ -54,16 +54,17 @@ namespace SF.Battle.Turns
             AttackAsync().Forget();
         }
 
-        private void HandleSkillSelected(string abilityName)
+        private void HandleSkillSelected(BattleAbilityData abilityData)
         {
             _model.Cancel();
 
-            var ability = _model.CurrentActor.Components.Get<AbilityComponent>().GetBattleAbility(abilityName);
+            var abilityComponent = _model.CurrentActor.Components.Get<AbilityComponent>();
+            var ability = abilityComponent.GetAbilityData(abilityData);
             var skillSelectionData = new TargetSelectionData(ability.Pick);
             var skillSelectionRule = new TargetSelectionRule(_model.CurrentActor, skillSelectionData);
             _model.SetSelectionRules(skillSelectionRule);
 
-            UseAbilityAsync(abilityName).Forget();
+            UseAbilityAsync(abilityData).Forget();
         }
 
         private void HandleItemSelected(int itemIndex)
@@ -85,30 +86,29 @@ namespace SF.Battle.Turns
 
         private async UniTaskVoid AttackAsync()
         {
-            await _model.taskCompletionSource.Task;
+            await _model.TargetSelectedCompletionSource.Task;
 
             Dispose();
-            
-            var activeActor = _model.CurrentActor;
-            activeActor.PerformAttack(_model.SelectedActor, CompleteTurn);
+
+            _model.CurrentActor.PerformAttack(_model.SelectedActor, CompleteTurn);
         }
 
-        private async UniTaskVoid UseAbilityAsync(string abilityName)
+        private async UniTaskVoid UseAbilityAsync(BattleAbilityData abilityData)
         {
-            await _model.taskCompletionSource.Task;
+            await _model.TargetSelectedCompletionSource.Task;
             
             Dispose();
 
-            var activeActor = _model.CurrentActor;
-            activeActor.PerformSkill(abilityName, _model.SelectedActor, CompleteTurn);
+            _model.CurrentActor.PerformSkill(abilityData, _model.SelectedActor, CompleteTurn);
         }
 
         private async UniTask GuardAsync()
         {
-            await _model.taskCompletionSource.Task;
+            await _model.TargetSelectedCompletionSource.Task;
             
-            var activeActor = _model.CurrentActor;
-            activeActor.PerformGuard(CompleteTurn);
+            Dispose();
+
+            _model.CurrentActor.PerformGuard(CompleteTurn);
         }
     }
 }

@@ -17,5 +17,7 @@ namespace SF.UI.Controller
                 ServiceLocator.Logger.LogError("Wrong world instance for ui controller");
             }
         }
+
+        public abstract void Enable();
     }
 }

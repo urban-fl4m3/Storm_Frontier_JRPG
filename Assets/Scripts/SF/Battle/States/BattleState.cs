@@ -11,7 +11,7 @@ namespace SF.Battle.States
     public class BattleState : WorldState<BattleWorld>
     {
         private TurnManager _turnManager;
-        private PlayerActionsController _playerActionsController;
+        private PlayerActionsViewController _playerActionsViewController;
         private TeamHealthBarPanelController _barPanelController;
         
         public BattleState(IServiceLocator serviceLocator) : base(serviceLocator)
@@ -38,16 +38,16 @@ namespace SF.Battle.States
         {
             var window = ServiceLocator.WindowController.Create<BattleHUD>(WindowType.Battle);
             
-            _playerActionsController = new PlayerActionsController(window.PlayerActionButtonsView, World, ServiceLocator);
-            _playerActionsController.Init();
+            _playerActionsViewController = new PlayerActionsViewController(window.PlayerActionButtonsView, World, ServiceLocator);
+            _playerActionsViewController.Enable();
 
             _barPanelController = new TeamHealthBarPanelController(Team.Enemy, window.TeamHealthPanelView, World, ServiceLocator);
-            _barPanelController.CreateHealthPanels();
+            _barPanelController.Enable();
         }
 
         private void CreateTurnManager()
         {
-            _turnManager = new TurnManager(ServiceLocator, World, _playerActionsController);
+            _turnManager = new TurnManager(ServiceLocator, World, _playerActionsViewController);
             _turnManager.PlayNextTurn();
         }
     }

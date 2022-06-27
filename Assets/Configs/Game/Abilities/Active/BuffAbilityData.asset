@@ -55,6 +55,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Buff
+  _targetPick: 1
   _selectionData:
     _pick: 2
   _manaCost: 5

@@ -26,6 +26,7 @@ namespace SF.Common.Actors
         {
             World = world;
             ServiceLocator = serviceLocator;
+            
             Components = GetComponent<ActorComponentContainer>();
             Components.InitActorComponents(serviceLocator);
         }

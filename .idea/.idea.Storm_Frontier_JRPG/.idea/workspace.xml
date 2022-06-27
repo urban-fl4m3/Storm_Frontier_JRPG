@@ -2,31 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Common.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Common/MechanicPick.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Common/MechanicPick.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Abilities.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Abilities/AbilityComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Abilities/AbilityComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Creator/ButtonsHolder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/ObjectPool.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/ButtonView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/ButtonView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/TextButtonView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/AttackAbilityData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/AttackAbilityData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/BuffAbilityData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/BuffAbilityData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/DefenseAbilityData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/DefenseAbilityData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/HealAbilityData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/HealAbilityData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/MassAttackAbilityData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/MassAttackAbilityData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/AbilityButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/AbilityButton.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Battle HUD/BattleWindow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Battle/Prefabs/UI/Battle HUD/BattleWindow.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/ActiveBattleAbilityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/ActiveBattleAbilityData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/BattleAbility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/BattleAbility.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/BattleAbilityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/BattleAbilityData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Common/MechanicPick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Common/MechanicPick.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Factories/MechanicsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Factories/MechanicsFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/BaseMechanicLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/BaseMechanicLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/DamageMechanicLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/DamageMechanicLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/IMechanicLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/IMechanicLogic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/PassiveBattleAbilityData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/PassiveBattleAbilityData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattleActorFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Common/BattleActorFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/States/BattleState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Actor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Actor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/IActor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/IActor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Abilities/AbilityComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Abilities/AbilityComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Weapon/WeaponComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Weapon/WeaponComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Factories/BaseTypedFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Factories/BaseTypedFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Data/Characters/GameCharacterConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Data/Characters/GameCharacterConfig.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/PlayerActionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/PlayerActionsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Creator/ButtonCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Creator/ButtonCreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/AbilityButtonView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/AbilityButtonView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleWorldUiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/BattleWorldUiController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/PlayerActionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/PlayerActionsViewController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/PlayerActionsController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/PlayerActionsViewController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/TeamHealthBarPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Controller/TeamHealthBarPanelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Creator/ButtonCreator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Creator/ButtonCreator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Creator/ButtonsHolder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/ButtonPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/ButtonPool.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/ObjectPool.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/IPooling.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/IPoolable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/IPooling.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/IPoolable.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/AbilityButtonView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/AbilityButtonView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/TextButtonView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/AbilityPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/AbilityPanelView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/PlayerActionButtonsView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/UI/View/PlayerActionButtonsView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,18 +67,18 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6a0e6615ee04ea7ad535b38f9316104568788/2f/e7373d5a/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b6a0e6615ee04ea7ad535b38f9316104568788/d1/c9e39398/Activator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Animation/BaseAnimatorController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/ButtonPool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTask.Delay.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTask.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTaskExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTaskVoid.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/Collaborate/UserInterface/Bootstrap.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTaskVoid.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Animation/BaseAnimatorController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/Collaborate/UserInterface/Bootstrap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/UI/Pool/ObjectPool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTask.Delay.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/44981eca01194a5e927121a6fa32904925a00/5a/c45e446e/LinqExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTaskExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0ef933b1aa54b668801ea864e4204fe13b600/e0/308edff6/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -72,19 +93,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.16f1\Editor\Unity.exe" />
@@ -167,6 +181,7 @@
       <workItem from="1656354979905" duration="1411000" />
       <workItem from="1656356406063" duration="4422000" />
       <workItem from="1656360867289" duration="41000" />
+      <workItem from="1656366437414" duration="5276000" />
     </task>
     <servers />
   </component>

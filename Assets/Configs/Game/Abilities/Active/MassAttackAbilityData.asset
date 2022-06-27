@@ -46,6 +46,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Mass attack
+  _targetPick: 1
   _selectionData:
     _pick: 1
   _manaCost: 4

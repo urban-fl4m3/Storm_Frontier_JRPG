@@ -23,7 +23,6 @@ namespace SF.Common.Actors.Weapon
             
             _battleAnimationComponent.ActionEnds += HandleActionComplete;
             _battleAnimationComponent.SetAttackTrigger();
-            
 
             void HandleActionComplete()
             {

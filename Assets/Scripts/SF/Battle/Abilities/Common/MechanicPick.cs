@@ -2,8 +2,10 @@
 {
     public enum MechanicPick
     {
-        All,
-        Target,
-        AsSelf
+        DontOverride = 0,
+        All = 1,
+        Self = 2,
+        OppositeTeam = 3,
+        AllyTeam = 4,
     }
 }

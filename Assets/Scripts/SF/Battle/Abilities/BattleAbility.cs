@@ -8,22 +8,22 @@ namespace SF.Battle.Abilities
 {
     public class BattleAbility
     {
-        public TargetPick Pick { private set; get; }
+        public TargetPick Pick { get; }
 
-        private IActor _caster;
-        private IEnumerable<IMechanicLogic> _mechanicLogics;
-
-
+        private readonly IActor _caster;
+        private readonly IEnumerable<IMechanicLogic> _mechanicLogics;
+        
         public BattleAbility(IActor caster, IEnumerable<IMechanicLogic> mechanics, TargetPick pick)
         {
+            Pick = pick;
+            
             _caster = caster;
             _mechanicLogics = mechanics;
-            Pick = pick;
         }
 
         public void InvokeAbility(IActor targetSelected)
         {
-            _mechanicLogics.ForEach(a => a.Invoke(targetSelected));
+            _mechanicLogics.ForEach(mechanicLogic => mechanicLogic.Invoke(targetSelected));
         }
     }
 }

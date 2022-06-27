@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Game.Characters.Professions;

@@ -17,7 +17,7 @@ namespace SF.Battle.Common
             _serviceLocator = serviceLocator;
         }
 
-        public BattleActor Create(BattleActor prefab, BattleMetaData metaData , IWorld world)
+        public BattleActor Create(BattleActor prefab, BattleMetaData metaData, IWorld world)
         {
             return Create(prefab, ActorSpawnData.Default(), metaData, world);
         }

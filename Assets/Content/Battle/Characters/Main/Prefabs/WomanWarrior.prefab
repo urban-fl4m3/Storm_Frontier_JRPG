@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 7733298982912203905}
   - component: {fileID: 3960831477861095224}
   - component: {fileID: 1567927096975500590}
+  - component: {fileID: 9071008882698783584}
   m_Layer: 0
   m_Name: WomanWarrior
   m_TagString: Untagged
@@ -770,6 +771,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd5431dc61f744e99e2a843c1c4fb72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+--- !u!114 &9071008882698783584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2367604674636048426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff879ce7d6d49d28003e31e109d8eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:

@@ -4,7 +4,7 @@ using SF.UI.Windows;
 
 namespace SF.UI.Controller
 {
-    public class TeamHealthBarPanelController: BattleWorldUiController
+    public class TeamHealthBarPanelController : BattleWorldUiController
     {
         private readonly Team _team;
         private readonly TeamHealthPanelView _view;
@@ -15,8 +15,8 @@ namespace SF.UI.Controller
             _team = team;
             _view = view;
         }
-
-        public void CreateHealthPanels()
+        
+        public override void Enable()
         {
             var actors = World.ActingActors.Where(x => x.Team == _team);
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using SF.Battle.Abilities;
 using SF.Battle.Common;
 using SF.Battle.Damage;
 using SF.Common.Actors;
@@ -19,6 +20,7 @@ namespace SF.Battle.Actors
         private HealthComponent _health;
         private TransformComponent _transform;
         private WeaponComponent _weaponComponent;
+        private AbilityComponent _abilityComponent;
 
         private readonly DamageBuilder _damageBuilder = new DamageBuilder();
         
@@ -31,6 +33,7 @@ namespace SF.Battle.Actors
             _health = Components.Get<HealthComponent>();
             _transform = Components.Get<TransformComponent>();
             _weaponComponent = Components.Get<WeaponComponent>();
+            _abilityComponent = Components.Get<AbilityComponent>();
         }
 
         public void PerformAttack(IActor target, Action onActionEnds = null)
@@ -47,14 +50,14 @@ namespace SF.Battle.Actors
             });
         }
         
-        public void PerformSkill(string skillName, IActor target, Action onActionEnds = null)
+        public void PerformSkill(BattleAbilityData abilityData, IActor target, Action onActionEnds = null)
         {
-            Components.Get<AbilityComponent>().InvokeSkill(skillName, target);
+           _abilityComponent.InvokeSkill(abilityData, target);
             
             onActionEnds?.Invoke();
         }
 
-        public void PerformUseItem(int itemIndex, BattleActor target, Action onActionEnds = null)
+        public void PerformUseItem(int itemIndex, IActor target, Action onActionEnds = null)
         {
             onActionEnds?.Invoke();
         }

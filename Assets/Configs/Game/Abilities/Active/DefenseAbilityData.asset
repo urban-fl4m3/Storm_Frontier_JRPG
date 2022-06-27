@@ -55,6 +55,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Defense
+  _targetPick: 2
   _selectionData:
     _pick: 1
   _manaCost: 2
