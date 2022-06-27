@@ -39,10 +39,6 @@ namespace SF.Game
             
             _gameStateMachine.SetWorld(_currentWorld);
             _gameStateMachine.SetState(GameStateType.WorldBattle);
-
-
-            var mechanicLogic = _serviceLocator.FactoryHolder.Get<MechanicsFactory>().Create(new DamageMechanicData(), _currentWorld);
-            mechanicLogic.Invoke();
         }
 
         private void AddDebugCharacterToPlayer()

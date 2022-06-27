@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SF.Battle.Abilities.Common;
 using SF.Common.Data;
 
 namespace SF.Common.Factories
@@ -25,6 +26,11 @@ namespace SF.Common.Factories
         }
 
         protected virtual void OnInstantiate(T1 from, T2 instance, IDataProvider dataProvider)
+        {
+            instance.SetFactoryMeta(dataProvider);
+        }
+
+        protected virtual void OnInstantiate(T1 from, T2 instance, IDataProvider dataProvider, MechanicPick pick)
         {
             instance.SetFactoryMeta(dataProvider);
         }

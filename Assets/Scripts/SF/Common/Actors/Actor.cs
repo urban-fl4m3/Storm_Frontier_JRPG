@@ -8,7 +8,8 @@ namespace SF.Common.Actors
     public class Actor : SerializedMonoBehaviour, IActor
     {
         public ActorComponentContainer Components { get; private set; }
-        
+        public IWorld World { get; private set; }
+
         protected IServiceLocator ServiceLocator { get; private set; }
 
         public virtual void Enable()
@@ -21,8 +22,9 @@ namespace SF.Common.Actors
             
         }
         
-        protected void Init(IServiceLocator serviceLocator)
+        protected void Init(IServiceLocator serviceLocator, IWorld world)
         {
+            World = world;
             ServiceLocator = serviceLocator;
             Components = GetComponent<ActorComponentContainer>();
             Components.InitActorComponents(serviceLocator);

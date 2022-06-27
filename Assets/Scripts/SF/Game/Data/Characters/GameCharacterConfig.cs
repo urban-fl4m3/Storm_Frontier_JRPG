@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Game.Characters.Professions;
@@ -26,6 +27,6 @@ namespace SF.Game.Data.Characters
         public DefaultCharactersConfig BaseData => _baseData;
         public ProfessionData ProfessionData => _professionData;
         public StatContainerData<MainStat> AdditionalMainStats => _additionalMainStats;
-        public List<BattleAbilityData> Abilities => _abilities;
+        public IEnumerable<BattleAbilityData> Abilities => _abilities;
     }
 }

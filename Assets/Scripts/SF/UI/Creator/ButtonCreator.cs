@@ -39,6 +39,7 @@ namespace SF.UI.Creator
             for (int i = 0; i < _abilityButtonViews.Count; i++)
             {
                 _abilityButtonViews[i].OnReturnToPool();
+                _abilityButtonViews[i].Clear();
             }
         }
     }

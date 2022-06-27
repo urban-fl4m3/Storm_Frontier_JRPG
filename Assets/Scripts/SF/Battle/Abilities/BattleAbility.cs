@@ -1,12 +1,29 @@
-﻿using SF.Common.Actors;
+﻿using System.Collections.Generic;
+using SF.Common.Actors;
+using SF.Battle.Abilities.Mechanics.Logic;
+using SF.Battle.TargetSelection;
+using Sirenix.Utilities;
 
 namespace SF.Battle.Abilities
 {
     public class BattleAbility
     {
-        public BattleAbility(IActor caster)
+        public TargetPick Pick { private set; get; }
+
+        private IActor _caster;
+        private IEnumerable<IMechanicLogic> _mechanicLogics;
+
+
+        public BattleAbility(IActor caster, IEnumerable<IMechanicLogic> mechanics, TargetPick pick)
         {
-            
+            _caster = caster;
+            _mechanicLogics = mechanics;
+            Pick = pick;
+        }
+
+        public void InvokeAbility(IActor targetSelected)
+        {
+            _mechanicLogics.ForEach(a => a.Invoke(targetSelected));
         }
     }
 }

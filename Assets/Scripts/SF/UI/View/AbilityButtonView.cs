@@ -11,7 +11,7 @@ namespace SF.UI.View
         [SerializeField] private Button _button;
         [SerializeField] private Text _text;
 
-        public event Action<AbilityButtonView> ReturnToPool;
+        public event Action<AbilityButtonView> ReturnToPool = delegate {  };
 
         public void AddActionOnClick(UnityAction action)
         {
