@@ -2,7 +2,7 @@
 
 namespace SF.Common.Commands
 {
-    public abstract class Command : ICommand
+    public abstract class ObservableCommand : IObservableCommand
     {
         public event EventHandler OnComplete;
         public event EventHandler OnFail;

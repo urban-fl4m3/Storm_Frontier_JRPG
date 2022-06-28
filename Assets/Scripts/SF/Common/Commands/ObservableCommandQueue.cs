@@ -5,19 +5,19 @@ using SF.Common.Logger;
 
 namespace SF.Common.Commands
 {
-    public class CommandQueue : ICommand
+    public class ObservableCommandQueue : IObservableCommand
     {
         public event EventHandler OnComplete;
         public event EventHandler OnFail;
         
-        private readonly Queue<ICommand> _queue = new Queue<ICommand>();
+        private readonly Queue<IObservableCommand> _queue = new Queue<IObservableCommand>();
         private readonly IDebugLogger _logger;
         
         private int _completedCount;
         private int _totalCount;
         private bool _executing;
 
-        public CommandQueue(IDebugLogger logger)
+        public ObservableCommandQueue(IDebugLogger logger)
         {
             _logger = logger;
         }
@@ -43,7 +43,7 @@ namespace SF.Common.Commands
 
         private void OnCommandFailed(object sender, EventArgs e)
         {
-            ClearCommandSubscription((ICommand) sender);
+            ClearCommandSubscription((IObservableCommand) sender);
             Clear();
             
             _logger.LogError($"[CommandQueue] Failed after {_completedCount} completed tasks!");
@@ -52,7 +52,7 @@ namespace SF.Common.Commands
 
         private void OnCommandComplete(object sender, EventArgs e)
         {
-            ClearCommandSubscription((ICommand) sender);
+            ClearCommandSubscription((IObservableCommand) sender);
             
             if (++_completedCount >= _totalCount)
             {
@@ -74,10 +74,10 @@ namespace SF.Common.Commands
             _executing = false;
         }
 
-        private void ClearCommandSubscription(ICommand command)
+        private void ClearCommandSubscription(IObservableCommand observableCommand)
         {
-            command.OnComplete -= OnCommandComplete;
-            command.OnFail -= OnCommandFailed;
+            observableCommand.OnComplete -= OnCommandComplete;
+            observableCommand.OnFail -= OnCommandFailed;
         }
     }
 }

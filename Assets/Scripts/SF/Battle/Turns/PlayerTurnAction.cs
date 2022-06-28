@@ -36,12 +36,12 @@ namespace SF.Battle.Turns
         
         protected override void Dispose()
         {
+            _playerActionsViewController.HideView();
+            
             _playerActionsViewController.AttackSelected -= HandleAttackSelected;
             _playerActionsViewController.SkillSelected -= HandleSkillSelected;
             _playerActionsViewController.ItemSelected -= HandleItemSelected;
             _playerActionsViewController.GuardSelected -= HandleGuardSelected;
-            _playerActionsViewController.HideView();
-            _playerActionsViewController.HideAbilityView();
         }
 
         private void HandleAttackSelected()

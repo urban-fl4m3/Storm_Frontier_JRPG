@@ -2,7 +2,6 @@
 using Cysharp.Threading.Tasks;
 using SF.Battle.Actors;
 using SF.Battle.TargetSelection;
-using SF.Common.Actors;
 using SF.Game;
 
 namespace SF.Battle.Turns
@@ -10,7 +9,7 @@ namespace SF.Battle.Turns
     public class PlayerTurnModel
     {
         public BattleActor CurrentActor { get; set; }
-        public IActor SelectedActor { get; private set; }
+        public BattleActor SelectedActor { get; private set; }
         public UniTaskCompletionSource TargetSelectedCompletionSource { get; private set; }
 
         private readonly BattleWorld _world;
@@ -27,7 +26,7 @@ namespace SF.Battle.Turns
             targetSelectionRule.TargetSelected += HandleTargetSelected;
             targetSelectionRule.TrackSelection(_world.ActingActors);
 
-            void HandleTargetSelected(IActor target)
+            void HandleTargetSelected(BattleActor target)
             {
                 targetSelectionRule.TargetSelected -= HandleTargetSelected;
                 SelectedActor = target;

@@ -3,29 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using SF.Battle.Abilities;
 using SF.Battle.Abilities.Factories;
+using SF.Battle.Actions;
 using SF.Battle.Actors;
-using SF.Battle.Damage;
+using SF.Common.Actors.Actions;
 using SF.Common.Data;
 
 namespace SF.Common.Actors.Abilities
 {
-    public class AbilityComponent : ActorComponent, IDamageProvider
+    public class AbilityComponent : ActorComponent
     {
         private readonly Dictionary<BattleAbilityData, BattleAbility> _abilities =
             new Dictionary<BattleAbilityData, BattleAbility>();
 
+        private ActionControllerComponent _actionControllerComponent;
+        private AbilityAction _abilityAction;
+
         protected override void OnInit()
         {
-            var mechanicsFactory = ServiceLocator.FactoryHolder.Get<MechanicsFactory>();
-
-            if (!(Owner is BattleActor battleActor))
+            if (!(Owner is BattleActor caster))
             {
                 ServiceLocator.Logger.LogError($"Actor {Owner} is not a battle actor! Cannot initialize skill" +
                                                $"component further");
                 return;
             }
             
-            foreach (var abilityData in battleActor.MetaData.Info.Config.Abilities)
+            _actionControllerComponent = Owner.Components.Get<ActionControllerComponent>();
+            _abilityAction = new AbilityAction();
+            
+            var mechanicsFactory = ServiceLocator.FactoryHolder.Get<MechanicsFactory>();
+            
+            foreach (var abilityData in caster.MetaData.Info.Config.Abilities)
             {
                 if (abilityData.IsPassive) continue;
                 
@@ -33,8 +40,10 @@ namespace SF.Common.Actors.Abilities
                     .Select(mechanicData => mechanicsFactory.Create(mechanicData, Owner.World, new DataProvider(ServiceLocator)))
                     .ToList();
 
-                _abilities.Add(abilityData, new BattleAbility(battleActor, mechanicLogics, abilityData.Pick));
+                _abilities.Add(abilityData, new BattleAbility(caster, mechanicLogics, abilityData.Pick));
             }
+            
+            base.OnInit();
         }
 
         public BattleAbility GetAbilityData(BattleAbilityData abilityData)
@@ -56,7 +65,9 @@ namespace SF.Common.Actors.Abilities
                 return;
             }
 
-            _abilities[abilityData].InvokeAbility(target, onActionComplete);
+            _abilityAction.Target = target;
+            _abilityAction.Ability = _abilities[abilityData];
+            _actionControllerComponent.MakeAction(_abilityAction, onActionComplete);
         }
     }
 }

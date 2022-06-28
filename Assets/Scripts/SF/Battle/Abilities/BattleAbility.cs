@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using SF.Common.Actors;
+﻿using System.Collections.Generic;
 using SF.Battle.Abilities.Mechanics.Logic;
 using SF.Battle.Actors;
 using SF.Battle.TargetSelection;
+using SF.Common.Actors;
 using Sirenix.Utilities;
 
 namespace SF.Battle.Abilities
@@ -23,9 +22,9 @@ namespace SF.Battle.Abilities
             _mechanicLogics = mechanics;
         }
 
-        public void InvokeAbility(IActor targetSelected, Action onActionComplete = null)
+        public void InvokeAbility(IActor targetSelected)
         {
-            _mechanicLogics.ForEach(mechanicLogic => mechanicLogic.Invoke(_caster, targetSelected, onActionComplete));
+            _mechanicLogics.ForEach(mechanicLogic => mechanicLogic.Invoke(_caster, targetSelected));
         }
     }
 }

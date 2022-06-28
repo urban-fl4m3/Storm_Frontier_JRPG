@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using SF.Battle.Abilities.Mechanics.Data;
 using SF.Battle.Actors;
@@ -12,14 +11,16 @@ namespace SF.Battle.Abilities.Mechanics.Logic
     public abstract class BaseMechanicLogic<TMechanicData> : IMechanicLogic where TMechanicData : IMechanicData
     {
         protected TMechanicData Data { get; private set; }
-        protected IServiceLocator ServiceLocator { get; private set; }
         protected BattleWorld World { get; private set; }
+        protected BattleActor Caster { get; private set; }
+        protected IServiceLocator ServiceLocator { get; private set; }
         
         public void SetFactoryMeta(IDataProvider dataProvider)
         {
             if (dataProvider != null)
             {
                 World = dataProvider.GetData<BattleWorld>();
+                Caster = dataProvider.GetData<BattleActor>();
                 ServiceLocator = dataProvider.GetData<IServiceLocator>();
             }
         }
@@ -36,7 +37,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
             OnDataSet(mechanicData);
         }
         
-        public abstract void Invoke(BattleActor caster, IActor actor, Action onActionComplete = null);
+        public abstract void Invoke(BattleActor caster, IActor selected);
         
         protected abstract void OnDataSet(TMechanicData data);
 

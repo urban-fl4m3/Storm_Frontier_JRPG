@@ -38,12 +38,11 @@ namespace SF.Battle.Actors
 
         public void PerformAttack(IActor target, Action onActionEnds = null)
         {
-            var place = target.Components.Get<PlaceholderComponent>().Point;
             var startPlace = _transform.GetPosition();
-
-            _transform.SetPosition(place.transform.position);
             
-            _weaponComponent.MakeAction(target, () =>
+            PlaceInFrontOf(target);
+
+            _weaponComponent.InvokeAttack(target, () =>
             {
                 onActionEnds?.Invoke();
                 _transform.SetPosition(startPlace);
@@ -53,14 +52,15 @@ namespace SF.Battle.Actors
         public void PerformSkill(BattleAbilityData abilityData, IActor target, Action onActionEnds = null)
         {
             var startPlace = _transform.GetPosition();
-
+            
+            PlaceInFrontOf(target);
             
            _abilityComponent.InvokeSkill(abilityData, target, () =>
            {
                onActionEnds?.Invoke();
                _transform.SetPosition(startPlace);
            });
-            
+           
         }
 
         public void PerformUseItem(int itemIndex, IActor target, Action onActionEnds = null)
@@ -78,6 +78,15 @@ namespace SF.Battle.Actors
         {
             var calculatedDamage = _damageBuilder.CalculateDamage(dealer, provider, meta);
             _health.RemoveHealth(calculatedDamage);
+        }
+
+        private void PlaceInFrontOf(IActor actor)
+        {
+            if (actor != null)
+            {
+                var place = actor.Components.Get<PlaceholderComponent>().Point;
+                _transform.SetPosition(place.transform.position);
+            }
         }
     }
 }

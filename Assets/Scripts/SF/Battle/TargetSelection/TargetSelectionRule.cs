@@ -9,7 +9,7 @@ namespace SF.Battle.TargetSelection
 {
     public class TargetSelectionRule : ITargetSelectionRule
     {
-        public event Action<IActor> TargetSelected;
+        public event Action<BattleActor> TargetSelected;
 
         private readonly BattleActor _actingActor;
         private readonly TargetSelectionData _data;
@@ -52,13 +52,14 @@ namespace SF.Battle.TargetSelection
             void OnActorSelected(IActor actor)
             {
                 if (actor.Components.Get<ActorStateComponent>().State.Value == ActorState.Dead) return;
+                if (!(actor is BattleActor battleActor)) return;
 
-                foreach (var battleActor in expectedActors)
+                foreach (var expected in expectedActors)
                 {
-                    battleActor.Components.Get<ActorSelectComponent>().ActorSelected -= OnActorSelected;
+                    expected.Components.Get<ActorSelectComponent>().ActorSelected -= OnActorSelected;
                 }
                 
-                TargetSelected?.Invoke(actor);
+                TargetSelected?.Invoke(battleActor);
             }
         }
     }

@@ -51,7 +51,11 @@ namespace SF.UI.View
                 var button = _buttonsHolder.Get();
 
                 button.SetText(abilityData.Name);
-                button.AddActionOnClick(() => skillSelected.Invoke(abilityData));
+                button.AddActionOnClick(() =>
+                {
+                    HideAbility();
+                    skillSelected.Invoke(abilityData);
+                });
             }
         }
         
