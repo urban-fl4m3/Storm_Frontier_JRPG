@@ -52,9 +52,15 @@ namespace SF.Battle.Actors
         
         public void PerformSkill(BattleAbilityData abilityData, IActor target, Action onActionEnds = null)
         {
-           _abilityComponent.InvokeSkill(abilityData, target);
+            var startPlace = _transform.GetPosition();
+
             
-            onActionEnds?.Invoke();
+           _abilityComponent.InvokeSkill(abilityData, target, () =>
+           {
+               onActionEnds?.Invoke();
+               _transform.SetPosition(startPlace);
+           });
+            
         }
 
         public void PerformUseItem(int itemIndex, IActor target, Action onActionEnds = null)

@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SF.Battle.Abilities;
 using SF.Battle.Abilities.Factories;
 using SF.Battle.Actors;
+using SF.Battle.Damage;
 using SF.Common.Data;
 
 namespace SF.Common.Actors.Abilities
 {
-    public class AbilityComponent : ActorComponent
+    public class AbilityComponent : ActorComponent, IDamageProvider
     {
         private readonly Dictionary<BattleAbilityData, BattleAbility> _abilities =
             new Dictionary<BattleAbilityData, BattleAbility>();
@@ -46,7 +48,7 @@ namespace SF.Common.Actors.Abilities
             return _abilities[abilityData];
         }
 
-        public void InvokeSkill(BattleAbilityData abilityData, IActor target)
+        public void InvokeSkill(BattleAbilityData abilityData, IActor target, Action onActionComplete = null)
         {
             if (!_abilities.ContainsKey(abilityData))
             {
@@ -54,7 +56,7 @@ namespace SF.Common.Actors.Abilities
                 return;
             }
 
-            _abilities[abilityData].InvokeAbility(target);
+            _abilities[abilityData].InvokeAbility(target, onActionComplete);
         }
     }
 }

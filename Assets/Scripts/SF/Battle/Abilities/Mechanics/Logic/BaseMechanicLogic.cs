@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SF.Battle.Abilities.Mechanics.Data;
 using SF.Battle.Actors;
@@ -35,7 +36,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
             OnDataSet(mechanicData);
         }
         
-        public abstract void Invoke(BattleActor caster, IActor actor);
+        public abstract void Invoke(BattleActor caster, IActor actor, Action onActionComplete = null);
         
         protected abstract void OnDataSet(TMechanicData data);
 

@@ -41,6 +41,7 @@ namespace SF.Battle.Turns
             _playerActionsViewController.ItemSelected -= HandleItemSelected;
             _playerActionsViewController.GuardSelected -= HandleGuardSelected;
             _playerActionsViewController.HideView();
+            _playerActionsViewController.HideAbilityView();
         }
 
         private void HandleAttackSelected()

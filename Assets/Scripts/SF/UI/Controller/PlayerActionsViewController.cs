@@ -48,6 +48,11 @@ namespace SF.UI.Controller
             _currentActor = actor;
         }
 
+        public void HideAbilityView()
+        {
+            _view.HideAbility();
+        }
+
         private void OnAttackClick()
         {
             _view.HideAbility();
