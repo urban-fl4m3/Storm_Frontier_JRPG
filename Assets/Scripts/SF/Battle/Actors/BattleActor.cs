@@ -8,10 +8,11 @@ using SF.Common.Actors.Components.Stats;
 using SF.Common.Actors.Components.Transform;
 using SF.Common.Actors.Weapon;
 using SF.Game;
+using UnityEngine;
 
 namespace SF.Battle.Actors
 {
-    public class BattleActor : Actor, IDamageable
+    public class BattleActor : Actor, IHPChangeable
     {
         public BattleMetaData MetaData { get; private set; }
         public int Level => MetaData.Info.Level;
@@ -19,10 +20,11 @@ namespace SF.Battle.Actors
 
         private HealthComponent _health;
         private TransformComponent _transform;
+        private RotationComponent _rotationComponent;
         private WeaponComponent _weaponComponent;
         private AbilityComponent _abilityComponent;
 
-        private readonly DamageBuilder _damageBuilder = new DamageBuilder();
+        private readonly HPChangeBuilder _hpChangeBuilder = new HPChangeBuilder();
         
         public void Init(IServiceLocator serviceLocator, BattleMetaData metaData, IWorld world)
         {
@@ -34,6 +36,7 @@ namespace SF.Battle.Actors
             _transform = Components.Get<TransformComponent>();
             _weaponComponent = Components.Get<WeaponComponent>();
             _abilityComponent = Components.Get<AbilityComponent>();
+            _rotationComponent = Components.Get<RotationComponent>();
         }
 
         public void PerformAttack(IActor target, Action onActionEnds = null)
@@ -52,6 +55,7 @@ namespace SF.Battle.Actors
         public void PerformSkill(BattleAbilityData abilityData, IActor target, Action onActionEnds = null)
         {
             var startPlace = _transform.GetPosition();
+            var startLookAtVector = _transform.transform.forward;
             
             PlaceInFrontOf(target);
             
@@ -59,6 +63,7 @@ namespace SF.Battle.Actors
            {
                onActionEnds?.Invoke();
                _transform.SetPosition(startPlace);
+               _rotationComponent.LookAt(startLookAtVector);
            });
            
         }
@@ -74,10 +79,16 @@ namespace SF.Battle.Actors
             onActionEnds?.Invoke();
         }
 
-        public void TakeDamage(IActor dealer, IDamageProvider provider, DamageMeta meta)
+        public void TakeDamage(IActor dealer, IHPChangeProvider provider, HPChangeMeta meta)
         {
-            var calculatedDamage = _damageBuilder.CalculateDamage(dealer, provider, meta);
+            var calculatedDamage = _hpChangeBuilder.CalculateDamage(dealer, provider, meta);
             _health.RemoveHealth(calculatedDamage);
+        }
+
+        public void TakeHeal(IActor dealer, IHPChangeProvider provider, HPChangeMeta meta)
+        {
+            var calculatedHeal = _hpChangeBuilder.CalculateTotalHeal(dealer, provider, meta);
+            _health.AddHealth(calculatedHeal);
         }
 
         private void PlaceInFrontOf(IActor actor)
@@ -85,7 +96,9 @@ namespace SF.Battle.Actors
             if (actor != null)
             {
                 var place = actor.Components.Get<PlaceholderComponent>().Point;
+                var actorTransform = actor.Components.Get<TransformComponent>().transform;
                 _transform.SetPosition(place.transform.position);
+                _rotationComponent.LookAt(actorTransform.position - place.position);
             }
         }
     }

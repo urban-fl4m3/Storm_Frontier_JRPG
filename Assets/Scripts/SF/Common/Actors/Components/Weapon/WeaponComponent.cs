@@ -5,7 +5,7 @@ using SF.Common.Actors.Actions;
 
 namespace SF.Common.Actors.Weapon
 {
-    public class WeaponComponent : ActorComponent, IDamageProvider
+    public class WeaponComponent : ActorComponent, IHPChangeProvider
     {
         private ActionControllerComponent _actionControllerComponent;
         private DamageAction _damageAction;

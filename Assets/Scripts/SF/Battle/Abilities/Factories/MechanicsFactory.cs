@@ -11,7 +11,8 @@ namespace SF.Battle.Abilities.Factories
     {
         protected override Dictionary<Type, Type> DiscriminatedTypes => new Dictionary<Type, Type>
         {
-            { typeof(DamageMechanicData), typeof(DamageMechanicLogic) }
+            { typeof(DamageMechanicData), typeof(DamageMechanicLogic) },
+            { typeof(HealMechanicData), typeof(HealMechanicLogic) }
         };
 
         protected override void OnInstantiate(IMechanicData @from, IMechanicLogic instance, IDataProvider dataProvider)

@@ -8,7 +8,7 @@ namespace SF.Battle.Actions
     public class DamageAction : BattleAction
     {
         private readonly IActor _actor;
-        private readonly IDamageProvider _damageProvider;
+        private readonly IHPChangeProvider _ihpChangeProvider;
         private readonly StatsContainerComponent _statsContainer;
 
         private IActor _target;
@@ -16,7 +16,7 @@ namespace SF.Battle.Actions
         public DamageAction(IActor actor)
         {
             _actor = actor;
-            _damageProvider = actor.Components.Get<IDamageProvider>();
+            _ihpChangeProvider = actor.Components.Get<IHPChangeProvider>();
             _statsContainer = actor.Components.Get<StatsContainerComponent>();
         }
 
@@ -27,9 +27,9 @@ namespace SF.Battle.Actions
         
         public override void Execute()
         {
-            var damageTaker = _target.Components.Get<IDamageable>();
+            var damageTaker = _target.Components.Get<IHPChangeable>();
             var attackDamage = _statsContainer.GetStat(PrimaryStat.PPower);
-            damageTaker?.TakeDamage(_actor, _damageProvider, new DamageMeta(attackDamage));
+            damageTaker?.TakeDamage(_actor, _ihpChangeProvider, new HPChangeMeta(attackDamage));
         }
     }
 }

@@ -2,6 +2,7 @@
 using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Battle.TargetSelection;
+using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
 using SF.Game;
 using SF.UI.Controller;
@@ -23,6 +24,8 @@ namespace SF.Battle.Turns
 
         protected override void OnStartTurn(BattleActor actor)
         {
+            actor.Components.Get<CurrentPlayerComponent>().SetSelected(true);
+            
             _model.CurrentActor = actor;
 
             _playerActionsViewController.ShowView();
@@ -38,6 +41,8 @@ namespace SF.Battle.Turns
         {
             _playerActionsViewController.HideView();
             
+            _model.CurrentActor.Components.Get<CurrentPlayerComponent>().SetSelected(false);
+
             _playerActionsViewController.AttackSelected -= HandleAttackSelected;
             _playerActionsViewController.SkillSelected -= HandleSkillSelected;
             _playerActionsViewController.ItemSelected -= HandleItemSelected;

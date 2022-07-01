@@ -1,6 +1,6 @@
 ﻿namespace SF.Battle.Damage
 {
-    public interface IDamageProvider
+    public interface IHPChangeProvider
     {
         
     }
