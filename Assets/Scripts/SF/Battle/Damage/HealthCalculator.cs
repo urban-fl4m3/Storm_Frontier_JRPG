@@ -23,7 +23,7 @@ namespace SF.Battle.Damage
         public void CalculateHeal(int amount)
         {
             //Here we should calculate all heal and buff stuff. Open wounds/Heal negate etc
-            _ownerHealth.RemoveHealth(amount);
+            _ownerHealth.AddHealth(amount);
         }
     }
 }
