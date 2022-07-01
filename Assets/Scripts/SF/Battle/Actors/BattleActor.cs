@@ -4,39 +4,37 @@ using SF.Battle.Common;
 using SF.Battle.Damage;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
-using SF.Common.Actors.Components.Stats;
 using SF.Common.Actors.Components.Transform;
 using SF.Common.Actors.Weapon;
 using SF.Game;
-using UnityEngine;
 
 namespace SF.Battle.Actors
 {
-    public class BattleActor : Actor, IHPChangeable
+    public class BattleActor : Actor, IHealthChangeable
     {
         public BattleMetaData MetaData { get; private set; }
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
 
-        private HealthComponent _health;
         private TransformComponent _transform;
-        private RotationComponent _rotationComponent;
         private WeaponComponent _weaponComponent;
         private AbilityComponent _abilityComponent;
-
-        private readonly HPChangeBuilder _hpChangeBuilder = new HPChangeBuilder();
+        private RotationComponent _rotationComponent;
+        
+        private HealthCalculator _healthCalculator;
         
         public void Init(IServiceLocator serviceLocator, BattleMetaData metaData, IWorld world)
         {
             MetaData = metaData;
             
             Init(serviceLocator, world);
-
-            _health = Components.Get<HealthComponent>();
+            
             _transform = Components.Get<TransformComponent>();
             _weaponComponent = Components.Get<WeaponComponent>();
             _abilityComponent = Components.Get<AbilityComponent>();
             _rotationComponent = Components.Get<RotationComponent>();
+
+            _healthCalculator = new HealthCalculator(this);
         }
 
         public void PerformAttack(IActor target, Action onActionEnds = null)
@@ -79,16 +77,14 @@ namespace SF.Battle.Actors
             onActionEnds?.Invoke();
         }
 
-        public void TakeDamage(IActor dealer, IHPChangeProvider provider, HPChangeMeta meta)
+        public void TakeDamage(DamageMeta meta)
         {
-            var calculatedDamage = _hpChangeBuilder.CalculateDamage(dealer, provider, meta);
-            _health.RemoveHealth(calculatedDamage);
+            _healthCalculator.CalculateDamage(meta);
         }
 
-        public void TakeHeal(IActor dealer, IHPChangeProvider provider, HPChangeMeta meta)
+        public void TakeHeal(int amount)
         {
-            var calculatedHeal = _hpChangeBuilder.CalculateTotalHeal(dealer, provider, meta);
-            _health.AddHealth(calculatedHeal);
+           _healthCalculator.CalculateHeal(amount);
         }
 
         private void PlaceInFrontOf(IActor actor)

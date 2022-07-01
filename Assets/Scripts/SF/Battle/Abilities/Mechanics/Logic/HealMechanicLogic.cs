@@ -10,14 +10,12 @@ namespace SF.Battle.Abilities.Mechanics.Logic
         public override void Invoke(BattleActor caster, IActor selected)
         {
             var targets = GetMechanicTargets(caster, selected);
-
-            var casterHealProvider = caster.Components.Get<IHPChangeProvider>();
-            var healMeta = new HPChangeMeta((int)Data.HealAmount);
+            var healAmount = Data.Amount;
 
             foreach (var target in targets)
             {
-                var damageable = target.Components.Get<IHPChangeable>();
-                damageable.TakeHeal(caster, casterHealProvider, healMeta);
+                var damageable = target.Components.Get<IHealthChangeable>();
+                damageable.TakeHeal(healAmount);
             }
         }
 

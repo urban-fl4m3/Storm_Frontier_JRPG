@@ -11,13 +11,24 @@ namespace SF.Battle.Abilities.Mechanics.Logic
         {
             var targets = GetMechanicTargets(caster, selected);
             
-            var casterDamageProvider = caster.Components.Get<IHPChangeProvider>();
-            var damageMeta = new HPChangeMeta((int) Data.Amount);
+            var casterDamageProvider = caster.Components.Get<IDamageProvider>();
+            var damage = casterDamageProvider.GetDamage();
+
+            if (Data.IsFlat)
+            {
+                damage = (int)Data.Amount;
+            }
+            else
+            {
+                damage = (int)(Data.Amount * damage);
+            }
+            
+            var damageMeta = new DamageMeta(damage);
 
             foreach (var target in targets)
             {
-                var damageable = target.Components.Get<IHPChangeable>();
-                damageable.TakeDamage(caster, casterDamageProvider, damageMeta);
+                var damageable = target.Components.Get<IHealthChangeable>();
+                damageable.TakeDamage(damageMeta);
             }
         }
 

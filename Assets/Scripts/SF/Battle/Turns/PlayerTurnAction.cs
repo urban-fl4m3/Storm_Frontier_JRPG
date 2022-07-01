@@ -24,9 +24,10 @@ namespace SF.Battle.Turns
 
         protected override void OnStartTurn(BattleActor actor)
         {
-            actor.Components.Get<CurrentPlayerComponent>().SetSelected(true);
-            
             _model.CurrentActor = actor;
+            
+            actor.Components.Get<PlaceholderComponent>().SetSelected(true);
+            
 
             _playerActionsViewController.ShowView();
             _playerActionsViewController.SetCurrentActor(actor);
@@ -41,7 +42,7 @@ namespace SF.Battle.Turns
         {
             _playerActionsViewController.HideView();
             
-            _model.CurrentActor.Components.Get<CurrentPlayerComponent>().SetSelected(false);
+            _model.CurrentActor.Components.Get<PlaceholderComponent>().SetSelected(false);
 
             _playerActionsViewController.AttackSelected -= HandleAttackSelected;
             _playerActionsViewController.SkillSelected -= HandleSkillSelected;

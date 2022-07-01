@@ -1,10 +1,10 @@
 ﻿namespace SF.Battle.Damage
 {
-    public readonly struct HPChangeMeta
+    public readonly struct DamageMeta
     {
         public readonly int Amount;
         
-        public HPChangeMeta(int amount)
+        public DamageMeta(int amount)
         {
             Amount = amount;
         }

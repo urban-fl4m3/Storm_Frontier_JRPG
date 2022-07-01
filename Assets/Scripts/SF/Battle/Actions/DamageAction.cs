@@ -1,23 +1,17 @@
 ﻿using SF.Battle.Damage;
 using SF.Common.Actors;
-using SF.Common.Actors.Components.Stats;
-using SF.Game.Stats;
 
 namespace SF.Battle.Actions
 {
     public class DamageAction : BattleAction
     {
-        private readonly IActor _actor;
-        private readonly IHPChangeProvider _ihpChangeProvider;
-        private readonly StatsContainerComponent _statsContainer;
+        private readonly IDamageProvider _damageProvider;
 
         private IActor _target;
         
-        public DamageAction(IActor actor)
+        public DamageAction(IDamageProvider damageProvider)
         {
-            _actor = actor;
-            _ihpChangeProvider = actor.Components.Get<IHPChangeProvider>();
-            _statsContainer = actor.Components.Get<StatsContainerComponent>();
+            _damageProvider = damageProvider;
         }
 
         public void SetTarget(IActor target)
@@ -27,9 +21,10 @@ namespace SF.Battle.Actions
         
         public override void Execute()
         {
-            var damageTaker = _target.Components.Get<IHPChangeable>();
-            var attackDamage = _statsContainer.GetStat(PrimaryStat.PPower);
-            damageTaker?.TakeDamage(_actor, _ihpChangeProvider, new HPChangeMeta(attackDamage));
+            var damageTaker = _target.Components.Get<IHealthChangeable>();
+            var attackDamage = _damageProvider.GetDamage();
+            
+            damageTaker?.TakeDamage(new DamageMeta(attackDamage));
         }
     }
 }

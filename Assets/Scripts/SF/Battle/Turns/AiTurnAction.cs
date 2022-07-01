@@ -22,16 +22,16 @@ namespace SF.Battle.Turns
         {
             Services.Logger.Log($"Actor {actor} turn completed");
             
-            actor.Components.Get<CurrentPlayerComponent>().SetSelected(true);
-
             _currentActor = actor;
-
+            
+            _currentActor.Components.Get<PlaceholderComponent>().SetSelected(true);
+            
             _temporaryDelaySub = Observable.FromCoroutine(CalculatePoints).Subscribe();
         }
 
         protected override void Dispose()
         {
-            _currentActor.Components.Get<CurrentPlayerComponent>().SetSelected(false);
+            _currentActor?.Components.Get<PlaceholderComponent>().SetSelected(false);
 
             _temporaryDelaySub?.Dispose();
             _currentActor = null;
