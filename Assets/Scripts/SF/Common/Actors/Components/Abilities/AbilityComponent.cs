@@ -6,18 +6,20 @@ using SF.Battle.Abilities.Factories;
 using SF.Battle.Actions;
 using SF.Battle.Actors;
 using SF.Common.Actors.Actions;
+using SF.Common.Actors.Components.Stats;
 using SF.Common.Data;
 
 namespace SF.Common.Actors.Abilities
 {
     public class AbilityComponent : ActorComponent
     {
-        public IEnumerable<BattleAbilityData> AbilitiesData => _abilities.Keys;
+        public IEnumerable<ActiveBattleAbilityData> AbilitiesData => _abilities.Keys;
         
-        private readonly Dictionary<BattleAbilityData, BattleAbility> _abilities =
-            new Dictionary<BattleAbilityData, BattleAbility>();
+        private readonly Dictionary<ActiveBattleAbilityData, BattleAbility> _abilities =
+            new Dictionary<ActiveBattleAbilityData, BattleAbility>();
 
         private ActionControllerComponent _actionControllerComponent;
+        private ManaComponent _manaComponent;
         private AbilityAction _abilityAction;
 
         protected override void OnInit()
@@ -30,25 +32,24 @@ namespace SF.Common.Actors.Abilities
             }
             
             _actionControllerComponent = Owner.Components.Get<ActionControllerComponent>();
+            _manaComponent = Owner.Components.Get<ManaComponent>();
             _abilityAction = new AbilityAction();
             
             var mechanicsFactory = ServiceLocator.FactoryHolder.Get<MechanicsFactory>();
             
             foreach (var abilityData in caster.MetaData.Info.Config.Abilities)
             {
-                if (abilityData.IsPassive) continue;
-                
                 var mechanicLogics = abilityData.MechanicsData
                     .Select(mechanicData => mechanicsFactory.Create(mechanicData, Owner.World, new DataProvider(ServiceLocator)))
                     .ToList();
 
-                _abilities.Add(abilityData, new BattleAbility(caster, mechanicLogics, abilityData.Pick));
+                _abilities.Add(abilityData, new BattleAbility(caster, abilityData, mechanicLogics, abilityData.Pick));
             }
             
             base.OnInit();
         }
 
-        public BattleAbility GetAbilityData(BattleAbilityData abilityData)
+        public BattleAbility GetAbilityData(ActiveBattleAbilityData abilityData)
         {
             if (!_abilities.ContainsKey(abilityData))
             {
@@ -58,8 +59,18 @@ namespace SF.Common.Actors.Abilities
 
             return _abilities[abilityData];
         }
+
+        public bool CanInvoke(ActiveBattleAbilityData data)
+        {
+            if (!_abilities.ContainsKey(data))
+            {
+                return false;
+            }
+
+            return _manaComponent.Current.Value >= data.ManaCost;
+        }
         
-        public void InvokeSkill(BattleAbilityData abilityData, IActor target, Action onActionComplete = null)
+        public void InvokeSkill(ActiveBattleAbilityData abilityData, IActor target, Action onActionComplete = null)
         {
             if (!_abilities.ContainsKey(abilityData))
             {
@@ -67,9 +78,13 @@ namespace SF.Common.Actors.Abilities
                 return;
             }
 
-            _abilityAction.Target = target;
-            _abilityAction.Ability = _abilities[abilityData];
-            _actionControllerComponent.MakeAction(_abilityAction, onActionComplete);
+            if (CanInvoke(abilityData))
+            {
+                _abilityAction.Target = target;
+                _abilityAction.Ability = _abilities[abilityData];
+                _actionControllerComponent.MakeAction(_abilityAction, onActionComplete);
+                _manaComponent.Remove(abilityData.ManaCost);
+            }
         }
     }
 }

@@ -7,12 +7,9 @@ namespace SF.Battle.Abilities
     public class ActiveBattleAbilityData : BattleAbilityData
     {
         [SerializeField] private TargetSelectionData _selectionData;
-        [SerializeField] private float _manaCost;
-
-        public TargetSelectionData SelectionData => _selectionData;
-        public float ManaCost => _manaCost;
+        [SerializeField] private int _manaCost;
 
         public override TargetPick Pick => _selectionData.Pick;
-        public override bool IsPassive => false;
+        public int ManaCost => _manaCost;
     }
 }

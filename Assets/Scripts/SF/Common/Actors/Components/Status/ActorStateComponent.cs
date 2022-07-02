@@ -40,7 +40,7 @@ namespace SF.Common.Actors.Components.Status
         {
             if (_healthComponent != null && _healthChangeSub == null)
             {
-                _healthChangeSub = _healthComponent.CurrentHealth.SkipLatestValueOnSubscribe()
+                _healthChangeSub = _healthComponent.Current.SkipLatestValueOnSubscribe()
                     .Subscribe(CheckDeadStatus);
             }
         }

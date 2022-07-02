@@ -23,8 +23,6 @@ namespace SF.Battle.Turns
 
         protected override void OnStartTurn()
         {
-            _model.CurrentActor = ActingActor;
-            
             ActingActor.Components.Get<PlaceholderComponent>().SetSelected(true);
             
 
@@ -39,9 +37,11 @@ namespace SF.Battle.Turns
         
         protected override void Dispose()
         {
+            _model.Cancel();
+            ActingActor.Components.Get<PlaceholderComponent>().SetSelected(false);
+            
             _playerActionsViewController.HideView();
             
-            _model.CurrentActor.Components.Get<PlaceholderComponent>().SetSelected(false);
 
             _playerActionsViewController.AttackSelected -= HandleAttackSelected;
             _playerActionsViewController.SkillSelected -= HandleSkillSelected;
@@ -54,20 +54,25 @@ namespace SF.Battle.Turns
             _model.Cancel();
 
             var attackSelectionData = new TargetSelectionData(TargetPick.OppositeTeam);
-            var attackSelectionRule = new TargetSelectionRule(_model.CurrentActor, attackSelectionData);
+            var attackSelectionRule = new TargetSelectionRule(ActingActor, attackSelectionData);
             _model.SetSelectionRules(attackSelectionRule);
             
             AttackAsync().Forget();
         }
 
-        private void HandleSkillSelected(BattleAbilityData abilityData)
+        private void HandleSkillSelected(ActiveBattleAbilityData abilityData)
         {
+            var abilityComponent = ActingActor.Components.Get<AbilityComponent>();
+
+            if (!abilityComponent.CanInvoke(abilityData))
+            {
+                return;
+            }
+            
             _model.Cancel();
 
-            var abilityComponent = _model.CurrentActor.Components.Get<AbilityComponent>();
-            var ability = abilityComponent.GetAbilityData(abilityData);
-            var skillSelectionData = new TargetSelectionData(ability.Pick);
-            var skillSelectionRule = new TargetSelectionRule(_model.CurrentActor, skillSelectionData);
+            var skillSelectionData = new TargetSelectionData(abilityData.Pick);
+            var skillSelectionRule = new TargetSelectionRule(ActingActor, skillSelectionData);
             _model.SetSelectionRules(skillSelectionRule);
 
             UseAbilityAsync(abilityData).Forget();
@@ -84,7 +89,7 @@ namespace SF.Battle.Turns
             _model.Cancel();
             
             var guardSelectionData = new TargetSelectionData(TargetPick.Instant);
-            var guardSelectionRule = new TargetSelectionRule(_model.CurrentActor, guardSelectionData);
+            var guardSelectionRule = new TargetSelectionRule(ActingActor, guardSelectionData);
             _model.SetSelectionRules(guardSelectionRule);
             
             GuardAsync().Forget();
@@ -96,16 +101,16 @@ namespace SF.Battle.Turns
 
             Dispose();
 
-            _model.CurrentActor.PerformAttack(_model.SelectedActor, CompleteTurn);
+            ActingActor.PerformAttack(_model.SelectedActor, CompleteTurn);
         }
 
-        private async UniTaskVoid UseAbilityAsync(BattleAbilityData abilityData)
+        private async UniTaskVoid UseAbilityAsync(ActiveBattleAbilityData abilityData)
         {
             await _model.TargetSelectedCompletionSource.Task;
             
             Dispose();
 
-            _model.CurrentActor.PerformSkill(abilityData, _model.SelectedActor, CompleteTurn);
+            ActingActor.PerformSkill(abilityData, _model.SelectedActor, CompleteTurn);
         }
 
         private async UniTask GuardAsync()
@@ -114,7 +119,7 @@ namespace SF.Battle.Turns
             
             Dispose();
 
-            _model.CurrentActor.PerformGuard(CompleteTurn);
+            ActingActor.PerformGuard(CompleteTurn);
         }
     }
 }

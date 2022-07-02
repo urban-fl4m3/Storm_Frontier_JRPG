@@ -17,7 +17,7 @@ namespace SF.Game.Data.Characters
         [SerializeField] private DefaultCharactersConfig _baseData;
         [SerializeField] private BattleActor _battleActor;
         [SerializeField] private ProfessionData _professionData;
-        [SerializeField] private List<BattleAbilityData> _abilities;
+        [SerializeField] private List<ActiveBattleAbilityData> _abilities;
         [OdinSerialize] private StatContainerData<MainStat> _additionalMainStats;
 
         public string Name => _name;
@@ -25,7 +25,7 @@ namespace SF.Game.Data.Characters
         public BattleActor BattleActor => _battleActor;
         public DefaultCharactersConfig BaseData => _baseData;
         public ProfessionData ProfessionData => _professionData;
-        public IEnumerable<BattleAbilityData> Abilities => _abilities;
+        public IEnumerable<ActiveBattleAbilityData> Abilities => _abilities;
         public StatContainerData<MainStat> AdditionalMainStats => _additionalMainStats;
     }
 }

@@ -6,20 +6,20 @@ using UnityEngine;
 
 namespace SF.UI.Windows
 {
-    public class TeamHealthPanelView: SerializedMonoBehaviour, IView
+    public class TeamInfoView: MonoBehaviour, IView
     {
-        [SerializeField] private HealthBarView _healthBarViewPrefab;
+        [SerializeField] private CharacterInfoView _characterInfoViewPrefab;
 
-        private readonly List<HealthBarView> _healthBars = new List<HealthBarView>();
+        private readonly List<CharacterInfoView> _infoViews = new List<CharacterInfoView>();
         
         public void CreateHealthPanel(BattleActor actor)
         {
-            var healthBarView = Instantiate(_healthBarViewPrefab, transform);
+            var healthBarView = Instantiate(_characterInfoViewPrefab, transform);
             
             if (healthBarView == null) return;
             
             healthBarView.ObserveActorHealth(actor);
-            _healthBars.Add(healthBarView);
+            _infoViews.Add(healthBarView);
         }
         
         public void Show()

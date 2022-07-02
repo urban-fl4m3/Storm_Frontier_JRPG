@@ -4,6 +4,7 @@ using SF.Battle.Common;
 using SF.Battle.Damage;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
+using SF.Common.Actors.Components.Stats;
 using SF.Common.Actors.Components.Transform;
 using SF.Common.Actors.Weapon;
 using SF.Game;
@@ -18,6 +19,7 @@ namespace SF.Battle.Actors
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
 
+        private ManaComponent _manaComponent;
         private TransformComponent _transform;
         private WeaponComponent _weaponComponent;
         private AbilityComponent _abilityComponent;
@@ -30,7 +32,8 @@ namespace SF.Battle.Actors
             MetaData = metaData;
             
             Init(serviceLocator, world);
-            
+
+            _manaComponent = Components.Get<ManaComponent>();
             _transform = Components.Get<TransformComponent>();
             _weaponComponent = Components.Get<WeaponComponent>();
             _abilityComponent = Components.Get<AbilityComponent>();
@@ -52,7 +55,7 @@ namespace SF.Battle.Actors
             });
         }
         
-        public void PerformSkill(BattleAbilityData abilityData, IActor target, Action onActionEnds = null)
+        public void PerformSkill(ActiveBattleAbilityData abilityData, IActor target, Action onActionEnds = null)
         {
             var startPlace = _transform.GetPosition();
             var startLookAtVector = _transform.transform.forward;

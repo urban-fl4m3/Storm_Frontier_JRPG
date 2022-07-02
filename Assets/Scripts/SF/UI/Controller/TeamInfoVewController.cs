@@ -4,12 +4,12 @@ using SF.UI.Windows;
 
 namespace SF.UI.Controller
 {
-    public class TeamHealthBarPanelController : BattleWorldUiController
+    public class TeamInfoVewController : BattleWorldUiController
     {
         private readonly Team _team;
-        private readonly TeamHealthPanelView _view;
+        private readonly TeamInfoView _view;
         
-        public TeamHealthBarPanelController(Team team, TeamHealthPanelView view, IWorld world, IServiceLocator serviceLocator)
+        public TeamInfoVewController(Team team, TeamInfoView view, IWorld world, IServiceLocator serviceLocator)
             : base(world, serviceLocator)
         {
             _team = team;

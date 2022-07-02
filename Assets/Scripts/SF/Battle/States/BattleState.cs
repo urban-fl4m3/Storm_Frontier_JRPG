@@ -12,7 +12,8 @@ namespace SF.Battle.States
     {
         private TurnManager _turnManager;
         private PlayerActionsViewController _playerActionsViewController;
-        private TeamHealthBarPanelController _barPanelController;
+        private TeamInfoVewController _playerTeamInfoController;
+        private TeamInfoVewController _enemyTeamInfoController;
         
         public BattleState(IServiceLocator serviceLocator) : base(serviceLocator)
         {
@@ -41,8 +42,11 @@ namespace SF.Battle.States
             _playerActionsViewController = new PlayerActionsViewController(window.PlayerActionButtonsView, World, ServiceLocator);
             _playerActionsViewController.Enable();
 
-            _barPanelController = new TeamHealthBarPanelController(Team.Enemy, window.TeamHealthPanelView, World, ServiceLocator);
-            _barPanelController.Enable();
+            _playerTeamInfoController = new TeamInfoVewController(Team.Player, window.PlayerTeamInfoView, World, ServiceLocator);
+            _playerTeamInfoController.Enable();
+            
+            _enemyTeamInfoController = new TeamInfoVewController(Team.Enemy, window.EnemyTeamInfoView, World, ServiceLocator);
+            _enemyTeamInfoController.Enable();
         }
 
         private void CreateTurnManager()

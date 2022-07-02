@@ -31,6 +31,11 @@ namespace SF.UI.View
             Clear();
         }
 
+        public void ChangeInteractable(bool isInteractable)
+        {
+            _button.interactable = isInteractable;
+        }
+
         private void Clear()
         {
             _button.onClick.RemoveAllListeners();

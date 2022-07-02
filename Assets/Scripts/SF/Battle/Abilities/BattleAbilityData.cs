@@ -16,6 +16,5 @@ namespace SF.Battle.Abilities
         public IEnumerable<IMechanicData> MechanicsData => _mechanicsData;
         
         public abstract TargetPick Pick { get; }
-        public abstract bool IsPassive { get; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Game;
@@ -12,7 +11,7 @@ namespace SF.UI.Controller
         public event Action GuardSelected = delegate { };
         public event Action AttackSelected = delegate { };
         public event Action<int> ItemSelected = delegate { };
-        public event Action<BattleAbilityData> SkillSelected = delegate { };
+        public event Action<ActiveBattleAbilityData> SkillSelected = delegate { };
 
         private readonly PlayerActionButtonsView _view;
 
@@ -57,9 +56,12 @@ namespace SF.UI.Controller
         private void OnSkillClick()
         {
             _view.ShowAbility();
-            
-            var abilities = _currentActor.MetaData.Info.Config.Abilities.Where(a => !a.IsPassive);
-            _view.SubscribeOnAbilities(abilities, data => SkillSelected?.Invoke(data));
+            _view.SubscribeOnAbilities(_currentActor, OnSkillSeelcted);
+        }
+
+        private void OnSkillSeelcted(ActiveBattleAbilityData data)
+        {
+            SkillSelected?.Invoke(data);
         }
 
         private void OnItemClick()

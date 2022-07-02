@@ -8,7 +8,6 @@ namespace SF.Battle.Turns
 {
     public class PlayerTurnModel
     {
-        public BattleActor CurrentActor { get; set; }
         public BattleActor SelectedActor { get; private set; }
         public UniTaskCompletionSource TargetSelectedCompletionSource { get; private set; }
 

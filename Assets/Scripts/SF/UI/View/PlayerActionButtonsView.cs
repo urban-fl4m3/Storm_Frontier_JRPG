@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using SF.Battle.Abilities;
+using SF.Battle.Actors;
+using SF.Common.Actors.Abilities;
 using SF.UI.Creator;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -44,12 +45,23 @@ namespace SF.UI.View
             gameObject.SetActive(false);
         }
         
-        public void SubscribeOnAbilities(IEnumerable<BattleAbilityData> abilities, Action<BattleAbilityData> skillSelected)
+        public void SubscribeOnAbilities(BattleActor actor, Action<ActiveBattleAbilityData> skillSelected)
         {
+            var abilities = actor.MetaData.Info.Config.Abilities;
+            var abilityComponent = actor.Components.Get<AbilityComponent>();
+            
             foreach (var abilityData in abilities)
             {
                 var button = _buttonsHolder.Get();
 
+                if (!abilityComponent.CanInvoke(abilityData))
+                {
+                    button.ChangeInteractable(false);
+                    
+                    continue;
+                }
+                
+                button.ChangeInteractable(true);
                 button.SetText(abilityData.Name);
                 button.AddActionOnClick(() =>
                 {

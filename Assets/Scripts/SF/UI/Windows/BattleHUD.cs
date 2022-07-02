@@ -6,21 +6,25 @@ namespace SF.UI.Windows
     public class BattleHUD : MonoBehaviour, IWindow
     {
         [SerializeField] private PlayerActionButtonsView _playerActionButtonsView;
-        [SerializeField] private TeamHealthPanelView teamHealthPanelView;
+        [SerializeField] private TeamInfoView _playerTeamInfoView;
+        [SerializeField] private TeamInfoView _enemyTeamInfoView;
 
         public PlayerActionButtonsView PlayerActionButtonsView => _playerActionButtonsView;
-        public TeamHealthPanelView TeamHealthPanelView => teamHealthPanelView;
+        public TeamInfoView PlayerTeamInfoView => _playerTeamInfoView;
+        public TeamInfoView EnemyTeamInfoView => _enemyTeamInfoView;
         
         public void Show()
         {
             _playerActionButtonsView.Show();
-            teamHealthPanelView.Show();
+            _playerTeamInfoView.Show();
+            _enemyTeamInfoView.Show();
         }
 
         public void Hide()
         {
             _playerActionButtonsView.Hide();
-            teamHealthPanelView.Hide();
+            _playerTeamInfoView.Hide();
+            _enemyTeamInfoView.Hide();
         }
         
         public void Close()

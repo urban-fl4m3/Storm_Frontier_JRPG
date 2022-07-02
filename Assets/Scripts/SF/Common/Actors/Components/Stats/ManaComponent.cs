@@ -2,9 +2,9 @@
 
 namespace SF.Common.Actors.Components.Stats
 {
-    public class HealthComponent : BaseResourceStatComponent
+    public class ManaComponent : BaseResourceStatComponent
     {
         protected override int Min => 0;
-        protected override PrimaryStat Stat => PrimaryStat.HP;
+        protected override PrimaryStat Stat => PrimaryStat.MP;
     }
 }
