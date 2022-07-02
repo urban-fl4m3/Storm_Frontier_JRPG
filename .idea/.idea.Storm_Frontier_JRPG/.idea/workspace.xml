@@ -2,48 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Factories/EffectsFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Factories/EffectsFactory.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/Effects.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/Effects/IEffectData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/Effects/IEffectData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/EffectMechanicLogic.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/EffectMechanicLogic.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/ITurnConsumer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/ITurnConsumer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/ITurnPasser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/ITurnPasser.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Effects.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Effects/BaseEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Effects/BaseEffect.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Effects/IEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Effects/IEffect.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Effects/IEffectController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Effects/IEffectController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Effects/StatEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Effects/StatEffect.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Effects.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Effects/EffectsComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Effects/EffectsComponent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/AttackAbilityData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/AttackAbilityData.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/BuffAbilityData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/BuffAbilityData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/DefenseAbilityData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/DefenseAbilityData.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/HealAbilityData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Game/Abilities/Active/HealAbilityData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/WomanWarrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/WomanWarrior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Factories/MechanicsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Factories/MechanicsFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/BuffMechanicData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/Effects/EffectMechanicData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/BuffMechanicData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/Effects/EffectMechanicData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/StatBuffMechanicData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/Effects/StatEffectMechanicData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/StatBuffMechanicData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Data/Effects/StatEffectMechanicData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/HealMechanicLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Abilities/Mechanics/Logic/HealMechanicLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/IStatContainerConsumer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Stats/IStatContainerConsumer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/AiTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/AiTurnAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/BaseTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/BaseTurnAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/TurnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Abilities/AbilityComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Abilities/AbilityComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Effects/EffectsComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Effects/EffectsComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Stats/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Stats/HealthComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Stats/StatsContainerComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Stats/StatsContainerComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Weapon/WeaponComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Weapon/WeaponComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,6 +56,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.16f1\Editor\Unity.exe" />
@@ -107,10 +81,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5984">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="5984" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -176,6 +150,7 @@
       <workItem from="1656453810067" duration="764000" />
       <workItem from="1656454601548" duration="4259000" />
       <workItem from="1656696683576" duration="4945000" />
+      <workItem from="1656753681489" duration="1585000" />
     </task>
     <servers />
   </component>

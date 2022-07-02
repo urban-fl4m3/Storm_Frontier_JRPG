@@ -32,7 +32,7 @@ MonoBehaviour:
       Data: 1|SF.Battle.Abilities.Mechanics.Data.StatEffectMechanicData, Assembly-CSharp
     - Name: _pick
       Entry: 3
-      Data: 0
+      Data: 2
     - Name: _isStackable
       Entry: 5
       Data: false
@@ -62,5 +62,5 @@ MonoBehaviour:
       Data: 
   _name: Buff
   _selectionData:
-    _pick: 3
+    _pick: 1
   _manaCost: 5

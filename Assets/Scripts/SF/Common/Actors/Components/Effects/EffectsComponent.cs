@@ -30,9 +30,9 @@ namespace SF.Common.Actors.Effects
             {
                 if (!data.IsStackable)
                 {
-                    var notStackableEffectController = _appliedEffects[data].First();
-                    notStackableEffectController.Refresh(data);
-                    
+                    var notStackableEffectController = _appliedEffects[data].FirstOrDefault();
+                    notStackableEffectController?.Refresh(data);
+
                     return;
                 }
             }
@@ -50,11 +50,6 @@ namespace SF.Common.Actors.Effects
                 effect.Cancel();
 
                 _appliedEffects[data].Remove(effect);
-
-                if (_appliedEffects[data].Count == 0)
-                {
-                    _appliedEffects.Remove(data);
-                }
             }
         }
     }

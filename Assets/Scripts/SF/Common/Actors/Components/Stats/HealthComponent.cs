@@ -63,8 +63,10 @@ namespace SF.Common.Actors.Components.Stats
 
         private void UpdateMaxHealth()
         {
-            _maxHealth.Value = _statsDataContainer.GetStat(PrimaryStat.HP);
-            _currentHealth.Value += _maxHealth.Value - _currentHealth.Value;
+            var newMaxHealth = _statsDataContainer.GetStat(PrimaryStat.HP);
+            var diff = newMaxHealth - _maxHealth.Value;
+            _maxHealth.Value = newMaxHealth;
+            _currentHealth.Value += diff;
         }
     }
 }

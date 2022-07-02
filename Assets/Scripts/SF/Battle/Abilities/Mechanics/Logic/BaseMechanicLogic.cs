@@ -12,7 +12,6 @@ namespace SF.Battle.Abilities.Mechanics.Logic
     {
         protected TMechanicData Data { get; private set; }
         protected BattleWorld World { get; private set; }
-        protected BattleActor Caster { get; private set; }
         protected IServiceLocator ServiceLocator { get; private set; }
         
         public void SetFactoryMeta(IDataProvider dataProvider)
@@ -20,7 +19,6 @@ namespace SF.Battle.Abilities.Mechanics.Logic
             if (dataProvider != null)
             {
                 World = dataProvider.GetData<BattleWorld>();
-                Caster = dataProvider.GetData<BattleActor>();
                 ServiceLocator = dataProvider.GetData<IServiceLocator>();
             }
         }

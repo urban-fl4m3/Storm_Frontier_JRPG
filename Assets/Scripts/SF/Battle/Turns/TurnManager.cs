@@ -3,7 +3,6 @@ using System.Linq;
 using SF.Battle.Actors;
 using SF.Game;
 using SF.UI.Controller;
-using UniRx;
 
 namespace SF.Battle.Turns
 {
@@ -12,9 +11,7 @@ namespace SF.Battle.Turns
         private readonly BattleWorld _world;
         private readonly IServiceLocator _serviceLocator;
         private readonly Dictionary<Team, ITurnAction> _turnActions;
-
         private readonly Queue<BattleActor> _waitingActors = new Queue<BattleActor>();
-        private readonly ReactiveProperty<BattleActor> _activeActor = new ReactiveProperty<BattleActor>();
 
         private ITurnAction _currentTurn;
         
@@ -35,8 +32,6 @@ namespace SF.Battle.Turns
             ValidateQueue();
 
             var actor = _waitingActors.Dequeue();
-            
-            _activeActor.Value = actor;
 
             var actingTeam = actor.Team;
 
@@ -49,7 +44,7 @@ namespace SF.Battle.Turns
             }
             else
             {
-                _serviceLocator.Logger.LogWarning($"Team {actingTeam} for {_activeActor} cant make turn...");
+                _serviceLocator.Logger.LogWarning($"Team {actingTeam} for {actor} cant make turn...");
                 OnTurnCompleted();
             }
         }

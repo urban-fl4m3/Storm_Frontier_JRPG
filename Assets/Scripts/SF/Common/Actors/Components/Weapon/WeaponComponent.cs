@@ -22,7 +22,7 @@ namespace SF.Common.Actors.Weapon
         public int GetDamage()
         {
             const bool isMagicWeapon = false;
-            const int weaponMight = 150;
+            const int weaponMight = 50;
 
             var damageType = PrimaryStat.PPower;
             

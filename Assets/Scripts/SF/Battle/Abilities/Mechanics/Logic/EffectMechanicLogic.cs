@@ -14,7 +14,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
             foreach (var target in targets)
             {
                 var damageable = target.Components.Get<EffectsComponent>();
-                damageable.Apply(Data, Caster);
+                damageable.Apply(Data, caster);
             }
         }
 

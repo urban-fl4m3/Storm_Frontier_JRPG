@@ -12,6 +12,8 @@ namespace SF.Common.Actors.Abilities
 {
     public class AbilityComponent : ActorComponent
     {
+        public IEnumerable<BattleAbilityData> AbilitiesData => _abilities.Keys;
+        
         private readonly Dictionary<BattleAbilityData, BattleAbility> _abilities =
             new Dictionary<BattleAbilityData, BattleAbility>();
 
@@ -56,7 +58,7 @@ namespace SF.Common.Actors.Abilities
 
             return _abilities[abilityData];
         }
-
+        
         public void InvokeSkill(BattleAbilityData abilityData, IActor target, Action onActionComplete = null)
         {
             if (!_abilities.ContainsKey(abilityData))
