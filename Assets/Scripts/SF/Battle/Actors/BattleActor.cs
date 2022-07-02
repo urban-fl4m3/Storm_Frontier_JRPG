@@ -10,8 +10,10 @@ using SF.Game;
 
 namespace SF.Battle.Actors
 {
-    public class BattleActor : Actor, IHealthChangeable
+    public class BattleActor : Actor, IHealthChangeable, ITurnConsumer
     {
+        public event Action TurnPassed;
+        
         public BattleMetaData MetaData { get; private set; }
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
@@ -63,7 +65,6 @@ namespace SF.Battle.Actors
                _transform.SetPosition(startPlace);
                _rotationComponent.LookAt(startLookAtVector);
            });
-           
         }
 
         public void PerformUseItem(int itemIndex, IActor target, Action onActionEnds = null)
@@ -96,6 +97,11 @@ namespace SF.Battle.Actors
                 _transform.SetPosition(place.transform.position);
                 _rotationComponent.LookAt(actorTransform.position - place.position);
             }
+        }
+        
+        public void EndTurn()
+        {
+            TurnPassed?.Invoke();    
         }
     }
 }

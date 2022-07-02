@@ -1,6 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
 using SF.Battle.Abilities;
-using SF.Battle.Actors;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
@@ -22,15 +21,15 @@ namespace SF.Battle.Turns
             _model = new PlayerTurnModel(world);
         }
 
-        protected override void OnStartTurn(BattleActor actor)
+        protected override void OnStartTurn()
         {
-            _model.CurrentActor = actor;
+            _model.CurrentActor = ActingActor;
             
-            actor.Components.Get<PlaceholderComponent>().SetSelected(true);
+            ActingActor.Components.Get<PlaceholderComponent>().SetSelected(true);
             
 
             _playerActionsViewController.ShowView();
-            _playerActionsViewController.SetCurrentActor(actor);
+            _playerActionsViewController.SetCurrentActor(ActingActor);
             
             _playerActionsViewController.AttackSelected += HandleAttackSelected;
             _playerActionsViewController.SkillSelected += HandleSkillSelected;

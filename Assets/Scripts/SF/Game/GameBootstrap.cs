@@ -29,6 +29,7 @@ namespace SF.Game
             _playerState = new PlayerState();
 
             _serviceLocator.FactoryHolder.Add(new MechanicsFactory());
+            _serviceLocator.FactoryHolder.Add(new EffectsFactory());
             _serviceLocator.TickProcessor.Start();
 
             _gameStateMachine = new GameStateMachine(_serviceLocator);

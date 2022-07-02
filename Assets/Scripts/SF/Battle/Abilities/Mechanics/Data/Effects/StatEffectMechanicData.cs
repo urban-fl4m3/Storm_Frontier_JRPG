@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SF.Battle.Abilities.Mechanics.Data
 {
     [Serializable]
-    public class StatBuffMechanicData : BuffMechanicData
+    public class StatEffectMechanicData : EffectMechanicData
     {
         [SerializeField] private PrimaryStat _stat;
         [SerializeField] private bool _isFlatBoost;

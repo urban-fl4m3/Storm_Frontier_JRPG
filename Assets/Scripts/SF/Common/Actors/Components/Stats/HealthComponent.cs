@@ -49,12 +49,22 @@ namespace SF.Common.Actors.Components.Stats
                     statsContainerInitSub?.Dispose();
                     base.OnInit();
                 });
+            
+            _statsDataContainer.PrimaryStatChanged += OnStatChange;
+        }
+
+        private void OnStatChange(PrimaryStat stat)
+        {
+            if (stat == PrimaryStat.HP)
+            {
+                UpdateMaxHealth();
+            }
         }
 
         private void UpdateMaxHealth()
         {
             _maxHealth.Value = _statsDataContainer.GetStat(PrimaryStat.HP);
-            _currentHealth.Value = _maxHealth.Value;
+            _currentHealth.Value += _maxHealth.Value - _currentHealth.Value;
         }
     }
 }

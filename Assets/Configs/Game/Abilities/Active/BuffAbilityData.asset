@@ -29,16 +29,19 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|SF.Battle.Abilities.Mechanics.Data.StatBuffMechanicData, Assembly-CSharp
+      Data: 1|SF.Battle.Abilities.Mechanics.Data.StatEffectMechanicData, Assembly-CSharp
     - Name: _pick
       Entry: 3
       Data: 0
+    - Name: _isStackable
+      Entry: 5
+      Data: false
     - Name: _hasDuration
       Entry: 5
       Data: false
     - Name: _rounds
       Entry: 3
-      Data: 2
+      Data: 0
     - Name: _stat
       Entry: 3
       Data: 0
@@ -47,7 +50,7 @@ MonoBehaviour:
       Data: false
     - Name: _statBoostValue
       Entry: 4
-      Data: 2
+      Data: 100
     - Name: 
       Entry: 8
       Data: 
@@ -59,5 +62,5 @@ MonoBehaviour:
       Data: 
   _name: Buff
   _selectionData:
-    _pick: 2
+    _pick: 3
   _manaCost: 5

@@ -1,26 +1,26 @@
 ﻿using SF.Battle.Abilities.Mechanics.Data;
 using SF.Battle.Actors;
-using SF.Battle.Damage;
 using SF.Common.Actors;
+using SF.Common.Actors.Effects;
 
 namespace SF.Battle.Abilities.Mechanics.Logic
 {
-    public class HealMechanicLogic : BaseMechanicLogic<HealMechanicData>
+    public class EffectMechanicLogic : BaseMechanicLogic<EffectMechanicData>
     {
         public override void Invoke(BattleActor caster, IActor selected)
         {
             var targets = GetMechanicTargets(caster, selected);
-            var healAmount = Data.Amount;
 
             foreach (var target in targets)
             {
-                var damageable = target.Components.Get<IHealthChangeable>();
-                damageable.TakeHeal(healAmount);
+                var damageable = target.Components.Get<EffectsComponent>();
+                damageable.Apply(Data, Caster);
             }
         }
 
-        protected override void OnDataSet(HealMechanicData data)
+        protected override void OnDataSet(EffectMechanicData data)
         {
+            
         }
     }
 }

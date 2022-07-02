@@ -1,4 +1,5 @@
-﻿using SF.Battle.Actors;
+﻿using System;
+using SF.Battle.Actors;
 using SF.Battle.Stats;
 using SF.Game.Data;
 using SF.Game.Stats;
@@ -9,6 +10,9 @@ namespace SF.Common.Actors.Components.Stats
     public class StatsContainerComponent : ActorComponent, IReadOnlyStatContainer<MainStat>, IReadOnlyStatContainer<PrimaryStat>,
         IStatContainerConsumer<MainStat>, IStatContainerConsumer<PrimaryStat>
     {
+        public event Action<MainStat> MainStatChanged;
+        public event Action<PrimaryStat> PrimaryStatChanged;
+        
         [SerializeField] private StatScaleConfig _statScaleConfig;
         
         private StatContainer _stats;
@@ -17,13 +21,29 @@ namespace SF.Common.Actors.Components.Stats
 
         public int GetStat(PrimaryStat stat) => _stats.GetStat(stat);
 
-        public void SetStatValue(MainStat stat, int value) => _stats.SetStatValue(stat, value);
+        public void SetStatValue(MainStat stat, int value)
+        {
+            _stats.SetStatValue(stat, value);
+            MainStatChanged?.Invoke(stat);
+        }
 
-        public void AddStatValue(MainStat stat, int value) => _stats.AddStatValue(stat, value);
+        public void AddStatValue(MainStat stat, int value)
+        {
+            _stats.AddStatValue(stat, value);
+            MainStatChanged?.Invoke(stat);
+        }
 
-        public void SetStatValue(PrimaryStat stat, int value) => _stats.SetStatValue(stat, value);
+        public void SetStatValue(PrimaryStat stat, int value)
+        {
+            _stats.SetStatValue(stat, value);
+            PrimaryStatChanged?.Invoke(stat);
+        }
 
-        public void AddStatValue(PrimaryStat stat, int value) => _stats.AddStatValue(stat, value);
+        public void AddStatValue(PrimaryStat stat, int value)
+        {
+            _stats.AddStatValue(stat, value);
+            PrimaryStatChanged?.Invoke(stat);
+        }
         
         protected override void OnInit()
         {

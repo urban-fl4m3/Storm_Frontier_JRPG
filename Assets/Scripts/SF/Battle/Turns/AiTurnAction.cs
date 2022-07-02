@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using SF.Battle.Actors;
 using SF.Common.Actors;
 using SF.Game;
 using UniRx;
@@ -11,30 +10,28 @@ namespace SF.Battle.Turns
     public class AiTurnAction : BaseTurnAction
     {
         private IDisposable _temporaryDelaySub;
-        private IActor _currentActor;
-        
+
         public AiTurnAction(IServiceLocator services, BattleWorld world) : base(services, world)
         {
-            
         }
 
-        protected override void OnStartTurn(BattleActor actor)
+        protected override void OnStartTurn()
         {
-            Services.Logger.Log($"Actor {actor} turn completed");
-            
-            _currentActor = actor;
-            
-            _currentActor.Components.Get<PlaceholderComponent>().SetSelected(true);
-            
+            Services.Logger.Log($"Actor {ActingActor} turn completed");
+
+            ActingActor.Components.Get<PlaceholderComponent>().SetSelected(true);
+
             _temporaryDelaySub = Observable.FromCoroutine(CalculatePoints).Subscribe();
         }
 
         protected override void Dispose()
         {
-            _currentActor?.Components.Get<PlaceholderComponent>().SetSelected(false);
+            if (ActingActor != null)
+            {
+                ActingActor.Components.Get<PlaceholderComponent>().SetSelected(false);
+            }
 
             _temporaryDelaySub?.Dispose();
-            _currentActor = null;
         }
 
         private IEnumerator CalculatePoints()

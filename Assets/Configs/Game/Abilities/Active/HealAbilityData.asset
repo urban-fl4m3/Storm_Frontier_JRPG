@@ -30,10 +30,10 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|SF.Battle.Abilities.Mechanics.Data.HealMechanicData, Assembly-CSharp
-    - Name: _isFlat
-      Entry: 5
-      Data: true
-    - Name: _healAmount
+    - Name: _pick
+      Entry: 3
+      Data: 0
+    - Name: _amount
       Entry: 3
       Data: 50
     - Name: 
@@ -46,7 +46,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Heal
-  _targetPick: 2
   _selectionData:
-    _pick: 2
+    _pick: 0
   _manaCost: 1

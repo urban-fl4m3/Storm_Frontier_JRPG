@@ -11,6 +11,7 @@ namespace SF.Battle.Turns
 
         protected IServiceLocator Services { get; }
         protected BattleWorld World { get; }
+        protected BattleActor ActingActor { get; private set; }
         
         protected BaseTurnAction(IServiceLocator services, BattleWorld world)
         {
@@ -20,9 +21,11 @@ namespace SF.Battle.Turns
 
         public void MakeTurn(BattleActor actor)
         {
-            if (CanMakeTurn(actor))
+            ActingActor = actor;
+            
+            if (CanMakeTurn())
             {
-                OnStartTurn(actor);
+                OnStartTurn();
             }
             else
             {
@@ -30,7 +33,7 @@ namespace SF.Battle.Turns
             }
         }
 
-        protected abstract void OnStartTurn(BattleActor actor);
+        protected abstract void OnStartTurn();
 
         protected abstract void Dispose();
 
@@ -41,9 +44,9 @@ namespace SF.Battle.Turns
             TurnCompleted?.Invoke();
         }
 
-        private bool CanMakeTurn(BattleActor actor)
+        private bool CanMakeTurn()
         {
-            var stateComponent = actor.Components.Get<ActorStateComponent>();
+            var stateComponent = ActingActor.Components.Get<ActorStateComponent>();
 
             return stateComponent.State.Value != ActorState.Dead;
         }
