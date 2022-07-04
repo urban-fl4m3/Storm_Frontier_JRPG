@@ -3,6 +3,7 @@ using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.Data;
 using SF.Battle.Field;
+using SF.Common.Cinemachine;
 using SF.Game.Player;
 
 namespace SF.Game
@@ -11,6 +12,7 @@ namespace SF.Game
     {
         public BattleField Field { get; }
         public IEnumerable<BattleActor> ActingActors => _battleActorRegisterer.ActingActors;
+        public CinemachineModel CameraModel;
         
         private readonly BattleActorFactory _battleActorFactory;
         private readonly BattlleActorRegisterer _battleActorRegisterer;
@@ -20,9 +22,11 @@ namespace SF.Game
             IServiceLocator serviceLocator, 
             IPlayerState playerState,
             BattleField field,
-            IEnumerable<BattleCharacterInfo> enemiesData) : base(serviceLocator, playerState)
+            IEnumerable<BattleCharacterInfo> enemiesData,
+            CinemachineModel model) : base(serviceLocator, playerState)
         {
             Field = field;
+            CameraModel = model;
             
             _enemiesData = enemiesData;
             _battleActorRegisterer = new BattlleActorRegisterer(serviceLocator.Logger);

@@ -2,6 +2,7 @@
 using Cysharp.Threading.Tasks;
 using SF.Battle.Actors;
 using SF.Battle.TargetSelection;
+using SF.Common.Actors;
 using SF.Game;
 
 namespace SF.Battle.Turns
@@ -29,6 +30,10 @@ namespace SF.Battle.Turns
             {
                 targetSelectionRule.TargetSelected -= HandleTargetSelected;
                 SelectedActor = target;
+
+                if (SelectedActor != null)
+                    _world.CameraModel.OnSetTarget(
+                        SelectedActor.Components.Get<CinemachineTargetComponent>().LookAtPosition, 1);
 
                 TargetSelectedCompletionSource.TrySetResult();
             }

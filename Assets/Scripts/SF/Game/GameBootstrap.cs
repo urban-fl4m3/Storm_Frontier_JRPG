@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using SF.Battle.Abilities.Factories;
 using SF.Battle.Data;
+using SF.Common.Cinemachine;
 using SF.Game.Data.Characters;
 using SF.Game.Initializers;
 using SF.Game.Player;
@@ -17,8 +18,10 @@ namespace SF.Game
         [OdinSerialize] private IWorldInitializer _worldInitializer;
         [OdinSerialize] private IWindowController _windowController;
         [SerializeField] private List<GameCharacterConfig> _playerCharacters;
+        [SerializeField] private CinemachineView _cinemachineView;
 
         private GameStateMachine _gameStateMachine;
+        private CinemachineController _cinemachineController;
         private IServiceLocator _serviceLocator;
         private IPlayerState _playerState;
         private IWorld _currentWorld;
@@ -32,8 +35,12 @@ namespace SF.Game
             _serviceLocator.FactoryHolder.Add(new EffectsFactory());
             _serviceLocator.TickProcessor.Start();
 
+            var model = new CinemachineModel();
+            _cinemachineController = new CinemachineController(_cinemachineView, model);
+            _cinemachineController.Init();
+
             _gameStateMachine = new GameStateMachine(_serviceLocator);
-            _currentWorld = _worldInitializer.CreateWorld(_serviceLocator, _playerState);
+            _currentWorld = _worldInitializer.CreateWorld(_serviceLocator, _playerState, model);
             
             AddDebugCharacterToPlayer();
             
