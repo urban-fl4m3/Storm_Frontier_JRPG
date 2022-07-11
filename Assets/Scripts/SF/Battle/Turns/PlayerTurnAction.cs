@@ -28,11 +28,13 @@ namespace SF.Battle.Turns
         {
             ActingActor.Components.Get<PlaceholderComponent>().SetSelected(true);
             var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
+            var enemyLookAtPosition = World.ActingActors.FirstOrDefault(a => a.Team == Team.Enemy)
+                ?.Components
+                .Get<CinemachineTargetComponent>().LookAtPosition;
 
             World.CameraModel.OnSetCameraPosition(cinemachineComponent.CameraPosition);
             World.CameraModel.OnSetTarget(cinemachineComponent.LookAtPosition, 0);
-            World.CameraModel.OnSetTarget(
-                World.ActingActors.Where(a => a.Team == Team.Enemy).FirstOrDefault()?.transform, 1);
+            World.CameraModel.OnSetTarget(enemyLookAtPosition, 1);
 
             _playerActionsViewController.ShowView();
             _playerActionsViewController.SetCurrentActor(ActingActor);

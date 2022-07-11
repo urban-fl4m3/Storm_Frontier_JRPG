@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Test.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/CustomPlayer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/CustomPlayer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufDecorator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufDecorator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufEffect.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufTypes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufTypes.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/IDeBufProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/IDeBufProvider.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/PlayerDeBufContainer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/PlayerDeBufContainer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/PlayerDeBufStatus.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/PlayerDeBufStatus.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/SceneTemplateSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/AiTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/AiTurnAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +150,7 @@
       <workItem from="1656957337761" duration="3359000" />
       <workItem from="1657565322689" duration="63000" />
       <workItem from="1657565496906" duration="3033000" />
+      <workItem from="1657568674589" duration="325000" />
     </task>
     <servers />
   </component>

@@ -23,7 +23,16 @@ namespace SF.Battle.Turns
         {
             Services.Logger.Log($"Actor {ActingActor} turn completed");
 
+            var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
+            var playerLookAtPosition = World.ActingActors.FirstOrDefault(a => a.Team == Team.Player)
+                ?.Components
+                .Get<CinemachineTargetComponent>().LookAtPosition;
+
             ActingActor.Components.Get<PlaceholderComponent>().SetSelected(true);
+
+            World.CameraModel.OnSetCameraPosition(cinemachineComponent.CameraPosition);
+            World.CameraModel.OnSetTarget(cinemachineComponent.LookAtPosition, 0);
+            World.CameraModel.OnSetTarget(playerLookAtPosition, 1);
 
             _temporaryDelaySub = Observable.FromCoroutine(CalculatePoints).Subscribe();
         }
@@ -54,13 +63,17 @@ namespace SF.Battle.Turns
                 var randomAbility = abilities[randomAbilityIndex];
 
                 var target = SelectRandomTarget(randomAbility.Pick);
-                
+
                 ActingActor.PerformSkill(randomAbility, target, CompleteTurn);
+
+                SetTarget(target);
             }
             else
             {
                 var target = SelectRandomTarget(TargetPick.OppositeTeam);
                 ActingActor.PerformAttack(target, CompleteTurn);
+
+                SetTarget(target);
             }
         }
 
@@ -82,7 +95,7 @@ namespace SF.Battle.Turns
                 {
                     return x.Team != ActingActor.Team;
                 }
-                
+
                 return true;
             }).ToList();
 
@@ -90,6 +103,13 @@ namespace SF.Battle.Turns
             var randomActor = actors[randomActorIndex];
 
             return randomActor;
+        }
+
+        private void SetTarget(IActor actor)
+        {
+            var lookAtPosition = actor.Components.Get<CinemachineTargetComponent>().LookAtPosition;
+
+            World.CameraModel.OnSetTarget(lookAtPosition, 1);
         }
     }
 }
