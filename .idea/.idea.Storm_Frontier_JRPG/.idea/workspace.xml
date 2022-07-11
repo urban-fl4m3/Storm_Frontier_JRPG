@@ -2,23 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/CinemachineTargetComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/CinemachineTargetComponent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Cinemachine.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Cinemachine/CinemachineController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Cinemachine/CinemachineController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Cinemachine/CinemachineModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Cinemachine/CinemachineModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Cinemachine/CinemachineView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Common/Cinemachine/CinemachineView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/CustomPlayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/CustomPlayer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufDecorator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufDecorator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufEffect.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufEffect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufTypes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/DeBufTypes.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/IDeBufProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/IDeBufProvider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/PlayerDeBufContainer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/PlayerDeBufContainer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/PlayerDeBufStatus.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Test/Runtime/PlayerDeBufStatus.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/SceneTemplateSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/WomanWarrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Battle/Characters/Main/Prefabs/WomanWarrior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/GameBootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Initializers/IWorldInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Game/Initializers/IWorldInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/World/BattleWorld.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,15 +65,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "XThreadsFramesViewSplitterKey": "0.49747476",
-    "rider.run.widget.enabled.cache": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49747476&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.16f1\Editor\Unity.exe" />
@@ -92,10 +93,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="84260">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="84260" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -164,6 +165,8 @@
       <workItem from="1656753681489" duration="1951000" />
       <workItem from="1656779340598" duration="8131000" />
       <workItem from="1656957337761" duration="3359000" />
+      <workItem from="1657565322689" duration="63000" />
+      <workItem from="1657565496906" duration="3033000" />
     </task>
     <servers />
   </component>
