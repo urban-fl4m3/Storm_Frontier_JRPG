@@ -53,6 +53,7 @@ namespace SF.Battle.Turns
             _temporaryDelaySub.Dispose();
 
             var chanceToUseSkill = Random.Range(0, 100);
+            IActor target;
 
             if (chanceToUseSkill >= 30)
             {
@@ -62,19 +63,16 @@ namespace SF.Battle.Turns
                 var randomAbilityIndex = Random.Range(0, abilities.Length);
                 var randomAbility = abilities[randomAbilityIndex];
 
-                var target = SelectRandomTarget(randomAbility.Pick);
-
+                target = SelectRandomTarget(randomAbility.Pick);
                 ActingActor.PerformSkill(randomAbility, target, CompleteTurn);
-
-                SetTarget(target);
             }
             else
             {
-                var target = SelectRandomTarget(TargetPick.OppositeTeam);
+                target = SelectRandomTarget(TargetPick.OppositeTeam);
                 ActingActor.PerformAttack(target, CompleteTurn);
-
-                SetTarget(target);
             }
+            
+            SetTarget(target);
         }
 
         private IActor SelectRandomTarget(TargetPick pick)
