@@ -31,10 +31,6 @@ namespace SF.Battle.Turns
                 targetSelectionRule.TargetSelected -= HandleTargetSelected;
                 SelectedActor = target;
 
-                if (SelectedActor != null)
-                    _world.CameraModel.OnSetTarget(
-                        SelectedActor.Components.Get<CinemachineTargetComponent>().LookAtPosition, 1);
-
                 TargetSelectedCompletionSource.TrySetResult();
             }
         }

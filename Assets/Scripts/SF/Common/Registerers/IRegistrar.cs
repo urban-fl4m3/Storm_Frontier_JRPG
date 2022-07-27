@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SF.Common.Registerers
 {
-    public interface IRegisterer<T> where T : class
+    public interface IRegistrar<T> where T : class
     {
         event EventHandler<T> ObjectRegistered;
         event EventHandler<T> ObjectUnregistered; 

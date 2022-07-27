@@ -21,15 +21,15 @@ namespace SF.Common.Actors.Weapon
 
         public int GetDamage()
         {
-            const bool isMagicWeapon = false;
+            // const bool isMagicWeapon = false;
             const int weaponMight = 50;
 
             var damageType = PrimaryStat.PPower;
             
-            if (isMagicWeapon)
-            {
-                damageType = PrimaryStat.MPower;
-            }
+            // if (isMagicWeapon)
+            // {
+            //     damageType = PrimaryStat.MPower;
+            // }
 
             var might = _statsContainerComponent.GetStat(damageType);
             return might + weaponMight;

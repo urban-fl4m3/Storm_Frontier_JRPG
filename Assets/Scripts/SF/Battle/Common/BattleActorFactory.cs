@@ -6,14 +6,14 @@ namespace SF.Battle.Common
 {
     public class BattleActorFactory : ActorFactory
     {
-        private readonly BattlleActorRegisterer _registerer;
+        private readonly BattlleActorRegistrar _registrar;
         private readonly IServiceLocator _serviceLocator;
 
         public BattleActorFactory(
-            BattlleActorRegisterer registerer,
+            BattlleActorRegistrar registrar,
             IServiceLocator serviceLocator)
         {
-            _registerer = registerer;
+            _registrar = registrar;
             _serviceLocator = serviceLocator;
         }
 
@@ -32,7 +32,7 @@ namespace SF.Battle.Common
                 return null;
             }
 
-            var isAdded = _registerer.Register(actor, metaData.Team);
+            var isAdded = _registrar.Register(actor, metaData.Team);
 
             if (isAdded)
             {

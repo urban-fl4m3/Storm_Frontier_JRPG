@@ -5,7 +5,7 @@ using SF.Common.Registerers;
 
 namespace SF.Common.Actors
 {
-    public abstract class ActorRegisterer<TActor> : IRegisterer<TActor> where TActor : class, IActor
+    public abstract class ActorRegistrar<TActor> : IRegistrar<TActor> where TActor : class, IActor
     {
         public event EventHandler<TActor> ObjectRegistered;
         public event EventHandler<TActor> ObjectUnregistered;
@@ -13,7 +13,7 @@ namespace SF.Common.Actors
         protected IDebugLogger Logger { get; }
         protected HashSet<TActor> RegisteredActors { get; }
 
-        protected ActorRegisterer(IDebugLogger logger)
+        protected ActorRegistrar(IDebugLogger logger)
         {
             Logger = logger;
             RegisteredActors = new HashSet<TActor>();

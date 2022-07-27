@@ -1,10 +1,9 @@
-﻿using System.Linq;
+﻿using System;
 using Cysharp.Threading.Tasks;
 using SF.Battle.Abilities;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
-using SF.Common.Cinemachine;
 using SF.Game;
 using SF.UI.Controller;
 using UnityEngine;
@@ -28,13 +27,10 @@ namespace SF.Battle.Turns
         {
             ActingActor.Components.Get<PlaceholderComponent>().SetSelected(true);
             var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
-            var enemyLookAtPosition = World.ActingActors.FirstOrDefault(a => a.Team == Team.Enemy)
-                ?.Components
-                .Get<CinemachineTargetComponent>().LookAtPosition;
 
-            World.CameraModel.OnSetCameraPosition(cinemachineComponent.CameraPosition);
-            World.CameraModel.OnSetTarget(cinemachineComponent.LookAtPosition, 0);
-            World.CameraModel.OnSetTarget(enemyLookAtPosition, 1);
+            var camera = Services.CameraHolder.GetMainCamera();
+            camera.SetPosition(cinemachineComponent.CameraPosition);
+            camera.SetTarget(cinemachineComponent.LookAtPosition, 0);
 
             _playerActionsViewController.ShowView();
             _playerActionsViewController.SetCurrentActor(ActingActor);
@@ -57,17 +53,20 @@ namespace SF.Battle.Turns
             _playerActionsViewController.SkillSelected -= HandleSkillSelected;
             _playerActionsViewController.ItemSelected -= HandleItemSelected;
             _playerActionsViewController.GuardSelected -= HandleGuardSelected;
+            
+            var camera = Services.CameraHolder.GetMainCamera();
+            camera.Clear();
         }
 
         private void HandleAttackSelected()
         {
-            _model.Cancel();
 
             var attackSelectionData = new TargetSelectionData(TargetPick.OppositeTeam);
             var attackSelectionRule = new TargetSelectionRule(ActingActor, attackSelectionData);
-            _model.SetSelectionRules(attackSelectionRule);
-
-            AttackAsync().Forget();
+            
+            MakeAsyncAction(attackSelectionRule,  
+                () => ActingActor.PerformAttack(_model.SelectedActor, CompleteTurn))
+                .Forget();
         }
 
         private void HandleSkillSelected(ActiveBattleAbilityData abilityData)
@@ -79,13 +78,12 @@ namespace SF.Battle.Turns
                 return;
             }
 
-            _model.Cancel();
-
             var skillSelectionData = new TargetSelectionData(abilityData.Pick);
             var skillSelectionRule = new TargetSelectionRule(ActingActor, skillSelectionData);
-            _model.SetSelectionRules(skillSelectionRule);
-
-            UseAbilityAsync(abilityData).Forget();
+            
+            MakeAsyncAction(skillSelectionRule,
+                () =>  ActingActor.PerformSkill(abilityData, _model.SelectedActor, CompleteTurn))
+                .Forget();
         }
 
         private void HandleItemSelected(int itemIndex)
@@ -93,42 +91,31 @@ namespace SF.Battle.Turns
             Debug.Log($"Item {itemIndex}!");
             CompleteTurn();
         }
-
+        
         private void HandleGuardSelected()
         {
-            _model.Cancel();
-
             var guardSelectionData = new TargetSelectionData(TargetPick.Instant);
             var guardSelectionRule = new TargetSelectionRule(ActingActor, guardSelectionData);
-            _model.SetSelectionRules(guardSelectionRule);
 
-            GuardAsync().Forget();
+            MakeAsyncAction(guardSelectionRule, 
+                () => ActingActor.PerformGuard(CompleteTurn))
+                .Forget();
         }
 
-        private async UniTaskVoid AttackAsync()
+        private async UniTaskVoid MakeAsyncAction(TargetSelectionRule selectionRule, Action action)
         {
+            _model.Cancel();
+            _model.SetSelectionRules(selectionRule);
+            
             await _model.TargetSelectedCompletionSource.Task;
 
-            ActingActor.PerformAttack(_model.SelectedActor, CompleteTurn);
+            if (_model.SelectedActor != null)
+            {
+                var camera =  Services.CameraHolder.GetMainCamera();
+                camera.SetTarget(_model.SelectedActor.Components.Get<CinemachineTargetComponent>().LookAtPosition, 1);
+            }
 
-            Dispose();
-        }
-
-        private async UniTaskVoid UseAbilityAsync(ActiveBattleAbilityData abilityData)
-        {
-            await _model.TargetSelectedCompletionSource.Task;
-            
-            ActingActor.PerformSkill(abilityData, _model.SelectedActor, CompleteTurn);
-            
-            Dispose();
-        }
-
-        private async UniTask GuardAsync()
-        {
-            await _model.TargetSelectedCompletionSource.Task;
-            
-            ActingActor.PerformGuard(CompleteTurn);
-            
+            action?.Invoke();
             Dispose();
         }
     }

@@ -3,7 +3,6 @@ using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.Data;
 using SF.Battle.Field;
-using SF.Common.Cinemachine;
 using SF.Game.Player;
 
 namespace SF.Game
@@ -11,26 +10,23 @@ namespace SF.Game
     public class BattleWorld : BaseWorld
     {
         public BattleField Field { get; }
-        public IEnumerable<BattleActor> ActingActors => _battleActorRegisterer.ActingActors;
-        public CinemachineModel CameraModel;
+        public IEnumerable<BattleActor> ActingActors => _battleActorRegistrar.ActingActors;
         
         private readonly BattleActorFactory _battleActorFactory;
-        private readonly BattlleActorRegisterer _battleActorRegisterer;
+        private readonly BattlleActorRegistrar _battleActorRegistrar;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
 
         public BattleWorld(
             IServiceLocator serviceLocator, 
             IPlayerState playerState,
             BattleField field,
-            IEnumerable<BattleCharacterInfo> enemiesData,
-            CinemachineModel model) : base(serviceLocator, playerState)
+            IEnumerable<BattleCharacterInfo> enemiesData) : base(serviceLocator, playerState)
         {
             Field = field;
-            CameraModel = model;
             
             _enemiesData = enemiesData;
-            _battleActorRegisterer = new BattlleActorRegisterer(serviceLocator.Logger);
-            _battleActorFactory = new BattleActorFactory(_battleActorRegisterer, serviceLocator);
+            _battleActorRegistrar = new BattlleActorRegistrar(serviceLocator.Logger);
+            _battleActorFactory = new BattleActorFactory(_battleActorRegistrar, serviceLocator);
         }
 
         public override void Run()

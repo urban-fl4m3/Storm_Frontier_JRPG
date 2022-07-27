@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SF.Battle.Abilities.Factories;
 using SF.Battle.Data;
-using SF.Common.Cinemachine;
+using SF.Common.Camera.Cinemachine;
 using SF.Game.Data.Characters;
 using SF.Game.Initializers;
 using SF.Game.Player;
@@ -24,32 +24,44 @@ namespace SF.Game
         private CinemachineController _cinemachineController;
         private IServiceLocator _serviceLocator;
         private IPlayerState _playerState;
-        private IWorld _currentWorld;
         
         private void Start()
         {
             _serviceLocator = new ServiceLocator(_windowController);
-            _playerState = new PlayerState();
 
-            _serviceLocator.FactoryHolder.Add(new MechanicsFactory());
-            _serviceLocator.FactoryHolder.Add(new EffectsFactory());
-            _serviceLocator.TickProcessor.Start();
-
-            var model = new CinemachineModel();
-            _cinemachineController = new CinemachineController(_cinemachineView, model);
-            _cinemachineController.Init();
+            InitPlayerState();
+            InitMainCamera();
+            InitFactories();
+            InitTicks();
+            
+            var world = _worldInitializer.CreateWorld(_serviceLocator, _playerState);
 
             _gameStateMachine = new GameStateMachine(_serviceLocator);
-            _currentWorld = _worldInitializer.CreateWorld(_serviceLocator, _playerState, model);
-            
-            AddDebugCharacterToPlayer();
-            
-            _gameStateMachine.SetWorld(_currentWorld);
+            _gameStateMachine.SetWorld(world);
             _gameStateMachine.SetState(GameStateType.WorldBattle);
         }
 
-        private void AddDebugCharacterToPlayer()
+        private void InitFactories()
         {
+            _serviceLocator.FactoryHolder.Add(new MechanicsFactory());
+            _serviceLocator.FactoryHolder.Add(new EffectsFactory());
+        }
+
+        private void InitTicks()
+        {
+            _serviceLocator.TickProcessor.Start();
+        }
+
+        private void InitMainCamera()
+        {
+            var smartCamera = new CinemachineController(_cinemachineView);
+            _serviceLocator.CameraHolder.Add(smartCamera);
+        }
+
+        private void InitPlayerState()
+        {
+            _playerState = new PlayerState();
+
             foreach (var playerCharacter in _playerCharacters)
             {
                 _playerState.Loadout.AddCharacter(new BattleCharacterInfo(playerCharacter, 1));

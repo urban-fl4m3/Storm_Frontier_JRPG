@@ -30,9 +30,11 @@ namespace SF.Battle.Turns
 
             ActingActor.Components.Get<PlaceholderComponent>().SetSelected(true);
 
-            World.CameraModel.OnSetCameraPosition(cinemachineComponent.CameraPosition);
-            World.CameraModel.OnSetTarget(cinemachineComponent.LookAtPosition, 0);
-            World.CameraModel.OnSetTarget(playerLookAtPosition, 1);
+            var camera = Services.CameraHolder.GetMainCamera();
+            
+            camera.SetPosition(cinemachineComponent.CameraPosition);
+            camera.SetTarget(cinemachineComponent.LookAtPosition, 0);
+            camera.SetTarget(playerLookAtPosition, 1);
 
             _temporaryDelaySub = Observable.FromCoroutine(CalculatePoints).Subscribe();
         }
@@ -107,7 +109,8 @@ namespace SF.Battle.Turns
         {
             var lookAtPosition = actor.Components.Get<CinemachineTargetComponent>().LookAtPosition;
 
-            World.CameraModel.OnSetTarget(lookAtPosition, 1);
+            var camera = Services.CameraHolder.GetMainCamera();
+            camera.SetTarget(lookAtPosition, 1);
         }
     }
 }
