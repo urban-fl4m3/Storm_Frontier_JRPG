@@ -2,7 +2,6 @@
 using System.Linq;
 using SF.Battle.Data;
 using SF.Battle.Field;
-using SF.Common.Cinemachine;
 using SF.Game;
 using SF.Game.Data.Characters;
 using SF.Game.Initializers;
@@ -17,9 +16,9 @@ namespace SF.Battle.Initializers
         [SerializeField] private BattleField _field;
         [SerializeField] private List<GameCharacterConfig> _enemies;
 
-        public IWorld CreateWorld(IServiceLocator serviceLocator, IPlayerState playerState, CinemachineModel model)
+        public IWorld CreateWorld(IServiceLocator serviceLocator, IPlayerState playerState)
         {
-            return new BattleWorld(serviceLocator, playerState, _field, GetEnemiesInfo(), model);
+            return new BattleWorld(serviceLocator, playerState, _field, GetEnemiesInfo());
         }
 
         private IEnumerable<BattleCharacterInfo> GetEnemiesInfo()

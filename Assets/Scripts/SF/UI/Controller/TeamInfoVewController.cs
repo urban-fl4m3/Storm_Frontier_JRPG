@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using SF.Game;
+﻿using SF.Game;
 using SF.UI.Windows;
 
 namespace SF.UI.Controller
@@ -9,7 +8,11 @@ namespace SF.UI.Controller
         private readonly Team _team;
         private readonly TeamInfoView _view;
         
-        public TeamInfoVewController(Team team, TeamInfoView view, IWorld world, IServiceLocator serviceLocator)
+        public TeamInfoVewController(
+            Team team,
+            TeamInfoView view,
+            IWorld world,
+            IServiceLocator serviceLocator)
             : base(world, serviceLocator)
         {
             _team = team;
@@ -18,7 +21,7 @@ namespace SF.UI.Controller
         
         public override void Enable()
         {
-            var actors = World.ActingActors.Where(x => x.Team == _team);
+            var actors = World.Actors.GetTeamActors(_team);
 
             foreach (var actor in actors)
             {

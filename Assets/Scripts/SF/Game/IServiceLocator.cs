@@ -1,4 +1,5 @@
-﻿using SF.Common.Factories;
+﻿using SF.Common.Camera;
+using SF.Common.Factories;
 using SF.Common.Logger;
 using SF.Common.Ticks;
 using SF.UI.Controller;
@@ -10,6 +11,7 @@ namespace SF.Game
         IDebugLogger Logger { get; }
         ITickProcessor TickProcessor { get; }
         IFactoryHolder FactoryHolder { get; }
+        ISmartCameraRegistrar CameraHolder { get; }
         IWindowController WindowController { get; }
     }
 }

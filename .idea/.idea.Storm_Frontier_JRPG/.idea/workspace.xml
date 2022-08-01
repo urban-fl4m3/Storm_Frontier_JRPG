@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74e006f-fe3c-43cc-b7df-ad446d77c807" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Storm_Frontier_JRPG/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Battle Data/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Battle Data/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattlePlaceholder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattlePlaceholder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/AiTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/AiTurnAction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,18 +26,14 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTask.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTaskVoid.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Common/Actors/Components/Animation/BaseAnimatorController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTask.Delay.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTask.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTaskExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.unitask@9e2163616b/Runtime/UniTaskVoid.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.15/Runtime/Behaviours/CinemachineTargetGroup.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/Collaborate/Components/TextButton.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.15.15/Editor/Collaborate/UserInterface/Bootstrap.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0ef933b1aa54b668801ea864e4204fe13b600/9f/3d622cdf/SkinnedMeshRenderer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Initializers/BattleInitializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Field/BattleField.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -48,15 +48,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49747476&quot;,
-    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.16f1\Editor\Unity.exe" />
@@ -151,6 +148,10 @@
       <workItem from="1657565322689" duration="63000" />
       <workItem from="1657565496906" duration="3033000" />
       <workItem from="1657568674589" duration="325000" />
+      <workItem from="1658776669684" duration="3050000" />
+      <workItem from="1658909654192" duration="9451000" />
+      <workItem from="1659381629796" duration="7287000" />
+      <workItem from="1659392271238" duration="695000" />
     </task>
     <servers />
   </component>
@@ -174,38 +175,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Actors/BattleActor.cs</url>
-          <line>62</line>
-          <properties documentPath="C:\Users\StaverBan\Documents\Storm_Frontier_JRPG\Assets\Scripts\SF\Battle\Actors\BattleActor.cs" initialLine="62" containingFunctionPresentation="method 'PerformSkill'">
-            <startOffsets>
-              <option value="2161" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2184" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/SF/Battle/Turns/PlayerTurnModel.cs</url>
-          <line>33</line>
-          <properties documentPath="C:\Users\StaverBan\Documents\Storm_Frontier_JRPG\Assets\Scripts\SF\Battle\Turns\PlayerTurnModel.cs" initialLine="33" containingFunctionPresentation="local function 'HandleTargetSelected'">
-            <startOffsets>
-              <option value="1067" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1176" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

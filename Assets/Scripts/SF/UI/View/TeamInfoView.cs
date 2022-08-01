@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using SF.Battle.Actors;
 using SF.UI.View;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace SF.UI.Windows

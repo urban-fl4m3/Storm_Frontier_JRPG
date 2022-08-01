@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using SF.Battle.Actors;
+using SF.Battle.Common;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors;
 using SF.Game;
@@ -12,28 +13,25 @@ namespace SF.Battle.Turns
         public BattleActor SelectedActor { get; private set; }
         public UniTaskCompletionSource TargetSelectedCompletionSource { get; private set; }
 
-        private readonly BattleWorld _world;
+        private readonly BattleActorRegistrar _actors;
+        
         private ITargetSelectionRule _currentRule;
         private CancellationTokenSource _cancelationToken;
 
-        public PlayerTurnModel(BattleWorld world)
+        public PlayerTurnModel(BattleActorRegistrar actors)
         {
-            _world = world;
+            _actors = actors;
         }
 
         public void SetSelectionRules(ITargetSelectionRule targetSelectionRule)
         {
             targetSelectionRule.TargetSelected += HandleTargetSelected;
-            targetSelectionRule.TrackSelection(_world.ActingActors);
+            targetSelectionRule.TrackSelection(_actors.ActingActors);
 
             void HandleTargetSelected(BattleActor target)
             {
                 targetSelectionRule.TargetSelected -= HandleTargetSelected;
                 SelectedActor = target;
-
-                if (SelectedActor != null)
-                    _world.CameraModel.OnSetTarget(
-                        SelectedActor.Components.Get<CinemachineTargetComponent>().LookAtPosition, 1);
 
                 TargetSelectedCompletionSource.TrySetResult();
             }

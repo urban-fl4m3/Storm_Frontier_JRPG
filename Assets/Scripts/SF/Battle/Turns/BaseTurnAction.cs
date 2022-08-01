@@ -1,23 +1,14 @@
 ﻿using System;
 using SF.Battle.Actors;
 using SF.Common.Actors.Components.Status;
-using SF.Game;
 
 namespace SF.Battle.Turns
 {
     public abstract class BaseTurnAction : ITurnAction
     {
         public event Action TurnCompleted;
-
-        protected IServiceLocator Services { get; }
-        protected BattleWorld World { get; }
-        protected BattleActor ActingActor { get; private set; }
         
-        protected BaseTurnAction(IServiceLocator services, BattleWorld world)
-        {
-            Services = services;
-            World = world;
-        }
+        protected BattleActor ActingActor { get; private set; }
 
         public void MakeTurn(BattleActor actor)
         {

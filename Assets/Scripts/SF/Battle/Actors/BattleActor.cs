@@ -4,7 +4,6 @@ using SF.Battle.Common;
 using SF.Battle.Damage;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
-using SF.Common.Actors.Components.Stats;
 using SF.Common.Actors.Components.Transform;
 using SF.Common.Actors.Weapon;
 using SF.Game;
@@ -18,8 +17,7 @@ namespace SF.Battle.Actors
         public BattleMetaData MetaData { get; private set; }
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
-
-        private ManaComponent _manaComponent;
+        
         private TransformComponent _transform;
         private WeaponComponent _weaponComponent;
         private AbilityComponent _abilityComponent;
@@ -33,7 +31,6 @@ namespace SF.Battle.Actors
             
             Init(serviceLocator, world);
 
-            _manaComponent = Components.Get<ManaComponent>();
             _transform = Components.Get<TransformComponent>();
             _weaponComponent = Components.Get<WeaponComponent>();
             _abilityComponent = Components.Get<AbilityComponent>();
@@ -90,6 +87,11 @@ namespace SF.Battle.Actors
         {
            _healthCalculator.CalculateHeal(amount);
         }
+        
+        public void EndTurn()
+        {
+            TurnPassed?.Invoke();    
+        }
 
         private void PlaceInFrontOf(IActor actor)
         {
@@ -100,11 +102,6 @@ namespace SF.Battle.Actors
                 _transform.SetPosition(place.transform.position);
                 _rotationComponent.LookAt(actorTransform.position - place.position);
             }
-        }
-        
-        public void EndTurn()
-        {
-            TurnPassed?.Invoke();    
         }
     }
 }

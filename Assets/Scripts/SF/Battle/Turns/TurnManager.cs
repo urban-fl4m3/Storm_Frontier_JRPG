@@ -22,8 +22,8 @@ namespace SF.Battle.Turns
 
             _turnActions = new Dictionary<Team, ITurnAction>
             {
-                {Team.Player, new PlayerTurnAction(serviceLocator, world, playerActionsViewController)},
-                {Team.Enemy, new AiTurnAction(serviceLocator, world)}
+                {Team.Player, new PlayerTurnAction(world.Field, serviceLocator.CameraHolder, world.Actors, playerActionsViewController)},
+                {Team.Enemy, new AiTurnAction(serviceLocator.Logger, world.Actors, serviceLocator.CameraHolder)}
             };
         }
 
@@ -59,7 +59,7 @@ namespace SF.Battle.Turns
         {
             if (_waitingActors.Count != 0) return;
 
-            var sortedByTeamActors = _world.ActingActors.OrderBy(x => x.Team);
+            var sortedByTeamActors = _world.Actors.ActingActors.OrderBy(x => x.Team);
 
             foreach (var actor in sortedByTeamActors)
             {
