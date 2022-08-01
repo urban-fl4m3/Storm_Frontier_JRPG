@@ -37,10 +37,10 @@ namespace SF.Battle.Turns
 
         protected override void OnStartTurn()
         {
-            // RenderActiveActor();
+            RenderActiveActor();
             SetupCamera();
             
-            // _field.GetActiveActorPlaceholder().PlaceActor(ActingActor);
+            _field.GetActiveActorPlaceholder().PlaceActor(ActingActor);
 
             _playerActionsViewController.ShowView();
             _playerActionsViewController.SetCurrentActor(ActingActor);

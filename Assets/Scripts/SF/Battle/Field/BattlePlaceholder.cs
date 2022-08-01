@@ -24,6 +24,8 @@ namespace SF.Battle.Field
             _transformComponent = actor.Components.Get<TransformComponent>();
             _rotationComponent = actor.Components.Get<RotationComponent>();
             _actor = actor;
+            
+            Reset();
         }
 
         public void Reset()

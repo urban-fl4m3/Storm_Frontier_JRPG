@@ -33,6 +33,8 @@ namespace SF.Battle.Turns
         {
             _logger.Log($"Actor {ActingActor} turn completed");
 
+            RenderAllActors();
+            
             var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
             var playerLookAtPosition = _actors.GetTeamActors(Team.Player).FirstOrDefault()
                 ?.Components
@@ -59,6 +61,14 @@ namespace SF.Battle.Turns
             _temporaryDelaySub?.Dispose();
         }
 
+        private void RenderAllActors()
+        {
+            foreach (var actor in _actors.ActingActors)
+            {
+                actor.Components.Get<ViewComponent>().IsVisible = true;
+            }
+        }
+        
         private IEnumerator CalculatePoints()
         {
             yield return new WaitForSeconds(1);
@@ -91,7 +101,7 @@ namespace SF.Battle.Turns
         {
             if (pick == TargetPick.Instant)
             {
-                return null;
+                return ActingActor;
             }
 
             var actors = _actors.ActingActors.Where(x =>
