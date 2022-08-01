@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using SF.Battle.Abilities.Mechanics.Data;
 using SF.Battle.Actors;
 using SF.Common.Actors;
@@ -48,7 +47,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
             {
                 case MechanicPick.All:
                 {
-                    targets.AddRange(World.ActingActors);
+                    targets.AddRange(World.Actors.ActingActors);
                     break;
                 }
 
@@ -60,13 +59,13 @@ namespace SF.Battle.Abilities.Mechanics.Logic
 
                 case MechanicPick.AllyTeam:
                 {
-                    targets.AddRange(World.ActingActors.Where(x => x.Team == caster.Team));
+                    targets.AddRange(World.Actors.GetTeamActors(caster.Team));
                     break;
                 }
 
                 case MechanicPick.OppositeTeam:
                 {
-                    targets.AddRange(World.ActingActors.Where(x => x.Team != caster.Team));
+                    targets.AddRange(World.Actors.GetEnemyTeamActors(caster.Team));
                     break;
                 }
 

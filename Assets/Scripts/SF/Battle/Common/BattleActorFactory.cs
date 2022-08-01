@@ -6,11 +6,11 @@ namespace SF.Battle.Common
 {
     public class BattleActorFactory : ActorFactory
     {
-        private readonly BattlleActorRegistrar _registrar;
+        private readonly BattleActorRegistrar _registrar;
         private readonly IServiceLocator _serviceLocator;
 
         public BattleActorFactory(
-            BattlleActorRegistrar registrar,
+            BattleActorRegistrar registrar,
             IServiceLocator serviceLocator)
         {
             _registrar = registrar;

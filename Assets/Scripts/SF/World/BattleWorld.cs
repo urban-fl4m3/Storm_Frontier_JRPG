@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.Data;
 using SF.Battle.Field;
@@ -9,11 +8,10 @@ namespace SF.Game
 {
     public class BattleWorld : BaseWorld
     {
-        public BattleField Field { get; }
-        public IEnumerable<BattleActor> ActingActors => _battleActorRegistrar.ActingActors;
+        public readonly BattleField Field;
+        public readonly BattleActorRegistrar Actors;
         
         private readonly BattleActorFactory _battleActorFactory;
-        private readonly BattlleActorRegistrar _battleActorRegistrar;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
 
         public BattleWorld(
@@ -25,8 +23,8 @@ namespace SF.Game
             Field = field;
             
             _enemiesData = enemiesData;
-            _battleActorRegistrar = new BattlleActorRegistrar(serviceLocator.Logger);
-            _battleActorFactory = new BattleActorFactory(_battleActorRegistrar, serviceLocator);
+            Actors = new BattleActorRegistrar(serviceLocator.Logger);
+            _battleActorFactory = new BattleActorFactory(Actors, serviceLocator);
         }
 
         public override void Run()

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using SF.Battle.Common;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
+using SF.Common.Camera;
+using SF.Common.Logger;
 using SF.Game;
 using UniRx;
 using UnityEngine;
@@ -13,24 +16,31 @@ namespace SF.Battle.Turns
 {
     public class AiTurnAction : BaseTurnAction
     {
+        private readonly IDebugLogger _logger;
+        private readonly BattleActorRegistrar _actors;
+        private readonly ISmartCameraRegistrar _cameraHolder;
+        
         private IDisposable _temporaryDelaySub;
 
-        public AiTurnAction(IServiceLocator services, BattleWorld world) : base(services, world)
+        public AiTurnAction(IDebugLogger logger, BattleActorRegistrar actors, ISmartCameraRegistrar cameraHolder)
         {
+            _logger = logger;
+            _actors = actors;
+            _cameraHolder = cameraHolder;
         }
 
         protected override void OnStartTurn()
         {
-            Services.Logger.Log($"Actor {ActingActor} turn completed");
+            _logger.Log($"Actor {ActingActor} turn completed");
 
             var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
-            var playerLookAtPosition = World.ActingActors.FirstOrDefault(a => a.Team == Team.Player)
+            var playerLookAtPosition = _actors.GetTeamActors(Team.Player).FirstOrDefault()
                 ?.Components
                 .Get<CinemachineTargetComponent>().LookAtPosition;
 
             ActingActor.Components.Get<PlaceholderComponent>().SetSelected(true);
 
-            var camera = Services.CameraHolder.GetMainCamera();
+            var camera = _cameraHolder.GetMainCamera();
             
             camera.SetPosition(cinemachineComponent.CameraPosition);
             camera.SetTarget(cinemachineComponent.LookAtPosition, 0);
@@ -84,7 +94,7 @@ namespace SF.Battle.Turns
                 return null;
             }
 
-            var actors = World.ActingActors.Where(x =>
+            var actors = _actors.ActingActors.Where(x =>
             {
                 if (pick == TargetPick.AllyTeam)
                 {
@@ -109,7 +119,7 @@ namespace SF.Battle.Turns
         {
             var lookAtPosition = actor.Components.Get<CinemachineTargetComponent>().LookAtPosition;
 
-            var camera = Services.CameraHolder.GetMainCamera();
+            var camera = _cameraHolder.GetMainCamera();
             camera.SetTarget(lookAtPosition, 1);
         }
     }
