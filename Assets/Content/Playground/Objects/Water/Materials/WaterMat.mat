@@ -45,6 +45,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 259610f23ee218948be17dbb3277e081, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RefractionNormal:
+        m_Texture: {fileID: 2800000, guid: cd26aeb0cf9ce2c4ca312131e0e3214f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SecondTexture:
         m_Texture: {fileID: 2800000, guid: cd26aeb0cf9ce2c4ca312131e0e3214f, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -70,18 +74,27 @@ Material:
     - Vector1_6df3eede17c242978ce739e66d8ebbac: 0.38
     - Vector1_cadf0032db6648c0b6a8c081cba2e31e: 3.79
     - _Depth: 0.2
+    - _Distance: 4.1
+    - _FoamAmount: 1
     - _FoamDistance: 0.57
+    - _FoamSpeed: 1
     - _FoamStrength: 9.15
     - _FoamTile: 3.32
+    - _HightFrequency: 0.1
     - _NormalSpeed: 7.35
+    - _NormalStength: 1
     - _NormalStrength: 0.76
     - _NormalTile: 0.4
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.68
-    - _WaveSpeed: 9.02
+    - _RefractionSpeed: 0.075
+    - _RefractionStrength: 0.5
+    - _Smoothness: 1
+    - _WaveAmplitude: 0.5
+    - _WaveSpeed: 2
     - _WaveStrength: 1.43
     - _WaveTile: 1
+    - _foamCuttOff: 2
     - _normalMultiply: 1
     - _scale1: 133.2
     - _scale1_1: 88.5
@@ -91,7 +104,11 @@ Material:
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _Color_1: {r: 0.23082057, g: 0.66649735, b: 0.8584906, a: 0}
     - _DeepColor: {r: 0, g: 0.07504042, b: 0.4528302, a: 1}
-    - _DepthColor: {r: 0, g: 0, b: 0, a: 1}
+    - _DepthColor: {r: 0.0141509175, g: 0.37093472, b: 1, a: 1}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FoamScale: {r: 1000, g: 1000, b: 0, a: 0}
+    - _RefractionScale: {r: 10, g: 30, b: 0, a: 0}
     - _ShallowColor: {r: 0.40574938, g: 0.7351122, b: 0.8867924, a: 1}
+    - _SurfaceColor: {r: 0.5896226, g: 0.738057, b: 1, a: 0}
     - _foamColor: {r: 0, g: 0.77020216, b: 1, a: 0}
   m_BuildTextureStacks: []
