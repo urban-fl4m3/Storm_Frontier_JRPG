@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Tent
-    second: {fileID: 2100000, guid: 85687dd835d998a42826ebb5d0d4941b, type: 2}
+      name: BaseTent
+    second: {fileID: 2100000, guid: 9c83ad0aa1aaa70429c4da0b0adc39c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TentCloth
+    second: {fileID: 2100000, guid: 27ca8c801950a9745bb795bb55d92f82, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
