@@ -7,12 +7,12 @@ using SF.Game.Extensions;
 
 namespace SF.Battle.Common
 {
-    public class BattleActorRegistrar : ActorRegistrar<BattleActor>
+    public class BattleActorRegistrar : ActorRegistrar<BattleActor>, IRegisteredActorsHolder
     {
         public IEnumerable<BattleActor> ActingActors => _actingActors;
         
-        private readonly Dictionary<Team, HashSet<BattleActor>> _teams = new Dictionary<Team, HashSet<BattleActor>>();
-        private readonly List<BattleActor> _actingActors = new List<BattleActor>();
+        private readonly Dictionary<Team, HashSet<BattleActor>> _teams = new();
+        private readonly List<BattleActor> _actingActors = new();
         
         public BattleActorRegistrar(IDebugLogger logger) : base(logger)
         {
@@ -66,7 +66,7 @@ namespace SF.Battle.Common
             return _teams[team];
         }
 
-        public IEnumerable<BattleActor> GetEnemyTeamActors(Team team)
+        public IEnumerable<BattleActor> GetOppositeTeamActors(Team team)
         {
             var enemyTeam = team.GetOppositeTeam();
 

@@ -4,13 +4,12 @@ using SF.Battle.Common;
 using SF.Battle.Damage;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
-using SF.Common.Actors.Components.Transform;
 using SF.Common.Actors.Weapon;
 using SF.Game;
 
 namespace SF.Battle.Actors
 {
-    public class BattleActor : Actor, IHealthChangeable, ITurnConsumer
+    public class BattleActor : SceneActor, IHealthChangeable, ITurnConsumer
     {
         public event Action TurnPassed;
         
@@ -18,11 +17,8 @@ namespace SF.Battle.Actors
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
         
-        private TransformComponent _transform;
         private WeaponComponent _weaponComponent;
         private AbilityComponent _abilityComponent;
-        private RotationComponent _rotationComponent;
-        
         private HealthCalculator _healthCalculator;
         
         public void Init(IServiceLocator serviceLocator, BattleMetaData metaData, IWorld world)
@@ -31,43 +27,41 @@ namespace SF.Battle.Actors
             
             Init(serviceLocator, world);
 
-            _transform = Components.Get<TransformComponent>();
             _weaponComponent = Components.Get<WeaponComponent>();
             _abilityComponent = Components.Get<AbilityComponent>();
-            _rotationComponent = Components.Get<RotationComponent>();
 
             _healthCalculator = new HealthCalculator(this);
         }
 
-        public void PerformAttack(IActor target, Action onActionEnds = null)
+        public void PerformAttack(SceneActor target, Action onActionEnds = null)
         {
-            var startPlace = _transform.GetPosition();
+            var startPlace = GetPosition();
             
             PlaceInFrontOf(target);
 
             _weaponComponent.InvokeAttack(target, () =>
             {
                 onActionEnds?.Invoke();
-                _transform.SetPosition(startPlace);
+                SetPosition(startPlace);
             });
         }
         
-        public void PerformSkill(ActiveBattleAbilityData abilityData, IActor target, Action onActionEnds = null)
+        public void PerformSkill(ActiveBattleAbilityData abilityData, SceneActor target, Action onActionEnds = null)
         {
-            var startPlace = _transform.GetPosition();
-            var startLookAtVector = _transform.transform.forward;
+            var startPlace = GetPosition();
+            var startLookAtVector = transform.forward;
             
             PlaceInFrontOf(target);
             
            _abilityComponent.InvokeSkill(abilityData, target, () =>
            {
                onActionEnds?.Invoke();
-               _transform.SetPosition(startPlace);
-               _rotationComponent.LookAt(startLookAtVector);
+               SetPosition(startPlace);
+               LookAt(startLookAtVector);
            });
         }
 
-        public void PerformUseItem(int itemIndex, IActor target, Action onActionEnds = null)
+        public void PerformUseItem(int itemIndex, SceneActor target, Action onActionEnds = null)
         {
             onActionEnds?.Invoke();
         }
@@ -93,14 +87,13 @@ namespace SF.Battle.Actors
             TurnPassed?.Invoke();    
         }
 
-        private void PlaceInFrontOf(IActor actor)
+        private void PlaceInFrontOf(SceneActor actor)
         {
             if (actor != null)
             {
                 var place = actor.Components.Get<PlaceholderComponent>().Point;
-                var actorTransform = actor.Components.Get<TransformComponent>().transform;
-                _transform.SetPosition(place.transform.position);
-                _rotationComponent.LookAt(actorTransform.position - place.position);
+                SetPosition(place.transform.position);
+                LookAt(actor.GetPosition() - place.position);
             }
         }
     }

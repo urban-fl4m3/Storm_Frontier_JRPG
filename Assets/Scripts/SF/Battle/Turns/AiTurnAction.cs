@@ -17,15 +17,15 @@ namespace SF.Battle.Turns
     public class AiTurnAction : BaseTurnAction
     {
         private readonly IDebugLogger _logger;
-        private readonly BattleActorRegistrar _actors;
+        private readonly IRegisteredActorsHolder _actorsHolder;
         private readonly ISmartCameraRegistrar _cameraHolder;
         
         private IDisposable _temporaryDelaySub;
 
-        public AiTurnAction(IDebugLogger logger, BattleActorRegistrar actors, ISmartCameraRegistrar cameraHolder)
+        public AiTurnAction(IDebugLogger logger, IRegisteredActorsHolder actorsHolder, ISmartCameraRegistrar cameraHolder)
         {
             _logger = logger;
-            _actors = actors;
+            _actorsHolder = actorsHolder;
             _cameraHolder = cameraHolder;
         }
 
@@ -36,7 +36,7 @@ namespace SF.Battle.Turns
             RenderAllActors();
             
             var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
-            var playerLookAtPosition = _actors.GetTeamActors(Team.Player).FirstOrDefault()
+            var playerLookAtPosition = _actorsHolder.GetTeamActors(Team.Player).FirstOrDefault()
                 ?.Components
                 .Get<CinemachineTargetComponent>().LookAtPosition;
 
@@ -63,9 +63,9 @@ namespace SF.Battle.Turns
 
         private void RenderAllActors()
         {
-            foreach (var actor in _actors.ActingActors)
+            foreach (var actor in _actorsHolder.ActingActors)
             {
-                actor.Components.Get<ViewComponent>().IsVisible = true;
+                actor.SetVisibility(true);
             }
         }
         
@@ -75,7 +75,7 @@ namespace SF.Battle.Turns
             _temporaryDelaySub.Dispose();
 
             var chanceToUseSkill = Random.Range(0, 100);
-            IActor target;
+            SceneActor target;
 
             if (chanceToUseSkill >= 30)
             {
@@ -97,14 +97,14 @@ namespace SF.Battle.Turns
             SetTarget(target);
         }
 
-        private IActor SelectRandomTarget(TargetPick pick)
+        private SceneActor SelectRandomTarget(TargetPick pick)
         {
             if (pick == TargetPick.Instant)
             {
                 return ActingActor;
             }
 
-            var actors = _actors.ActingActors.Where(x =>
+            var actors = _actorsHolder.ActingActors.Where(x =>
             {
                 if (pick == TargetPick.AllyTeam)
                 {

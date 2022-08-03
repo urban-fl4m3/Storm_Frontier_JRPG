@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SF.Battle.Actors;
+using SF.Battle.Common;
+using SF.Battle.Field;
+using SF.Common.Camera;
+using SF.Common.Logger;
 using SF.Game;
 using SF.UI.Controller;
 
@@ -8,22 +12,27 @@ namespace SF.Battle.Turns
 {
     public class TurnManager
     {
-        private readonly BattleWorld _world;
-        private readonly IServiceLocator _serviceLocator;
+        private readonly IDebugLogger _logger;
+        private readonly IRegisteredActorsHolder _actorsHolder;
+        private readonly Queue<BattleActor> _waitingActors = new();
         private readonly Dictionary<Team, ITurnAction> _turnActions;
-        private readonly Queue<BattleActor> _waitingActors = new Queue<BattleActor>();
 
         private ITurnAction _currentTurn;
         
-        public TurnManager(IServiceLocator serviceLocator, BattleWorld world, PlayerActionsViewController playerActionsViewController)
+        public TurnManager(
+            IDebugLogger logger, 
+            BattleField field,
+            ISmartCameraRegistrar cameraHolder,
+            IRegisteredActorsHolder actorsHolder,
+            PlayerActionsViewController playerActionsViewController)
         {
-            _serviceLocator = serviceLocator;
-            _world = world;
-
+            _logger = logger;
+            _actorsHolder = actorsHolder;
+            
             _turnActions = new Dictionary<Team, ITurnAction>
             {
-                {Team.Player, new PlayerTurnAction(world.Field, serviceLocator.CameraHolder, world.Actors, playerActionsViewController)},
-                {Team.Enemy, new AiTurnAction(serviceLocator.Logger, world.Actors, serviceLocator.CameraHolder)}
+                {Team.Player, new PlayerTurnAction(field, cameraHolder, actorsHolder, playerActionsViewController)},
+                {Team.Enemy, new AiTurnAction(logger, actorsHolder, cameraHolder)}
             };
         }
 
@@ -44,7 +53,7 @@ namespace SF.Battle.Turns
             }
             else
             {
-                _serviceLocator.Logger.LogWarning($"Team {actingTeam} for {actor} cant make turn...");
+                _logger.LogWarning($"Team {actingTeam} for {actor} cant make turn...");
                 OnTurnCompleted();
             }
         }
@@ -59,7 +68,7 @@ namespace SF.Battle.Turns
         {
             if (_waitingActors.Count != 0) return;
 
-            var sortedByTeamActors = _world.Actors.ActingActors.OrderBy(x => x.Team);
+            var sortedByTeamActors = _actorsHolder.ActingActors.OrderBy(x => x.Team);
 
             foreach (var actor in sortedByTeamActors)
             {

@@ -24,7 +24,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
         
         public void SetData(IMechanicData data)
         {
-            if (!(data is TMechanicData mechanicData))
+            if (data is not TMechanicData mechanicData)
             {
                 ServiceLocator.Logger.LogError($"Wrong data {data} for skill {GetType()}");
                 return;
@@ -47,7 +47,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
             {
                 case MechanicPick.All:
                 {
-                    targets.AddRange(World.Actors.ActingActors);
+                    targets.AddRange(World.ActorsHolder.ActingActors);
                     break;
                 }
 
@@ -59,13 +59,13 @@ namespace SF.Battle.Abilities.Mechanics.Logic
 
                 case MechanicPick.AllyTeam:
                 {
-                    targets.AddRange(World.Actors.GetTeamActors(caster.Team));
+                    targets.AddRange(World.ActorsHolder.GetTeamActors(caster.Team));
                     break;
                 }
 
                 case MechanicPick.OppositeTeam:
                 {
-                    targets.AddRange(World.Actors.GetEnemyTeamActors(caster.Team));
+                    targets.AddRange(World.ActorsHolder.GetOppositeTeamActors(caster.Team));
                     break;
                 }
 

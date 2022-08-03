@@ -18,21 +18,21 @@ namespace SF.Battle.Turns
         private readonly BattleField _field;
         private readonly PlayerTurnModel _model;
         private readonly ISmartCameraRegistrar _cameraHolder;
-        private readonly BattleActorRegistrar _actorsRegistrar;
+        private readonly IRegisteredActorsHolder _actorsHolder;
         private readonly PlayerActionsViewController _playerActionsViewController;
 
         public PlayerTurnAction(
             BattleField field,
             ISmartCameraRegistrar cameraHolder,
-            BattleActorRegistrar actorsRegistrar,
+            IRegisteredActorsHolder actorsHolder,
             PlayerActionsViewController playerActionsViewController)
         {
             _field = field;
             _cameraHolder = cameraHolder;
-            _actorsRegistrar = actorsRegistrar;
+            _actorsHolder = actorsHolder;
             _playerActionsViewController = playerActionsViewController;
             
-            _model = new PlayerTurnModel(actorsRegistrar);
+            _model = new PlayerTurnModel(actorsHolder);
         }
 
         protected override void OnStartTurn()
@@ -64,10 +64,10 @@ namespace SF.Battle.Turns
 
         private void RenderActiveActor()
         {
-            foreach (var actor in _actorsRegistrar.GetTeamActors(Team.Player))
+            foreach (var actor in _actorsHolder.GetTeamActors(Team.Player))
             {
                 var isActingActor = actor == ActingActor;
-                actor.Components.Get<ViewComponent>().IsVisible = isActingActor;
+                actor.SetVisibility(isActingActor);
             }
         }
 

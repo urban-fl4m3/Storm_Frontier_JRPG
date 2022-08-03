@@ -8,23 +8,25 @@ namespace SF.Game
 {
     public class BattleWorld : BaseWorld
     {
-        public readonly BattleField Field;
-        public readonly BattleActorRegistrar Actors;
+        public BattleField Field => _field;
+        public IRegisteredActorsHolder ActorsHolder => _actorsRegistrar;
         
-        private readonly BattleActorFactory _battleActorFactory;
+        private readonly BattleField _field;
+        private readonly BattleActorRegistrar _actorsRegistrar;
+        private readonly BattleSceneActorFactory _battleSceneActorFactory;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
 
         public BattleWorld(
-            IServiceLocator serviceLocator, 
+            IServiceLocator serviceLocator,
             IPlayerState playerState,
             BattleField field,
             IEnumerable<BattleCharacterInfo> enemiesData) : base(serviceLocator, playerState)
         {
-            Field = field;
-            
+            _field = field;
+
             _enemiesData = enemiesData;
-            Actors = new BattleActorRegistrar(serviceLocator.Logger);
-            _battleActorFactory = new BattleActorFactory(Actors, serviceLocator);
+            _actorsRegistrar = new BattleActorRegistrar(serviceLocator.Logger);
+            _battleSceneActorFactory = new BattleSceneActorFactory(_actorsRegistrar, serviceLocator);
         }
 
         public override void Run()
@@ -37,14 +39,14 @@ namespace SF.Game
         {
             foreach (var enemyInfo in enemiesData)
             {
-                if (!Field.HasEmptyPlaceholder(team)) continue;
+                if (!_field.HasEmptyPlaceholder(team)) continue;
 
                 var meta = new BattleMetaData(team, enemyInfo);
-                var actor = _battleActorFactory.Create(enemyInfo.Config.BattleActor, meta, this);
+                var actor = _battleSceneActorFactory.Create(enemyInfo.Config.BattleActor, meta, this);
 
                 if (actor == null) continue;
 
-                var placeholder = Field.GetEmptyPlaceholder(team);
+                var placeholder = _field.GetEmptyPlaceholder(team);
                 placeholder.PlaceActor(actor);
             }
         }
