@@ -2,6 +2,7 @@
 using SF.Battle.Abilities.Factories;
 using SF.Battle.Data;
 using SF.Common.Camera.Cinemachine;
+using SF.Common.Data;
 using SF.Game.Data.Characters;
 using SF.Game.Initializers;
 using SF.Game.Player;
@@ -27,18 +28,22 @@ namespace SF.Game
         
         private void Start()
         {
+            InitServiceLocator();
+            
+            var world = _worldInitializer.CreateWorld(_serviceLocator, _playerState);
+
+            _gameStateMachine = new GameStateMachine(_serviceLocator);
+            _gameStateMachine.SetState(GameStateType.WorldBattle, new DataProvider(world));
+        }
+
+        private void InitServiceLocator()
+        {
             _serviceLocator = new ServiceLocator(_windowController);
 
             InitPlayerState();
             InitMainCamera();
             InitFactories();
             InitTicks();
-            
-            var world = _worldInitializer.CreateWorld(_serviceLocator, _playerState);
-
-            _gameStateMachine = new GameStateMachine(_serviceLocator);
-            _gameStateMachine.SetWorld(world);
-            _gameStateMachine.SetState(GameStateType.WorldBattle);
         }
 
         private void InitFactories()

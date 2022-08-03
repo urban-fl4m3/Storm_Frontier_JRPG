@@ -16,7 +16,7 @@ namespace SF.Game.States
 
             if (World != null)
             {
-                OnEnter(data);
+                OnEnter();
             }
         }
 
@@ -25,7 +25,7 @@ namespace SF.Game.States
             
         }
         
-        protected abstract void OnEnter(IDataProvider data);
+        protected abstract void OnEnter();
         protected abstract void OnExit();
     }
 }

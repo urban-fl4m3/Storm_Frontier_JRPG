@@ -7,7 +7,7 @@ using SF.Game.Extensions;
 
 namespace SF.Battle.Common
 {
-    public class BattleActorRegistrar : ActorRegistrar<BattleActor>
+    public class BattleActorRegistrar : ActorRegistrar<BattleActor>, IRegisteredActorsHolder
     {
         public IEnumerable<BattleActor> ActingActors => _actingActors;
         
@@ -66,7 +66,7 @@ namespace SF.Battle.Common
             return _teams[team];
         }
 
-        public IEnumerable<BattleActor> GetEnemyTeamActors(Team team)
+        public IEnumerable<BattleActor> GetOppositeTeamActors(Team team)
         {
             var enemyTeam = team.GetOppositeTeam();
 

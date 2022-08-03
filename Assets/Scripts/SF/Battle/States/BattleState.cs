@@ -1,5 +1,4 @@
 ﻿using SF.Battle.Turns;
-using SF.Common.Data;
 using SF.Game;
 using SF.Game.States;
 using SF.UI.Controller;
@@ -10,17 +9,17 @@ namespace SF.Battle.States
 {
     public class BattleState : WorldState<BattleWorld>
     {
-        private TurnManager _turnManager;
         private PlayerActionsViewController _playerActionsViewController;
         private TeamInfoVewController _playerTeamInfoController;
         private TeamInfoVewController _enemyTeamInfoController;
+        private TurnManager _turnManager;
         
         public BattleState(IServiceLocator serviceLocator) : base(serviceLocator)
         {
             
         }
 
-        protected override void OnEnter(IDataProvider data)
+        protected override void OnEnter()
         {
             ServiceLocator.Logger.Log("Entered battle state");
             
@@ -48,10 +47,11 @@ namespace SF.Battle.States
             _enemyTeamInfoController = new TeamInfoVewController(Team.Enemy, window.EnemyTeamInfoView, World, ServiceLocator);
             _enemyTeamInfoController.Enable();
         }
-
+        
         private void CreateTurnManager()
         {
-            _turnManager = new TurnManager(ServiceLocator, World, _playerActionsViewController);
+            _turnManager = new TurnManager(ServiceLocator.Logger, World.Field, ServiceLocator.CameraHolder, 
+                World.ActorsHolder, _playerActionsViewController);
             _turnManager.PlayNextTurn();
         }
     }

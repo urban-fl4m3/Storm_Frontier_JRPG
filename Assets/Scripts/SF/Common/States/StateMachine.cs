@@ -5,15 +5,12 @@ using UniRx;
 
 namespace SF.Common.States
 {
-    public abstract class StateMachine<TStateType, TState>
-        where TStateType : Enum
-        where TState : class, IState
+    public abstract class StateMachine<TStateType, TState> where TStateType : Enum where TState : class, IState
     {
-        protected readonly Dictionary<TStateType, TState> _states = new Dictionary<TStateType, TState>();
-
-        private readonly ReactiveProperty<TState> _currentState = new ReactiveProperty<TState>();
+        private readonly Dictionary<TStateType, TState> _states = new();
+        private readonly ReactiveProperty<TState> _currentState = new();
         
-        public void SetState(TStateType stateType)
+        public void SetState(TStateType stateType, IDataProvider stateMeta = null)
         {
             if (!HasState(stateType))
             {
@@ -29,7 +26,7 @@ namespace SF.Common.States
 
             _currentState.Value?.Exit();
             _currentState.Value = state;
-            _currentState.Value.Enter(GetStateEnterData());
+            _currentState.Value.Enter(stateMeta);
         }
 
         public TState GetCurrentState()
@@ -38,8 +35,7 @@ namespace SF.Common.States
         }
 
         protected abstract IEnumerable<KeyValuePair<TStateType, TState>> GetStatesInfo();
-        protected abstract IDataProvider GetStateEnterData();
-
+        
         protected void UpdateStates()
         {
             foreach (var stateInfo in GetStatesInfo())
