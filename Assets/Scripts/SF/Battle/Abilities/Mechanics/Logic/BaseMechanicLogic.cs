@@ -24,7 +24,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
         
         public void SetData(IMechanicData data)
         {
-            if (!(data is TMechanicData mechanicData))
+            if (data is not TMechanicData mechanicData)
             {
                 ServiceLocator.Logger.LogError($"Wrong data {data} for skill {GetType()}");
                 return;

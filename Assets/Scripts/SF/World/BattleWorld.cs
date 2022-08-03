@@ -11,7 +11,7 @@ namespace SF.Game
         public readonly BattleField Field;
         public readonly BattleActorRegistrar Actors;
         
-        private readonly BattleActorFactory _battleActorFactory;
+        private readonly BattleSceneActorFactory _battleSceneActorFactory;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
 
         public BattleWorld(
@@ -24,7 +24,7 @@ namespace SF.Game
             
             _enemiesData = enemiesData;
             Actors = new BattleActorRegistrar(serviceLocator.Logger);
-            _battleActorFactory = new BattleActorFactory(Actors, serviceLocator);
+            _battleSceneActorFactory = new BattleSceneActorFactory(Actors, serviceLocator);
         }
 
         public override void Run()
@@ -40,7 +40,7 @@ namespace SF.Game
                 if (!Field.HasEmptyPlaceholder(team)) continue;
 
                 var meta = new BattleMetaData(team, enemyInfo);
-                var actor = _battleActorFactory.Create(enemyInfo.Config.BattleActor, meta, this);
+                var actor = _battleSceneActorFactory.Create(enemyInfo.Config.BattleActor, meta, this);
 
                 if (actor == null) continue;
 

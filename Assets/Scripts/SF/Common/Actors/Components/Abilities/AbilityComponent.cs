@@ -15,8 +15,7 @@ namespace SF.Common.Actors.Abilities
     {
         public IEnumerable<ActiveBattleAbilityData> AbilitiesData => _abilities.Keys;
         
-        private readonly Dictionary<ActiveBattleAbilityData, BattleAbility> _abilities =
-            new Dictionary<ActiveBattleAbilityData, BattleAbility>();
+        private readonly Dictionary<ActiveBattleAbilityData, BattleAbility> _abilities = new();
 
         private ActionControllerComponent _actionControllerComponent;
         private ManaComponent _manaComponent;
@@ -24,7 +23,7 @@ namespace SF.Common.Actors.Abilities
 
         protected override void OnInit()
         {
-            if (!(Owner is BattleActor caster))
+            if (Owner is not BattleActor caster)
             {
                 ServiceLocator.Logger.LogError($"Actor {Owner} is not a battle actor! Cannot initialize skill" +
                                                $"component further");

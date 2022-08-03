@@ -11,8 +11,8 @@ namespace SF.Battle.Common
     {
         public IEnumerable<BattleActor> ActingActors => _actingActors;
         
-        private readonly Dictionary<Team, HashSet<BattleActor>> _teams = new Dictionary<Team, HashSet<BattleActor>>();
-        private readonly List<BattleActor> _actingActors = new List<BattleActor>();
+        private readonly Dictionary<Team, HashSet<BattleActor>> _teams = new();
+        private readonly List<BattleActor> _actingActors = new();
         
         public BattleActorRegistrar(IDebugLogger logger) : base(logger)
         {

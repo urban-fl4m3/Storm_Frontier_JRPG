@@ -4,12 +4,12 @@ using SF.Game;
 
 namespace SF.Battle.Common
 {
-    public class BattleActorFactory : ActorFactory
+    public class BattleSceneActorFactory : SceneActorFactory
     {
         private readonly BattleActorRegistrar _registrar;
         private readonly IServiceLocator _serviceLocator;
 
-        public BattleActorFactory(
+        public BattleSceneActorFactory(
             BattleActorRegistrar registrar,
             IServiceLocator serviceLocator)
         {

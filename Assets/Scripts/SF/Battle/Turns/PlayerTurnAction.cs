@@ -67,7 +67,7 @@ namespace SF.Battle.Turns
             foreach (var actor in _actorsRegistrar.GetTeamActors(Team.Player))
             {
                 var isActingActor = actor == ActingActor;
-                actor.Components.Get<ViewComponent>().IsVisible = isActingActor;
+                actor.SetVisibility(isActingActor);
             }
         }
 

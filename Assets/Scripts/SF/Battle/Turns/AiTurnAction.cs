@@ -65,7 +65,7 @@ namespace SF.Battle.Turns
         {
             foreach (var actor in _actors.ActingActors)
             {
-                actor.Components.Get<ViewComponent>().IsVisible = true;
+                actor.SetVisibility(true);
             }
         }
         
@@ -75,7 +75,7 @@ namespace SF.Battle.Turns
             _temporaryDelaySub.Dispose();
 
             var chanceToUseSkill = Random.Range(0, 100);
-            IActor target;
+            SceneActor target;
 
             if (chanceToUseSkill >= 30)
             {
@@ -97,7 +97,7 @@ namespace SF.Battle.Turns
             SetTarget(target);
         }
 
-        private IActor SelectRandomTarget(TargetPick pick)
+        private SceneActor SelectRandomTarget(TargetPick pick)
         {
             if (pick == TargetPick.Instant)
             {
