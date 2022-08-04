@@ -51,7 +51,7 @@ namespace SF.Battle.Turns
             _temporaryDelaySub = Observable.FromCoroutine(CalculatePoints).Subscribe();
         }
 
-        protected override void Dispose()
+        protected override void OnTurnComplete()
         {
             if (ActingActor != null)
             {

@@ -37,20 +37,20 @@ namespace SF.Game
 
         private void CreateActors(Team team, IEnumerable<BattleCharacterInfo> enemiesData)
         {
+            var placeholders = _field.GetTeamPlaceholders(team);
+            var currentPlaceholderIndex = 0;
+            
             foreach (var enemyInfo in enemiesData)
             {
-                //remove
-                if (!_field.HasEmptyPlaceholder(team)) continue;
-
-                
                 var meta = new BattleMetaData(team, enemyInfo);
                 var actor = _battleSceneActorFactory.Create(enemyInfo.Config.BattleActor, meta, this);
 
                 if (actor == null) continue;
 
-                //return list of placeholders and setup manually
-                var placeholder = _field.GetEmptyPlaceholder(team);
-                placeholder.PlaceActor(actor);
+                var placeholder = placeholders[currentPlaceholderIndex];
+                actor.SetNewPlaceholder(placeholder);
+
+                currentPlaceholderIndex++;
             }
         }
     }

@@ -13,7 +13,7 @@ namespace SF.Common.Camera
         public event EventHandler<ISmartCamera> ObjectUnregistered;
 
         private readonly IDebugLogger _logger;
-        private readonly List<ISmartCamera> _cameras = new List<ISmartCamera>();
+        private readonly List<ISmartCamera> _cameras = new();
 
         private ISmartCamera _mainCamera;
         

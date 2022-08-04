@@ -39,8 +39,8 @@ namespace SF.Battle.Turns
         {
             RenderActiveActor();
             SetupCamera();
-            
-            _field.GetActiveActorPlaceholder().PlaceActor(ActingActor);
+         
+            ActingActor.SyncWith(_field.ActivePlayerPlaceholder);
 
             _playerActionsViewController.ShowView();
             _playerActionsViewController.SetCurrentActor(ActingActor);
@@ -48,16 +48,8 @@ namespace SF.Battle.Turns
             SubscribeOnPlayerInput();
         }
 
-        protected override void Dispose()
+        protected override void OnTurnComplete()
         {
-            _model.Cancel();
-            
-            _field.GetActiveActorPlaceholder().Release();
-            _field.ResetTeamPlaceholders(ActingActor.Team);
-            _playerActionsViewController.HideView();
-
-            UnsubscribeFromPlayerInput();
-            
             var camera = _cameraHolder.GetMainCamera();
             camera.Clear();
         }
@@ -75,6 +67,7 @@ namespace SF.Battle.Turns
         {
             var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
 
+            //let's forget about camera here and let camera to position around field by himself
             var camera = _cameraHolder.GetMainCamera();
             camera.SetPosition(cinemachineComponent.CameraPosition);
             camera.SetTarget(cinemachineComponent.LookAtPosition, 0);
@@ -99,7 +92,6 @@ namespace SF.Battle.Turns
 
         private void HandleAttackSelected()
         {
-
             var attackSelectionData = new TargetSelectionData(TargetPick.OppositeTeam);
             var attackSelectionRule = new TargetSelectionRule(ActingActor, attackSelectionData);
             
@@ -155,7 +147,15 @@ namespace SF.Battle.Turns
             }
 
             action?.Invoke();
-            Dispose();
+            ClearModel();
+        }
+
+        private void ClearModel()
+        {
+            _model.Cancel();
+            _playerActionsViewController.HideView();
+            
+            UnsubscribeFromPlayerInput();
         }
     }
 }

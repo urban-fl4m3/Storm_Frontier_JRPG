@@ -6,6 +6,7 @@ using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
 using SF.Common.Actors.Weapon;
 using SF.Game;
+using UnityEngine;
 
 namespace SF.Battle.Actors
 {
@@ -16,10 +17,11 @@ namespace SF.Battle.Actors
         public BattleMetaData MetaData { get; private set; }
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
-        
+
         private WeaponComponent _weaponComponent;
         private AbilityComponent _abilityComponent;
         private HealthCalculator _healthCalculator;
+        private PlaceholderComponent _placeholderComponent;
         
         public void Init(IServiceLocator serviceLocator, BattleMetaData metaData, IWorld world)
         {
@@ -29,26 +31,24 @@ namespace SF.Battle.Actors
 
             _weaponComponent = Components.Get<WeaponComponent>();
             _abilityComponent = Components.Get<AbilityComponent>();
+            _placeholderComponent = Components.Get<PlaceholderComponent>();
 
             _healthCalculator = new HealthCalculator(this);
         }
 
         public void PerformAttack(SceneActor target, Action onActionEnds = null)
         {
-            var startPlace = GetPosition();
-            
             PlaceInFrontOf(target);
 
             _weaponComponent.InvokeAttack(target, () =>
             {
                 onActionEnds?.Invoke();
-                SetPosition(startPlace);
+                SetPosition(_placeholderComponent.Placeholder.position);
             });
         }
         
         public void PerformSkill(ActiveBattleAbilityData abilityData, SceneActor target, Action onActionEnds = null)
         {
-            var startPlace = GetPosition();
             var startLookAtVector = transform.forward;
             
             PlaceInFrontOf(target);
@@ -56,7 +56,7 @@ namespace SF.Battle.Actors
            _abilityComponent.InvokeSkill(abilityData, target, () =>
            {
                onActionEnds?.Invoke();
-               SetPosition(startPlace);
+               SetPosition(_placeholderComponent.Placeholder.position);
                LookAt(startLookAtVector);
            });
         }
@@ -87,14 +87,10 @@ namespace SF.Battle.Actors
             TurnPassed?.Invoke();    
         }
 
-        private void PlaceInFrontOf(SceneActor actor)
+        public void SetNewPlaceholder(Transform placeholder)
         {
-            if (actor != null)
-            {
-                var place = actor.Components.Get<PlaceholderComponent>().Point;
-                SetPosition(place.transform.position);
-                LookAt(actor.GetPosition() - place.position);
-            }
+            _placeholderComponent.SetPlaceholder(placeholder);
+            SyncWith(placeholder);
         }
     }
 }

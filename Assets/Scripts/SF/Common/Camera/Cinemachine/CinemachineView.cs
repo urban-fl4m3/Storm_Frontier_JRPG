@@ -36,7 +36,7 @@ namespace SF.Common.Camera.Cinemachine
 
         public void Clear()
         {
-            _targetGroup.m_Targets[_targetGroup.m_Targets.Length - 1].target = null;
+            _targetGroup.m_Targets[^1].target = null;
         }
     }
 }

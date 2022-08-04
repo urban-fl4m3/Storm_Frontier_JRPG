@@ -26,11 +26,11 @@ namespace SF.Battle.Turns
 
         protected abstract void OnStartTurn();
 
-        protected abstract void Dispose();
+        protected abstract void OnTurnComplete();
 
         protected void CompleteTurn()
         {
-            Dispose();
+            OnTurnComplete();
             
             TurnCompleted?.Invoke();
         }
