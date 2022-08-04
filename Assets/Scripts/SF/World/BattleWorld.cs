@@ -39,13 +39,16 @@ namespace SF.Game
         {
             foreach (var enemyInfo in enemiesData)
             {
+                //remove
                 if (!_field.HasEmptyPlaceholder(team)) continue;
 
+                
                 var meta = new BattleMetaData(team, enemyInfo);
                 var actor = _battleSceneActorFactory.Create(enemyInfo.Config.BattleActor, meta, this);
 
                 if (actor == null) continue;
 
+                //return list of placeholders and setup manually
                 var placeholder = _field.GetEmptyPlaceholder(team);
                 placeholder.PlaceActor(actor);
             }
