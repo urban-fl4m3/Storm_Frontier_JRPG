@@ -4,8 +4,9 @@ using SF.Game;
 
 namespace SF.Battle.Common
 {
-    public interface IRegisteredActorsHolder
+    public interface IBattleActorsHolder
     {
+        BattleActor ActingActor { get; set; }
         IEnumerable<BattleActor> ActingActors { get; }
 
         IEnumerable<BattleActor> GetTeamActors(Team team);

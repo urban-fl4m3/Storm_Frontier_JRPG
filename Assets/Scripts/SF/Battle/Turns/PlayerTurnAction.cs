@@ -18,18 +18,17 @@ namespace SF.Battle.Turns
         private readonly BattleField _field;
         private readonly PlayerTurnModel _model;
         private readonly ISmartCameraRegistrar _cameraHolder;
-        private readonly IRegisteredActorsHolder _actorsHolder;
         private readonly PlayerActionsViewController _playerActionsViewController;
 
         public PlayerTurnAction(
             BattleField field,
             ISmartCameraRegistrar cameraHolder,
-            IRegisteredActorsHolder actorsHolder,
-            PlayerActionsViewController playerActionsViewController)
+            IBattleActorsHolder actorsHolder,
+            PlayerActionsViewController playerActionsViewController) 
+            : base(actorsHolder)
         {
             _field = field;
             _cameraHolder = cameraHolder;
-            _actorsHolder = actorsHolder;
             _playerActionsViewController = playerActionsViewController;
             
             _model = new PlayerTurnModel(actorsHolder);
@@ -38,7 +37,7 @@ namespace SF.Battle.Turns
         protected override void OnStartTurn()
         {
             RenderActiveActor();
-            SetupCamera();
+            // SetupCamera();
          
             ActingActor.SyncWith(_field.ActivePlayerPlaceholder);
 
@@ -56,23 +55,14 @@ namespace SF.Battle.Turns
 
         private void RenderActiveActor()
         {
-            foreach (var actor in _actorsHolder.GetTeamActors(Team.Player))
+            foreach (var actor in ActorsHolder.GetTeamActors(Team.Player))
             {
                 var isActingActor = actor == ActingActor;
                 actor.SetVisibility(isActingActor);
             }
         }
 
-        private void SetupCamera()
-        {
-            var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
-
-            //let's forget about camera here and let camera to position around field by himself
-            var camera = _cameraHolder.GetMainCamera();
-            camera.SetPosition(cinemachineComponent.CameraPosition);
-            camera.SetTarget(cinemachineComponent.LookAtPosition, 0);
-            camera.SetTarget(_field.Center, 1);
-        }
+       
 
         private void SubscribeOnPlayerInput()
         {

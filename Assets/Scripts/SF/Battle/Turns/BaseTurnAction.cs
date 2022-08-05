@@ -1,5 +1,6 @@
 ﻿using System;
 using SF.Battle.Actors;
+using SF.Battle.Common;
 using SF.Common.Actors.Components.Status;
 
 namespace SF.Battle.Turns
@@ -9,7 +10,13 @@ namespace SF.Battle.Turns
         public event Action TurnCompleted;
         
         protected BattleActor ActingActor { get; private set; }
-
+        protected IBattleActorsHolder ActorsHolder { get; }
+            
+        protected BaseTurnAction(IBattleActorsHolder actorsHolder)
+        {
+            ActorsHolder = actorsHolder;
+        }
+        
         public void MakeTurn(BattleActor actor)
         {
             ActingActor = actor;

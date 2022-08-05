@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using SF.Battle.Camera;
 using SF.Battle.Common;
 using SF.Battle.Data;
 using SF.Battle.Field;
+using SF.Common.Camera.Cinemachine;
 using SF.Game.Player;
 
 namespace SF.Game
@@ -9,9 +11,10 @@ namespace SF.Game
     public class BattleWorld : BaseWorld
     {
         public BattleField Field => _field;
-        public IRegisteredActorsHolder ActorsHolder => _actorsRegistrar;
+        public IBattleActorsHolder ActorsHolder => _actorsRegistrar;
         
         private readonly BattleField _field;
+        private readonly CinemachineView _cinemachineView;
         private readonly BattleActorRegistrar _actorsRegistrar;
         private readonly BattleSceneActorFactory _battleSceneActorFactory;
         private readonly IEnumerable<BattleCharacterInfo> _enemiesData;
@@ -20,11 +23,13 @@ namespace SF.Game
             IServiceLocator serviceLocator,
             IPlayerState playerState,
             BattleField field,
+            CinemachineView cinemachineView,
             IEnumerable<BattleCharacterInfo> enemiesData) : base(serviceLocator, playerState)
         {
             _field = field;
-
             _enemiesData = enemiesData;
+            _cinemachineView = cinemachineView;
+
             _actorsRegistrar = new BattleActorRegistrar(serviceLocator.Logger);
             _battleSceneActorFactory = new BattleSceneActorFactory(_actorsRegistrar, serviceLocator);
         }
@@ -33,6 +38,7 @@ namespace SF.Game
         {
             CreateActors(Team.Player, PlayerState.Loadout.GetBattleCharactersData());
             CreateActors(Team.Enemy, _enemiesData);
+            CreateBattleCamera();
         }
 
         private void CreateActors(Team team, IEnumerable<BattleCharacterInfo> enemiesData)
@@ -52,6 +58,12 @@ namespace SF.Game
 
                 currentPlaceholderIndex++;
             }
+        }
+
+        private void CreateBattleCamera()
+        {
+            var smartCamera = new BattleCameraController(_cinemachineView, _actorsRegistrar);
+            ServiceLocator.CameraHolder.Add(smartCamera);
         }
     }
 }

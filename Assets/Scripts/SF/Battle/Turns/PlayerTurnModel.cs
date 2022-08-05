@@ -11,12 +11,12 @@ namespace SF.Battle.Turns
         public BattleActor SelectedActor { get; private set; }
         public UniTaskCompletionSource TargetSelectedCompletionSource { get; private set; }
 
-        private readonly IRegisteredActorsHolder _actorsHolder;
+        private readonly IBattleActorsHolder _actorsHolder;
         
         private ITargetSelectionRule _currentRule;
         private CancellationTokenSource _cancelationToken;
 
-        public PlayerTurnModel(IRegisteredActorsHolder actorsHolder)
+        public PlayerTurnModel(IBattleActorsHolder actorsHolder)
         {
             _actorsHolder = actorsHolder;
         }

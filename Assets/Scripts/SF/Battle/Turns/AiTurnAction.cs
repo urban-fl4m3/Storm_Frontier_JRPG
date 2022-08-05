@@ -17,15 +17,14 @@ namespace SF.Battle.Turns
     public class AiTurnAction : BaseTurnAction
     {
         private readonly IDebugLogger _logger;
-        private readonly IRegisteredActorsHolder _actorsHolder;
         private readonly ISmartCameraRegistrar _cameraHolder;
         
         private IDisposable _temporaryDelaySub;
 
-        public AiTurnAction(IDebugLogger logger, IRegisteredActorsHolder actorsHolder, ISmartCameraRegistrar cameraHolder)
+        public AiTurnAction(IDebugLogger logger, IBattleActorsHolder actorsHolder, ISmartCameraRegistrar cameraHolder) 
+            : base(actorsHolder)
         {
             _logger = logger;
-            _actorsHolder = actorsHolder;
             _cameraHolder = cameraHolder;
         }
 
@@ -36,7 +35,7 @@ namespace SF.Battle.Turns
             RenderAllActors();
             
             var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
-            var playerLookAtPosition = _actorsHolder.GetTeamActors(Team.Player).FirstOrDefault()
+            var playerLookAtPosition = ActorsHolder.GetTeamActors(Team.Player).FirstOrDefault()
                 ?.Components
                 .Get<CinemachineTargetComponent>().LookAtPosition;
 
@@ -63,7 +62,7 @@ namespace SF.Battle.Turns
 
         private void RenderAllActors()
         {
-            foreach (var actor in _actorsHolder.ActingActors)
+            foreach (var actor in ActorsHolder.ActingActors)
             {
                 actor.SetVisibility(true);
             }
@@ -104,7 +103,7 @@ namespace SF.Battle.Turns
                 return ActingActor;
             }
 
-            var actors = _actorsHolder.ActingActors.Where(x =>
+            var actors = ActorsHolder.ActingActors.Where(x =>
             {
                 if (pick == TargetPick.AllyTeam)
                 {

@@ -13,7 +13,7 @@ namespace SF.Battle.Turns
     public class TurnManager
     {
         private readonly IDebugLogger _logger;
-        private readonly IRegisteredActorsHolder _actorsHolder;
+        private readonly IBattleActorsHolder _actorsHolder;
         private readonly Queue<BattleActor> _waitingActors = new();
         private readonly Dictionary<Team, ITurnAction> _turnActions;
 
@@ -23,7 +23,7 @@ namespace SF.Battle.Turns
             IDebugLogger logger, 
             BattleField field,
             ISmartCameraRegistrar cameraHolder,
-            IRegisteredActorsHolder actorsHolder,
+            IBattleActorsHolder actorsHolder,
             PlayerActionsViewController playerActionsViewController)
         {
             _logger = logger;

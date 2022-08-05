@@ -7,13 +7,15 @@ using SF.Game.Extensions;
 
 namespace SF.Battle.Common
 {
-    public class BattleActorRegistrar : ActorRegistrar<BattleActor>, IRegisteredActorsHolder
+    public class BattleActorRegistrar : ActorRegistrar<BattleActor>, IBattleActorsHolder
     {
+        public BattleActor ActingActor { get; set; }
         public IEnumerable<BattleActor> ActingActors => _actingActors;
         
         private readonly Dictionary<Team, HashSet<BattleActor>> _teams = new();
         private readonly List<BattleActor> _actingActors = new();
-        
+        private IEnumerable<BattleActor> _actingActors1;
+
         public BattleActorRegistrar(IDebugLogger logger) : base(logger)
         {
         }
