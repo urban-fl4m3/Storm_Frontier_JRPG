@@ -24,7 +24,7 @@ namespace SF.Battle.Turns
         public void SetSelectionRules(ITargetSelectionRule targetSelectionRule)
         {
             targetSelectionRule.TargetSelected += HandleTargetSelected;
-            targetSelectionRule.TrackSelection(_actorsHolder.ActingActors);
+            targetSelectionRule.TrackSelection(_actorsHolder.Actors);
 
             void HandleTargetSelected(BattleActor target)
             {

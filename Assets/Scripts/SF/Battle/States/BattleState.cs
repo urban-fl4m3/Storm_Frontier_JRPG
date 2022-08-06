@@ -12,8 +12,7 @@ namespace SF.Battle.States
         private PlayerActionsViewController _playerActionsViewController;
         private TeamInfoVewController _playerTeamInfoController;
         private TeamInfoVewController _enemyTeamInfoController;
-        private TurnManager _turnManager;
-        
+
         public BattleState(IServiceLocator serviceLocator) : base(serviceLocator)
         {
             
@@ -23,10 +22,14 @@ namespace SF.Battle.States
         {
             ServiceLocator.Logger.Log("Entered battle state");
             
+            CreateBattleWindow();
+            UpdateTurnManager();
+            
             World.Run();
             
-            CreateBattleWindow();
-            CreateTurnManager();
+            _playerActionsViewController.Enable();
+            _playerTeamInfoController.Enable();
+            _enemyTeamInfoController.Enable();
         }
 
         protected override void OnExit()
@@ -39,20 +42,22 @@ namespace SF.Battle.States
             var window = ServiceLocator.WindowController.Create<BattleHUD>(WindowType.Battle);
             
             _playerActionsViewController = new PlayerActionsViewController(window.PlayerActionButtonsView, World, ServiceLocator);
-            _playerActionsViewController.Enable();
-
             _playerTeamInfoController = new TeamInfoVewController(Team.Player, window.PlayerTeamInfoView, World, ServiceLocator);
-            _playerTeamInfoController.Enable();
-            
             _enemyTeamInfoController = new TeamInfoVewController(Team.Enemy, window.EnemyTeamInfoView, World, ServiceLocator);
-            _enemyTeamInfoController.Enable();
         }
         
-        private void CreateTurnManager()
+        private void UpdateTurnManager()
         {
-            _turnManager = new TurnManager(ServiceLocator.Logger, World.Field, ServiceLocator.CameraHolder, 
-                World.ActorsHolder, _playerActionsViewController);
-            _turnManager.PlayNextTurn();
+            var playerTurnAction = new PlayerTurnAction(World.Field, World);
+            var enemyTurnAction = new AiTurnAction(ServiceLocator.Logger, World);
+            
+            World.AddTurnAction(Team.Player, playerTurnAction);
+            World.AddTurnAction(Team.Enemy, enemyTurnAction);
+            
+            _playerActionsViewController.BindAction("attack", playerTurnAction.HandleAttackSelected);
+            _playerActionsViewController.BindAction("skill", playerTurnAction.HandleSkillSelected);
+            _playerActionsViewController.BindAction("item", playerTurnAction.HandleItemSelected);
+            _playerActionsViewController.BindAction("guard", playerTurnAction.HandleGuardSelected);
         }
     }
 }

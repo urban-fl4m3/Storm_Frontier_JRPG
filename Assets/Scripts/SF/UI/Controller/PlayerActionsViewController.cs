@@ -1,6 +1,7 @@
 ﻿using System;
 using SF.Battle.Abilities;
 using SF.Battle.Actors;
+using SF.Common.Data;
 using SF.Game;
 using SF.UI.View;
 
@@ -8,11 +9,6 @@ namespace SF.UI.Controller
 {
     public class PlayerActionsViewController : BattleWorldUiController
     {
-        public event Action GuardSelected = delegate { };
-        public event Action AttackSelected = delegate { };
-        public event Action<int> ItemSelected = delegate { };
-        public event Action<ActiveBattleAbilityData> SkillSelected = delegate { };
-
         private readonly PlayerActionButtonsView _view;
 
         private BattleActor _currentActor;
@@ -31,49 +27,34 @@ namespace SF.UI.Controller
             _view.UseItemButton.onClick.AddListener(OnItemClick);
             _view.GuardButton.onClick.AddListener(OnGuardClick);
         }
-
-        public void ShowView()
-        {
-            _view.Show();   
-        }
-
-        public void HideView()
-        { 
-            _view.Hide();
-        } 
-        
-        public void SetCurrentActor(BattleActor actor)
-        {
-            _currentActor = actor;
-        }
         
         private void OnAttackClick()
         {
             _view.HideAbility();
-            AttackSelected?.Invoke();
+            RaiseAction("attack");
         }
 
         private void OnSkillClick()
         {
             _view.ShowAbility();
-            _view.SubscribeOnAbilities(_currentActor, OnSkillSeelcted);
+            _view.SubscribeOnAbilities(World.ActingActor, OnSkillSelected);
         }
 
-        private void OnSkillSeelcted(ActiveBattleAbilityData data)
+        private void OnSkillSelected(ActiveBattleAbilityData data)
         {
-            SkillSelected?.Invoke(data);
+            RaiseAction("skill", new DataProvider(data));
         }
 
         private void OnItemClick()
         {
             _view.HideAbility();
-            ItemSelected?.Invoke(0);
+            RaiseAction("item", new DataProvider(0));
         }
 
         private void OnGuardClick()
         {
             _view.HideAbility();
-            GuardSelected?.Invoke();
+            RaiseAction("guard");
         }
     }
 }

@@ -1,14 +1,17 @@
 ﻿using System;
 using SF.Battle.Actors;
 using SF.Battle.Common;
+using SF.Common.Actors;
 using SF.Common.Actors.Components.Status;
 
 namespace SF.Battle.Turns
 {
     public abstract class BaseTurnAction : ITurnAction
     {
+        public event Action TurnStarted;
         public event Action TurnCompleted;
-        
+        public event Action<IActor> ActorSelected;
+
         protected BattleActor ActingActor { get; private set; }
         protected IBattleActorsHolder ActorsHolder { get; }
             
@@ -23,6 +26,8 @@ namespace SF.Battle.Turns
             
             if (CanMakeTurn())
             {
+                TurnStarted?.Invoke();
+                
                 OnStartTurn();
             }
             else
@@ -40,6 +45,11 @@ namespace SF.Battle.Turns
             OnTurnComplete();
             
             TurnCompleted?.Invoke();
+        }
+
+        protected void SelectActor(IActor actor)
+        {
+            ActorSelected?.Invoke(actor);
         }
 
         private bool CanMakeTurn()

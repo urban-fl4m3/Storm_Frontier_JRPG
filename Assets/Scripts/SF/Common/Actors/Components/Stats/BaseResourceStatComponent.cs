@@ -12,8 +12,8 @@ namespace SF.Common.Actors.Components.Stats
         public IReadOnlyReactiveProperty<int> Max => _max;
         public IReadOnlyReactiveProperty<int> Current => _current;
         
-        private readonly ReactiveProperty<int> _max = new ReactiveProperty<int>();
-        private readonly ReactiveProperty<int> _current = new ReactiveProperty<int>();
+        private readonly ReactiveProperty<int> _max = new();
+        private readonly ReactiveProperty<int> _current = new();
 
         private StatsContainerComponent _statsDataContainer;
 

@@ -47,7 +47,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
             {
                 case MechanicPick.All:
                 {
-                    targets.AddRange(World.ActorsHolder.ActingActors);
+                    targets.AddRange(World.Actors);
                     break;
                 }
 
@@ -59,13 +59,13 @@ namespace SF.Battle.Abilities.Mechanics.Logic
 
                 case MechanicPick.AllyTeam:
                 {
-                    targets.AddRange(World.ActorsHolder.GetTeamActors(caster.Team));
+                    targets.AddRange(World.GetTeamActors(caster.Team));
                     break;
                 }
 
                 case MechanicPick.OppositeTeam:
                 {
-                    targets.AddRange(World.ActorsHolder.GetOppositeTeamActors(caster.Team));
+                    targets.AddRange(World.GetOppositeTeamActors(caster.Team));
                     break;
                 }
 

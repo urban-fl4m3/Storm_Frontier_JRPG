@@ -6,10 +6,12 @@ namespace SF.Battle.Common
 {
     public interface IBattleActorsHolder
     {
-        BattleActor ActingActor { get; set; }
-        IEnumerable<BattleActor> ActingActors { get; }
+        BattleActor ActingActor { get; }
+        IEnumerable<BattleActor> Actors { get; }
 
         IEnumerable<BattleActor> GetTeamActors(Team team);
         IEnumerable<BattleActor> GetOppositeTeamActors(Team team);
+
+        void SetNextActingActor();
     }
 }

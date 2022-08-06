@@ -21,7 +21,7 @@ namespace SF.UI.Controller
         
         public override void Enable()
         {
-            var actors = World.ActorsHolder.GetTeamActors(_team);
+            var actors = World.GetTeamActors(_team);
 
             foreach (var actor in actors)
             {
