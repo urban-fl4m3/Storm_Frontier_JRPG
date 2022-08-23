@@ -138,7 +138,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _name: Woman
+  _name: 'Enemy '
   _icon: {fileID: 21300000, guid: a4a8ed713e2066a4688cbe9939cb8954, type: 3}
   _baseData: {fileID: 11400000, guid: 2816ed8f3fbc4194fa2b6f36ed577c1c, type: 2}
   _battleActor: {fileID: 5148811520888535606, guid: 442f23785e88d0b4f9fa745c6c7fcdb2, type: 3}
