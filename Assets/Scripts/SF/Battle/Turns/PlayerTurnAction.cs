@@ -6,9 +6,8 @@ using SF.Battle.Field;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
-using SF.Common.Camera;
+using SF.Common.Data;
 using SF.Game;
-using SF.UI.Controller;
 using UnityEngine;
 
 namespace SF.Battle.Turns
@@ -17,89 +16,36 @@ namespace SF.Battle.Turns
     {
         private readonly BattleField _field;
         private readonly PlayerTurnModel _model;
-        private readonly ISmartCameraRegistrar _cameraHolder;
-        private readonly IRegisteredActorsHolder _actorsHolder;
-        private readonly PlayerActionsViewController _playerActionsViewController;
 
-        public PlayerTurnAction(
-            BattleField field,
-            ISmartCameraRegistrar cameraHolder,
-            IRegisteredActorsHolder actorsHolder,
-            PlayerActionsViewController playerActionsViewController)
+        public PlayerTurnAction(BattleField field, IBattleActorsHolder actorsHolder) : base(actorsHolder)
         {
             _field = field;
-            _cameraHolder = cameraHolder;
-            _actorsHolder = actorsHolder;
-            _playerActionsViewController = playerActionsViewController;
-            
             _model = new PlayerTurnModel(actorsHolder);
         }
 
         protected override void OnStartTurn()
         {
             RenderActiveActor();
-            SetupCamera();
-            
-            _field.GetActiveActorPlaceholder().PlaceActor(ActingActor);
-
-            _playerActionsViewController.ShowView();
-            _playerActionsViewController.SetCurrentActor(ActingActor);
-
-            SubscribeOnPlayerInput();
+         
+            ActingActor.SyncWith(_field.ActivePlayerPlaceholder);
         }
 
-        protected override void Dispose()
+        protected override void OnTurnComplete()
         {
-            _model.Cancel();
             
-            _field.GetActiveActorPlaceholder().Release();
-            _field.ResetTeamPlaceholders(ActingActor.Team);
-            _playerActionsViewController.HideView();
-
-            UnsubscribeFromPlayerInput();
-            
-            var camera = _cameraHolder.GetMainCamera();
-            camera.Clear();
         }
 
         private void RenderActiveActor()
         {
-            foreach (var actor in _actorsHolder.GetTeamActors(Team.Player))
+            foreach (var actor in ActorsHolder.GetTeamActors(Team.Player))
             {
                 var isActingActor = actor == ActingActor;
                 actor.SetVisibility(isActingActor);
             }
         }
 
-        private void SetupCamera()
+        public void HandleAttackSelected(IDataProvider dataProvider)
         {
-            var cinemachineComponent = ActingActor.Components.Get<CinemachineTargetComponent>();
-
-            var camera = _cameraHolder.GetMainCamera();
-            camera.SetPosition(cinemachineComponent.CameraPosition);
-            camera.SetTarget(cinemachineComponent.LookAtPosition, 0);
-            camera.SetTarget(_field.Center, 1);
-        }
-
-        private void SubscribeOnPlayerInput()
-        {
-            _playerActionsViewController.AttackSelected += HandleAttackSelected;
-            _playerActionsViewController.SkillSelected += HandleSkillSelected;
-            _playerActionsViewController.ItemSelected += HandleItemSelected;
-            _playerActionsViewController.GuardSelected += HandleGuardSelected;
-        }
-
-        private void UnsubscribeFromPlayerInput()
-        {
-            _playerActionsViewController.AttackSelected -= HandleAttackSelected;
-            _playerActionsViewController.SkillSelected -= HandleSkillSelected;
-            _playerActionsViewController.ItemSelected -= HandleItemSelected;
-            _playerActionsViewController.GuardSelected -= HandleGuardSelected;
-        }
-
-        private void HandleAttackSelected()
-        {
-
             var attackSelectionData = new TargetSelectionData(TargetPick.OppositeTeam);
             var attackSelectionRule = new TargetSelectionRule(ActingActor, attackSelectionData);
             
@@ -108,8 +54,15 @@ namespace SF.Battle.Turns
                 .Forget();
         }
 
-        private void HandleSkillSelected(ActiveBattleAbilityData abilityData)
+        public void HandleSkillSelected(IDataProvider dataProvider)
         {
+            var abilityData = dataProvider.GetData<ActiveBattleAbilityData>();
+
+            if (abilityData == null)
+            {
+                return;
+            }
+            
             var abilityComponent = ActingActor.Components.Get<AbilityComponent>();
 
             if (!abilityComponent.CanInvoke(abilityData))
@@ -125,13 +78,15 @@ namespace SF.Battle.Turns
                 .Forget();
         }
 
-        private void HandleItemSelected(int itemIndex)
+        public void HandleItemSelected(IDataProvider dataProvider)
         {
+            var itemIndex = dataProvider.GetData<int>();
+            
             Debug.Log($"Item {itemIndex}!");
             CompleteTurn();
         }
         
-        private void HandleGuardSelected()
+        public void HandleGuardSelected(IDataProvider dataProvider)
         {
             var guardSelectionData = new TargetSelectionData(TargetPick.Instant);
             var guardSelectionRule = new TargetSelectionRule(ActingActor, guardSelectionData);
@@ -146,16 +101,19 @@ namespace SF.Battle.Turns
             _model.Cancel();
             _model.SetSelectionRules(selectionRule);
             
+            SelectActor(null);
+            
             await _model.TargetSelectedCompletionSource.Task;
 
-            if (_model.SelectedActor != null)
-            {
-                var camera =  _cameraHolder.GetMainCamera();
-                camera.SetTarget(_model.SelectedActor.Components.Get<CinemachineTargetComponent>().LookAtPosition, 1);
-            }
+            SelectActor(_model.SelectedActor);
 
             action?.Invoke();
-            Dispose();
+            ClearModel();
+        }
+
+        private void ClearModel()
+        {
+            _model.Cancel();
         }
     }
 }

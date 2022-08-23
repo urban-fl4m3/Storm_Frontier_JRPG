@@ -4,11 +4,14 @@ using SF.Game;
 
 namespace SF.Battle.Common
 {
-    public interface IRegisteredActorsHolder
+    public interface IBattleActorsHolder
     {
-        IEnumerable<BattleActor> ActingActors { get; }
+        BattleActor ActingActor { get; }
+        IEnumerable<BattleActor> Actors { get; }
 
         IEnumerable<BattleActor> GetTeamActors(Team team);
         IEnumerable<BattleActor> GetOppositeTeamActors(Team team);
+
+        void SetNextActingActor();
     }
 }

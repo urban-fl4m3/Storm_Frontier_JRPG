@@ -43,7 +43,13 @@ namespace SF.Common.Actors
         {
             transform.rotation = Quaternion.LookRotation(lookAtVector, transform.up);
         }
-        
+
+        public void SyncWith(Transform tr)
+        {
+            SetPosition(tr.position);
+            LookAt(tr.forward);
+        }
+
         protected void Init(IServiceLocator serviceLocator, IWorld world)
         {
             World = world;
@@ -51,6 +57,16 @@ namespace SF.Common.Actors
             
             Components = GetComponent<ActorComponentContainer>();
             Components.InitActorComponents(serviceLocator);
+        }
+        
+        protected void PlaceInFrontOf(SceneActor actor)
+        {
+            if (actor != null)
+            {
+                var place = actor.Components.Get<PlaceholderComponent>().FrontPoint;
+                SetPosition(place.transform.position);
+                LookAt(actor.GetPosition() - place.position);
+            }
         }
     }
 }

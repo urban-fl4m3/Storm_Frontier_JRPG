@@ -58,5 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-/.idea/
-ProjectSettings/RiderScriptEditorPersistedState.asset
+.idea/
+Assets/Plugins/Editor/JetBrains*
+UserSettings/

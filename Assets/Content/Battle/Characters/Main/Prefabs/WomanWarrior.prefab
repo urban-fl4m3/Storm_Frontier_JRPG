@@ -2201,7 +2201,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7438838bd6614013885ee1f7344bac50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _point: {fileID: 5469543938920096543}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  frontPoint: {fileID: 5469543938920096543}
   _selectedCircle: {fileID: 1870530947586132566}
 --- !u!1 &5661802906278753835
 GameObject:

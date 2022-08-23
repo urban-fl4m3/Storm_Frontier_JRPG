@@ -1,4 +1,7 @@
-﻿using SF.Game;
+﻿using System;
+using System.Collections.Generic;
+using SF.Common.Data;
+using SF.Game;
 
 namespace SF.UI.Controller
 {
@@ -6,6 +9,8 @@ namespace SF.UI.Controller
     {
         protected BattleWorld World { get; }
         protected IServiceLocator ServiceLocator { get; }
+
+        private Dictionary<string, Action<IDataProvider>> _bindedActions = new();
         
         protected BattleWorldUiController(IWorld world, IServiceLocator serviceLocator)
         {
@@ -19,5 +24,15 @@ namespace SF.UI.Controller
         }
 
         public abstract void Enable();
+
+        public void BindAction(string actionName, Action<IDataProvider> action)
+        {
+            _bindedActions.Add(actionName, action);
+        }
+
+        protected void RaiseAction(string actionName, IDataProvider dataProvider = null)
+        {
+            _bindedActions[actionName].Invoke(dataProvider);
+        }
     }
 }

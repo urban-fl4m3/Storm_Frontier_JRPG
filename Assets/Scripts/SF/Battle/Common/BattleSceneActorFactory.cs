@@ -6,14 +6,10 @@ namespace SF.Battle.Common
 {
     public class BattleSceneActorFactory : SceneActorFactory
     {
-        private readonly BattleActorRegistrar _registrar;
         private readonly IServiceLocator _serviceLocator;
 
-        public BattleSceneActorFactory(
-            BattleActorRegistrar registrar,
-            IServiceLocator serviceLocator)
+        public BattleSceneActorFactory(IServiceLocator serviceLocator)
         {
-            _registrar = registrar;
             _serviceLocator = serviceLocator;
         }
 
@@ -31,13 +27,8 @@ namespace SF.Battle.Common
                 _serviceLocator.Logger.LogError($"Instantiated actor for {metaData.Team} is null");
                 return null;
             }
-
-            var isAdded = _registrar.Register(actor, metaData.Team);
-
-            if (isAdded)
-            {
-                actor.Init(_serviceLocator, metaData, world);
-            }
+            
+            actor.Init(_serviceLocator, metaData, world);
 
             return actor;
         }

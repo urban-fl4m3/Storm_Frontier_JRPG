@@ -19,7 +19,6 @@ namespace SF.Game
         [OdinSerialize] private IWorldInitializer _worldInitializer;
         [OdinSerialize] private IWindowController _windowController;
         [SerializeField] private List<GameCharacterConfig> _playerCharacters;
-        [SerializeField] private CinemachineView _cinemachineView;
 
         private GameStateMachine _gameStateMachine;
         private CinemachineController _cinemachineController;
@@ -41,7 +40,6 @@ namespace SF.Game
             _serviceLocator = new ServiceLocator(_windowController);
 
             InitPlayerState();
-            InitMainCamera();
             InitFactories();
             InitTicks();
         }
@@ -55,12 +53,6 @@ namespace SF.Game
         private void InitTicks()
         {
             _serviceLocator.TickProcessor.Start();
-        }
-
-        private void InitMainCamera()
-        {
-            var smartCamera = new CinemachineController(_cinemachineView);
-            _serviceLocator.CameraHolder.Add(smartCamera);
         }
 
         private void InitPlayerState()

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using SF.Game;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
@@ -9,41 +8,17 @@ namespace SF.Battle.Field
 {
     public class BattleField : SerializedMonoBehaviour
     {
-        [OdinSerialize] private Dictionary<Team, List<BattlePlaceholder>> _placeholders;
+        [OdinSerialize] private Dictionary<Team, List<Transform>> _placeholders;
+        
         [SerializeField] private Transform _fieldCenter;
-        [SerializeField] private BattlePlaceholder _activePlayerPlaceholder;
+        [SerializeField] private Transform _activePlayerPlaceholder;
 
         public Transform Center => _fieldCenter;
-        
-        public bool HasEmptyPlaceholder(Team team)
-        {
-            if (!_placeholders.ContainsKey(team)) return false;
+        public Transform ActivePlayerPlaceholder => _activePlayerPlaceholder;
 
-            var placeholders = _placeholders[team];
-            return placeholders.Any(x => x.IsEmpty);
-        }
-        
-        public BattlePlaceholder GetEmptyPlaceholder(Team team)
+        public IReadOnlyList<Transform> GetTeamPlaceholders(Team team)
         {
-            if (!_placeholders.ContainsKey(team)) return null;
-            
-            var placeholders = _placeholders[team];
-            var emptyPlaceholder = placeholders.FirstOrDefault(x => x.IsEmpty);
-
-            return emptyPlaceholder;
-        }
-
-        public void ResetTeamPlaceholders(Team team)
-        {
-            foreach (var placeholder in _placeholders[team])
-            {
-                placeholder.Reset();
-            }
-        }
-
-        public BattlePlaceholder GetActiveActorPlaceholder()
-        {
-            return _activePlayerPlaceholder;
+            return _placeholders.GetValueOrDefault(team);
         }
     }
 }
