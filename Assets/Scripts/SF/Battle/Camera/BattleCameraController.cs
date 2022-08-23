@@ -34,15 +34,14 @@ namespace SF.Battle.Camera
             _enemyTurnAction.ActorSelected += OnFriendlyActorSelected;
         }
 
-        private void OnPlayerTurnEnd()
-        {
-            Clear();
-        }
-
         public void Disable()
         {
             _playerTurnAction.TurnStarted -= OnPlayerTurnStarted;
+            _playerTurnAction.TurnCompleted -= OnPlayerTurnEnd;
+            _playerTurnAction.ActorSelected -= OnEnemyActorSelected;
+            
             _enemyTurnAction.TurnStarted -= OnEnemyTurnStarted;
+            _enemyTurnAction.ActorSelected -= OnFriendlyActorSelected;
         }
 
         private void OnPlayerTurnStarted()
@@ -52,6 +51,11 @@ namespace SF.Battle.Camera
             SetPosition(cinemachineComponent.CameraPosition);
             SetTarget(cinemachineComponent.LookAtPosition, 0);
             SetTarget(_battleField.Center, 1);
+        }
+
+        private void OnPlayerTurnEnd()
+        {
+            Clear();
         }
 
         private void OnEnemyTurnStarted()

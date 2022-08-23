@@ -20,7 +20,7 @@ namespace SF.Battle.TargetSelection
             _actingActor = actingActor;
         }
 
-        public void TrackSelection(IEnumerable<BattleActor> actors)
+        public BattleActor[] GetPossibleTargets(IEnumerable<BattleActor> actors)
         {
             var expectedPick = _data.Pick;
 
@@ -42,25 +42,32 @@ namespace SF.Battle.TargetSelection
                 expectedActors = expectedActors
                     .Where(x => x.Team != _actingActor.Team)
                     .ToArray();
+
             }
+
+            return expectedActors;
+        }
+
+        public void TrackSelection(IEnumerable<BattleActor> actors)
+        {
             
-            foreach (var enemy in expectedActors)
-            {
-                enemy.Components.Get<ActorSelectComponent>().ActorSelected += OnActorSelected;
-            }
+            // foreach (var enemy in expectedActors)
+            // {
+                // enemy.Components.Get<ActorSelectComponent>().ActorSelected += OnActorSelected;
+            // }
 
-            void OnActorSelected(IActor actor)
-            {
-                if (actor.Components.Get<ActorStateComponent>().State.Value == ActorState.Dead) return;
-                if (!(actor is BattleActor battleActor)) return;
-
-                foreach (var expected in expectedActors)
-                {
-                    expected.Components.Get<ActorSelectComponent>().ActorSelected -= OnActorSelected;
-                }
-                
-                TargetSelected?.Invoke(battleActor);
-            }
+            // void OnActorSelected(IActor actor)
+            // {
+            //     if (actor.Components.Get<ActorStateComponent>().State.Value == ActorState.Dead) return;
+            //     if (!(actor is BattleActor battleActor)) return;
+            //
+            //     foreach (var expected in expectedActors)
+            //     {
+            //         expected.Components.Get<ActorSelectComponent>().ActorSelected -= OnActorSelected;
+            //     }
+            //     
+            //     TargetSelected?.Invoke(battleActor);
+            // }
         }
     }
 }

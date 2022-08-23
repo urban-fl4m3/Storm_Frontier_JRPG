@@ -7,9 +7,9 @@ namespace SF.Common.Ticks
 {
     public class TickProcessor : ITickProcessor
     {
-        private readonly List<Action> _ticks = new List<Action>();
-        private readonly Queue<Action> _ticksToAdd = new Queue<Action>();
-        private readonly Queue<Action> _ticksToRemove = new Queue<Action>();
+        private readonly List<Action> _ticks = new();
+        private readonly Queue<Action> _ticksToAdd = new();
+        private readonly Queue<Action> _ticksToRemove = new();
 
         private IDisposable _tickSub;
         

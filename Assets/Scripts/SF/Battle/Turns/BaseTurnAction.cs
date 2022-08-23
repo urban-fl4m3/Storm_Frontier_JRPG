@@ -14,6 +14,8 @@ namespace SF.Battle.Turns
 
         protected BattleActor ActingActor { get; private set; }
         protected IBattleActorsHolder ActorsHolder { get; }
+
+        private Action _action;
             
         protected BaseTurnAction(IBattleActorsHolder actorsHolder)
         {

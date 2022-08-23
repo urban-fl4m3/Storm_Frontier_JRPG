@@ -41,6 +41,7 @@ namespace SF.Battle.States
         {
             var window = ServiceLocator.WindowController.Create<BattleHUD>(WindowType.Battle);
             
+            //should be created in battle hud automatically
             _playerActionsViewController = new PlayerActionsViewController(window.PlayerActionButtonsView, World, ServiceLocator);
             _playerTeamInfoController = new TeamInfoVewController(Team.Player, window.PlayerTeamInfoView, World, ServiceLocator);
             _enemyTeamInfoController = new TeamInfoVewController(Team.Enemy, window.EnemyTeamInfoView, World, ServiceLocator);
@@ -54,6 +55,7 @@ namespace SF.Battle.States
             World.AddTurnAction(Team.Player, playerTurnAction);
             World.AddTurnAction(Team.Enemy, enemyTurnAction);
             
+            //pass into model, bind in HUD controller
             _playerActionsViewController.BindAction("attack", playerTurnAction.HandleAttackSelected);
             _playerActionsViewController.BindAction("skill", playerTurnAction.HandleSkillSelected);
             _playerActionsViewController.BindAction("item", playerTurnAction.HandleItemSelected);

@@ -11,7 +11,7 @@ namespace SF.Common.Actors
         protected IActor Owner { get; private set; }
         protected IServiceLocator ServiceLocator { get; private set; }
 
-        private readonly ReactiveProperty<bool> _isInit = new ReactiveProperty<bool>();
+        private readonly ReactiveProperty<bool> _isInit = new();
         
         public void Init(IActor owner, IServiceLocator serviceLocator)
         {

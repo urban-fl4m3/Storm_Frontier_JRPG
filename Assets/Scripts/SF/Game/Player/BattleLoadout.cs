@@ -5,7 +5,7 @@ namespace SF.Game.Player
 {
     public class BattleLoadout
     {
-        private readonly List<BattleCharacterInfo> _battleCharacters = new List<BattleCharacterInfo>();
+        private readonly List<BattleCharacterInfo> _battleCharacters = new();
         
         public IEnumerable<BattleCharacterInfo> GetBattleCharactersData()
         {

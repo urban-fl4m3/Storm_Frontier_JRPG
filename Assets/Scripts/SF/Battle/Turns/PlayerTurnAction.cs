@@ -4,7 +4,6 @@ using SF.Battle.Abilities;
 using SF.Battle.Common;
 using SF.Battle.Field;
 using SF.Battle.TargetSelection;
-using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
 using SF.Common.Data;
 using SF.Game;
@@ -21,27 +20,6 @@ namespace SF.Battle.Turns
         {
             _field = field;
             _model = new PlayerTurnModel(actorsHolder);
-        }
-
-        protected override void OnStartTurn()
-        {
-            RenderActiveActor();
-         
-            ActingActor.SyncWith(_field.ActivePlayerPlaceholder);
-        }
-
-        protected override void OnTurnComplete()
-        {
-            
-        }
-
-        private void RenderActiveActor()
-        {
-            foreach (var actor in ActorsHolder.GetTeamActors(Team.Player))
-            {
-                var isActingActor = actor == ActingActor;
-                actor.SetVisibility(isActingActor);
-            }
         }
 
         public void HandleAttackSelected(IDataProvider dataProvider)
@@ -96,9 +74,22 @@ namespace SF.Battle.Turns
                 .Forget();
         }
 
+        protected override void OnStartTurn()
+        {
+            RenderActiveActor();
+            
+            ActingActor.SyncWith(_field.ActivePlayerPlaceholder);
+        }
+
+        protected override void OnTurnComplete()
+        {
+            
+        }
+
+
         private async UniTaskVoid MakeAsyncAction(ITargetSelectionRule selectionRule, Action action)
         {
-            _model.Cancel();
+            ClearModel();
             _model.SetSelectionRules(selectionRule);
             
             SelectActor(null);
@@ -114,6 +105,16 @@ namespace SF.Battle.Turns
         private void ClearModel()
         {
             _model.Cancel();
+            SelectActor(null);
+        }
+        
+        private void RenderActiveActor()
+        {
+            foreach (var actor in ActorsHolder.GetTeamActors(Team.Player))
+            {
+                var isActingActor = actor == ActingActor;
+                actor.SetVisibility(isActingActor);
+            }
         }
     }
 }

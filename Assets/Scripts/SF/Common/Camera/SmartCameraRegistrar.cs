@@ -46,7 +46,7 @@ namespace SF.Common.Camera
 
                 if (camerasCount > 0)
                 {
-                    _mainCamera = _cameras[_cameras.Count - 1];
+                    _mainCamera = _cameras[^1];
                 }
 
                 ObjectUnregistered?.Invoke(this, obj);
