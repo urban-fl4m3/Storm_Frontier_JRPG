@@ -30,7 +30,7 @@ namespace SF.Battle.Effects
 
         public void Apply(IEffectData data, IActor affected, IActor affector)
         {
-            if (!(data is TEffectData effectData))
+            if (data is not TEffectData effectData)
             {
                 ServiceLocator.Logger.LogError($"Wrong data {data} for skill {GetType()}");
                 return;
@@ -69,7 +69,7 @@ namespace SF.Battle.Effects
             Finished = null;
             OnCancel();
         }
-        
+
         protected abstract void OnApply();
         protected abstract void OnCancel();
 

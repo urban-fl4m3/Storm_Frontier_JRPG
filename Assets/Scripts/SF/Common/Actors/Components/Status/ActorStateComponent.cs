@@ -1,6 +1,8 @@
 ﻿using System;
+using SF.Battle.Stats;
 using SF.Common.Actors.Components.Animations;
 using SF.Common.Actors.Components.Stats;
+using SF.Game.Stats;
 using UniRx;
 
 namespace SF.Common.Actors.Components.Status
@@ -9,15 +11,19 @@ namespace SF.Common.Actors.Components.Status
     {
         public IReadOnlyReactiveProperty<ActorState> State => _state;
 
-        private readonly ReactiveProperty<ActorState> _state = new ReactiveProperty<ActorState>(ActorState.Standard);
+        //todo refactor later, to remove
+        private readonly ReactiveProperty<ActorState> _state = new(ActorState.Standard);
         
         private BattleAnimationComponent _animatorController;
-        private HealthComponent _healthComponent;
+        private IPrimaryStatResource _healthResources;
         private IDisposable _healthChangeSub;
 
         protected override void OnInit()
         {
-            _healthComponent = Owner.Components.Get<HealthComponent>();
+            var statHolder = Owner.Components.Get<IStatHolder>();
+            var statContainer = statHolder.GetStatContainer();
+            
+            _healthResources = statContainer.GetStatResourceResolver(PrimaryStat.HP);
             _animatorController = Owner.Components.Get<BattleAnimationComponent>();
             
             ObserveCurrentHealth();
@@ -38,9 +44,10 @@ namespace SF.Common.Actors.Components.Status
 
         private void ObserveCurrentHealth()
         {
-            if (_healthComponent != null && _healthChangeSub == null)
+            if (_healthResources != null && _healthChangeSub == null)
             {
-                _healthChangeSub = _healthComponent.Current.SkipLatestValueOnSubscribe()
+                _healthChangeSub = _healthResources.Current
+                    .SkipLatestValueOnSubscribe()
                     .Subscribe(CheckDeadStatus);
             }
         }

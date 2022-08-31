@@ -1,17 +1,22 @@
-﻿using SF.Common.Actors;
+﻿using SF.Battle.Stats;
+using SF.Common.Actors;
 using SF.Common.Actors.Components.Stats;
+using SF.Game.Stats;
 
 namespace SF.Battle.Damage
 {
     public class HealthCalculator
     {
         private IActor _actor;
-        private readonly HealthComponent _ownerHealth;
+        private readonly IPrimaryStatResource _ownerHealth;
 
         public HealthCalculator(IActor owner)
         {
             _actor = owner;
-            _ownerHealth = owner.Components.Get<HealthComponent>();
+            var statHolder = owner.Components.Get<IStatHolder>();
+            var statContainer = statHolder.GetStatContainer();
+
+            _ownerHealth = statContainer.GetStatResourceResolver(PrimaryStat.HP);
         }
         
         public void CalculateDamage(DamageMeta meta)

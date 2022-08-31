@@ -1,5 +1,7 @@
 ﻿using SF.Battle.Actors;
+using SF.Battle.Stats;
 using SF.Common.Actors.Components.Stats;
+using SF.Game.Stats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,8 +16,8 @@ namespace SF.UI.View
         [SerializeField] private CharacterBarView _healthBarView;
         [SerializeField] private CharacterBarView _manaBarView;
         
-        private BaseResourceStatComponent _observableHealthComponent;
-        private BaseResourceStatComponent _observableManaComponent;
+        private IPrimaryStatResource _observableHealthResolver;
+        private IPrimaryStatResource _observableManaResolver;
         
         public void ObserveActorHealth(BattleActor actor)
         {
@@ -25,23 +27,26 @@ namespace SF.UI.View
             _actorLevel.text = $"Lv.{actor.Level}";
             _actorIcon.sprite = visualParameter.Icon;
 
-            _observableHealthComponent = actor.Components.Get<HealthComponent>();
-            _observableManaComponent = actor.Components.Get<ManaComponent>();
+            var statHolder = actor.Components.Get<IStatHolder>();
+            var statContainer = statHolder.GetStatContainer();
+            
+            _observableHealthResolver = statContainer.GetStatResourceResolver(PrimaryStat.HP);
+            _observableManaResolver = statContainer.GetStatResourceResolver(PrimaryStat.MP);
             
             StartObserveStats();
         }
 
         private void StartObserveStats()
         {
-            TryObserveStat(_healthBarView, _observableHealthComponent);
-            TryObserveStat(_manaBarView, _observableManaComponent); 
+            TryObserveStat(_healthBarView, _observableHealthResolver);
+            TryObserveStat(_manaBarView, _observableManaResolver); 
         }
 
-        private void TryObserveStat(CharacterBarView barView, BaseResourceStatComponent statComponent)
+        private void TryObserveStat(CharacterBarView barView, IPrimaryStatResource primaryStatResource)
         {
-            if (statComponent != null && barView != null)
+            if (primaryStatResource != null && barView != null)
             {
-                barView.StartObserve(statComponent);
+                barView.StartObserve(primaryStatResource);
             }
         }
         

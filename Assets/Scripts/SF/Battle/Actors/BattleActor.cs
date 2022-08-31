@@ -2,15 +2,17 @@
 using SF.Battle.Abilities;
 using SF.Battle.Common;
 using SF.Battle.Damage;
+using SF.Battle.Stats;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
 using SF.Common.Actors.Weapon;
 using SF.Game;
+using SF.Game.Data;
 using UnityEngine;
 
 namespace SF.Battle.Actors
 {
-    public class BattleActor : SceneActor, IHealthChangeable, ITurnConsumer
+    public class BattleActor : SceneActor, IHealthChangeable, IStatHolder
     {
         public event Action TurnPassed;
         
@@ -18,21 +20,27 @@ namespace SF.Battle.Actors
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
 
-        private WeaponComponent _weaponComponent;
-        private AbilityComponent _abilityComponent;
+        private StatContainer _stats;
         private HealthCalculator _healthCalculator;
-        private PlaceholderComponent _placeholderComponent;
+
+        //todo remove, pass into actor as metadata
+        [SerializeField] private StatScaleConfig _statScaleConfig;
         
         public void Init(IServiceLocator serviceLocator, BattleMetaData metaData, IWorld world)
         {
             MetaData = metaData;
             
+            var characterData = MetaData.Info.Config;
+            
+            _stats = new StatContainer(Level,
+                characterData.BaseData,
+                characterData.AdditionalMainStats, 
+                characterData.ProfessionData.Tiers, 
+                characterData.ProfessionData.AdditionalPrimaryStats, 
+                _statScaleConfig);
+            
             Init(serviceLocator, world);
-
-            _weaponComponent = Components.Get<WeaponComponent>();
-            _abilityComponent = Components.Get<AbilityComponent>();
-            _placeholderComponent = Components.Get<PlaceholderComponent>();
-
+            
             _healthCalculator = new HealthCalculator(this);
         }
 
@@ -40,10 +48,10 @@ namespace SF.Battle.Actors
         {
             PlaceInFrontOf(target);
 
-            _weaponComponent.InvokeAttack(target, () =>
+            Components.Get<WeaponComponent>().InvokeAttack(target, () =>
             {
                 onActionEnds?.Invoke();
-                SetPosition(_placeholderComponent.Placeholder.position);
+                SetPosition(Components.Get<PlaceholderComponent>().Placeholder.position);
             });
         }
         
@@ -53,10 +61,10 @@ namespace SF.Battle.Actors
             
             PlaceInFrontOf(target);
             
-           _abilityComponent.InvokeSkill(abilityData, target, () =>
+           Components.Get<AbilityComponent>().InvokeSkill(abilityData, target, () =>
            {
                onActionEnds?.Invoke();
-               SetPosition(_placeholderComponent.Placeholder.position);
+               SetPosition(Components.Get<PlaceholderComponent>().Placeholder.position);
                LookAt(startLookAtVector);
            });
         }
@@ -89,8 +97,13 @@ namespace SF.Battle.Actors
 
         public void SetNewPlaceholder(Transform placeholder)
         {
-            _placeholderComponent.SetPlaceholder(placeholder);
+            Components.Get<PlaceholderComponent>().SetPlaceholder(placeholder);
             SyncWith(placeholder);
+        }
+
+        public StatContainer GetStatContainer()
+        {
+            return _stats;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using SF.Battle.Abilities.Mechanics.Data;
-using SF.Common.Actors.Components.Stats;
+using SF.Battle.Stats;
 
 namespace SF.Battle.Effects
 {
@@ -7,14 +7,20 @@ namespace SF.Battle.Effects
     {
         protected override void OnApply()
         {
-            var affectedStats = Affected.Components.Get<StatsContainerComponent>();
+            var affectedStats = GetStatContainer();
             affectedStats.AddStatValue(Data.Stat, (int)Data.StatBoostValue);
         }
 
         protected override void OnCancel()
         {
-            var affectedStats = Affected.Components.Get<StatsContainerComponent>();
+            var affectedStats = GetStatContainer();
             affectedStats.AddStatValue(Data.Stat, (int)Data.StatBoostValue * -1);
+        }
+
+        private StatContainer GetStatContainer()
+        {
+            var statHolder = Affected.Components.Get<IStatHolder>();
+            return statHolder.GetStatContainer();
         }
     }
 }

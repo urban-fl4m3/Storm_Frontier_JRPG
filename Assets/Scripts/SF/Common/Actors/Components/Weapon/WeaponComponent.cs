@@ -1,8 +1,8 @@
 ﻿using System;
 using SF.Battle.Actions;
 using SF.Battle.Damage;
+using SF.Battle.Stats;
 using SF.Common.Actors.Actions;
-using SF.Common.Actors.Components.Stats;
 using SF.Game.Stats;
 
 namespace SF.Common.Actors.Weapon
@@ -10,7 +10,7 @@ namespace SF.Common.Actors.Weapon
     public class WeaponComponent : ActorComponent, IDamageProvider
     {
         private ActionControllerComponent _actionControllerComponent;
-        private StatsContainerComponent _statsContainerComponent;
+        private StatContainer _statContainer;
         private DamageAction _damageAction;
         
         public void InvokeAttack(IActor target, Action onActionComplete = null)
@@ -31,14 +31,14 @@ namespace SF.Common.Actors.Weapon
             //     damageType = PrimaryStat.MPower;
             // }
 
-            var might = _statsContainerComponent.GetStat(damageType);
+            var might = _statContainer.GetStat(damageType);
             return might + weaponMight;
         }
 
         protected override void OnInit()
         {
             _actionControllerComponent = Owner.Components.Get<ActionControllerComponent>();
-            _statsContainerComponent = Owner.Components.Get<StatsContainerComponent>();
+            _statContainer = Owner.Components.Get<IStatHolder>().GetStatContainer();
             
             _damageAction = new DamageAction(this);
             

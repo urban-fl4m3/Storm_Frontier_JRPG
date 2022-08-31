@@ -118,7 +118,7 @@ namespace SF.Game
 
         private void CreateBattleCamera()
         {
-            var smartCamera = new BattleCameraController(_cinemachineView, this, _turnManager, Field);
+            var smartCamera = new BattleCameraController(_cinemachineView);
             ServiceLocator.CameraHolder.Add(smartCamera);
         }
     }
