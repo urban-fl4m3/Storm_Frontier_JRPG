@@ -2,37 +2,54 @@
 using Cysharp.Threading.Tasks;
 using SF.Battle.Abilities;
 using SF.Battle.Common;
-using SF.Battle.Field;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors.Abilities;
 using SF.Common.Data;
-using SF.Game;
+using SF.UI.Models.Actions;
 using UnityEngine;
 
 namespace SF.Battle.Turns
 {
     public class PlayerTurnAction : BaseTurnAction
     {
-        private readonly BattleField _field;
+        private readonly IReadonlyActionBinder _actionBinder;
         private readonly PlayerTurnModel _model;
 
-        public PlayerTurnAction(BattleField field, IBattleActorsHolder actorsHolder) : base(actorsHolder)
+        public PlayerTurnAction(IBattleActorsHolder actorsHolder, IReadonlyActionBinder actionBinder) : base(actorsHolder)
         {
-            _field = field;
+            _actionBinder = actionBinder;
             _model = new PlayerTurnModel(actorsHolder);
         }
 
-        public void HandleAttackSelected(IDataProvider dataProvider)
+        protected override void OnStartTurn()
+        {
+            _actionBinder.Subscribe(ActionName.Attack, HandleAttackSelected);
+            _actionBinder.Subscribe(ActionName.Skills, HandleSkillSelected);
+            _actionBinder.Subscribe(ActionName.Item, HandleItemSelected);
+            _actionBinder.Subscribe(ActionName.Guard, HandleGuardSelected);
+        }
+
+        protected override void OnTurnComplete()
+        {
+            _actionBinder.Unsubscribe(ActionName.Attack, HandleAttackSelected);
+            _actionBinder.Unsubscribe(ActionName.Skills, HandleSkillSelected);
+            _actionBinder.Unsubscribe(ActionName.Item, HandleItemSelected);
+            _actionBinder.Unsubscribe(ActionName.Guard, HandleGuardSelected);
+         
+            ClearModel();
+        }
+
+        private void HandleAttackSelected(IDataProvider dataProvider)
         {
             var attackSelectionData = new TargetSelectionData(TargetPick.OppositeTeam);
             var attackSelectionRule = new TargetSelectionRule(ActingActor, attackSelectionData);
             
             MakeAsyncAction(attackSelectionRule,  
-                () => ActingActor.PerformAttack(_model.SelectedActor, CompleteTurn))
+                    () => ActingActor.PerformAttack(_model.SelectedActor, CompleteTurn))
                 .Forget();
         }
 
-        public void HandleSkillSelected(IDataProvider dataProvider)
+        private void HandleSkillSelected(IDataProvider dataProvider)
         {
             var abilityData = dataProvider.GetData<ActiveBattleAbilityData>();
 
@@ -52,11 +69,11 @@ namespace SF.Battle.Turns
             var skillSelectionRule = new TargetSelectionRule(ActingActor, skillSelectionData);
             
             MakeAsyncAction(skillSelectionRule,
-                () =>  ActingActor.PerformSkill(abilityData, _model.SelectedActor, CompleteTurn))
+                    () =>  ActingActor.PerformSkill(abilityData, _model.SelectedActor, CompleteTurn))
                 .Forget();
         }
 
-        public void HandleItemSelected(IDataProvider dataProvider)
+        private void HandleItemSelected(IDataProvider dataProvider)
         {
             var itemIndex = dataProvider.GetData<int>();
             
@@ -64,28 +81,15 @@ namespace SF.Battle.Turns
             CompleteTurn();
         }
         
-        public void HandleGuardSelected(IDataProvider dataProvider)
+        private void HandleGuardSelected(IDataProvider dataProvider)
         {
             var guardSelectionData = new TargetSelectionData(TargetPick.Instant);
             var guardSelectionRule = new TargetSelectionRule(ActingActor, guardSelectionData);
 
             MakeAsyncAction(guardSelectionRule, 
-                () => ActingActor.PerformGuard(CompleteTurn))
+                    () => ActingActor.PerformGuard(CompleteTurn))
                 .Forget();
         }
-
-        protected override void OnStartTurn()
-        {
-            RenderActiveActor();
-            
-            ActingActor.SyncWith(_field.ActivePlayerPlaceholder);
-        }
-
-        protected override void OnTurnComplete()
-        {
-            
-        }
-
 
         private async UniTaskVoid MakeAsyncAction(ITargetSelectionRule selectionRule, Action action)
         {
@@ -99,22 +103,12 @@ namespace SF.Battle.Turns
             SelectActor(_model.SelectedActor);
 
             action?.Invoke();
-            ClearModel();
         }
 
         private void ClearModel()
         {
             _model.Cancel();
             SelectActor(null);
-        }
-        
-        private void RenderActiveActor()
-        {
-            foreach (var actor in ActorsHolder.GetTeamActors(Team.Player))
-            {
-                var isActingActor = actor == ActingActor;
-                actor.SetVisibility(isActingActor);
-            }
         }
     }
 }

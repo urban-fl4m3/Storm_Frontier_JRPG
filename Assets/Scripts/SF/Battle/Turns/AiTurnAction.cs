@@ -26,9 +26,6 @@ namespace SF.Battle.Turns
         protected override void OnStartTurn()
         {
             _logger.Log($"Actor {ActingActor} turn completed");
-
-            RenderAllActors();
-
             _temporaryDelaySub = Observable.FromCoroutine(CalculatePoints).Subscribe();
         }
 
@@ -40,14 +37,6 @@ namespace SF.Battle.Turns
             }
 
             _temporaryDelaySub?.Dispose();
-        }
-
-        private void RenderAllActors()
-        {
-            foreach (var actor in ActorsHolder.Actors)
-            {
-                actor.SetVisibility(true);
-            }
         }
         
         private IEnumerator CalculatePoints()

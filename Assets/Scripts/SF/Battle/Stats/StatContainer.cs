@@ -86,6 +86,8 @@ namespace SF.Battle.Stats
             {
                 resourceStat = new PrimaryStatResource(stat);
                 _resourceStats.Add(stat, resourceStat);
+                
+                resourceStat.UpdateMaxStat(GetStat(stat));
             }
 
             return resourceStat;

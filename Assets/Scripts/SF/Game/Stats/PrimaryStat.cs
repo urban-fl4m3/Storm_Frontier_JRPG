@@ -25,6 +25,8 @@
         Manasteal = 20,
         ResRadiance = 21,
         ResVoid = 22,
-        HPRegen = 23
+        HPRegen = 23,
+        Speed = 24,
+        Balance = 25
     }
 }

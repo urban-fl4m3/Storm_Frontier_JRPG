@@ -7,7 +7,7 @@ using SF.Game.Data.Characters;
 using SF.Game.Initializers;
 using SF.Game.Player;
 using SF.Game.States;
-using SF.UI.Controller;
+using SF.UI.Factories;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace SF.Game
     public class GameBootstrap : SerializedMonoBehaviour
     {
         [OdinSerialize] private IWorldInitializer _worldInitializer;
-        [OdinSerialize] private IWindowController _windowController;
+        [SerializeField] private WindowsFactory _windowsFactory;
         [SerializeField] private List<GameCharacterConfig> _playerCharacters;
 
         private GameStateMachine _gameStateMachine;
@@ -37,7 +37,7 @@ namespace SF.Game
 
         private void InitServiceLocator()
         {
-            _serviceLocator = new ServiceLocator(_windowController);
+            _serviceLocator = new ServiceLocator();
 
             InitPlayerState();
             InitFactories();
@@ -48,6 +48,7 @@ namespace SF.Game
         {
             _serviceLocator.FactoryHolder.Add(new MechanicsFactory());
             _serviceLocator.FactoryHolder.Add(new EffectsFactory());
+            _serviceLocator.FactoryHolder.Add(_windowsFactory);
         }
 
         private void InitTicks()

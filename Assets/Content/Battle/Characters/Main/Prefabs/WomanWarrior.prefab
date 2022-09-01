@@ -450,7 +450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7104053836200916876
 Transform:
   m_ObjectHideFlags: 0
@@ -825,7 +825,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _view: {fileID: 4935499219421008174}
   _statScaleConfig: {fileID: 11400000, guid: be4f5b98444bbfe42929e4b567769163, type: 2}
 --- !u!114 &7072307282035504390
 MonoBehaviour:

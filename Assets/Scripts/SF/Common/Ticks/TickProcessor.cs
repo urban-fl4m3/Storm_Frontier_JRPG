@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using UniRx;
 
 namespace SF.Common.Ticks
 {
     public class TickProcessor : ITickProcessor
     {
-        private readonly List<Action> _ticks = new();
-        private readonly Queue<Action> _ticksToAdd = new();
-        private readonly Queue<Action> _ticksToRemove = new();
+        private event Action<long> _tickAction = delegate { };
 
         private IDisposable _tickSub;
         
@@ -34,38 +30,23 @@ namespace SF.Common.Ticks
         public void Clear()
         {
             Stop();
-            
-            _ticksToRemove.Clear();
-            _ticksToAdd.Clear();
-            _ticks.Clear();
+
+            _tickAction = delegate { };
         }
 
-        public void AddTick(Action tick)
+        public void AddTick(Action<long> tick)
         {
-            _ticksToAdd.Enqueue(tick);
+            _tickAction += tick;
         }
 
-        public void RemoveTick(Action tick)
+        public void RemoveTick(Action<long> tick)
         {
-            _ticksToRemove.Enqueue(tick);
+            _tickAction -= tick;
         }
 
         private void OnTick(long delta)
         {
-            while (_ticksToRemove.Any())
-            {
-                _ticks.Remove(_ticksToRemove.Dequeue());
-            }
-
-            while (_ticksToAdd.Any())
-            {
-                _ticks.Add(_ticksToAdd.Dequeue());
-            }
-
-            foreach (var tick in _ticks)
-            {
-                tick();
-            }
+            _tickAction(delta);
         }
     }
 }

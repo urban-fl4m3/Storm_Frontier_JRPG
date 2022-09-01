@@ -6,8 +6,7 @@ namespace SF.Common.Animations
 {
     public class AnimationEventHandler : MonoBehaviour
     {
-        private readonly Dictionary<string, EventHandler> _eventsDictionary
-            = new Dictionary<string, EventHandler>();
+        private readonly Dictionary<string, EventHandler> _eventsDictionary = new();
         
         /// <summary>
         /// Executed from unity animator with given key!

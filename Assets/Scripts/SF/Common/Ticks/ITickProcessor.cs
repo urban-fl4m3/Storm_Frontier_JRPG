@@ -7,7 +7,7 @@ namespace SF.Common.Ticks
         void Start();
         void Stop();
         void Clear();
-        void AddTick(Action tick);
-        void RemoveTick(Action tick);
+        void AddTick(Action<long> tick); //todo add layers
+        void RemoveTick(Action<long> tick);
     }
 }

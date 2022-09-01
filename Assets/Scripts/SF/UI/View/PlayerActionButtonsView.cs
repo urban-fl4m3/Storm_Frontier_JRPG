@@ -45,6 +45,7 @@ namespace SF.UI.View
             gameObject.SetActive(false);
         }
         
+        //todo move to presenter
         public void SubscribeOnAbilities(BattleActor actor, Action<ActiveBattleAbilityData> skillSelected)
         {
             var abilities = actor.MetaData.Info.Config.Abilities;
@@ -73,6 +74,7 @@ namespace SF.UI.View
         
         private void Start()
         {
+            //todo check and refactor?
             _buttonsHolder = new ButtonsHolder<TextButtonView>(_abilityPanelView.Content, _abilityPanelView.ButtonView);   
         }
     }

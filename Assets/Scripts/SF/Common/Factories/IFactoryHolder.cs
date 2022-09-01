@@ -2,7 +2,7 @@
 {
     public interface IFactoryHolder
     {
-        void Add<TFactory>(TFactory factory) where TFactory : IFactory;
+        void Add(IFactory factory);
         
         TFactory Get<TFactory>() where TFactory : IFactory;
     }

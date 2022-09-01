@@ -7,9 +7,9 @@ namespace SF.Common.Factories
     {
         private readonly Dictionary<Type, IFactory> _factories = new();
 
-        public void Add<TFactory>(TFactory factory) where TFactory : IFactory
+        public void Add(IFactory factory)
         {
-            _factories.Add(typeof(TFactory), factory);   
+            _factories.Add(factory.GetType(), factory);   
         }
 
         public TFactory Get<TFactory>() where TFactory : IFactory

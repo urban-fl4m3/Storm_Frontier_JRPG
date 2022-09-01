@@ -2,7 +2,6 @@
 using SF.Common.Factories;
 using SF.Common.Logger;
 using SF.Common.Ticks;
-using SF.UI.Controller;
 
 namespace SF.Game
 {
@@ -12,6 +11,5 @@ namespace SF.Game
         ITickProcessor TickProcessor { get; }
         IFactoryHolder FactoryHolder { get; }
         ISmartCameraRegistrar CameraHolder { get; }
-        IWindowController WindowController { get; }
     }
 }

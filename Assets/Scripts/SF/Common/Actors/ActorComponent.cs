@@ -6,8 +6,6 @@ namespace SF.Common.Actors
 {
     public abstract class ActorComponent : SerializedMonoBehaviour, IActorComponent
     {
-        public IReadOnlyReactiveProperty<bool> IsInit => _isInit;
-        
         protected IActor Owner { get; private set; }
         protected IServiceLocator ServiceLocator { get; private set; }
 

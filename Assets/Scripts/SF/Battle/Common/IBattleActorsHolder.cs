@@ -11,7 +11,5 @@ namespace SF.Battle.Common
 
         IEnumerable<BattleActor> GetTeamActors(Team team);
         IEnumerable<BattleActor> GetOppositeTeamActors(Team team);
-
-        void SetNextActingActor();
     }
 }

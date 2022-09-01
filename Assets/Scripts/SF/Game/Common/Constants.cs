@@ -8,5 +8,11 @@
             public const float STAT_TIER_CORRECTOR = 0.001f;
             public const float STAT_GROWTH_AMPLITUDE = 0.5f;
         }
+        
+        public static class Battle
+        {
+            public const int ActionBarMeter = 100;
+            public const float ActionFillPerSpeed = 1;
+        }
     }
 }

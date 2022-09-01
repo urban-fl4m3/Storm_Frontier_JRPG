@@ -7,7 +7,7 @@ namespace SF.UI.Creator
 {
     public class ButtonsHolder<TButton> where TButton : ButtonView
     {
-        private readonly List<TButton> _buttons = new List<TButton>();
+        private readonly List<TButton> _buttons = new();
         private readonly ObjectPool<TButton> _objectPool;
 
         private readonly Transform _root;

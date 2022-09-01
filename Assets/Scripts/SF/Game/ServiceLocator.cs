@@ -2,7 +2,6 @@
 using SF.Common.Factories;
 using SF.Common.Logger;
 using SF.Common.Ticks;
-using SF.UI.Controller;
 
 namespace SF.Game
 {
@@ -12,16 +11,13 @@ namespace SF.Game
         public ITickProcessor TickProcessor { get; }
         public IFactoryHolder FactoryHolder { get; }
         public ISmartCameraRegistrar CameraHolder { get; }
-        public IWindowController WindowController { get; }
         
-        public ServiceLocator(IWindowController windowController)
+        public ServiceLocator()
         {
             Logger = new UnityDebugLogger();
             TickProcessor = new TickProcessor();
             FactoryHolder = new FactoryHolder();
             CameraHolder = new SmartCameraRegistrar(Logger);
-
-            WindowController = windowController;
         }
     }
 }
