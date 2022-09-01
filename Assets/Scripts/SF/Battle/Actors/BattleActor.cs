@@ -8,6 +8,7 @@ using SF.Common.Actors.Abilities;
 using SF.Common.Actors.Weapon;
 using SF.Game;
 using SF.Game.Data;
+using SF.Game.Worlds;
 using UnityEngine;
 
 namespace SF.Battle.Actors

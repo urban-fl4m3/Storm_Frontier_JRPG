@@ -1,4 +1,5 @@
 ﻿using SF.Game;
+using SF.Game.Worlds;
 using SF.UI.Models.Actions;
 using SF.UI.Windows;
 
@@ -21,7 +22,7 @@ namespace SF.UI.Presenters
         
         public override void Enable()
         {
-            var actors = World.GetTeamActors(_team);
+            var actors = World.ActorsHolder.GetTeamActors(_team);
 
             foreach (var actor in actors)
             {

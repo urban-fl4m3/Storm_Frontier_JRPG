@@ -1,23 +1,24 @@
 ﻿using SF.Common.Data;
 using SF.Game;
+using SF.Game.Player;
 using SF.Game.States;
 
 namespace SF.Sea.States
 {
     public class SeaExplorationState : GameState
     {
-        public SeaExplorationState(IServiceLocator serviceLocator) : base(serviceLocator)
+        public SeaExplorationState(IServiceLocator services, IPlayerState playerState) : base(services, playerState)
         {
         }
 
         public override void Enter(IDataProvider data)
         {
-            ServiceLocator.Logger.Log("Entered sea exploration state");
+            Services.Logger.Log("Entered sea exploration state");
         }
 
         public override void Exit()
         {
-            ServiceLocator.Logger.Log("Exited sea exploration state");
+            Services.Logger.Log("Exited sea exploration state");
         }
     }
 }

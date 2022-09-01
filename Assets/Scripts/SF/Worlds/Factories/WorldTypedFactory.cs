@@ -4,7 +4,7 @@ using System.Linq;
 using SF.Common.Data;
 using SF.Common.Factories;
 
-namespace SF.Game.Factories
+namespace SF.Game.Worlds.Factories
 {
     public abstract class WorldTypedFactory<T1, T2> : BaseTypedFactory<T1, T2> where T2 : IFactoryInstance
     {

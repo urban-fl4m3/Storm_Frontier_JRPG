@@ -1,9 +1,9 @@
-﻿using SF.Game.Player;
+﻿using SF.Common.Data;
 
 namespace SF.Game.Initializers
 {
     public interface IWorldInitializer
     {
-        IWorld CreateWorld(IServiceLocator serviceLocator, IPlayerState playerState);
+        IDataProvider GetWorldData();
     }
 }

@@ -12,20 +12,17 @@ namespace SF.Battle.Turns
     {
         private readonly IDebugLogger _logger;
         private readonly ITickProcessor _tickProcessor;
+        private readonly IBattleActorsHolder _actorsHolder;
         private readonly Dictionary<Team, ITurnAction> _turnActions = new();
 
-        private IEnumerable<BattleActor> _actingActors;
         private ITurnAction _currentTurn;
-
-        private readonly IBattleActorsHolder _actorsHolder;
+        private IEnumerable<BattleActor> _actingActors;
         
         public TurnManager(IDebugLogger logger, ITickProcessor tickProcessor, IReadonlyActionBinder actionBinder, IBattleActorsHolder actorsHolder)
         {
             _logger = logger;
-            _tickProcessor = tickProcessor;
-            
-            //todo remove
             _actorsHolder = actorsHolder;
+            _tickProcessor = tickProcessor;
             
             _turnActions.Add(Team.Player, new PlayerTurnAction(_actorsHolder, actionBinder));
             _turnActions.Add(Team.Enemy, new AiTurnAction(logger, _actorsHolder));

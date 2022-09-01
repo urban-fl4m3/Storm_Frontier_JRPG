@@ -1,16 +1,17 @@
 ﻿using SF.Common.Data;
 using SF.Game;
+using SF.Game.Worlds;
 using SF.UI.Models.Actions;
 using SF.UI.View;
 
 namespace SF.UI.Presenters
 {
-    //todo implement base presenter
+    //todo implement base presenter (inherit from BasePresenter with TWorld)
     public abstract class BaseBattlePresenter<TView> : IBasePresenter
         where TView : IView
     {
         protected TView View { get; }
-        protected BattleWorld World { get; }
+        protected IBattleWorld World { get; }
         protected IServiceLocator ServiceLocator { get; }
 
         private readonly ActionBinder _actionBinder;
@@ -21,7 +22,7 @@ namespace SF.UI.Presenters
             IServiceLocator serviceLocator,
             ActionBinder actionBinder)
         {
-            if (world is not BattleWorld battleWorld)
+            if (world is not IBattleWorld battleWorld)
             {
                 serviceLocator.Logger.LogError("Wrong world instance for ui controller");
                 return;

@@ -3,6 +3,7 @@ using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Common.Data;
 using SF.Game;
+using SF.Game.Worlds;
 using SF.UI.Models.Actions;
 using SF.UI.View;
 
@@ -52,7 +53,7 @@ namespace SF.UI.Presenters
         private void OnSkillClick()
         {
             View.ShowAbility();
-            View.SubscribeOnAbilities(World.ActingActor, OnSkillSelected);
+            View.SubscribeOnAbilities(World.ActorsHolder.ActingActor, OnSkillSelected);
         }
 
         private void OnSkillSelected(ActiveBattleAbilityData data)
