@@ -10,6 +10,7 @@ namespace SF.Battle.Turns
     {
         public event Action TurnStarted;
         public event Action TurnCompleted;
+        public event Action ActionSelected;
         public event Action<IActor> ActorSelected;
 
         protected BattleActor ActingActor { get; private set; }
@@ -56,7 +57,7 @@ namespace SF.Battle.Turns
 
         private bool CanMakeTurn()
         {
-            var stateComponent = ActingActor.Components.Get<ActorStateComponent>();
+            var stateComponent = ActingActor.Components.Get<BattleStatusComponent>();
 
             return stateComponent.State.Value != ActorState.Dead;
         }

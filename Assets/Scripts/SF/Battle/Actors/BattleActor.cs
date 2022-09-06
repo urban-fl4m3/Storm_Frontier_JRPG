@@ -5,6 +5,7 @@ using SF.Battle.Damage;
 using SF.Battle.Stats;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
+using SF.Common.Actors.Components.Status;
 using SF.Common.Actors.Weapon;
 using SF.Game;
 using SF.Game.Data;
@@ -15,13 +16,13 @@ namespace SF.Battle.Actors
 {
     public class BattleActor : SceneActor, IHealthChangeable, IStatHolder
     {
-        public event Action TurnPassed;
-        
-        public BattleMetaData MetaData { get; private set; }
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
+        
+        public BattleMetaData MetaData { get; private set; }
+        public StatContainer Stats { get; private set; }
 
-        private StatContainer _stats;
+        private BattleStatusComponent _status;
         private HealthCalculator _healthCalculator;
 
         //todo remove, pass into actor as metadata
@@ -33,7 +34,7 @@ namespace SF.Battle.Actors
             
             var characterData = MetaData.Info.Config;
             
-            _stats = new StatContainer(Level,
+            Stats = new StatContainer(Level,
                 characterData.BaseData,
                 characterData.AdditionalMainStats, 
                 characterData.ProfessionData.Tiers, 
@@ -43,6 +44,7 @@ namespace SF.Battle.Actors
             Init(serviceLocator, world);
             
             _healthCalculator = new HealthCalculator(this);
+            _status = Components.Get<BattleStatusComponent>();
         }
 
         public void PerformAttack(SceneActor target, Action onActionEnds = null)
@@ -90,21 +92,15 @@ namespace SF.Battle.Actors
         {
            _healthCalculator.CalculateHeal(amount);
         }
-        
-        public void EndTurn()
-        {
-            TurnPassed?.Invoke();    
-        }
-
-        public void SetNewPlaceholder(Transform placeholder)
-        {
-            Components.Get<PlaceholderComponent>().SetPlaceholder(placeholder);
-            SyncWith(placeholder);
-        }
 
         public StatContainer GetStatContainer()
         {
-            return _stats;
+            return Stats;
+        }
+
+        public bool IsDead()
+        {
+            return _status.State.Value == ActorState.Dead;
         }
     }
 }

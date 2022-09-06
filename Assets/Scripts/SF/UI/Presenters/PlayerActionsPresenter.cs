@@ -53,7 +53,7 @@ namespace SF.UI.Presenters
         private void OnSkillClick()
         {
             View.ShowAbility();
-            View.SubscribeOnAbilities(World.ActorsHolder.ActingActor, OnSkillSelected);
+            // View.SubscribeOnAbilities(World.ActorsHolder.ActingActor, OnSkillSelected);
         }
 
         private void OnSkillSelected(ActiveBattleAbilityData data)

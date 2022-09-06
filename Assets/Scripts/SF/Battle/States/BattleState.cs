@@ -36,23 +36,30 @@ namespace SF.Battle.States
         public override void Enter(IDataProvider dataProvider)
         {
             Field = dataProvider.GetData<BattleField>();
-            var enemyData = dataProvider.GetData<IEnumerable<BattleCharacterInfo>>();
 
-            _actorsHolder = new BattleActorsHolder(Services.Logger);
-            _battleSceneActorFactory = new BattleSceneActorFactory(Services);
-            
-            CreateActors(Team.Player, PlayerState.Loadout.GetBattleCharactersData());
-            CreateActors(Team.Enemy, enemyData);
-            
-            _battleWindow = _windowsFactory.Create(Window.Battle, new DataProvider(this, Services));
-            _battleWindow.Show();
+            CreateActorsEnvironment();
+            CreateAllActors(dataProvider.GetData<IEnumerable<BattleCharacterInfo>>());
+            CreateHud();
             
             _turnManager = new TurnManager(Services.Logger, Services.TickProcessor, _battleWindow.Actions, _actorsHolder);
+            _turnManager.Enable();
         }
 
         public override void Exit()
         {
             Services.Logger.Log("Exited battle state");
+        }
+
+        private void CreateActorsEnvironment()
+        {
+            _actorsHolder = new BattleActorsHolder(Services.Logger);
+            _battleSceneActorFactory = new BattleSceneActorFactory(Services);
+        }
+
+        private void CreateAllActors(IEnumerable<BattleCharacterInfo> enemyData)
+        {
+            CreateActors(Team.Player, PlayerState.Loadout.GetBattleCharactersData());
+            CreateActors(Team.Enemy, enemyData);
         }
         
         private void CreateActors(Team team, IEnumerable<BattleCharacterInfo> actorsData)
@@ -65,14 +72,20 @@ namespace SF.Battle.States
                 var meta = new BattleMetaData(team, data);
                 
                 var actor = _battleSceneActorFactory.Create(data.Config.BattleActor, meta, this);
-                
-                _actorsHolder.AddActor(actor, team);
-                
+
                 var placeholder = placeholders[currentPlaceholderIndex];
                 actor.SetNewPlaceholder(placeholder);
 
                 currentPlaceholderIndex++;
+                
+                _actorsHolder.AddActor(actor, team);
             }
+        }
+
+        private void CreateHud()
+        {
+            _battleWindow = _windowsFactory.Create(Window.Battle, new DataProvider(this, Services));
+            _battleWindow.Show();
         }
         
         // private void CreateBattleCamera()

@@ -29,7 +29,7 @@ namespace SF.Battle.Turns
             _playerInputControls.Battle.Targeting.performed += OnTargetChanged;
             _playerInputControls.Battle.Sumbit.performed += OnTargetSelected;
             
-            _possibleTargets = targetSelectionRule.GetPossibleTargets(_actorsHolder.Actors);
+            _possibleTargets = targetSelectionRule.GetPossibleTargets(_actorsHolder.GetAllActors());
             SelectedActor = _possibleTargets[0];
         }
 

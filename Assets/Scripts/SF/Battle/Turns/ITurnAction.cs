@@ -8,7 +8,7 @@ namespace SF.Battle.Turns
     {
         event Action TurnStarted;
         event Action TurnCompleted;
-
+        event Action ActionSelected;
         event Action<IActor> ActorSelected; 
 
         void MakeTurn(BattleActor actor);

@@ -74,7 +74,7 @@ namespace SF.Battle.Turns
                 return ActingActor;
             }
 
-            var actors = ActorsHolder.Actors.Where(x =>
+            var actors = ActorsHolder.GetAllActors().Where(x =>
             {
                 if (pick == TargetPick.AllyTeam)
                 {
