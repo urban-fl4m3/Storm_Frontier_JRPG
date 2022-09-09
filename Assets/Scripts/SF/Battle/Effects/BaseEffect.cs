@@ -4,6 +4,7 @@ using SF.Battle.Actors;
 using SF.Common.Actors;
 using SF.Common.Data;
 using SF.Game;
+using SF.Game.Worlds;
 
 namespace SF.Battle.Effects
 {
@@ -12,7 +13,7 @@ namespace SF.Battle.Effects
         public event Action Finished;
         
         protected TEffectData Data { get; private set; }
-        protected BattleWorld World { get; private set; }
+        protected IBattleWorld World { get; private set; }
         protected IServiceLocator ServiceLocator { get; private set; }
         protected IActor Affected { get; private set; }
         protected IActor Affector { get; private set; }
@@ -23,14 +24,14 @@ namespace SF.Battle.Effects
         {
             if (dataProvider != null)
             {
-                World = dataProvider.GetData<BattleWorld>();
+                World = dataProvider.GetData<IBattleWorld>();
                 ServiceLocator = dataProvider.GetData<IServiceLocator>();
             }
         }
 
         public void Apply(IEffectData data, IActor affected, IActor affector)
         {
-            if (!(data is TEffectData effectData))
+            if (data is not TEffectData effectData)
             {
                 ServiceLocator.Logger.LogError($"Wrong data {data} for skill {GetType()}");
                 return;
@@ -69,7 +70,7 @@ namespace SF.Battle.Effects
             Finished = null;
             OnCancel();
         }
-        
+
         protected abstract void OnApply();
         protected abstract void OnCancel();
 

@@ -1,6 +1,7 @@
 ﻿using SF.Battle.Actors;
 using SF.Common.Actors.Factories;
 using SF.Game;
+using SF.Game.Worlds;
 
 namespace SF.Battle.Common
 {

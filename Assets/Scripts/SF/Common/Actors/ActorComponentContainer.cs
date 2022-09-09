@@ -7,7 +7,7 @@ namespace SF.Common.Actors
 {
     public class ActorComponentContainer : MonoBehaviour
     {
-        private readonly Dictionary<Type, object> _components = new Dictionary<Type, object>();
+        private readonly Dictionary<Type, object> _components = new();
         
         public T Get<T>() where T : class
         {

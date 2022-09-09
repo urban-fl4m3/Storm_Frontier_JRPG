@@ -21,8 +21,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7269525938c5a874f8c47ec4b3e6e648, type: 2}
     - {fileID: 11400000, guid: e2c5bb7e083e88044910f8092def8e02, type: 2}
     - {fileID: 11400000, guid: 901c8ef0bcb9f264599bedf33df1fd9d, type: 2}
-    - {fileID: 11400000, guid: 7a5054ba608389a4ca7f36a67650b317, type: 2}
-    - {fileID: 11400000, guid: 17322c4bd0493fa4ca1ef49a59bb62d5, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -183,7 +181,7 @@ MonoBehaviour:
       Data: 6|SF.Battle.Abilities.BattleAbilityData[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 7
+      Data: 5
     - Name: 
       Entry: 10
       Data: 0
@@ -199,12 +197,6 @@ MonoBehaviour:
     - Name: 
       Entry: 10
       Data: 4
-    - Name: 
-      Entry: 10
-      Data: 5
-    - Name: 
-      Entry: 10
-      Data: 6
     - Name: 
       Entry: 13
       Data: 

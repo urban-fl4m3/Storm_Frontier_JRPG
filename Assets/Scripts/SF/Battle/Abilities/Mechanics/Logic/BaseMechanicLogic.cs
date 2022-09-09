@@ -4,20 +4,21 @@ using SF.Battle.Actors;
 using SF.Common.Actors;
 using SF.Common.Data;
 using SF.Game;
+using SF.Game.Worlds;
 
 namespace SF.Battle.Abilities.Mechanics.Logic
 {
     public abstract class BaseMechanicLogic<TMechanicData> : IMechanicLogic where TMechanicData : IMechanicData
     {
         protected TMechanicData Data { get; private set; }
-        protected BattleWorld World { get; private set; }
+        protected IBattleWorld World { get; private set; }
         protected IServiceLocator ServiceLocator { get; private set; }
         
         public void SetFactoryMeta(IDataProvider dataProvider)
         {
             if (dataProvider != null)
             {
-                World = dataProvider.GetData<BattleWorld>();
+                World = dataProvider.GetData<IBattleWorld>();
                 ServiceLocator = dataProvider.GetData<IServiceLocator>();
             }
         }
@@ -47,7 +48,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
             {
                 case MechanicPick.All:
                 {
-                    targets.AddRange(World.Actors);
+                    targets.AddRange(World.ActorsHolder.Actors);
                     break;
                 }
 
@@ -59,13 +60,13 @@ namespace SF.Battle.Abilities.Mechanics.Logic
 
                 case MechanicPick.AllyTeam:
                 {
-                    targets.AddRange(World.GetTeamActors(caster.Team));
+                    targets.AddRange(World.ActorsHolder.GetTeamActors(caster.Team));
                     break;
                 }
 
                 case MechanicPick.OppositeTeam:
                 {
-                    targets.AddRange(World.GetOppositeTeamActors(caster.Team));
+                    targets.AddRange(World.ActorsHolder.GetOppositeTeamActors(caster.Team));
                     break;
                 }
 

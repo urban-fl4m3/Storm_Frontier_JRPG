@@ -9,8 +9,9 @@ namespace SF.UI.Windows
     {
         [SerializeField] private CharacterInfoView _characterInfoViewPrefab;
 
-        private readonly List<CharacterInfoView> _infoViews = new List<CharacterInfoView>();
+        private readonly List<CharacterInfoView> _infoViews = new();
         
+        //todo move to presenter
         public void CreateHealthPanel(BattleActor actor)
         {
             var healthBarView = Instantiate(_characterInfoViewPrefab, transform);

@@ -1,22 +1,42 @@
 ﻿using System.Collections.Generic;
+using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Common.Logger;
+using SF.Common.Ticks;
 using SF.Game;
+using SF.UI.Models.Actions;
 
 namespace SF.Battle.Turns
 {
     public class TurnManager
     {
         private readonly IDebugLogger _logger;
+        private readonly ITickProcessor _tickProcessor;
         private readonly IBattleActorsHolder _actorsHolder;
         private readonly Dictionary<Team, ITurnAction> _turnActions = new();
 
         private ITurnAction _currentTurn;
+        private IEnumerable<BattleActor> _actingActors;
         
-        public TurnManager(IDebugLogger logger, IBattleActorsHolder actorsHolder)
+        public TurnManager(IDebugLogger logger, ITickProcessor tickProcessor, IReadonlyActionBinder actionBinder, IBattleActorsHolder actorsHolder)
         {
             _logger = logger;
             _actorsHolder = actorsHolder;
+            _tickProcessor = tickProcessor;
+            
+            _turnActions.Add(Team.Player, new PlayerTurnAction(_actorsHolder, actionBinder));
+            _turnActions.Add(Team.Enemy, new AiTurnAction(logger, _actorsHolder));
+
+        }
+
+        public void Enable()
+        {
+            _tickProcessor.AddTick(OnBattleUpdate);
+        }
+
+        private void OnBattleUpdate(long delta)
+        {
+            
         }
 
         public void PlayNextTurn()
@@ -38,23 +58,9 @@ namespace SF.Battle.Turns
                 OnTurnCompleted();
             }
         }
-
-        public void BindAction(Team team, ITurnAction action)
-        {
-            if (!_turnActions.ContainsKey(team))
-            {
-                _turnActions.Add(team, action);
-            }
-        }
-
-        public ITurnAction GetTurnAction(Team team)
-        {
-            return _turnActions[team];
-        }
-
+        
         private void OnTurnCompleted()
         {
-            _actorsHolder.SetNextActingActor();
             _currentTurn.TurnCompleted -= OnTurnCompleted;
             PlayNextTurn();
         }

@@ -1,21 +1,22 @@
 ﻿using SF.Common.Data;
+using SF.Game.Player;
 
 namespace SF.Game.States
 {
     public class WorldExplorationState : GameState
     {
-        public WorldExplorationState(IServiceLocator serviceLocator) : base(serviceLocator)
+        public WorldExplorationState(IServiceLocator services, IPlayerState playerState) : base(services, playerState)
         {
         }
 
         public override void Enter(IDataProvider data)
         {
-            ServiceLocator.Logger.Log("Entered world exploration state");
+            Services.Logger.Log("Entered world exploration state");
         }
 
         public override void Exit()
         {
-            ServiceLocator.Logger.Log("Exited world exploration state");
+            Services.Logger.Log("Exited world exploration state");
         }
     }
 }

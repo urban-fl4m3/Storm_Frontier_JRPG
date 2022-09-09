@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.TargetSelection;
+using UnityEngine.InputSystem;
 
 namespace SF.Battle.Turns
 {
@@ -12,27 +13,34 @@ namespace SF.Battle.Turns
         public UniTaskCompletionSource TargetSelectedCompletionSource { get; private set; }
 
         private readonly IBattleActorsHolder _actorsHolder;
+        private readonly PlayerInputControls _playerInputControls;
         
-        private ITargetSelectionRule _currentRule;
         private CancellationTokenSource _cancelationToken;
+        private BattleActor[] _possibleTargets;
 
         public PlayerTurnModel(IBattleActorsHolder actorsHolder)
         {
             _actorsHolder = actorsHolder;
+            _playerInputControls = new PlayerInputControls();
         }
 
         public void SetSelectionRules(ITargetSelectionRule targetSelectionRule)
         {
-            targetSelectionRule.TargetSelected += HandleTargetSelected;
-            targetSelectionRule.TrackSelection(_actorsHolder.Actors);
+            _playerInputControls.Battle.Targeting.performed += OnTargetChanged;
+            _playerInputControls.Battle.Sumbit.performed += OnTargetSelected;
+            
+            _possibleTargets = targetSelectionRule.GetPossibleTargets(_actorsHolder.Actors);
+            SelectedActor = _possibleTargets[0];
+        }
 
-            void HandleTargetSelected(BattleActor target)
-            {
-                targetSelectionRule.TargetSelected -= HandleTargetSelected;
-                SelectedActor = target;
+        private void OnTargetSelected(InputAction.CallbackContext context)
+        {
+            TargetSelectedCompletionSource.TrySetResult();
+        }
 
-                TargetSelectedCompletionSource.TrySetResult();
-            }
+        private void OnTargetChanged(InputAction.CallbackContext context)
+        {
+            var nextActorSign = context.ReadValue<int>();
         }
 
         public void Cancel()

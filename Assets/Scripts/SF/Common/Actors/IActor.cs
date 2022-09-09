@@ -1,4 +1,4 @@
-﻿using SF.Game;
+﻿using SF.Game.Worlds;
 
 namespace SF.Common.Actors
 {

@@ -1,63 +1,84 @@
-﻿using SF.Battle.Turns;
+﻿using System.Collections.Generic;
+using SF.Battle.Actors;
+using SF.Battle.Common;
+using SF.Battle.Data;
+using SF.Battle.Field;
+using SF.Battle.Turns;
+using SF.Common.Data;
 using SF.Game;
+using SF.Game.Player;
 using SF.Game.States;
-using SF.UI.Controller;
+using SF.Game.Worlds;
 using SF.UI.Data;
+using SF.UI.Factories;
 using SF.UI.Windows;
 
 namespace SF.Battle.States
 {
-    public class BattleState : WorldState<BattleWorld>
+    public class BattleState : GameState, IBattleWorld
     {
-        private PlayerActionsViewController _playerActionsViewController;
-        private TeamInfoVewController _playerTeamInfoController;
-        private TeamInfoVewController _enemyTeamInfoController;
+        public IBattleActorsHolder ActorsHolder => _actorsHolder;
+        public BattleField Field { get; private set; }
+        
+        private readonly WindowsFactory _windowsFactory;
 
-        public BattleState(IServiceLocator serviceLocator) : base(serviceLocator)
+        private IWindow _battleWindow;
+        private TurnManager _turnManager;
+
+        private BattleActorsHolder _actorsHolder;
+        private BattleSceneActorFactory _battleSceneActorFactory;
+
+        public BattleState(IServiceLocator services, IPlayerState playerState) : base(services, playerState)
         {
-            
+            _windowsFactory = Services.FactoryHolder.Get<WindowsFactory>();
         }
 
-        protected override void OnEnter()
+        public override void Enter(IDataProvider dataProvider)
         {
-            ServiceLocator.Logger.Log("Entered battle state");
+            Field = dataProvider.GetData<BattleField>();
+            var enemyData = dataProvider.GetData<IEnumerable<BattleCharacterInfo>>();
+
+            _actorsHolder = new BattleActorsHolder(Services.Logger);
+            _battleSceneActorFactory = new BattleSceneActorFactory(Services);
             
-            CreateBattleWindow();
-            UpdateTurnManager();
+            CreateActors(Team.Player, PlayerState.Loadout.GetBattleCharactersData());
+            CreateActors(Team.Enemy, enemyData);
             
-            World.Run();
+            _battleWindow = _windowsFactory.Create(Window.Battle, new DataProvider(this, Services));
+            _battleWindow.Show();
             
-            _playerActionsViewController.Enable();
-            _playerTeamInfoController.Enable();
-            _enemyTeamInfoController.Enable();
+            _turnManager = new TurnManager(Services.Logger, Services.TickProcessor, _battleWindow.Actions, _actorsHolder);
         }
 
-        protected override void OnExit()
+        public override void Exit()
         {
-            ServiceLocator.Logger.Log("Exited battle state");
+            Services.Logger.Log("Exited battle state");
         }
         
-        private void CreateBattleWindow()
+        private void CreateActors(Team team, IEnumerable<BattleCharacterInfo> actorsData)
         {
-            var window = ServiceLocator.WindowController.Create<BattleHUD>(WindowType.Battle);
+            var placeholders = Field.GetTeamPlaceholders(team);
+            var currentPlaceholderIndex = 0;
             
-            _playerActionsViewController = new PlayerActionsViewController(window.PlayerActionButtonsView, World, ServiceLocator);
-            _playerTeamInfoController = new TeamInfoVewController(Team.Player, window.PlayerTeamInfoView, World, ServiceLocator);
-            _enemyTeamInfoController = new TeamInfoVewController(Team.Enemy, window.EnemyTeamInfoView, World, ServiceLocator);
+            foreach (var data in actorsData)
+            {
+                var meta = new BattleMetaData(team, data);
+                
+                var actor = _battleSceneActorFactory.Create(data.Config.BattleActor, meta, this);
+                
+                _actorsHolder.AddActor(actor, team);
+                
+                var placeholder = placeholders[currentPlaceholderIndex];
+                actor.SetNewPlaceholder(placeholder);
+
+                currentPlaceholderIndex++;
+            }
         }
         
-        private void UpdateTurnManager()
-        {
-            var playerTurnAction = new PlayerTurnAction(World.Field, World);
-            var enemyTurnAction = new AiTurnAction(ServiceLocator.Logger, World);
-            
-            World.AddTurnAction(Team.Player, playerTurnAction);
-            World.AddTurnAction(Team.Enemy, enemyTurnAction);
-            
-            _playerActionsViewController.BindAction("attack", playerTurnAction.HandleAttackSelected);
-            _playerActionsViewController.BindAction("skill", playerTurnAction.HandleSkillSelected);
-            _playerActionsViewController.BindAction("item", playerTurnAction.HandleItemSelected);
-            _playerActionsViewController.BindAction("guard", playerTurnAction.HandleGuardSelected);
-        }
+        // private void CreateBattleCamera()
+        // {
+        //     var smartCamera = new BattleCameraController(_cinemachineView);
+        //     ServiceLocator.CameraHolder.Add(smartCamera);
+        // }
     }
 }

@@ -1,15 +1,18 @@
 ﻿using SF.Common.Data;
 using SF.Common.States;
+using SF.Game.Player;
 
 namespace SF.Game.States
 {
     public abstract class GameState : IState
     {
-        protected IServiceLocator ServiceLocator { get; }
+        protected IServiceLocator Services { get; }
+        protected IPlayerState PlayerState { get; }
 
-        protected GameState(IServiceLocator serviceLocator)
+        protected GameState(IServiceLocator services, IPlayerState playerState)
         {
-            ServiceLocator = serviceLocator;
+            Services = services;
+            PlayerState = playerState;
         }
 
         public abstract void Enter(IDataProvider data);

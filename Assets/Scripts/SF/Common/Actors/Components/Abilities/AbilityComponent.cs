@@ -5,9 +5,11 @@ using SF.Battle.Abilities;
 using SF.Battle.Abilities.Factories;
 using SF.Battle.Actions;
 using SF.Battle.Actors;
+using SF.Battle.Stats;
 using SF.Common.Actors.Actions;
 using SF.Common.Actors.Components.Stats;
 using SF.Common.Data;
+using SF.Game.Stats;
 
 namespace SF.Common.Actors.Abilities
 {
@@ -18,8 +20,7 @@ namespace SF.Common.Actors.Abilities
         private readonly Dictionary<ActiveBattleAbilityData, BattleAbility> _abilities = new();
 
         private ActionControllerComponent _actionControllerComponent;
-        private ManaComponent _manaComponent;
-        private AbilityAction _abilityAction;
+        private IPrimaryStatResource _manaResource;
 
         protected override void OnInit()
         {
@@ -31,8 +32,11 @@ namespace SF.Common.Actors.Abilities
             }
             
             _actionControllerComponent = Owner.Components.Get<ActionControllerComponent>();
-            _manaComponent = Owner.Components.Get<ManaComponent>();
-            _abilityAction = new AbilityAction();
+
+            var statHolder = Owner.Components.Get<IStatHolder>();
+            var statContainer = statHolder.GetStatContainer();
+                
+            _manaResource = statContainer.GetStatResourceResolver(PrimaryStat.MP);
             
             var mechanicsFactory = ServiceLocator.FactoryHolder.Get<MechanicsFactory>();
             
@@ -66,7 +70,7 @@ namespace SF.Common.Actors.Abilities
                 return false;
             }
 
-            return _manaComponent.Current.Value >= data.ManaCost;
+            return _manaResource.Current.Value >= data.ManaCost;
         }
         
         public void InvokeSkill(ActiveBattleAbilityData abilityData, IActor target, Action onActionComplete = null)
@@ -79,10 +83,10 @@ namespace SF.Common.Actors.Abilities
 
             if (CanInvoke(abilityData))
             {
-                _abilityAction.Target = target;
-                _abilityAction.Ability = _abilities[abilityData];
-                _actionControllerComponent.MakeAction(_abilityAction, onActionComplete);
-                _manaComponent.Remove(abilityData.ManaCost);
+                var abilityAction = new AbilityAction(_abilities[abilityData], target);
+                
+                _actionControllerComponent.MakeAction(abilityAction, onActionComplete);
+                _manaResource.Remove(abilityData.ManaCost);
             }
         }
     }

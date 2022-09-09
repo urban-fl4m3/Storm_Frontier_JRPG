@@ -9,5 +9,6 @@ namespace SF.Battle.TargetSelection
         event Action<BattleActor> TargetSelected;
 
         void TrackSelection(IEnumerable<BattleActor> actors);
+        BattleActor[] GetPossibleTargets(IEnumerable<BattleActor> actors);
     }
 }

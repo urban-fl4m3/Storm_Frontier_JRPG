@@ -27,7 +27,7 @@ namespace SF.Common.Camera
             _cameras.Add(obj);
             ObjectRegistered?.Invoke(this, obj);
 
-            _mainCamera = obj;
+            SetMainCamera(obj);
             
             return true;
         }
@@ -46,7 +46,7 @@ namespace SF.Common.Camera
 
                 if (camerasCount > 0)
                 {
-                    _mainCamera = _cameras[_cameras.Count - 1];
+                    SetMainCamera(_cameras[^1]);
                 }
 
                 ObjectUnregistered?.Invoke(this, obj);

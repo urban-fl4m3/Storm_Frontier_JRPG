@@ -4,8 +4,6 @@ namespace SF.Common.Camera.Cinemachine
 {
     public class CinemachineController : ISmartCamera
     {
-        private const int MAIN_TARGET_INDEX = 0;
-        
         private readonly CinemachineView _view;
 
         public CinemachineController(CinemachineView view)
@@ -17,17 +15,7 @@ namespace SF.Common.Camera.Cinemachine
         {
             _view.SetFollower(follower);
         }
-
-        public void SetMainTarget(Transform target)
-        {
-            SetTarget(target, MAIN_TARGET_INDEX);
-        }
-
-        public void SetTarget(Transform target, int index)
-        {
-            _view.SetTarget(target, index);
-        }
-
+        
         public void SetPosition(Transform target)
         {
             _view.MoveCamera(target);

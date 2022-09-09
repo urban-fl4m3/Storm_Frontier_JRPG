@@ -13,17 +13,17 @@ namespace SF.UI.View
         [SerializeField] private Image _statFillImage;
 
         private IDisposable _statChangeSub;
-        private BaseResourceStatComponent _resourceStatComponent;
+        private IPrimaryStatResource _primaryStatResourceResource;
         
-        public void StartObserve(BaseResourceStatComponent resourceStatComponent)
+        public void StartObserve(IPrimaryStatResource primaryStatResource)
         {
-            if (resourceStatComponent != null)
+            if (primaryStatResource != null)
             {
-                _resourceStatComponent = resourceStatComponent;
+                _primaryStatResourceResource = primaryStatResource;
                 
                 if (_statChangeSub == null)
                 {
-                    _statChangeSub = resourceStatComponent
+                    _statChangeSub = primaryStatResource
                         .Current
                         .Subscribe(OnStatChange);
                 }
@@ -32,7 +32,7 @@ namespace SF.UI.View
 
         private void OnStatChange(int amount)
         {
-            var maxValue = _resourceStatComponent.Max.Value;
+            var maxValue = _primaryStatResourceResource.Max.Value;
             
             _statText.text = $"{amount}/{maxValue}";
             _statFillImage.fillAmount = amount / (maxValue * 1f);

@@ -22,13 +22,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _windowDictionary
+    - Name: _windows
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[SF.UI.Data.WindowType, Assembly-CSharp],[SF.UI.Windows.IWindow,
+      Data: 0|System.Collections.Generic.Dictionary`2[[SF.UI.Data.Window, Assembly-CSharp],[SF.UI.Windows.BaseWindow,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[SF.UI.Data.WindowType,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[SF.UI.Data.Window,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12

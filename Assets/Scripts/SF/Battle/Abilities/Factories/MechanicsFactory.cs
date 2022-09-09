@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using SF.Battle.Abilities.Mechanics.Data;
 using SF.Battle.Abilities.Mechanics.Logic;
 using SF.Common.Data;
-using SF.Game.Factories;
+using SF.Game.Worlds.Factories;
 
 namespace SF.Battle.Abilities.Factories
 {
     public class MechanicsFactory : WorldTypedFactory<IMechanicData, IMechanicLogic>
     {
-        protected override Dictionary<Type, Type> DiscriminatedTypes => new Dictionary<Type, Type>
+        protected override Dictionary<Type, Type> DiscriminatedTypes => new()
         {
             {typeof(DamageMechanicData), typeof(DamageMechanicLogic)},
             {typeof(HealMechanicData), typeof(HealMechanicLogic)},

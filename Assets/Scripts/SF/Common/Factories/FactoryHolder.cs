@@ -5,11 +5,11 @@ namespace SF.Common.Factories
 {
     public class FactoryHolder : IFactoryHolder
     {
-        private readonly Dictionary<Type, IFactory> _factories = new Dictionary<Type, IFactory>();
+        private readonly Dictionary<Type, IFactory> _factories = new();
 
-        public void Add<TFactory>(TFactory factory) where TFactory : IFactory
+        public void Add(IFactory factory)
         {
-            _factories.Add(typeof(TFactory), factory);   
+            _factories.Add(factory.GetType(), factory);   
         }
 
         public TFactory Get<TFactory>() where TFactory : IFactory

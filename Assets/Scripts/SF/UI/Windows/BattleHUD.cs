@@ -1,35 +1,22 @@
-﻿using SF.UI.View;
+﻿using System.Collections.Generic;
+using SF.Game;
+using SF.UI.Presenters;
+using SF.UI.View;
 using UnityEngine;
 
 namespace SF.UI.Windows
 {
-    public class BattleHUD : MonoBehaviour, IWindow
+    public class BattleHUD : BaseWindow
     {
         [SerializeField] private PlayerActionButtonsView _playerActionButtonsView;
         [SerializeField] private TeamInfoView _playerTeamInfoView;
         [SerializeField] private TeamInfoView _enemyTeamInfoView;
 
-        public PlayerActionButtonsView PlayerActionButtonsView => _playerActionButtonsView;
-        public TeamInfoView PlayerTeamInfoView => _playerTeamInfoView;
-        public TeamInfoView EnemyTeamInfoView => _enemyTeamInfoView;
-        
-        public void Show()
+        protected override IEnumerable<IBasePresenter> ResolvePresenters()
         {
-            _playerActionButtonsView.Show();
-            _playerTeamInfoView.Show();
-            _enemyTeamInfoView.Show();
-        }
-
-        public void Hide()
-        {
-            _playerActionButtonsView.Hide();
-            _playerTeamInfoView.Hide();
-            _enemyTeamInfoView.Hide();
-        }
-        
-        public void Close()
-        {
-            Destroy(gameObject);
+            yield return new PlayerActionsPresenter(_playerActionButtonsView, World, Services, _actions);
+            yield return new TeamInfoPresenter(_playerTeamInfoView, Team.Player, World, Services, _actions);
+            yield return new TeamInfoPresenter(_enemyTeamInfoView, Team.Enemy, World, Services, _actions);
         }
     }
 }

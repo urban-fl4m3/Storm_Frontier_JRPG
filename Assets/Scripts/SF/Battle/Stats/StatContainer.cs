@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SF.Common.Actors.Components.Stats;
 using SF.Game.Data;
 using SF.Game.Data.Characters;
 using SF.Game.Stats;
@@ -8,16 +9,19 @@ using UnityEngine;
 
 namespace SF.Battle.Stats
 {
-    public class StatContainer: IReadOnlyStatContainer<MainStat>, IReadOnlyStatContainer<PrimaryStat>,
-        IStatContainerConsumer<MainStat>, IStatContainerConsumer<PrimaryStat>
+    public class StatContainer
     {
+        public event Action<MainStat> MainStatChanged;
+        public event Action<PrimaryStat> PrimaryStatChanged;
+        
         private readonly int _level;
         
         private readonly StatScaleConfig _statScaleConfig;
         private readonly IStatUpgradeFormula _statUpgradeFormula = new DefaultStatUpgradeFormula();
         
-        private readonly Dictionary<MainStat, int> _mainStats = new Dictionary<MainStat, int>();
-        private readonly Dictionary<PrimaryStat, int> _primaryStats = new Dictionary<PrimaryStat, int>();
+        private readonly Dictionary<MainStat, int> _mainStats = new();
+        private readonly Dictionary<PrimaryStat, int> _primaryStats = new();
+        private readonly Dictionary<PrimaryStat, PrimaryStatResource> _resourceStats = new();
 
         public StatContainer(int level,
             DefaultCharactersConfig defaultCharactersConfig,
@@ -46,23 +50,55 @@ namespace SF.Battle.Stats
         public void SetStatValue(MainStat stat, int value)
         {
             _mainStats[stat] = value;
+            
+            MainStatChanged?.Invoke(stat);
         }
 
         public void AddStatValue(MainStat stat, int value)
         {
             var currentStatValue = _mainStats[stat];
             _mainStats[stat] = currentStatValue + value;
+            
+            MainStatChanged?.Invoke(stat);
         }
 
         public void SetStatValue(PrimaryStat stat, int value)
         {
             _primaryStats[stat] = value;
+    
+            UpdatePrimaryStatResource(stat, value);
+            PrimaryStatChanged?.Invoke(stat);
         }
 
         public void AddStatValue(PrimaryStat stat, int value)
         {
             var currentStatValue = _primaryStats[stat];
-            _primaryStats[stat] = currentStatValue + value;
+            var newValue = currentStatValue + value;
+            _primaryStats[stat] = newValue;
+            
+            UpdatePrimaryStatResource(stat, newValue);
+            PrimaryStatChanged?.Invoke(stat);
+        }
+
+        public IPrimaryStatResource GetStatResourceResolver(PrimaryStat stat)
+        {
+            if (!_resourceStats.TryGetValue(stat, out var resourceStat))
+            {
+                resourceStat = new PrimaryStatResource(stat);
+                _resourceStats.Add(stat, resourceStat);
+                
+                resourceStat.UpdateMaxStat(GetStat(stat));
+            }
+
+            return resourceStat;
+        }
+
+        private void UpdatePrimaryStatResource(PrimaryStat stat, int value)
+        {
+            if (_resourceStats.ContainsKey(stat))
+            {
+                _resourceStats[stat].UpdateMaxStat(value);
+            }
         }
         
         private void CalculateMainStats(
