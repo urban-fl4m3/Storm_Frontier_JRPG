@@ -29,7 +29,7 @@ namespace SF.Battle.Turns
             _temporaryDelaySub = Observable.FromCoroutine(CalculatePoints).Subscribe();
         }
 
-        protected override void OnTurnComplete()
+        protected override void OnStepFinished()
         {
             if (ActingActor != null)
             {
@@ -56,12 +56,12 @@ namespace SF.Battle.Turns
                 var randomAbility = abilities[randomAbilityIndex];
 
                 target = SelectRandomTarget(randomAbility.Pick);
-                ActingActor.PerformSkill(randomAbility, target, CompleteTurn);
+                ActingActor.PerformSkill(randomAbility, target, CompleteStep);
             }
             else
             {
                 target = SelectRandomTarget(TargetPick.OppositeTeam);
-                ActingActor.PerformAttack(target, CompleteTurn);
+                ActingActor.PerformAttack(target, CompleteStep);
             }
             
             SelectActor(target);

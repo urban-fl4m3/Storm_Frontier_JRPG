@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Common.Logger;
 using SF.Common.Ticks;
 using SF.Game;
-using SF.Game.Common;
-using SF.Game.Extensions;
 using SF.UI.Models.Actions;
-using UnityEngine;
 
 namespace SF.Battle.Turns
 {
@@ -15,76 +14,71 @@ namespace SF.Battle.Turns
     {
         private readonly IDebugLogger _logger;
         private readonly ITickProcessor _tickProcessor;
+        private readonly IReadonlyActionBinder _actionBinder;
         private readonly IBattleActorsHolder _actorsHolder;
-        private readonly Dictionary<Team, ITurnAction> _turnActions = new();
 
-        private ITurnAction _currentTurn;
+        private readonly List<ITurnAction> _registeredActions = new();
+        private readonly Queue<ITurnAction> _actionsToProceed = new();
 
-        private readonly Dictionary<BattleActor, TurnActState> _actorStates = new();
-        private readonly Queue<BattleActor> _actingActors = new();
-
-        public TurnManager(IDebugLogger logger, ITickProcessor tickProcessor, IReadonlyActionBinder actionBinder, IBattleActorsHolder actorsHolder)
+        public TurnManager(
+            IDebugLogger logger,
+            ITickProcessor tickProcessor,
+            IReadonlyActionBinder actionBinder,
+            IBattleActorsHolder actorsHolder)
         {
             _logger = logger;
             _actorsHolder = actorsHolder;
             _tickProcessor = tickProcessor;
-            
-            _turnActions.Add(Team.Player, new PlayerTurnAction(_actorsHolder, actionBinder));
-            _turnActions.Add(Team.Enemy, new AiTurnAction(logger, _actorsHolder));
-        }
+            _actionBinder = actionBinder;
 
+            foreach (var actor in actorsHolder.GetAllActors())
+            {
+                HandleAddedActor(actor);
+            }
+        }
+        
         public void Enable()
         {
             _tickProcessor.AddTick(OnBattleUpdate);
         }
 
+        private void HandleAddedActor(BattleActor actor)
+        {
+            //todo create SF team exception
+            ITurnAction action = actor.Team switch
+            {
+                Team.Player => new PlayerTurnAction(_actorsHolder, _actionBinder),
+                Team.Enemy => new AiTurnAction(_logger, _actorsHolder),
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            
+            _registeredActions.Add(action);
+        }
+        
         private void OnBattleUpdate(long delta)
         {
-            var actors = _actorsHolder.GetAllActors();
+            //todo maybe we should hide bool check in calculations, like if actor are dead or stunned raise + 0
+            var viableActions = _registeredActions.Where(a => a.CanPerformStep());
             
-            foreach (var actor in actors)
+            foreach (var action in viableActions)
             {
-                if (!TryGetState(actor, out var state)) return;
-
-                var actSpeed = actor.Stats.GetStat(state.Phase.GetPhaseFillStat());
-                state.RaiseValue(actSpeed * Constants.Battle.ActionFillPerSpeed * Time.deltaTime);
-
-                if (state.IsReadyPhase())
+                action.RaiseStepProgress();
+                
+                if (action.IsReadyPhase())
                 {
-                    _actingActors.Enqueue(actor);
+                    _actionsToProceed.Enqueue(action);
                 }
             }
 
             TryPlayNextTurn();
         }
 
-        private bool TryGetState(BattleActor actor, out TurnActState currentState)
-        {
-            var isDead = actor.IsDead();
-
-            if (_actorStates.TryGetValue(actor, out currentState))
-            {
-                if (isDead)
-                {
-                    _actorStates.Remove(actor);
-                    return false;
-                }
-            }
-            else
-            {
-                currentState = new TurnActState(Constants.Battle.ActionBarMeter);
-                _actorStates.Add(actor, currentState);
-            }
-
-            return true;
-        }
-
         private void TryPlayNextTurn()
         {
-            if (_actingActors.TryDequeue(out var nextActor))
+            if (_actionsToProceed.TryDequeue(out var nextAction))
             {
                 _tickProcessor.RemoveTick(OnBattleUpdate);
-                PlayTurn(nextActor);
+                PlayTurn(nextAction);
             }
             else
             {
@@ -92,72 +86,28 @@ namespace SF.Battle.Turns
             }
         }
         
-        private void PlayTurn(BattleActor actor)
+        private void PlayTurn(ITurnAction action)
         {
-            var actingTeam = actor.Team;
-        
-            if (_turnActions.TryGetValue(actingTeam, out var turnAction) && !actor.IsDead())
-            {
-                _currentTurn = turnAction;
-                _currentTurn.TurnCompleted += OnTurnCompleted;
-
-                var state = _actorStates[actor];
-                
-                switch (state.Phase)
-                {
-                    case ActPhase.Wait:
-                    {
-                        PrepareAction(actor, state);
-                        break;
-                    }
-
-                    case ActPhase.Cast:
-                    {
-                        Act(actor, state);;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                _logger.LogWarning($"Team {actingTeam} for {actor} cant make turn...");
-                OnTurnCompleted();
-            }
-        }  
-        
-        private void PrepareAction(BattleActor actor, TurnActState state)
-        {
-            //todo try and select cast
-            _currentTurn.MakeTurn(actor);
-
-            _currentTurn.ActionSelected += OnActionSelected;
-
-            void OnActionSelected()
-            {
-                _currentTurn.ActionSelected -= OnActionSelected;
-                state.SetCast(15);
-            };
-        }
-
-        private void Act(BattleActor actor, TurnActState state)
-        {
-            //todo play animations etc
-            _currentTurn.MakeTurn(actor);
-
-            _currentTurn.TurnCompleted += OnActionCompleted;
-
-            void OnActionCompleted()
-            {
-                _currentTurn.TurnCompleted -= OnActionCompleted;
-                state.Refresh();
-            }
-        }
-        
-        private void OnTurnCompleted()
-        {
-            _currentTurn.TurnCompleted -= OnTurnCompleted;
+            action.StepCompleted += OnStepCompleted;
+            action.StepFailed += OnStepFailed;
+            action.NextStep();
             
-            TryPlayNextTurn();
+            void OnStepCompleted()
+            {
+                action.StepCompleted -= OnStepCompleted;
+                action.StepFailed -= OnStepFailed;
+            
+                TryPlayNextTurn();
+            }
+
+            void OnStepFailed()
+            {
+                action.StepCompleted -= OnStepCompleted;
+                action.StepFailed -= OnStepFailed;
+            
+                TryPlayNextTurn();
+                _logger.LogWarning($"Step failed");
+            }
         }
     }
 }

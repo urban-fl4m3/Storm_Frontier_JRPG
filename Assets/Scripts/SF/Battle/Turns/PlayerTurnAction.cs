@@ -1,11 +1,13 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using SF.Battle.Abilities;
+using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors.Abilities;
 using SF.Common.Data;
 using SF.UI.Models.Actions;
+using UniRx;
 using UnityEngine;
 
 namespace SF.Battle.Turns
@@ -29,7 +31,7 @@ namespace SF.Battle.Turns
             _actionBinder.Subscribe(ActionName.Guard, HandleGuardSelected);
         }
 
-        protected override void OnTurnComplete()
+        protected override void OnStepFinished()
         {
             _actionBinder.Unsubscribe(ActionName.Attack, HandleAttackSelected);
             _actionBinder.Unsubscribe(ActionName.Skills, HandleSkillSelected);
@@ -44,9 +46,10 @@ namespace SF.Battle.Turns
             var attackSelectionData = new TargetSelectionData(TargetPick.OppositeTeam);
             var attackSelectionRule = new TargetSelectionRule(ActingActor, attackSelectionData);
             
-            MakeAsyncAction(attackSelectionRule,  
-                    () => ActingActor.PerformAttack(_model.SelectedActor, CompleteTurn))
-                .Forget();
+            _selectedAction.OnNext(a =>
+            {
+                ActingActor.PerformAttack(a, CompleteStep);
+            });
         }
 
         private void HandleSkillSelected(IDataProvider dataProvider)
@@ -69,7 +72,7 @@ namespace SF.Battle.Turns
             var skillSelectionRule = new TargetSelectionRule(ActingActor, skillSelectionData);
             
             MakeAsyncAction(skillSelectionRule,
-                    () =>  ActingActor.PerformSkill(abilityData, _model.SelectedActor, CompleteTurn))
+                    (a) =>  ActingActor.PerformSkill(abilityData, a, CompleteStep))
                 .Forget();
         }
 
@@ -78,7 +81,7 @@ namespace SF.Battle.Turns
             var itemIndex = dataProvider.GetData<int>();
             
             Debug.Log($"Item {itemIndex}!");
-            CompleteTurn();
+            CompleteStep();
         }
         
         private void HandleGuardSelected(IDataProvider dataProvider)
@@ -87,11 +90,11 @@ namespace SF.Battle.Turns
             var guardSelectionRule = new TargetSelectionRule(ActingActor, guardSelectionData);
 
             MakeAsyncAction(guardSelectionRule, 
-                    () => ActingActor.PerformGuard(CompleteTurn))
+                    () => ActingActor.PerformGuard(CompleteStep))
                 .Forget();
         }
 
-        private async UniTaskVoid MakeAsyncAction(ITargetSelectionRule selectionRule, Action action)
+        private async UniTaskVoid MakeAsyncAction(ITargetSelectionRule selectionRule, Action<BattleActor> action)
         {
             ClearModel();
             _model.SetSelectionRules(selectionRule);
