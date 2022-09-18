@@ -17,7 +17,6 @@ namespace SF.Battle.Turns
         private readonly PlayerInputControls _playerInputControls = new();  //todo add input manager to service locator
 
         private BattleActor[] _possibleTargets;
-
         
         public PlayerTurnAction(BattleActor actor, IBattleActorsHolder actorsHolder, IReadonlyActionBinder actionBinder) 
             : base(actor, actorsHolder)
@@ -104,7 +103,7 @@ namespace SF.Battle.Turns
             var guardSelectionData = new TargetSelectionData(TargetPick.Instant);
             var guardSelectionRule = new TargetSelectionRule(ActingActor, guardSelectionData);
 
-            SelectActionToPerform(a => ActingActor.PerformGuard());
+            SelectActionToPerform(_ => ActingActor.PerformGuard());
             SetActionTime(Constants.Battle.MinCastTime);
             StartTargetSelection(guardSelectionRule);
         }

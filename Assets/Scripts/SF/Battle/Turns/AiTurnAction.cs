@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors;
@@ -18,25 +19,36 @@ namespace SF.Battle.Turns
         
         private IDisposable _temporaryDelaySub;
 
-        public AiTurnAction(IDebugLogger logger, IBattleActorsHolder actorsHolder) : base(actorsHolder)
+        public AiTurnAction(BattleActor actor, IDebugLogger logger, IBattleActorsHolder actorsHolder) 
+            : base(actor, actorsHolder)
         {
             _logger = logger;
         }
 
-        protected override void OnStartTurn()
+        protected override void OnSelectionStepStart()
         {
             _logger.Log($"Actor {ActingActor} turn completed");
             _temporaryDelaySub = Observable.FromCoroutine(CalculatePoints).Subscribe();
         }
 
-        protected override void OnStepFinished()
-        {
+        protected override void OnSelectionStepFinish()
+        { 
             if (ActingActor != null)
             {
                 ActingActor.Components.Get<PlaceholderComponent>().SetSelected(false);
             }
 
             _temporaryDelaySub?.Dispose();
+        }
+
+        protected override void OnActionStepStart()
+        {
+            
+        }
+
+        protected override void OnActionStepFinish()
+        {
+            
         }
         
         private IEnumerator CalculatePoints()
@@ -45,7 +57,8 @@ namespace SF.Battle.Turns
             _temporaryDelaySub.Dispose();
 
             var chanceToUseSkill = Random.Range(0, 100);
-            SceneActor target;
+            BattleActor target;
+            Action<BattleActor> selectedAction;
 
             if (chanceToUseSkill >= 30)
             {
@@ -56,18 +69,20 @@ namespace SF.Battle.Turns
                 var randomAbility = abilities[randomAbilityIndex];
 
                 target = SelectRandomTarget(randomAbility.Pick);
-                ActingActor.PerformSkill(randomAbility, target, CompleteStep);
+                selectedAction = a => ActingActor.PerformSkill(randomAbility, a);
             }
             else
             {
                 target = SelectRandomTarget(TargetPick.OppositeTeam);
-                ActingActor.PerformAttack(target, CompleteStep);
+                selectedAction = ActingActor.PerformAttack;
             }
             
-            SelectActor(target);
+            PickTarget(target);
+            SelectActionToPerform(selectedAction);
+            RaiseActionSelected(true);
         }
 
-        private SceneActor SelectRandomTarget(TargetPick pick)
+        private BattleActor SelectRandomTarget(TargetPick pick)
         {
             if (pick == TargetPick.Instant)
             {
