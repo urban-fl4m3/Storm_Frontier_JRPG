@@ -1,57 +1,117 @@
-﻿using System.Threading;
-using Cysharp.Threading.Tasks;
+﻿using System;
 using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.TargetSelection;
+using Sirenix.Utilities;
 using UnityEngine.InputSystem;
 
 namespace SF.Battle.Turns
 {
-    public class PlayerTurnModel
+    public class PlayerTurnModel : ITurnModel
     {
-        public BattleActor SelectedActor { get; private set; }
-        public UniTaskCompletionSource TargetSelectedCompletionSource { get; private set; }
+        public event Action<BattleActor> TargetSelected = delegate { };
+        public event Action<BattleActor> TargetPicked = delegate { };
 
+        private readonly BattleActor _actingActor;
+        private readonly ITargetSelectionRule _rules;
+        private readonly Action<BattleActor> _turnAction;
         private readonly IBattleActorsHolder _actorsHolder;
         private readonly PlayerInputControls _playerInputControls;
         
-        private CancellationTokenSource _cancelationToken;
         private BattleActor[] _possibleTargets;
+        private BattleActor _pickedTarget;
+        private bool _isTargetSelected;
 
-        public PlayerTurnModel(IBattleActorsHolder actorsHolder)
+        public PlayerTurnModel(
+            BattleActor actingActor, 
+            IBattleActorsHolder actorsHolder,
+            ITargetSelectionRule rules,
+            Action<BattleActor> turnAction)
         {
+            _rules = rules;
+            _turnAction = turnAction;
+            _actingActor = actingActor;
             _actorsHolder = actorsHolder;
             _playerInputControls = new PlayerInputControls();
+            
+            Init();
         }
 
-        public void SetSelectionRules(ITargetSelectionRule targetSelectionRule)
+        public void MakeTurnAction(Action onActionCompleted)
+        {
+            var target = _pickedTarget;
+
+            if (target == null || target.IsDead())
+            {
+                //pick next possible target
+            }
+
+            _actingActor.ActionPerformed += HandleActionPerformed; 
+            _turnAction?.Invoke(target);
+
+            void HandleActionPerformed()
+            {
+                _actingActor.ActionPerformed -= HandleActionPerformed; 
+                onActionCompleted?.Invoke();
+            }
+        }
+
+        public float GetActionCost()
+        {
+            
+        }
+
+        public bool IsTargetSelected()
+        {
+            return _isTargetSelected;
+        }
+
+        public BattleActor GetCurrentTarget()
+        {
+            return _pickedTarget;
+        }
+
+        public void Dispose()
+        {
+            _playerInputControls.Battle.Targeting.performed -= OnTargetChanged;
+            _playerInputControls.Battle.Sumbit.performed -= OnTargetSelected;
+        }
+
+        private void Init()
         {
             _playerInputControls.Battle.Targeting.performed += OnTargetChanged;
             _playerInputControls.Battle.Sumbit.performed += OnTargetSelected;
             
-            _possibleTargets = targetSelectionRule.GetPossibleTargets(_actorsHolder.GetAllActors());
-            SelectedActor = _possibleTargets[0];
+            _possibleTargets = _rules.GetPossibleTargets(_actorsHolder.GetAllActors());
+
+            var hasPossibleTargets = !_possibleTargets.IsNullOrEmpty();
+            
+            if (hasPossibleTargets)
+            {
+                ChangePickedTarget(_possibleTargets[0]);
+            }
+
+            _isTargetSelected = hasPossibleTargets;
         }
 
-        private void OnTargetSelected(InputAction.CallbackContext context)
+        private void ChangePickedTarget(BattleActor target)
         {
-            TargetSelectedCompletionSource.TrySetResult();
+            _pickedTarget = target;
+            TargetPicked(target);
         }
-
+        
         private void OnTargetChanged(InputAction.CallbackContext context)
         {
             var nextActorSign = context.ReadValue<int>();
+            
+            //if sign > 0 - get next target
+            //if sign < 0 - get previous target
         }
-
-        public void Cancel()
+        
+        private void OnTargetSelected(InputAction.CallbackContext context)
         {
-            SelectedActor = null;
-
-            _cancelationToken?.Cancel();
-            _cancelationToken?.Dispose();
-
-            _cancelationToken = new CancellationTokenSource();
-            TargetSelectedCompletionSource = new UniTaskCompletionSource();
+            _isTargetSelected = true;
+            TargetSelected(_pickedTarget);
         }
     }
 }

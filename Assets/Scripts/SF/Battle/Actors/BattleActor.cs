@@ -16,6 +16,8 @@ namespace SF.Battle.Actors
 {
     public class BattleActor : SceneActor, IHealthChangeable, IStatHolder
     {
+        public event Action ActionPerformed = delegate { };
+
         public int Level => MetaData.Info.Level;
         public Team Team => MetaData.Team;
         
@@ -47,18 +49,18 @@ namespace SF.Battle.Actors
             _status = Components.Get<BattleStatusComponent>();
         }
 
-        public void PerformAttack(SceneActor target, Action onActionEnds = null)
+        public void PerformAttack(SceneActor target)
         {
             PlaceInFrontOf(target);
 
             Components.Get<WeaponComponent>().InvokeAttack(target, () =>
             {
-                onActionEnds?.Invoke();
+                ActionPerformed();
                 SetPosition(Components.Get<PlaceholderComponent>().Placeholder.position);
             });
         }
         
-        public void PerformSkill(ActiveBattleAbilityData abilityData, SceneActor target, Action onActionEnds = null)
+        public void PerformSkill(ActiveBattleAbilityData abilityData, SceneActor target)
         {
             var startLookAtVector = transform.forward;
             
@@ -66,21 +68,24 @@ namespace SF.Battle.Actors
             
            Components.Get<AbilityComponent>().InvokeSkill(abilityData, target, () =>
            {
-               onActionEnds?.Invoke();
+               ActionPerformed();
                SetPosition(Components.Get<PlaceholderComponent>().Placeholder.position);
                LookAt(startLookAtVector);
            });
         }
 
-        public void PerformUseItem(int itemIndex, SceneActor target, Action onActionEnds = null)
+        public void PerformUseItem(int itemIndex, SceneActor target)
         {
-            onActionEnds?.Invoke();
+            ServiceLocator.Logger.Log("Perform use item");
+            
+            ActionPerformed();
         }
 
-        public void PerformGuard(Action onActionEnds = null)
+        public void PerformGuard()
         {
             ServiceLocator.Logger.Log("Perform guard");
-            onActionEnds?.Invoke();
+           
+            ActionPerformed();
         }
 
         public void TakeDamage(DamageMeta meta)

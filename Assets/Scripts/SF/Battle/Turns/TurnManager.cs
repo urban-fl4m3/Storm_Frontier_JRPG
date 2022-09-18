@@ -47,7 +47,7 @@ namespace SF.Battle.Turns
             //todo create SF team exception
             ITurnAction action = actor.Team switch
             {
-                Team.Player => new PlayerTurnAction(_actorsHolder, _actionBinder),
+                Team.Player => new PlayerTurnAction(actor, _actorsHolder, _actionBinder),
                 Team.Enemy => new AiTurnAction(_logger, _actorsHolder),
                 _ => throw new ArgumentOutOfRangeException()
             };

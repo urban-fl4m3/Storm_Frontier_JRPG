@@ -1,5 +1,4 @@
 ﻿using System;
-using Cysharp.Threading.Tasks;
 using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Battle.Common;
@@ -14,16 +13,18 @@ namespace SF.Battle.Turns
 {
     public class PlayerTurnAction : BaseTurnAction
     {
-        private readonly IReadonlyActionBinder _actionBinder;
-        private readonly PlayerTurnModel _model;
+        protected override IObservable<ITurnModel> OnTurnModelSelected => _onTurnModelSelected;
 
-        public PlayerTurnAction(IBattleActorsHolder actorsHolder, IReadonlyActionBinder actionBinder) : base(actorsHolder)
+        private readonly ISubject<ITurnModel> _onTurnModelSelected = new Subject<ITurnModel>();
+        private readonly IReadonlyActionBinder _actionBinder;
+
+        public PlayerTurnAction(BattleActor actor, IBattleActorsHolder actorsHolder, IReadonlyActionBinder actionBinder) 
+            : base(actor, actorsHolder)
         {
             _actionBinder = actionBinder;
-            _model = new PlayerTurnModel(actorsHolder);
         }
 
-        protected override void OnStartTurn()
+        protected override void OnSelectionStepStart()
         {
             _actionBinder.Subscribe(ActionName.Attack, HandleAttackSelected);
             _actionBinder.Subscribe(ActionName.Skills, HandleSkillSelected);
@@ -31,25 +32,35 @@ namespace SF.Battle.Turns
             _actionBinder.Subscribe(ActionName.Guard, HandleGuardSelected);
         }
 
-        protected override void OnStepFinished()
+        protected override void OnSelectionStepFinish()
         {
             _actionBinder.Unsubscribe(ActionName.Attack, HandleAttackSelected);
             _actionBinder.Unsubscribe(ActionName.Skills, HandleSkillSelected);
             _actionBinder.Unsubscribe(ActionName.Item, HandleItemSelected);
             _actionBinder.Unsubscribe(ActionName.Guard, HandleGuardSelected);
-         
-            ClearModel();
+        }
+
+        protected override void OnActionStepStart()
+        {
+            
+        }
+
+        protected override void OnActionStepFinish()
+        {
+            
         }
 
         private void HandleAttackSelected(IDataProvider dataProvider)
         {
             var attackSelectionData = new TargetSelectionData(TargetPick.OppositeTeam);
             var attackSelectionRule = new TargetSelectionRule(ActingActor, attackSelectionData);
-            
-            _selectedAction.OnNext(a =>
+
+            var model = new PlayerTurnModel(ActingActor, ActorsHolder, attackSelectionRule, actor =>
             {
-                ActingActor.PerformAttack(a, CompleteStep);
+                ActingActor.PerformAttack(actor);
             });
+            
+            _onTurnModelSelected.OnNext(model);
         }
 
         private void HandleSkillSelected(IDataProvider dataProvider)
@@ -70,10 +81,13 @@ namespace SF.Battle.Turns
 
             var skillSelectionData = new TargetSelectionData(abilityData.Pick);
             var skillSelectionRule = new TargetSelectionRule(ActingActor, skillSelectionData);
+
+            var model = new PlayerTurnModel(ActingActor, ActorsHolder, skillSelectionRule, actor =>
+            {
+                ActingActor.PerformSkill(abilityData, actor);
+            });
             
-            MakeAsyncAction(skillSelectionRule,
-                    (a) =>  ActingActor.PerformSkill(abilityData, a, CompleteStep))
-                .Forget();
+            _onTurnModelSelected.OnNext(model);
         }
 
         private void HandleItemSelected(IDataProvider dataProvider)
@@ -81,7 +95,10 @@ namespace SF.Battle.Turns
             var itemIndex = dataProvider.GetData<int>();
             
             Debug.Log($"Item {itemIndex}!");
-            CompleteStep();
+
+            var model = new MockTurnModel();
+            
+            _onTurnModelSelected.OnNext(model);
         }
         
         private void HandleGuardSelected(IDataProvider dataProvider)
@@ -89,29 +106,12 @@ namespace SF.Battle.Turns
             var guardSelectionData = new TargetSelectionData(TargetPick.Instant);
             var guardSelectionRule = new TargetSelectionRule(ActingActor, guardSelectionData);
 
-            MakeAsyncAction(guardSelectionRule, 
-                    () => ActingActor.PerformGuard(CompleteStep))
-                .Forget();
-        }
-
-        private async UniTaskVoid MakeAsyncAction(ITargetSelectionRule selectionRule, Action<BattleActor> action)
-        {
-            ClearModel();
-            _model.SetSelectionRules(selectionRule);
+            var model = new PlayerTurnModel(ActingActor, ActorsHolder, guardSelectionRule, _ =>
+            {
+                ActingActor.PerformGuard();
+            });
             
-            SelectActor(null);
-            
-            await _model.TargetSelectedCompletionSource.Task;
-
-            SelectActor(_model.SelectedActor);
-
-            action?.Invoke();
-        }
-
-        private void ClearModel()
-        {
-            _model.Cancel();
-            SelectActor(null);
+            _onTurnModelSelected.OnNext(model);
         }
     }
 }
