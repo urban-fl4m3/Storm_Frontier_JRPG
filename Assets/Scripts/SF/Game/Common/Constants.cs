@@ -11,8 +11,10 @@
         
         public static class Battle
         {
-            public const int ActionBarMeter = 100;
-            public const float ActionFillPerSpeed = 1;
+            public const int ActionBarMeter = 7;
+            public const float ActionFillPerSpeed = .1f;
+
+            public const int MinCastTime = 0;
         }
     }
 }

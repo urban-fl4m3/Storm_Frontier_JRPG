@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using SF.Battle.Actors;
-using SF.Common.Actors;
-using SF.Common.Actors.Components.Status;
 
 namespace SF.Battle.TargetSelection
 {
     public class TargetSelectionRule : ITargetSelectionRule
     {
-        public event Action<BattleActor> TargetSelected;
-
         private readonly BattleActor _actingActor;
         private readonly TargetSelectionData _data;
         
@@ -26,48 +22,19 @@ namespace SF.Battle.TargetSelection
 
             if (expectedPick == TargetPick.Instant)
             {
-                TargetSelected?.Invoke(null);
+                return Array.Empty<BattleActor>();
             }
 
             var expectedActors = actors as BattleActor[] ?? actors.ToArray();
 
-            if (expectedPick == TargetPick.AllyTeam)
+            expectedActors = expectedPick switch
             {
-                expectedActors = expectedActors
-                    .Where(x => x.Team == _actingActor.Team)
-                    .ToArray();
-            }
-            else if (expectedPick == TargetPick.OppositeTeam)
-            {
-                expectedActors = expectedActors
-                    .Where(x => x.Team != _actingActor.Team)
-                    .ToArray();
-
-            }
+                TargetPick.AllyTeam => expectedActors.Where(x => x.Team == _actingActor.Team).ToArray(),
+                TargetPick.OppositeTeam => expectedActors.Where(x => x.Team != _actingActor.Team).ToArray(),
+                _ => expectedActors
+            };
 
             return expectedActors;
-        }
-
-        public void TrackSelection(IEnumerable<BattleActor> actors)
-        {
-            
-            // foreach (var enemy in expectedActors)
-            // {
-                // enemy.Components.Get<ActorSelectComponent>().ActorSelected += OnActorSelected;
-            // }
-
-            // void OnActorSelected(IActor actor)
-            // {
-            //     if (actor.Components.Get<ActorStateComponent>().State.Value == ActorState.Dead) return;
-            //     if (!(actor is BattleActor battleActor)) return;
-            //
-            //     foreach (var expected in expectedActors)
-            //     {
-            //         expected.Components.Get<ActorSelectComponent>().ActorSelected -= OnActorSelected;
-            //     }
-            //     
-            //     TargetSelected?.Invoke(battleActor);
-            // }
         }
     }
 }

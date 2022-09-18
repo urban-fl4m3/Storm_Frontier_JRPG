@@ -23,25 +23,20 @@ namespace SF.Common.Actors
             
         }
 
+        public void SetNewPlaceholder(Transform placeholder)
+        {
+            Components.Get<PlaceholderComponent>().Placeholder = placeholder;
+            SyncWith(placeholder);
+        }
+
         protected void SetPosition(Vector3 position)
         {
             transform.position = position;
         }
-
-        private Vector3 GetPosition()
-        {
-            return transform.position;
-        }
-
+        
         protected void LookAt(Vector3 lookAtVector)
         {
             transform.rotation = Quaternion.LookRotation(lookAtVector, transform.up);
-        }
-
-        protected void SyncWith(Transform tr)
-        {
-            SetPosition(tr.position);
-            LookAt(tr.forward);
         }
 
         protected void Init(IServiceLocator serviceLocator, IWorld world)
@@ -61,6 +56,17 @@ namespace SF.Common.Actors
                 SetPosition(place.transform.position);
                 LookAt(actor.GetPosition() - place.position);
             }
+        }
+
+        private Vector3 GetPosition()
+        {
+            return transform.position;
+        }
+
+        private void SyncWith(Transform tr)
+        {
+            SetPosition(tr.position);
+            LookAt(tr.forward);
         }
     }
 }

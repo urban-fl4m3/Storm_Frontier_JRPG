@@ -7,7 +7,7 @@ using UniRx;
 
 namespace SF.Common.Actors.Components.Status
 {
-    public class ActorStateComponent: ActorComponent
+    public class BattleStatusComponent : ActorComponent
     {
         public IReadOnlyReactiveProperty<ActorState> State => _state;
 

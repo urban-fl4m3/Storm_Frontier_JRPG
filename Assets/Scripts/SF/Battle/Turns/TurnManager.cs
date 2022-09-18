@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Common.Logger;
@@ -12,57 +14,100 @@ namespace SF.Battle.Turns
     {
         private readonly IDebugLogger _logger;
         private readonly ITickProcessor _tickProcessor;
+        private readonly IReadonlyActionBinder _actionBinder;
         private readonly IBattleActorsHolder _actorsHolder;
-        private readonly Dictionary<Team, ITurnAction> _turnActions = new();
 
-        private ITurnAction _currentTurn;
-        private IEnumerable<BattleActor> _actingActors;
-        
-        public TurnManager(IDebugLogger logger, ITickProcessor tickProcessor, IReadonlyActionBinder actionBinder, IBattleActorsHolder actorsHolder)
+        private readonly List<ITurnAction> _registeredActions = new();
+        private readonly Queue<ITurnAction> _actionsToProceed = new();
+
+        public TurnManager(
+            IDebugLogger logger,
+            ITickProcessor tickProcessor,
+            IReadonlyActionBinder actionBinder,
+            IBattleActorsHolder actorsHolder)
         {
             _logger = logger;
             _actorsHolder = actorsHolder;
             _tickProcessor = tickProcessor;
-            
-            _turnActions.Add(Team.Player, new PlayerTurnAction(_actorsHolder, actionBinder));
-            _turnActions.Add(Team.Enemy, new AiTurnAction(logger, _actorsHolder));
+            _actionBinder = actionBinder;
 
+            foreach (var actor in actorsHolder.GetAllActors())
+            {
+                HandleAddedActor(actor);
+            }
         }
-
+        
         public void Enable()
         {
             _tickProcessor.AddTick(OnBattleUpdate);
         }
 
+        private void HandleAddedActor(BattleActor actor)
+        {
+            //todo create SF team exception
+            ITurnAction action = actor.Team switch
+            {
+                Team.Player => new PlayerTurnAction(actor, _actorsHolder, _actionBinder),
+                Team.Enemy => new AiTurnAction(actor, _logger, _actorsHolder),
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            
+            _registeredActions.Add(action);
+        }
+        
         private void OnBattleUpdate(long delta)
         {
+            //todo maybe we should hide bool check in calculations, like if actor are dead or stunned raise + 0
+            var viableActions = _registeredActions.Where(a => a.CanPerformStep());
             
+            foreach (var action in viableActions)
+            {
+                action.RaiseStepProgress();
+                
+                if (action.IsReadyPhase())
+                {
+                    _actionsToProceed.Enqueue(action);
+                }
+            }
+
+            TryPlayNextTurn();
         }
 
-        public void PlayNextTurn()
+        private void TryPlayNextTurn()
         {
-            var actor = _actorsHolder.ActingActor;
-
-            var actingTeam = actor.Team;
-
-            if (_turnActions.TryGetValue(actingTeam, out var turnAction))
+            if (_actionsToProceed.TryDequeue(out var nextAction))
             {
-                _currentTurn = turnAction;
-                
-                _currentTurn.TurnCompleted += OnTurnCompleted;
-                _currentTurn.MakeTurn(actor);
+                _tickProcessor.RemoveTick(OnBattleUpdate);
+                PlayTurn(nextAction);
             }
             else
             {
-                _logger.LogWarning($"Team {actingTeam} for {actor} cant make turn...");
-                OnTurnCompleted();
+                _tickProcessor.AddTick(OnBattleUpdate);
             }
         }
         
-        private void OnTurnCompleted()
+        private void PlayTurn(ITurnAction action)
         {
-            _currentTurn.TurnCompleted -= OnTurnCompleted;
-            PlayNextTurn();
+            action.StepCompleted += OnStepCompleted;
+            action.StepFailed += OnStepFailed;
+            action.NextStep();
+            
+            void OnStepCompleted()
+            {
+                action.StepCompleted -= OnStepCompleted;
+                action.StepFailed -= OnStepFailed;
+            
+                TryPlayNextTurn();
+            }
+
+            void OnStepFailed()
+            {
+                action.StepCompleted -= OnStepCompleted;
+                action.StepFailed -= OnStepFailed;
+            
+                TryPlayNextTurn();
+                _logger.LogWarning($"Step failed");
+            }
         }
     }
 }

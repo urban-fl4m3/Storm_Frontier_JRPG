@@ -74,7 +74,7 @@ namespace SF.UI.View
         
         private void Start()
         {
-            //todo check and refactor?
+            //todo check and refactor? move to presenter
             _buttonsHolder = new ButtonsHolder<TextButtonView>(_abilityPanelView.Content, _abilityPanelView.ButtonView);   
         }
     }

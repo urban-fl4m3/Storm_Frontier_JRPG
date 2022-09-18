@@ -8,19 +8,21 @@ namespace SF.Battle.Actors
 {
     public class BattleActorsHolder : IBattleActorsHolder
     {
-        public BattleActor ActingActor { get; private set; }
-        public IEnumerable<BattleActor> Actors => _actingActors;
-     
         private readonly IDebugLogger _logger;
         
-        private readonly Dictionary<Team, HashSet<BattleActor>> _teams = new();
+        private readonly Dictionary<Team, List<BattleActor>> _teams = new();
         private readonly List<BattleActor> _actingActors = new();
 
         public BattleActorsHolder(IDebugLogger logger)
         {
             _logger = logger;
         }
-        
+
+        public IEnumerable<BattleActor> GetAllActors()
+        {
+            return _actingActors;
+        }
+
         public IEnumerable<BattleActor> GetTeamActors(Team team)
         {
             if (!_teams.ContainsKey(team))
@@ -43,7 +45,7 @@ namespace SF.Battle.Actors
         {
             if (!_teams.ContainsKey(team))
             {
-                _teams.Add(team, new HashSet<BattleActor>());
+                _teams.Add(team, new List<BattleActor>());
             }
 
             _teams[team].Add(actor);
