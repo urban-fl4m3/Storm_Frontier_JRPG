@@ -4,7 +4,6 @@ using SF.Battle.Common;
 using SF.Common.Actors.Components.Status;
 using SF.Game.Common;
 using SF.Game.Extensions;
-using UniRx;
 using UnityEngine;
 
 namespace SF.Battle.Turns
@@ -15,18 +14,19 @@ namespace SF.Battle.Turns
         public event Action StepFailed;
 
         public ActPhase Phase { get; private set; }
+        
         protected BattleActor ActingActor { get; }
         protected IBattleActorsHolder ActorsHolder { get; }
-
-        protected abstract IObservable<ITurnModel> OnTurnModelSelected { get; }
 
         private readonly float _maxWait;
 
         private float _currentStepProgress;
         private float _currentMax;
-        private ITurnModel _currentTurnModel;
         private IDisposable _turnModelSelectionSub;
 
+        private BattleActor _pickedTarget;
+        private Action<BattleActor> _selectedAction;
+        
         protected BaseTurnAction(BattleActor actingActor, IBattleActorsHolder actorsHolder)
         {
             ActingActor = actingActor;
@@ -101,23 +101,43 @@ namespace SF.Battle.Turns
         protected abstract void OnSelectionStepFinish();
         protected abstract void OnActionStepStart();
         protected abstract void OnActionStepFinish();
+        
+        protected void RaiseActionSelected(bool isTargetSelected)
+        {
+            //todo raise Action Selected Event
 
-        //cast start
+            if (isTargetSelected)
+            {
+                SelectPickedTarget();
+            }
+        }
+
+        protected void PickTarget(BattleActor actor)
+        {
+            _pickedTarget = actor;
+        }
+
+        protected void SelectActionToPerform(Action<BattleActor> action)
+        {
+            _selectedAction = action;
+        }
+
+        protected void SelectPickedTarget()
+        {
+            OnSelectionStepFinish();
+
+            _turnModelSelectionSub?.Dispose();
+            //todo raise Target Selected Event
+            //todo take target from picked target
+            CompleteStep();
+        }
+        
         protected void SetActionTime(float actionTime)
         {
             _currentStepProgress = 0;
             _currentMax = actionTime;
 
             Phase = ActPhase.Action;
-        }
-
-        //cast end
-        protected void Refresh()
-        {
-            _currentStepProgress = 0;
-            _currentMax = _maxWait;
-
-            Phase = ActPhase.Wait;
         }
 
         private void CompleteStep()
@@ -133,67 +153,42 @@ namespace SF.Battle.Turns
         private void SelectionStep()
         {
             OnSelectionStepStart();
-
-            _turnModelSelectionSub = OnTurnModelSelected.Subscribe(HandleTurnModelSelected);
         }
 
         private void ActionStep()
         {
             OnActionStepStart();
-
-            if (_currentTurnModel != null)
-            {
-                _currentTurnModel.MakeTurnAction(HandleActionCompleted);
-            }
-            else
-            {
-                FailStep();
-            }
+            MakeTurnAction();
         }
 
-        private void HandleTurnModelSelected(ITurnModel model)
+        private void MakeTurnAction()
         {
-            ClearTurnModel();
-            _currentTurnModel = model;
+            var target = _pickedTarget;
 
-            //raise Action Selected Event
-
-            if (model == null)
+            if (target == null || target.IsDead())
             {
-                return;
+                //todo pick next possible target
             }
 
-            if (_currentTurnModel.IsTargetSelected())
+            ActingActor.ActionPerformed += HandleActionPerformed; 
+            _selectedAction?.Invoke(target);
+
+            void HandleActionPerformed()
             {
-                HandleSelectedTarget(_currentTurnModel.GetCurrentTarget());
+                ActingActor.ActionPerformed -= HandleActionPerformed; 
+                
+                OnActionStepFinish();
+                Refresh();
+                CompleteStep();
             }
-            else
-            {
-                _currentTurnModel.TargetSelected += HandleSelectedTarget;
-            }
         }
-
-        private void HandleSelectedTarget(BattleActor target)
+        
+        private void Refresh()
         {
-            OnSelectionStepFinish();
+            _currentStepProgress = 0;
+            _currentMax = _maxWait;
 
-            _turnModelSelectionSub?.Dispose();
-            //raise Target Selected Event
-            //take target
-            CompleteStep();
-        }
-
-        private void HandleActionCompleted()
-        {
-            OnActionStepFinish();
-
-            CompleteStep();
-        }
-
-        private void ClearTurnModel()
-        {
-            _currentTurnModel.TargetSelected -= HandleSelectedTarget;
-            _currentTurnModel?.Dispose();
+            Phase = ActPhase.Wait;
         }
     }
 }

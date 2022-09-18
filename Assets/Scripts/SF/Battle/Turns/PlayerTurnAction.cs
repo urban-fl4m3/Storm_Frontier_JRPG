@@ -1,23 +1,24 @@
-﻿using System;
-using SF.Battle.Abilities;
+﻿using SF.Battle.Abilities;
 using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors.Abilities;
 using SF.Common.Data;
+using SF.Game.Common;
 using SF.UI.Models.Actions;
-using UniRx;
-using UnityEngine;
+using Sirenix.Utilities;
+using UnityEngine.InputSystem;
 
 namespace SF.Battle.Turns
 {
     public class PlayerTurnAction : BaseTurnAction
     {
-        protected override IObservable<ITurnModel> OnTurnModelSelected => _onTurnModelSelected;
-
-        private readonly ISubject<ITurnModel> _onTurnModelSelected = new Subject<ITurnModel>();
         private readonly IReadonlyActionBinder _actionBinder;
+        private readonly PlayerInputControls _playerInputControls = new();  //todo add input manager to service locator
 
+        private BattleActor[] _possibleTargets;
+
+        
         public PlayerTurnAction(BattleActor actor, IBattleActorsHolder actorsHolder, IReadonlyActionBinder actionBinder) 
             : base(actor, actorsHolder)
         {
@@ -38,6 +39,8 @@ namespace SF.Battle.Turns
             _actionBinder.Unsubscribe(ActionName.Skills, HandleSkillSelected);
             _actionBinder.Unsubscribe(ActionName.Item, HandleItemSelected);
             _actionBinder.Unsubscribe(ActionName.Guard, HandleGuardSelected);
+            
+            ClearInputSubs();
         }
 
         protected override void OnActionStepStart()
@@ -54,13 +57,10 @@ namespace SF.Battle.Turns
         {
             var attackSelectionData = new TargetSelectionData(TargetPick.OppositeTeam);
             var attackSelectionRule = new TargetSelectionRule(ActingActor, attackSelectionData);
-
-            var model = new PlayerTurnModel(ActingActor, ActorsHolder, attackSelectionRule, actor =>
-            {
-                ActingActor.PerformAttack(actor);
-            });
             
-            _onTurnModelSelected.OnNext(model);
+            SelectActionToPerform(ActingActor.PerformAttack);
+            SetActionTime(Constants.Battle.MinCastTime);
+            StartTargetSelection(attackSelectionRule);
         }
 
         private void HandleSkillSelected(IDataProvider dataProvider)
@@ -82,23 +82,21 @@ namespace SF.Battle.Turns
             var skillSelectionData = new TargetSelectionData(abilityData.Pick);
             var skillSelectionRule = new TargetSelectionRule(ActingActor, skillSelectionData);
 
-            var model = new PlayerTurnModel(ActingActor, ActorsHolder, skillSelectionRule, actor =>
-            {
-                ActingActor.PerformSkill(abilityData, actor);
-            });
-            
-            _onTurnModelSelected.OnNext(model);
+            SelectActionToPerform(a => ActingActor.PerformSkill(abilityData, a));
+            SetActionTime(abilityData.CastTime);
+            StartTargetSelection(skillSelectionRule);
         }
 
         private void HandleItemSelected(IDataProvider dataProvider)
         {
             var itemIndex = dataProvider.GetData<int>();
             
-            Debug.Log($"Item {itemIndex}!");
+            var itemSelectionData = new TargetSelectionData(TargetPick.Any);
+            var itemSelectionRule = new TargetSelectionRule(ActingActor, itemSelectionData);
 
-            var model = new MockTurnModel();
-            
-            _onTurnModelSelected.OnNext(model);
+            SelectActionToPerform(a => ActingActor.PerformUseItem(itemIndex, a));
+            SetActionTime(Constants.Battle.MinCastTime);
+            StartTargetSelection(itemSelectionRule);
         }
         
         private void HandleGuardSelected(IDataProvider dataProvider)
@@ -106,12 +104,49 @@ namespace SF.Battle.Turns
             var guardSelectionData = new TargetSelectionData(TargetPick.Instant);
             var guardSelectionRule = new TargetSelectionRule(ActingActor, guardSelectionData);
 
-            var model = new PlayerTurnModel(ActingActor, ActorsHolder, guardSelectionRule, _ =>
-            {
-                ActingActor.PerformGuard();
-            });
+            SelectActionToPerform(a => ActingActor.PerformGuard());
+            SetActionTime(Constants.Battle.MinCastTime);
+            StartTargetSelection(guardSelectionRule);
+        }
+
+        private void StartTargetSelection(ITargetSelectionRule rules)
+        {
+            ClearInputSubs();
             
-            _onTurnModelSelected.OnNext(model);
+            _playerInputControls.Battle.Targeting.performed += HandleTargetChanged;
+            _playerInputControls.Battle.Sumbit.performed += HandleTargetSelected;
+            
+            _possibleTargets = rules.GetPossibleTargets(ActorsHolder.GetAllActors());
+
+            var hasPossibleTargets = !_possibleTargets.IsNullOrEmpty();
+            
+            if (hasPossibleTargets)
+            {
+                PickTarget(_possibleTargets[0]);
+            }
+
+            RaiseActionSelected(!hasPossibleTargets);
+        }   
+
+        private void HandleTargetChanged(InputAction.CallbackContext context)
+        {
+            var nextActorSign = context.ReadValue<int>();
+            
+            //if sign > 0 - get next target
+            //if sign < 0 - get previous target
+            
+            //PickTarget
+        }
+        
+        private void HandleTargetSelected(InputAction.CallbackContext context)
+        {
+            SelectPickedTarget();
+        }
+
+        private void ClearInputSubs()
+        {
+            _playerInputControls.Battle.Targeting.performed -= HandleTargetChanged;
+            _playerInputControls.Battle.Sumbit.performed -= HandleTargetSelected;
         }
     }
 }

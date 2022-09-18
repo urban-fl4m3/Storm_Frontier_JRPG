@@ -14,7 +14,7 @@
             public const int ActionBarMeter = 7;
             public const float ActionFillPerSpeed = .1f;
 
-            public const int InstantCast = 0;
+            public const int MinCastTime = 0;
         }
     }
 }
