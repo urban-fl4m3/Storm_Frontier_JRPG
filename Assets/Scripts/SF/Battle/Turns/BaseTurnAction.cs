@@ -13,8 +13,8 @@ namespace SF.Battle.Turns
         public event Action StepFailed;
 
         public ActPhase Phase { get; private set; }
+        public BattleActor ActingActor { get; }
         
-        protected BattleActor ActingActor { get; }
         protected IBattleActorsHolder ActorsHolder { get; }
 
         private readonly float _maxWait;

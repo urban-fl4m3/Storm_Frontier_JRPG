@@ -19,11 +19,11 @@ namespace SF.Battle.States
     {
         public IBattleActorsHolder ActorsHolder => _actorsHolder;
         public BattleField Field { get; private set; }
+        public TurnManager Turns { get; private set; }
         
         private readonly WindowsFactory _windowsFactory;
 
         private IWindow _battleWindow;
-        private TurnManager _turnManager;
 
         private BattleActorsHolder _actorsHolder;
         private BattleSceneActorFactory _battleSceneActorFactory;
@@ -41,8 +41,8 @@ namespace SF.Battle.States
             CreateAllActors(dataProvider.GetData<IEnumerable<BattleCharacterInfo>>());
             CreateHud();
             
-            _turnManager = new TurnManager(Services.Logger, Services.TickProcessor, _battleWindow.Actions, _actorsHolder);
-            _turnManager.Enable();
+            Turns = new TurnManager(Services.Logger, Services.TickProcessor, _battleWindow.Actions, _actorsHolder);
+            Turns.Enable();
         }
 
         public override void Exit()

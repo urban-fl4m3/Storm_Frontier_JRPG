@@ -1,11 +1,13 @@
 ﻿using System;
+using SF.Battle.Actors;
 
 namespace SF.Battle.Turns
 {
     public interface ITurnAction
     {
-        public ActPhase Phase { get; }
-
+        ActPhase Phase { get; }
+        BattleActor ActingActor { get; }
+        
         event Action StepCompleted;
         event Action StepFailed;
 

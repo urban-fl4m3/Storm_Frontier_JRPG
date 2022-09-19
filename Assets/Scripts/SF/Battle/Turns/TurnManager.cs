@@ -20,6 +20,8 @@ namespace SF.Battle.Turns
         private readonly List<ITurnAction> _registeredActions = new();
         private readonly Queue<ITurnAction> _actionsToProceed = new();
 
+        private ITurnAction _currentTurnAction;
+
         public TurnManager(
             IDebugLogger logger,
             ITickProcessor tickProcessor,
@@ -40,6 +42,11 @@ namespace SF.Battle.Turns
         public void Enable()
         {
             _tickProcessor.AddTick(OnBattleUpdate);
+        }
+
+        public BattleActor GetActingActor()
+        {
+            return _currentTurnAction?.ActingActor;
         }
 
         private void HandleAddedActor(BattleActor actor)
@@ -91,25 +98,20 @@ namespace SF.Battle.Turns
         
         private void PlayTurn(ITurnAction action)
         {
-            action.StepCompleted += OnStepCompleted;
-            action.StepFailed += OnStepFailed;
-            action.NextStep();
+            _currentTurnAction = action;
             
-            void OnStepCompleted()
-            {
-                action.StepCompleted -= OnStepCompleted;
-                action.StepFailed -= OnStepFailed;
-                
-                TryPlayNextTurn();
-            }
+            _currentTurnAction.StepCompleted += HandleStepCompleted;
+            _currentTurnAction.StepFailed += HandleStepCompleted;
+            _currentTurnAction.NextStep();
+        }
 
-            void OnStepFailed()
-            {
-                action.StepCompleted -= OnStepCompleted;
-                action.StepFailed -= OnStepFailed;
+        private void HandleStepCompleted()
+        {
+            _currentTurnAction.StepCompleted -= HandleStepCompleted;
+            _currentTurnAction.StepFailed -= HandleStepCompleted;
+            _currentTurnAction = null;
             
-                TryPlayNextTurn();
-            }
+            TryPlayNextTurn();
         }
     }
 }

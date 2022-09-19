@@ -11,6 +11,8 @@ namespace SF.UI.Presenters
 {
     public class PlayerActionsPresenter : BaseBattlePresenter<PlayerActionButtonsView>
     {
+        private readonly AbilityPanelPresenter _abilityPanelPresenter;
+        
         private BattleActor _currentActor;
         private IDisposable _activeActorObserver;
 
@@ -21,7 +23,8 @@ namespace SF.UI.Presenters
             ActionBinder actionBinder)
             : base(view, world, serviceLocator, actionBinder)
         {
-            
+            _abilityPanelPresenter =
+                new AbilityPanelPresenter(view.AbilityPanelView, world, serviceLocator, actionBinder);
         }
 
         public override void Enable()
@@ -46,14 +49,24 @@ namespace SF.UI.Presenters
 
         private void OnAttackClick()
         {
-            View.HideAbility();
+            _abilityPanelPresenter.Disable();
+            
             RaiseAction(ActionName.Attack);
         }
 
         private void OnSkillClick()
         {
-            View.ShowAbility();
-            // View.SubscribeOnAbilities(World.ActorsHolder.ActingActor, OnSkillSelected);
+            _abilityPanelPresenter.Enable();
+
+            var actingActor = World.Turns.GetActingActor();
+
+            if (actingActor)
+            {
+                ServiceLocator.Logger.LogError($"Can't show abilities for null actor");
+                return;
+            }
+            
+            _abilityPanelPresenter.SubscribeOnAbilities(actingActor, OnSkillSelected);
         }
 
         private void OnSkillSelected(ActiveBattleAbilityData data)
@@ -63,13 +76,15 @@ namespace SF.UI.Presenters
 
         private void OnItemClick()
         {
-            View.HideAbility();
+            _abilityPanelPresenter.Disable();
+            
             RaiseAction(ActionName.Item, new DataProvider(0));
         }
 
         private void OnGuardClick()
         {
-            View.HideAbility();
+            _abilityPanelPresenter.Disable();
+            
             RaiseAction(ActionName.Guard);
         }
     }

@@ -203,7 +203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 12, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 273.16}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &279793480
@@ -3666,23 +3666,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60502c24678f4803a0224dd60cad8c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
   _attackButton: {fileID: 3621643772928717142}
   _skillButton: {fileID: 1157903187}
   _useItemButton: {fileID: 398393065}
   _guardButton: {fileID: 1506750939}
-  _abilityPanelView:
-    _root: {fileID: 8817683742060876072}
-    _content: {fileID: 4570160518231220778}
-    _buttonView: {fileID: -7019415770865026181, guid: 4454d9243a3957e4cbab02748ab7b8bb, type: 3}
+  _abilityPanelView: {fileID: 8817683742060876073}
 --- !u!222 &4698761549139409244
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3703,6 +3691,7 @@ GameObject:
   - component: {fileID: 3993179085875085089}
   - component: {fileID: 1844640500946448585}
   - component: {fileID: 1887434374294291264}
+  - component: {fileID: 8817683742060876073}
   m_Layer: 5
   m_Name: AbilityList
   m_TagString: Untagged
@@ -4019,6 +4008,20 @@ RectTransform:
   m_AnchoredPosition: {x: 442.55, y: -12.640015}
   m_SizeDelta: {x: 303.43, y: 247.37}
   m_Pivot: {x: 1, y: 1}
+--- !u!114 &8817683742060876073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828826440983363668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60dc3bd933764f169357c90c968d37f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _content: {fileID: 4570160518231220778}
+  _buttonView: {fileID: -7019415770865026181, guid: 4454d9243a3957e4cbab02748ab7b8bb, type: 3}
 --- !u!222 &9199431608308700117
 CanvasRenderer:
   m_ObjectHideFlags: 0
