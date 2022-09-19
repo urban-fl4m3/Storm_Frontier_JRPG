@@ -1,7 +1,6 @@
 ﻿using System;
 using SF.Battle.Actors;
 using SF.Battle.Common;
-using SF.Common.Actors.Components.Status;
 using SF.Game.Common;
 using SF.Game.Extensions;
 using UnityEngine;
@@ -78,7 +77,6 @@ namespace SF.Battle.Turns
 
                     _currentMax = _maxWait;
                     newStepProgress = _currentMax + newStepProgress;
-
                 }
             }
 
@@ -87,9 +85,7 @@ namespace SF.Battle.Turns
 
         public bool CanPerformStep()
         {
-            var stateComponent = ActingActor.Components.Get<BattleStatusComponent>();
-
-            return stateComponent.State.Value != ActorState.Dead;
+            return !ActingActor.IsDead();
         }
 
         public bool IsReadyPhase()

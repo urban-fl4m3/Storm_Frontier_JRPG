@@ -47,7 +47,7 @@ namespace SF.Battle.Turns
             //todo create SF team exception
             ITurnAction action = actor.Team switch
             {
-                Team.Player => new PlayerTurnAction(actor, _actorsHolder, _actionBinder),
+                Team.Player => new PlayerTurnAction(actor, _logger, _actorsHolder, _actionBinder),
                 Team.Enemy => new AiTurnAction(actor, _logger, _actorsHolder),
                 _ => throw new ArgumentOutOfRangeException()
             };
@@ -70,7 +70,10 @@ namespace SF.Battle.Turns
                 }
             }
 
-            TryPlayNextTurn();
+            if (_actionsToProceed.Any())
+            {
+                TryPlayNextTurn();
+            }
         }
 
         private void TryPlayNextTurn()
@@ -96,7 +99,7 @@ namespace SF.Battle.Turns
             {
                 action.StepCompleted -= OnStepCompleted;
                 action.StepFailed -= OnStepFailed;
-            
+                
                 TryPlayNextTurn();
             }
 
@@ -106,7 +109,6 @@ namespace SF.Battle.Turns
                 action.StepFailed -= OnStepFailed;
             
                 TryPlayNextTurn();
-                _logger.LogWarning($"Step failed");
             }
         }
     }

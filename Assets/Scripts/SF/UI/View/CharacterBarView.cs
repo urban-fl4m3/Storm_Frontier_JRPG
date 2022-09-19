@@ -34,7 +34,7 @@ namespace SF.UI.View
         {
             var maxValue = _primaryStatResourceResource.Max.Value;
             
-            _statText.text = $"{amount}/{maxValue}";
+            _statText.text = $"{amount}";
             _statFillImage.fillAmount = amount / (maxValue * 1f);
         }
 

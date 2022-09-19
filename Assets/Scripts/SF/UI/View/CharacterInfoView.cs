@@ -2,7 +2,6 @@
 using SF.Battle.Stats;
 using SF.Common.Actors.Components.Stats;
 using SF.Game.Stats;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +10,6 @@ namespace SF.UI.View
     public class CharacterInfoView : MonoBehaviour
     {
         [SerializeField] private Image _actorIcon;
-        [SerializeField] private TextMeshProUGUI _actorName;
-        [SerializeField] private TextMeshProUGUI _actorLevel;
         [SerializeField] private CharacterBarView _healthBarView;
         [SerializeField] private CharacterBarView _manaBarView;
         
@@ -23,8 +20,6 @@ namespace SF.UI.View
         {
             var visualParameter = actor.MetaData.Info.Config;
             
-            _actorName.text = visualParameter.Name;
-            _actorLevel.text = $"Lv.{actor.Level}";
             _actorIcon.sprite = visualParameter.Icon;
 
             var statHolder = actor.Components.Get<IStatHolder>();
