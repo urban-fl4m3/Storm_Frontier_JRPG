@@ -14,9 +14,9 @@ namespace SF.UI.Windows
 
         protected override IEnumerable<IBasePresenter> ResolvePresenters()
         {
-            yield return new PlayerActionsPresenter(_playerActionButtonsView, World, Services, _actions);
-            yield return new TeamInfoPresenter(_playerTeamInfoView, Team.Player, World, Services, _actions);
-            yield return new TeamInfoPresenter(_enemyTeamInfoView, Team.Enemy, World, Services, _actions);
+            yield return new PlayerActionsPresenter(_playerActionButtonsView, World, Services, Actions);
+            yield return new TeamInfoPresenter(_playerTeamInfoView, Team.Player, World, Services, Actions);
+            yield return new TeamInfoPresenter(_enemyTeamInfoView, Team.Enemy, World, Services, Actions);
         }
     }
 }

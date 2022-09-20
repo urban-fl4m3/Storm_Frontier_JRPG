@@ -11,6 +11,7 @@ using SF.Game.States;
 using SF.Game.Worlds;
 using SF.UI.Data;
 using SF.UI.Factories;
+using SF.UI.Models.Actions;
 using SF.UI.Windows;
 
 namespace SF.Battle.States
@@ -28,6 +29,8 @@ namespace SF.Battle.States
         private BattleActorsHolder _actorsHolder;
         private BattleSceneActorFactory _battleSceneActorFactory;
 
+        private readonly ActionBinder _actionBinder = new();
+        
         public BattleState(IServiceLocator services, IPlayerState playerState) : base(services, playerState)
         {
             _windowsFactory = Services.FactoryHolder.Get<WindowsFactory>();
@@ -39,10 +42,11 @@ namespace SF.Battle.States
 
             CreateActorsEnvironment();
             CreateAllActors(dataProvider.GetData<IEnumerable<BattleCharacterInfo>>());
-            CreateHud();
             
-            Turns = new TurnManager(Services.Logger, Services.TickProcessor, _battleWindow.Actions, _actorsHolder);
+            Turns = new TurnManager(Services.Logger, Services.TickProcessor, _actionBinder, _actorsHolder);
             Turns.Enable();
+            
+            CreateHud();
         }
 
         public override void Exit()
@@ -84,7 +88,7 @@ namespace SF.Battle.States
 
         private void CreateHud()
         {
-            _battleWindow = _windowsFactory.Create(Window.Battle, new DataProvider(this, Services));
+            _battleWindow = _windowsFactory.Create(Window.Battle, new DataProvider(this, Services, _actionBinder));
             _battleWindow.Show();
         }
         

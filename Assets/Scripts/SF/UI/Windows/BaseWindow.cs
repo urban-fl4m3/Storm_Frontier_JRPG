@@ -10,12 +10,9 @@ namespace SF.UI.Windows
 {
     public abstract class BaseWindow : MonoBehaviour, IWindow
     {
-        public IReadonlyActionBinder Actions => _actions;
-        
         protected IWorld World { get; private set; }
         protected IServiceLocator Services { get; private set; }
-        
-        protected readonly ActionBinder _actions = new();
+        protected ActionBinder Actions { get; private set; }
 
         private IEnumerable<IBasePresenter> _presenters;
         
@@ -44,6 +41,7 @@ namespace SF.UI.Windows
         {
             World = dataProvider.GetData<IWorld>();
             Services = dataProvider.GetData<IServiceLocator>();
+            Actions = dataProvider.GetData<ActionBinder>();
             
             _presenters = ResolvePresenters();
         }

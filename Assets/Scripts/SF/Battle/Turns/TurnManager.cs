@@ -12,6 +12,9 @@ namespace SF.Battle.Turns
 {
     public class TurnManager
     {
+        public event Action<ITurnAction> TurnStarted = delegate { };
+        public event Action<ITurnAction> TurnCompleted = delegate { };
+        
         private readonly IDebugLogger _logger;
         private readonly ITickProcessor _tickProcessor;
         private readonly IReadonlyActionBinder _actionBinder;
@@ -103,12 +106,17 @@ namespace SF.Battle.Turns
             _currentTurnAction.StepCompleted += HandleStepCompleted;
             _currentTurnAction.StepFailed += HandleStepCompleted;
             _currentTurnAction.NextStep();
+
+            TurnStarted(action);
         }
 
         private void HandleStepCompleted()
         {
             _currentTurnAction.StepCompleted -= HandleStepCompleted;
             _currentTurnAction.StepFailed -= HandleStepCompleted;
+
+            TurnCompleted(_currentTurnAction);
+            
             _currentTurnAction = null;
             
             TryPlayNextTurn();

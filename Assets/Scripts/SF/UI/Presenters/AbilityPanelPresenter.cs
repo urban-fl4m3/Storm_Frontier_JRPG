@@ -12,21 +12,33 @@ namespace SF.UI.Presenters
 {
     public class AbilityPanelPresenter : BaseBattlePresenter<AbilityPanelView>
     {
+        private readonly Action<ActiveBattleAbilityData> _skillSelected;
         private readonly ButtonsHolder<TextButtonView> _buttonsHolder;
         
         public AbilityPanelPresenter(
             AbilityPanelView view,
+            Action<ActiveBattleAbilityData> skillSelected,
             IWorld world,
             IServiceLocator serviceLocator,
             ActionBinder actionBinder)
             : base(view, world, serviceLocator, actionBinder)
         {
-            _buttonsHolder = new ButtonsHolder<TextButtonView>(View.Content, View.ButtonView);
+            _skillSelected = skillSelected;
+            _buttonsHolder = new ButtonsHolder<TextButtonView>(view.Content, view.ButtonView);
         }
 
         public override void Enable()
         {
+            var actingActor = World.Turns.GetActingActor();
+
+            if (!actingActor)
+            {
+                ServiceLocator.Logger.LogError($"Can't show abilities for null actor");
+                return;
+            }
+
             View.Show();
+            SubscribeOnAbilities(actingActor);
         }
 
         public override void Disable()
@@ -35,8 +47,8 @@ namespace SF.UI.Presenters
             
             View.Hide();
         }
-        
-        public void SubscribeOnAbilities(BattleActor actor, Action<ActiveBattleAbilityData> skillSelected)
+
+        private void SubscribeOnAbilities(BattleActor actor)
         {
             var abilities = actor.MetaData.Info.Config.Abilities;
             var abilityComponent = actor.Components.Get<AbilityComponent>();
@@ -57,7 +69,7 @@ namespace SF.UI.Presenters
                 button.AddActionOnClick(() =>
                 {
                     View.Hide();
-                    skillSelected.Invoke(abilityData);
+                    _skillSelected(abilityData);
                 });
             }
         }
