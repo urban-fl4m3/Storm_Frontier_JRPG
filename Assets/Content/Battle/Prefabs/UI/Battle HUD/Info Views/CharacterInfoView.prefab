@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 6637766929931637179}
   - component: {fileID: 3148462177864194273}
   - component: {fileID: 9014969830701801071}
+  - component: {fileID: 4441184432724107704}
   m_Layer: 5
   m_Name: CharacterInfoView
   m_TagString: Untagged
@@ -326,7 +327,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 163.89, y: 258.27}
+  m_SizeDelta: {x: 164, y: 258.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3148462177864194273
 CanvasRenderer:
@@ -349,8 +350,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actorIcon: {fileID: 7202467440521641424}
-  _healthBarView: {fileID: 7484619498399921038}
-  _manaBarView: {fileID: 6908100636251365961}
+  healthStatBarView: {fileID: 0}
+  manaStatBarView: {fileID: 0}
+--- !u!114 &4441184432724107704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218902058355363957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 164
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &6788790923393569937
 GameObject:
   m_ObjectHideFlags: 0

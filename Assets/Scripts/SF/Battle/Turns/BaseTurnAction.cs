@@ -83,6 +83,16 @@ namespace SF.Battle.Turns
             _currentStepProgress = Mathf.Clamp(newStepProgress, 0, _currentMax);
         }
 
+        public float GetCurrentProgress()
+        {
+            return _currentStepProgress;
+        }
+
+        public float GetMaxProgress()
+        {
+            return _currentMax;
+        }
+
         public bool CanPerformStep()
         {
             return !ActingActor.IsDead();

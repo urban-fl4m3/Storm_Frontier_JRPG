@@ -15,6 +15,7 @@ namespace SF.Battle.Turns
         bool IsReadyPhase();
         bool CanPerformStep();
         void RaiseStepProgress();
-        
+        float GetCurrentProgress();
+        float GetMaxProgress();
     }
 }

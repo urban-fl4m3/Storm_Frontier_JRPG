@@ -11,12 +11,14 @@ namespace SF.UI.Windows
         [SerializeField] private PlayerActionButtonsView _playerActionButtonsView;
         [SerializeField] private TeamInfoView _playerTeamInfoView;
         [SerializeField] private TeamInfoView _enemyTeamInfoView;
+        [SerializeField] private ActionsBarView _actionsBarView;
 
         protected override IEnumerable<IBasePresenter> ResolvePresenters()
         {
             yield return new PlayerActionsPresenter(_playerActionButtonsView, World, Services, Actions);
             yield return new TeamInfoPresenter(_playerTeamInfoView, Team.Player, World, Services, Actions);
             yield return new TeamInfoPresenter(_enemyTeamInfoView, Team.Enemy, World, Services, Actions);
+            yield return new ActionsBarPresenter(_actionsBarView, World, Services, Actions);
         }
     }
 }

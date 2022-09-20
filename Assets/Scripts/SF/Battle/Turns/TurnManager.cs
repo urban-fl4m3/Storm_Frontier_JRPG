@@ -14,7 +14,10 @@ namespace SF.Battle.Turns
     {
         public event Action<ITurnAction> TurnStarted = delegate { };
         public event Action<ITurnAction> TurnCompleted = delegate { };
-        
+        public event Action ActionsUpdated = delegate { };
+
+        public IEnumerable<ITurnAction> RegisteredActions => _registeredActions;
+
         private readonly IDebugLogger _logger;
         private readonly ITickProcessor _tickProcessor;
         private readonly IReadonlyActionBinder _actionBinder;
@@ -80,6 +83,8 @@ namespace SF.Battle.Turns
                 }
             }
 
+            ActionsUpdated();
+            
             if (_actionsToProceed.Any())
             {
                 TryPlayNextTurn();
