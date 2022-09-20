@@ -4,6 +4,7 @@ using SF.Battle.Common;
 using SF.Battle.TargetSelection;
 using SF.Common.Actors.Abilities;
 using SF.Common.Data;
+using SF.Common.Logger;
 using SF.Game.Common;
 using SF.UI.Models.Actions;
 using Sirenix.Utilities;
@@ -14,14 +15,20 @@ namespace SF.Battle.Turns
     public class PlayerTurnAction : BaseTurnAction
     {
         private readonly IReadonlyActionBinder _actionBinder;
+        private readonly IDebugLogger _logger;
         private readonly PlayerInputControls _playerInputControls = new();  //todo add input manager to service locator
 
         private BattleActor[] _possibleTargets;
         
-        public PlayerTurnAction(BattleActor actor, IBattleActorsHolder actorsHolder, IReadonlyActionBinder actionBinder) 
+        public PlayerTurnAction(
+            BattleActor actor,
+            IDebugLogger logger, 
+            IBattleActorsHolder actorsHolder,
+            IReadonlyActionBinder actionBinder) 
             : base(actor, actorsHolder)
         {
             _actionBinder = actionBinder;
+            _logger = logger;
         }
 
         protected override void OnSelectionStepStart()

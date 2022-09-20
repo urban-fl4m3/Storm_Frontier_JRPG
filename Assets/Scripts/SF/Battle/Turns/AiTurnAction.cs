@@ -7,6 +7,7 @@ using SF.Battle.TargetSelection;
 using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
 using SF.Common.Logger;
+using SF.Game.Common;
 using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -27,7 +28,6 @@ namespace SF.Battle.Turns
 
         protected override void OnSelectionStepStart()
         {
-            _logger.Log($"Actor {ActingActor} turn completed");
             _temporaryDelaySub = Observable.FromCoroutine(CalculatePoints).Subscribe();
         }
 
@@ -59,6 +59,7 @@ namespace SF.Battle.Turns
             var chanceToUseSkill = Random.Range(0, 100);
             BattleActor target;
             Action<BattleActor> selectedAction;
+            float actionTime = Constants.Battle.MinCastTime;
 
             if (chanceToUseSkill >= 30)
             {
@@ -70,6 +71,7 @@ namespace SF.Battle.Turns
 
                 target = SelectRandomTarget(randomAbility.Pick);
                 selectedAction = a => ActingActor.PerformSkill(randomAbility, a);
+                actionTime = randomAbility.CastTime;
             }
             else
             {
@@ -78,6 +80,7 @@ namespace SF.Battle.Turns
             }
             
             PickTarget(target);
+            SetActionTime(actionTime);
             SelectActionToPerform(selectedAction);
             RaiseActionSelected(true);
         }

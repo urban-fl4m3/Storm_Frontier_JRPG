@@ -12,6 +12,12 @@ namespace SF.Battle.Turns
 {
     public class TurnManager
     {
+        public event Action<ITurnAction> TurnStarted = delegate { };
+        public event Action<ITurnAction> TurnCompleted = delegate { };
+        public event Action ActionsUpdated = delegate { };
+
+        public IEnumerable<ITurnAction> RegisteredActions => _registeredActions;
+
         private readonly IDebugLogger _logger;
         private readonly ITickProcessor _tickProcessor;
         private readonly IReadonlyActionBinder _actionBinder;
@@ -19,6 +25,8 @@ namespace SF.Battle.Turns
 
         private readonly List<ITurnAction> _registeredActions = new();
         private readonly Queue<ITurnAction> _actionsToProceed = new();
+
+        private ITurnAction _currentTurnAction;
 
         public TurnManager(
             IDebugLogger logger,
@@ -42,12 +50,17 @@ namespace SF.Battle.Turns
             _tickProcessor.AddTick(OnBattleUpdate);
         }
 
+        public BattleActor GetActingActor()
+        {
+            return _currentTurnAction?.ActingActor;
+        }
+
         private void HandleAddedActor(BattleActor actor)
         {
             //todo create SF team exception
             ITurnAction action = actor.Team switch
             {
-                Team.Player => new PlayerTurnAction(actor, _actorsHolder, _actionBinder),
+                Team.Player => new PlayerTurnAction(actor, _logger, _actorsHolder, _actionBinder),
                 Team.Enemy => new AiTurnAction(actor, _logger, _actorsHolder),
                 _ => throw new ArgumentOutOfRangeException()
             };
@@ -70,7 +83,12 @@ namespace SF.Battle.Turns
                 }
             }
 
-            TryPlayNextTurn();
+            ActionsUpdated();
+            
+            if (_actionsToProceed.Any())
+            {
+                TryPlayNextTurn();
+            }
         }
 
         private void TryPlayNextTurn()
@@ -88,26 +106,25 @@ namespace SF.Battle.Turns
         
         private void PlayTurn(ITurnAction action)
         {
-            action.StepCompleted += OnStepCompleted;
-            action.StepFailed += OnStepFailed;
-            action.NextStep();
+            _currentTurnAction = action;
             
-            void OnStepCompleted()
-            {
-                action.StepCompleted -= OnStepCompleted;
-                action.StepFailed -= OnStepFailed;
-            
-                TryPlayNextTurn();
-            }
+            _currentTurnAction.StepCompleted += HandleStepCompleted;
+            _currentTurnAction.StepFailed += HandleStepCompleted;
+            _currentTurnAction.NextStep();
 
-            void OnStepFailed()
-            {
-                action.StepCompleted -= OnStepCompleted;
-                action.StepFailed -= OnStepFailed;
+            TurnStarted(action);
+        }
+
+        private void HandleStepCompleted()
+        {
+            _currentTurnAction.StepCompleted -= HandleStepCompleted;
+            _currentTurnAction.StepFailed -= HandleStepCompleted;
+
+            TurnCompleted(_currentTurnAction);
             
-                TryPlayNextTurn();
-                _logger.LogWarning($"Step failed");
-            }
+            _currentTurnAction = null;
+            
+            TryPlayNextTurn();
         }
     }
 }

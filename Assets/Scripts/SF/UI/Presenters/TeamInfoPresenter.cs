@@ -1,4 +1,5 @@
-﻿using SF.Game;
+﻿using System.Collections.Generic;
+using SF.Game;
 using SF.Game.Worlds;
 using SF.UI.Models.Actions;
 using SF.UI.Windows;
@@ -8,6 +9,7 @@ namespace SF.UI.Presenters
     public class TeamInfoPresenter : BaseBattlePresenter<TeamInfoView>
     {
         private readonly Team _team;
+        private readonly List<CharacterInfoPresenter> _infoPresenters = new();
         
         public TeamInfoPresenter(
             TeamInfoView view,
@@ -26,7 +28,12 @@ namespace SF.UI.Presenters
 
             foreach (var actor in actors)
             {
-                View.CreateHealthPanel(actor);
+                var infoView = View.CreateInfoView();
+                var infoPresenter = new CharacterInfoPresenter(infoView, actor, World, ServiceLocator, ActionBinder);
+                
+                infoPresenter.Enable();
+                
+                _infoPresenters.Add(infoPresenter);
             }
             
             View.Show();
@@ -34,6 +41,11 @@ namespace SF.UI.Presenters
 
         public override void Disable()
         {
+            foreach (var infoPresenter in _infoPresenters)
+            {
+                infoPresenter.Disable();
+            }
+            
             View.Hide();
         }
     }
