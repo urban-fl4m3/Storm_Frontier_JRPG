@@ -6,8 +6,10 @@ namespace SF.UI.View
     {
         [SerializeField] private RectTransform _content;
         [SerializeField] private TextButtonView _buttonView;
-
+        [SerializeField] private SkillDescriptionView _skillDescriptionView;
+        
         public RectTransform Content => _content;
         public TextButtonView ButtonView => _buttonView;
+        public SkillDescriptionView SkillDescriptionView => _skillDescriptionView;
     }
 }

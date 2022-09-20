@@ -36,6 +36,7 @@ namespace SF.UI.Presenters
             View.GuardButton.onClick.AddListener(OnGuardClick);
             
             View.Hide();
+            _abilityPanelPresenter.Disable();
             
             World.Turns.TurnStarted += HandleTurnStarted;
         }

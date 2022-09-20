@@ -601,6 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _content: {fileID: 5298821449442612670}
   _buttonView: {fileID: -7019415770865026181, guid: 4454d9243a3957e4cbab02748ab7b8bb, type: 3}
+  _skillDescriptionView: {fileID: 8117185759341895912}
 --- !u!1 &4621635102803569745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8567336122708700862}
   - component: {fileID: 8278929294877345968}
+  - component: {fileID: 8117185759341895912}
   m_Layer: 5
   m_Name: DescriptionView
   m_TagString: Untagged
@@ -1965,6 +1967,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &8117185759341895912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567336122708700861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf68a4b0ce54785924dc1786b21c2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _descriptionText: {fileID: 8567336121637855571}
 --- !u!1 &8567336122824222709
 GameObject:
   m_ObjectHideFlags: 0

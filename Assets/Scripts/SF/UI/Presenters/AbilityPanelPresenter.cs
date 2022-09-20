@@ -38,6 +38,8 @@ namespace SF.UI.Presenters
             }
 
             View.Show();
+            View.SkillDescriptionView.Show();
+            
             SubscribeOnAbilities(actingActor);
         }
 
@@ -46,6 +48,7 @@ namespace SF.UI.Presenters
             _buttonsHolder.Clear();
             
             View.Hide();
+            View.SkillDescriptionView.Hide();
         }
 
         private void SubscribeOnAbilities(BattleActor actor)

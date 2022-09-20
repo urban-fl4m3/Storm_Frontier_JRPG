@@ -2,6 +2,7 @@
 using SF.Battle.Actors;
 using SF.Battle.Common;
 using SF.Battle.TargetSelection;
+using SF.Common.Actors;
 using SF.Common.Actors.Abilities;
 using SF.Common.Data;
 using SF.Common.Logger;
@@ -14,9 +15,10 @@ namespace SF.Battle.Turns
 {
     public class PlayerTurnAction : BaseTurnAction
     {
+        private readonly PlayerInputControls _playerInputControls = new();  //todo add input manager to service locator
+        private readonly PlaceholderComponent _actorPlaceholder;
         private readonly IReadonlyActionBinder _actionBinder;
         private readonly IDebugLogger _logger;
-        private readonly PlayerInputControls _playerInputControls = new();  //todo add input manager to service locator
 
         private BattleActor[] _possibleTargets;
         
@@ -29,6 +31,8 @@ namespace SF.Battle.Turns
         {
             _actionBinder = actionBinder;
             _logger = logger;
+
+            _actorPlaceholder = actor.Components.Get<PlaceholderComponent>();
         }
 
         protected override void OnSelectionStepStart()
@@ -37,6 +41,8 @@ namespace SF.Battle.Turns
             _actionBinder.Subscribe(ActionName.Skills, HandleSkillSelected);
             _actionBinder.Subscribe(ActionName.Item, HandleItemSelected);
             _actionBinder.Subscribe(ActionName.Guard, HandleGuardSelected);
+            
+            _actorPlaceholder.SetSelected(true);
         }
 
         protected override void OnSelectionStepFinish()
@@ -45,6 +51,8 @@ namespace SF.Battle.Turns
             _actionBinder.Unsubscribe(ActionName.Skills, HandleSkillSelected);
             _actionBinder.Unsubscribe(ActionName.Item, HandleItemSelected);
             _actionBinder.Unsubscribe(ActionName.Guard, HandleGuardSelected);
+            
+            _actorPlaceholder.SetSelected(false);
             
             ClearInputSubs();
         }

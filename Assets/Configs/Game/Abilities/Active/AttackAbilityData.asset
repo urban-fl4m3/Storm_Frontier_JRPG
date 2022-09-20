@@ -49,7 +49,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Attack
-  _selectionData:
-    _pick: 3
+  _description: Make an enchanced attack and deal powerful damage to one foe
   _manaCost: 3
   _castTime: 20
+  _selectionData:
+    _pick: 3

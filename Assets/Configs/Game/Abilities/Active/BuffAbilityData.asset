@@ -61,7 +61,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Buff
-  _selectionData:
-    _pick: 1
+  _description: Increase health to self
   _manaCost: 5
   _castTime: 20
+  _selectionData:
+    _pick: 1

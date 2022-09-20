@@ -46,7 +46,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _name: Heal
-  _selectionData:
-    _pick: 2
+  _description: Heal an ally
   _manaCost: 1
   _castTime: 20
+  _selectionData:
+    _pick: 2
