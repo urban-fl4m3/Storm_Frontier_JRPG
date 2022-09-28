@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerActorActionView: {fileID: 823769398836035209, guid: 457b746fd1121b941901daf9ed3ce81c, type: 3}
-  _enemyActorActionView: {fileID: 823769398836035209, guid: 457b746fd1121b941901daf9ed3ce81c, type: 3}
+  _enemyActorActionView: {fileID: 9164641051396753088, guid: de988e4b29dd64e4c913f3e19ccf57cf, type: 3}
   _waitLineContainer: {fileID: 1057523235}
   _actionLineContainer: {fileID: 2018605183}
   _actionsViewContainer: {fileID: 130440558}
