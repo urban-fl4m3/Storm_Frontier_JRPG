@@ -1,35 +1,15 @@
-﻿using System.Collections.Generic;
-using SF.Battle.Actors;
-using SF.UI.View;
+﻿using SF.UI.View;
 using UnityEngine;
 
 namespace SF.UI.Windows
 {
-    public class TeamInfoView: MonoBehaviour, IView
+    public class TeamInfoView: BaseView
     {
         [SerializeField] private CharacterInfoView _characterInfoViewPrefab;
-
-        private readonly List<CharacterInfoView> _infoViews = new();
         
-        //todo move to presenter
-        public void CreateHealthPanel(BattleActor actor)
+        public CharacterInfoView CreateInfoView()
         {
-            var healthBarView = Instantiate(_characterInfoViewPrefab, transform);
-            
-            if (healthBarView == null) return;
-            
-            healthBarView.ObserveActorHealth(actor);
-            _infoViews.Add(healthBarView);
-        }
-        
-        public void Show()
-        {
-            gameObject.SetActive(true);
-        }
-
-        public void Hide()
-        {
-            gameObject.SetActive(false);
+            return Instantiate(_characterInfoViewPrefab, transform);
         }
     }
 }

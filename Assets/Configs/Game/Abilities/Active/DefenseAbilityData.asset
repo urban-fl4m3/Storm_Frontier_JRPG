@@ -64,3 +64,4 @@ MonoBehaviour:
   _selectionData:
     _pick: 2
   _manaCost: 2
+  _castTime: 20

@@ -1,6 +1,7 @@
 ﻿using System;
 using SF.Battle.Abilities;
 using SF.Battle.Actors;
+using SF.Battle.Turns;
 using SF.Common.Data;
 using SF.Game;
 using SF.Game.Worlds;
@@ -11,6 +12,8 @@ namespace SF.UI.Presenters
 {
     public class PlayerActionsPresenter : BaseBattlePresenter<PlayerActionButtonsView>
     {
+        private readonly AbilityPanelPresenter _abilityPanelPresenter;
+        
         private BattleActor _currentActor;
         private IDisposable _activeActorObserver;
 
@@ -21,7 +24,8 @@ namespace SF.UI.Presenters
             ActionBinder actionBinder)
             : base(view, world, serviceLocator, actionBinder)
         {
-            
+            _abilityPanelPresenter =
+                new AbilityPanelPresenter(view.AbilityPanelView, OnSkillSelected, world, serviceLocator, actionBinder);
         }
 
         public override void Enable()
@@ -31,7 +35,9 @@ namespace SF.UI.Presenters
             View.UseItemButton.onClick.AddListener(OnItemClick);
             View.GuardButton.onClick.AddListener(OnGuardClick);
             
-            View.Show();
+            View.Hide();
+            
+            World.Turns.TurnStarted += HandleTurnStarted;
         }
 
         public override void Disable()
@@ -42,18 +48,41 @@ namespace SF.UI.Presenters
             View.GuardButton.onClick.RemoveListener(OnGuardClick);
             
             View.Hide();
+            
+            World.Turns.TurnStarted -= HandleTurnStarted;
+            World.Turns.TurnCompleted -= HandleTurnCompleted;
+        }
+
+        private void HandleTurnStarted(ITurnAction turn)
+        {
+            var isSelectionStep = turn.Phase == ActPhase.Wait;
+            var isPlayerSide = turn.ActingActor.Team == Team.Player;
+            
+            if (isSelectionStep && isPlayerSide)
+            {
+                View.Show();
+                
+                World.Turns.TurnCompleted += HandleTurnCompleted;
+            }
+        }
+
+        private void HandleTurnCompleted(ITurnAction turn)
+        {
+            World.Turns.TurnCompleted -= HandleTurnCompleted;
+            
+            View.Hide();
         }
 
         private void OnAttackClick()
         {
-            View.HideAbility();
+            _abilityPanelPresenter.Disable();
+            
             RaiseAction(ActionName.Attack);
         }
 
         private void OnSkillClick()
         {
-            View.ShowAbility();
-            View.SubscribeOnAbilities(World.ActorsHolder.ActingActor, OnSkillSelected);
+            _abilityPanelPresenter.Enable();
         }
 
         private void OnSkillSelected(ActiveBattleAbilityData data)
@@ -63,13 +92,15 @@ namespace SF.UI.Presenters
 
         private void OnItemClick()
         {
-            View.HideAbility();
+            _abilityPanelPresenter.Disable();
+            
             RaiseAction(ActionName.Item, new DataProvider(0));
         }
 
         private void OnGuardClick()
         {
-            View.HideAbility();
+            _abilityPanelPresenter.Disable();
+            
             RaiseAction(ActionName.Guard);
         }
     }

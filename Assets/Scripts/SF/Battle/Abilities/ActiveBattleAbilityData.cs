@@ -8,8 +8,10 @@ namespace SF.Battle.Abilities
     {
         [SerializeField] private TargetSelectionData _selectionData;
         [SerializeField] private int _manaCost;
+        [SerializeField] private float _castTime;
 
         public override TargetPick Pick => _selectionData.Pick;
         public int ManaCost => _manaCost;
+        public float CastTime => _castTime;
     }
 }

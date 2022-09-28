@@ -1,16 +1,21 @@
 ﻿using System;
 using SF.Battle.Actors;
-using SF.Common.Actors;
 
 namespace SF.Battle.Turns
 {
     public interface ITurnAction
     {
-        event Action TurnStarted;
-        event Action TurnCompleted;
+        ActPhase Phase { get; }
+        BattleActor ActingActor { get; }
+        
+        event Action StepCompleted;
+        event Action StepFailed;
 
-        event Action<IActor> ActorSelected; 
-
-        void MakeTurn(BattleActor actor);
+        void NextStep();
+        bool IsReadyPhase();
+        bool CanPerformStep();
+        void RaiseStepProgress();
+        float GetCurrentProgress();
+        float GetMaxProgress();
     }
 }

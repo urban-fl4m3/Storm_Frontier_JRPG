@@ -26,7 +26,8 @@
         ResRadiance = 21,
         ResVoid = 22,
         HPRegen = 23,
-        Speed = 24,
-        Balance = 25
+        ActSpeed = 24,
+        CastSpeed = 25,
+        Balance = 26
     }
 }

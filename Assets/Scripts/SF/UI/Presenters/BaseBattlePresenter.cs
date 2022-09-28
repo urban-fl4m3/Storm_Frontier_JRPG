@@ -13,8 +13,7 @@ namespace SF.UI.Presenters
         protected TView View { get; }
         protected IBattleWorld World { get; }
         protected IServiceLocator ServiceLocator { get; }
-
-        private readonly ActionBinder _actionBinder;
+        protected ActionBinder ActionBinder { get; }
 
         protected BaseBattlePresenter(
             TView view,
@@ -32,7 +31,7 @@ namespace SF.UI.Presenters
             World = battleWorld;
             ServiceLocator = serviceLocator;
             
-            _actionBinder = actionBinder;
+            ActionBinder = actionBinder;
         }
 
         public abstract void Enable();
@@ -40,7 +39,7 @@ namespace SF.UI.Presenters
 
         protected void RaiseAction(ActionName name, IDataProvider dataProvider = null)
         {
-            _actionBinder.Raise(name, dataProvider);
+            ActionBinder.Raise(name, dataProvider);
         }
     }
 }

@@ -352,6 +352,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3633666908616022382, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633666908616022382, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633666908616022382, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633666908616022382, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633666908616022382, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633666909023964931, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633666909023964931, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633666909023964931, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633666909023964931, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633666909023964931, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6114857398186630948, guid: dcd4af3e9ffe46d47b5b27f00e279813, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -759,7 +799,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7785549, y: 1}
+    m_SensorSize: {x: 1.7770271, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -2,6 +2,7 @@
 using SF.Common.Factories;
 using UnityEngine;
 using SF.UI.Data;
+using SF.UI.Models.Actions;
 using SF.UI.Windows;
 
 namespace SF.UI.Factories

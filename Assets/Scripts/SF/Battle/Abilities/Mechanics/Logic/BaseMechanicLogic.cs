@@ -48,7 +48,7 @@ namespace SF.Battle.Abilities.Mechanics.Logic
             {
                 case MechanicPick.All:
                 {
-                    targets.AddRange(World.ActorsHolder.Actors);
+                    targets.AddRange(World.ActorsHolder.GetAllActors());
                     break;
                 }
 
