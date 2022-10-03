@@ -84,14 +84,14 @@ Material:
     - _FoamSpeed: 1
     - _FoamStrength: 9.15
     - _FoamTile: 3.32
-    - _Foam_distance: 0.54
-    - _Foam_strength: 0.23
+    - _Foam_distance: 0.7
+    - _Foam_strength: 2
     - _HightFrequency: 0.1
     - _NormalSpeed: 7.35
     - _NormalStength: 1
     - _NormalStrength: 0.76
     - _NormalTile: 0.4
-    - _Normal_Strength: 0.2
+    - _Normal_Strength: 0.1
     - _Normal_speed: 10
     - _Normal_tile: 0.005
     - _QueueControl: 0
@@ -99,15 +99,15 @@ Material:
     - _RefractionSpeed: 0.075
     - _RefractionStrength: 0.5
     - _Smoothness: 1
-    - _Smothness: 0.8
+    - _Smothness: 0.9
     - _WaveAmplitude: 0.5
     - _WaveSpeed: 2
     - _WaveStrength: 1.43
     - _WaveTile: 1
-    - _Wave_scale: 3.67
-    - _Wave_speed: 10
-    - _Wave_strength: 2.18
-    - _Wave_tile: 1
+    - _Wave_scale: 6
+    - _Wave_speed: 5
+    - _Wave_strength: 3
+    - _Wave_tile: 0.2
     - _foamCuttOff: 2
     - _normalMultiply: 1
     - _scale1: 133.2
@@ -117,8 +117,8 @@ Material:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _Color_1: {r: 0.23082057, g: 0.66649735, b: 0.8584906, a: 0}
-    - _Color_A: {r: 0.07450981, g: 0.35686275, b: 0.4745098, a: 0}
-    - _Color_B: {r: 0.13725491, g: 0.6627451, b: 0.87843144, a: 1}
+    - _Color_A: {r: 0.07631719, g: 0.35579598, b: 0.46226418, a: 0}
+    - _Color_B: {r: 0.03818085, g: 0.16133109, b: 0.24528301, a: 1}
     - _DeepColor: {r: 0, g: 0.07504042, b: 0.4528302, a: 1}
     - _DepthColor: {r: 0.0141509175, g: 0.37093472, b: 1, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
