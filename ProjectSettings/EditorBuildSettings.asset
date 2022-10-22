@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Battle Data/BattleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Roguelike/RootScene.unity
+    guid: 21bf9d4744c08874c9246409112fa8ab
+  - enabled: 1
+    path: Assets/Scenes/Roguelike/BattleScene.unity
+    guid: f52b84f182bb6a84bbc6bbbb3759305b
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 987172f9161742b48b5cfe6afd4f5424, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
