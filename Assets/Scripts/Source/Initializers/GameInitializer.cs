@@ -20,6 +20,10 @@ namespace Source.Initializers
             {
                 await SceneManager.LoadSceneAsync("Scenes/Roguelike/BattleScene", LoadSceneMode.Additive);
             }
+
+            await UniTask.Delay(5000);
+
+            await SceneManager.UnloadSceneAsync("Scenes/Roguelike/BattleScene");
         }
     }
 }

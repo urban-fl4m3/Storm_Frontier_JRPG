@@ -1,4 +1,5 @@
-﻿using Source.Services;
+﻿using Source.Initializers;
+using Source.Services;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -6,7 +7,7 @@ using VContainer.Unity;
 namespace Source.UI.Layers
 {
     [RequireComponent(typeof(Canvas))]
-    public class WindowsLayer : MonoBehaviour, IStartable
+    public class WindowsLayer : MonoBehaviour, IStartable, ITickable
     {
         private Canvas Canvas
         {
@@ -25,14 +26,19 @@ namespace Source.UI.Layers
         private CameraService _cameraService;
 
         [Inject]
-        public void Construct(CameraService cameraService)
+        public void Construct(CameraService cameraService, TickService tickService)
         {
             _cameraService = cameraService;
         }
 
-        public void Start()
+        void IStartable.Start()
         {
             Canvas.worldCamera = _cameraService.ActiveCamera;
+        }
+
+        void ITickable.Tick()
+        {
+            Debug.Log("DD");
         }
     }
 }

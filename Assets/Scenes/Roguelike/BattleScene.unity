@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 1672329867}
   - component: {fileID: 1672329868}
   m_Layer: 0
-  m_Name: SceneDirector
+  m_Name: BattleSceneDirector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentReference:
-    TypeName: Source.Initializers.RootScope
+    TypeName: Source.Initializers.BattleScope
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 1775169337}

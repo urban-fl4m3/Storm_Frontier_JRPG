@@ -1,4 +1,5 @@
-﻿using VContainer;
+﻿using Source.Services;
+using VContainer;
 using VContainer.Unity;
 
 namespace Source.Initializers
@@ -7,7 +8,8 @@ namespace Source.Initializers
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            
+            builder.RegisterEntryPoint<TickService>(Lifetime.Scoped).AsSelf();
+            // builder.Register<TickService>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
         }
     }
 }
